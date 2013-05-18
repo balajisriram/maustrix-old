@@ -50,8 +50,8 @@ MouseTrainingCohort_AG={'10','111','1111','13','118','17','18','19','20','24','2
 ValidTestSubject={'demo1','999'};
 
 % define ratrix version to use
-svnRev={'svn://132.239.158.177/projects/bsriram/Ratrix/branches/multiTrodeStable'};
-svnCheckMode='session';
+svnRev={''};
+svnCheckMode='none';
 
 for i=1:length(subjIDs)
     % create the trial steps

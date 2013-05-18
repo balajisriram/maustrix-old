@@ -38,20 +38,21 @@ switch nargin
             t.criterion = varargin{3};
             t.scheduler = varargin{4};
             
-            if ischar(varargin{6}) && (strcmp(varargin{6},'session') || strcmp(varargin{6},'trial'))
+            if ischar(varargin{6}) && (strcmp(varargin{6},'session') || strcmp(varargin{6},'trial') || strcmp(varargin{6},'none'))
                 t.svnCheckMode = varargin{6};
             else
-                error('svnCheckMode must be ''session'' or ''trial''');
+                error('svnCheckMode must be ''session'' or ''trial'' or ''none''');
             end
             
-
-            try
-            [t.svnRevURL t.svnRevNum]=checkTargetRevision(varargin{5});
-            catch ex
-                warning('svn isn''t working due to no network access -- this needs to be fixed, but for now we just bail')
-                ex
-                t.svnRevURL='';
-                t.svnRevNum=0;
+            if ~strcmp(t.svnCheckMode,'none')
+                try
+                    [t.svnRevURL t.svnRevNum]=checkTargetRevision(varargin{5});
+                catch ex
+                    warning('svn isn''t working due to no network access -- this needs to be fixed, but for now we just bail')
+                    ex
+                    t.svnRevURL='';
+                    t.svnRevNum=0;
+                end
             end
             
             if nargin>=7
