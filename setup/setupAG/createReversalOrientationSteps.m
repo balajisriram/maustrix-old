@@ -80,7 +80,7 @@ out.contrastsOpt={[1],[1]};
 out.contrastsSweep={[0.1:0.1:1],[0.1:0.1:1]};
 
 out.maxDurationOpt={[inf],[inf]};
-out.radiiOpt={[3],[3]};
+out.radiiOpt={[inf],[inf]};
 out.annuli={[0],[0]};
 out.location={[.5 .5],[0.5 0.5]};      % center of mask
 out.waveform= 'sine';

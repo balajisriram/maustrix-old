@@ -52,23 +52,27 @@ destRectForGrating = [destRect(1)-destWidth/2, destRect(2)-destHeight, destRect(
 Screen('DrawTexture', window, gratingtex, srcRect, destRectForGrating, ...
     (180/pi)*stim.orientations, filtMode);
 try
-if ~isempty(stim.masks)
-    % Draw gaussian mask over grating: We need to subtract 0.5 from
-    % the real size to avoid interpolation artifacts that are
-    % created by the gfx-hardware due to internal numerical
-    % roundoff errors when drawing rotated images:
-    % Make mask to texture
-    Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); % necessary to do the transparency blending
-    if isempty(expertCache.masktexs)
-        expertCache.masktexs= Screen('MakeTexture',window,double(stim.masks{1}),0,0,floatprecision);
+    if ~isempty(stim.masks{1})
+        % Draw gaussian mask over grating: We need to subtract 0.5 from
+        % the real size to avoid interpolation artifacts that are
+        % created by the gfx-hardware due to internal numerical
+        % roundoff errors when drawing rotated images:
+        % Make mask to texture
+        Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); % necessary to do the transparency blending
+        if isempty(expertCache.masktexs)
+            expertCache.masktexs= Screen('MakeTexture',window,double(stim.masks{1}),0,0,floatprecision);
+        end
+        % Draw mask texture: (with no rotation)
+        Screen('DrawTexture', window, expertCache.masktexs, [], destRect,[], filtMode);
     end
-    if isempty(expertCache.annulitexs)
-        expertCache.annulitexs=Screen('MakeTexture',window,double(stim.annuliMatrices{1}),0,0,floatprecision);
+    if ~isempty(stim.annuliMatrices{1})
+        Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        if isempty(expertCache.annulitexs)
+            expertCache.annulitexs=Screen('MakeTexture',window,double(stim.annuliMatrices{1}),0,0,floatprecision);
+        end
+        % Draw mask texture: (with no rotation)
+        Screen('DrawTexture',window,expertCache.annulitexs,[],destRect,[],filtMode);
     end
-    % Draw mask texture: (with no rotation)
-    Screen('DrawTexture', window, expertCache.masktexs, [], destRect,[], filtMode);
-    Screen('DrawTexture',window,expertCache.annulitexs,[],destRect,[],filtMode);
-end
 catch
     sca;
     keyboard

@@ -226,7 +226,7 @@ details.waveform            = stim.waveform;
 
 % radii
 if stim.radii==Inf
-    stim.masks=[];
+    stim.masks={[]};
 else
     mask=[];
     maskParams=[stim.radii 999 0 0 ...
@@ -249,15 +249,19 @@ else
 end
 details.masks = stim.masks;
 % annulus
-annulusCenter=stim.location;
-annulusRadius=stim.annuli;
-annulusRadiusInPixels=sqrt((height/2)^2 + (width/2)^2)*annulusRadius;
-annulusCenterInPixels=[width height].*annulusCenter;
-[x,y]=meshgrid(-width/2:width/2,-height/2:height/2);
-annulus(:,:,1)=ones(height,width,1)*stimulus.mean;
-bool=(x+width/2-annulusCenterInPixels(1)).^2+(y+height/2-annulusCenterInPixels(2)).^2 < (annulusRadiusInPixels+0.5).^2;
-annulus(:,:,2)=bool(1:height,1:width);
-stim.annuliMatrices{1}=annulus;
+if ~(stim.annuli==0)
+    annulusCenter=stim.location;
+    annulusRadius=stim.annuli;
+    annulusRadiusInPixels=sqrt((height/2)^2 + (width/2)^2)*annulusRadius;
+    annulusCenterInPixels=[width height].*annulusCenter;
+    [x,y]=meshgrid(-width/2:width/2,-height/2:height/2);
+    annulus(:,:,1)=ones(height,width,1)*stimulus.mean;
+    bool=(x+width/2-annulusCenterInPixels(1)).^2+(y+height/2-annulusCenterInPixels(2)).^2 < (annulusRadiusInPixels+0.5).^2;
+    annulus(:,:,2)=bool(1:height,1:width);
+    stim.annuliMatrices{1}=annulus;
+else
+    stim.annuliMatrices = {[]};
+end
 
 if isinf(stim.maxDuration)
     timeout=[];
