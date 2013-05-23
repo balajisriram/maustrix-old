@@ -247,7 +247,6 @@ else
                 stim.masks{1}=mask;
     end    
 end
-details.masks = stim.masks;
 % annulus
 if ~(stim.annuli==0)
     annulusCenter=stim.location;
