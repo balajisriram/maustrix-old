@@ -37,7 +37,7 @@ end
 
 try
     % set up PTB
-    hidecursor;
+    HideCursor;
     [window winRect]=Screen('OpenWindow',screenNum);
     [oldClut, dacbits, reallutsize] = Screen('ReadNormalizedGammaTable', screenNum);
     Screen('LoadNormalizedGammaTable', screenNum, clut);
@@ -155,7 +155,7 @@ end % end main function
 
 function cleanup(originalPriority,screenNum,oldClut,spyderLib)
 Priority(originalPriority);
-showcursor;
+ShowCursor;
 ListenChar(1);
 Screen('CloseAll');
 Screen('LoadNormalizedGammaTable', screenNum, oldClut);
