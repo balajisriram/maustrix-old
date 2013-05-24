@@ -1,4 +1,4 @@
-function [stochdrink freedrink]=createFreeDrinksStepsAG(svnRev,svnCheckMode,subjectID)
+function [stochdrink, freedrink]=createFreeDrinksStepsAG(svnRev,svnCheckMode,subjectID)
 
 out = getStepDetails(subjectID);
 
@@ -48,17 +48,37 @@ radius = .1;
 contrasts = [1 .5];
 thresh = .00005;
 yPosPct = .65;
-[a b] = getMACaddress;
-if strcmp(b,'BC305BD38BFB') % balaji's personal computer
-    maxWidth = 800;
-    maxHeight = 600;
-elseif strcmp (b,'7CD1C3E5176F')
-    maxWidth = 1440;
-    maxHeight = 900;
-else
-    maxWidth = 1024;
-    maxHeight = 768;
+
+[a, b] = getMACaddress();
+switch b
+    case '001D7DA80EC2' %gLab-Behavior1
+        maxWidth = 1024;
+        maxHeight = 768;
+    case '001D7DA80EFC' %gLab-Behavior2
+        maxWidth = 1024;
+        maxHeight = 768;
+    case 'A41F726EC11C' %gLab-Behavior3
+        maxWidth = 1024;
+        maxHeight = 768;
+    case '7845C4256F4C' %gLab-Behavior4
+        maxWidth = 1920;
+        maxHeight = 1080;
+    case '7845C42558D4' %gLab-Behavior5
+        maxWidth = 1920;
+        maxHeight = 1080;
+    case 'BC305BD38BFB' %ephys-stim
+        maxWidth = 1920;
+        maxHeight = 1080;
+    case '180373337162' %ephys-data
+        maxWidth = 1920;
+        maxHeight = 1080;
+    otherwise
+        a
+        b
+        warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+        keyboard;
 end
+
 scaleFactor = [1 1];
 interTrialLuminance  = .5;
 
@@ -70,168 +90,17 @@ freedrink = trainingStep(fd, freeStim, graduationCriterion , noTimeOff(), svnRev
 end
 
 function out = getStepDetails(id)
+out.rewardSizeULorMS = 50;
+out.scalar = 1;
+out.msPenalty = 1000;
+out.requestRewardSizeULorMS = 10;
+out.pStochastic = 0.004;
+out.PPC = 64;
 switch id
-    case {'1','2','4','5','7','8','9','10','11','12','13','14','15','17','18','19','20'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'3'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'6'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'16'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'21'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'22'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'23'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'24'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case {'25'}
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case 'ACM1'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case 'ACM2'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case 'ACM3'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case 'ACM4'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case 'ACM5'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
-    case 'demo1'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.004;
-        
-        out.PPC = 64;
     case '999'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.003;
-
-        out.PPC = 32;
-
-    case '31'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.003;
-
-        out.PPC = 64;
-    case '32'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.002;
-
-        out.PPC = 64;
-    case '33'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.002;
-
-        out.PPC = 64;
-    case '34'
-        out.rewardSizeULorMS = 50;
-        out.scalar = 1;
-        out.msPenalty = 1000;
-        out.requestRewardSizeULorMS = 10;
-        out.pStochastic = 0.002;
-
-        out.PPC = 64;
+        % nothing changes here, but might later
+    case 'demo1'
+        % nothing changes here, but might later
     otherwise
         error('unsupported mouse id. are you sure that the mouse is supposed to be here?')
 end

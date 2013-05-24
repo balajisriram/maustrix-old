@@ -40,12 +40,12 @@ tm= nAFC(sm, percentCorrectionTrials, constantRewards); %percentCorrectionTrials
 %parameters used for all object rec steps:
 % vary size and rotation very slightly
 imageRotation=[-20 20]; imageSize=[.75 1];
-[a,b] = getMACaddress();
-switch b
-    case 'A41F726EC11C'
-        imdir = 'C:\Users\glab\Desktop\ratrix\PRimageset';
-    otherwise
-        imdir='C:\Documents and Settings\rlab\Desktop\maustrix\PRimageset'; % LOCAL copy
+
+try 
+    imdir = '\\ghosh-16-159-221.ucsd.edu\ghosh\imFiles\PRimageset';
+catch ex
+    sca;
+    keyboard;
 end
 
 imagelist = struct;
@@ -67,8 +67,35 @@ imageSelectionMode='normal'; % not deck
 imageSizeYoked=false; %true; % images have same size
 imageRotationYoked=false; % rotation of two images chosen independently
 drawingMode='expert';
-maxWidth                =1024; % of the screen
-maxHeight               =768; % of the screen
+
+[a,b] = getMACaddress();
+switch b
+    case '001D7DA80EC2' %gLab-Behavior1
+        maxWidth = 1024;
+        maxHeight = 768;
+    case '001D7DA80EFC' %gLab-Behavior2
+        maxWidth = 1024;
+        maxHeight = 768;
+    case 'A41F726EC11C' %gLab-Behavior3
+        maxWidth = 1024;
+        maxHeight = 768;
+    case '7845C4256F4C' %gLab-Behavior4
+        maxWidth = 1920;
+        maxHeight = 1080;
+    case '7845C42558D4' %gLab-Behavior5
+        maxWidth = 1920;
+        maxHeight = 1080;
+    case 'BC305BD38BFB' %ephys-stim
+        maxWidth = 1920;
+        maxHeight = 1080;
+    case '180373337162' %ephys-data
+        maxWidth = 1920;
+        maxHeight = 1080;
+    otherwise
+        warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+        keyboard;
+end
+
 scaleFactor             =[1 1]; %show image at full size
 percentCorrectionTrials = 0.5;
 
@@ -93,19 +120,15 @@ ts_obj2 = trainingStep(tm, imagestim, easy_pc, sch,svnRev,svnCheckMode);
 end
 
 function out = getStepDetails(id)
+out.rewardScalar = 0.25;
+out.msPenalty = 12000;
+out.rewardSize = 50;
 switch id
-    case {'1','2','4','5','7','8','9','10','11','12','13','14','15','17','18','19','20'}
-        out.rewardScalar = 0.25;
-        out.msPenalty = 12000;
-        out.rewardSize = 50;        
-    case {'3','6','16','21','22','23','24','25', '30', '31', '32', '33', '34'}
-        out.rewardScalar = 0.25;
-        out.msPenalty = 12000;
-        out.rewardSize = 50;
-    case {'demo1','999'};
-        out.rewardScalar = 0.25;
-        out.msPenalty = 12000;
-        out.rewardSize = 50;
+    case '999'
+        % nothing changes here, but might later
+    case 'demo1'
+        out.maxDurationOpt = {[3],[3]};
+        out.doPostDiscrim = true;
     otherwise
         error('unsupported mouse id. are you sure that the mouse is supposed to be here?')
 end

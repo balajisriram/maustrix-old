@@ -64,24 +64,24 @@ function out = getStepDetails(id)
 
 % basic details for stim
 out.pixPerCycsOpt={[128],[128]};
-out.pixPerCycsSweep={[32,64,128,256,512],[32,64,128,256,512]};
+out.pixPerCycsSweep={[16,32,64,128,256,512],[16,32,64,128,256,512]};
 
 out.driftfrequenciesOpt={[2],[2]};
-out.driftfrequenciesSweep={[0.25,0.5,1,2,4,8,16],[0.25,0.5,1,2,4,8,16]};
+out.driftfrequenciesSweep={[0,2,16],[0,2,16]};
 
 orsOpt = [45 225];
-orsSweep = [0,5,15,25,35,45,45,45,45,45,180,185,195,205,215,225,225,225,225,225];
+orsSweep = [0,3.33,6.67,10,13.33,16.67,20,45,180,183.33,186.67,190,193.33,196.66,200,225];
 out.orientationsOpt={-deg2rad(orsOpt),deg2rad(orsOpt)};
 out.orientationsSweep={-deg2rad(orsSweep),deg2rad(orsSweep)};
 
-out.phasesOpt={[0],[0]};
+out.phasesOpt={0,0};
 
-out.contrastsOpt={[1],[1]};
-out.contrastsSweep={[0.1:0.1:1],[0.1:0.1:1]};
+out.contrastsOpt={1,1};
+out.contrastsSweep={[0 0.05 0.1 0.15 0.2 0.3 0.4 1],[0 0.05 0.1 0.15 0.2 0.3 0.4 1]};
 
-out.maxDurationOpt={[inf],[inf]};
-out.radiiOpt={[0.125],[0.125]};
-out.annuli={[0],[0]};
+out.maxDurationOpt={inf,inf};
+out.radiiOpt={0.125,0.125};
+out.annuli={0,0};
 out.location={[.5 .5],[0.5 0.5]};      % center of mask
 out.waveform= 'sine';
 out.radiusType='hardEdge';
@@ -89,13 +89,34 @@ out.normalizationMethod='normalizeDiagonal';
 out.mean=0.5;
 out.thresh=.00005;
 
-[a b] = getMACaddress;
-if strcmp(b,'BC305BD38BFB') % balaji's personal computer
-    out.maxWidth = 1920;
-    out.maxHeight = 1080;
-else
-    out.maxWidth=1024;
-    out.maxHeight=768;
+[a, b] = getMACaddress();
+switch b
+    case '001D7DA80EC2' %gLab-Behavior1
+        out.maxWidth = 1024;
+        out.maxHeight = 768;
+    case '001D7DA80EFC' %gLab-Behavior2
+        out.maxWidth = 1024;
+        out.maxHeight = 768;
+    case 'A41F726EC11C' %gLab-Behavior3
+        out.maxWidth = 1024;
+        out.maxHeight = 768;
+    case '7845C4256F4C' %gLab-Behavior4
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    case '7845C42558D4' %gLab-Behavior5
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    case 'BC305BD38BFB' %ephys-stim
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    case '180373337162' %ephys-data
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    otherwise
+        a
+        b
+        warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+        keyboard;
 end
 
 out.scaleFactor=0;
@@ -108,47 +129,11 @@ out.rewardSize = 50;
 out.msPenalty = 5000;
 out.doPostDiscrim = false;
 switch id
-    case {'1','2','4','5','7','8','9','10','11','12','13','14','15','17','18','19','20'}
-        % nothing changes here, but might later
-    case {'3'}
-        % nothing changes here, but might later
-    case {'6'}
-        % nothing changes here, but might later
-    case {'16'}
-        out.rewardScalar = 0.5; %07232012
-        % nothing changes here, but might later
-    case {'21'}
-        % nothing changes here, but might later
-    case {'22'}
-        % nothing changes here, but might later
-    case {'23'}
-        % nothing changes here, but might later
-    case {'24'}
-        % nothing changes here, but might later
-    case {'25'}
-        % nothing changes here, but might later
-    case {'ACM1'}
-        % nothing changes here, but might later
-    case {'ACM2'}
-        % nothing changes here, but might later
-    case {'ACM3'}
-        % nothing changes here, but might later
-    case {'ACM4'}
-        % nothing changes here, but might later
-    case {'ACM5'}
-        % nothing changes here, but might later
-    case {'demo1','999'}
+    case '999'
+        % nothing changes here, but might later    
+    case 'demo1'
         out.maxDurationOpt = {[3],[3]};
         out.doPostDiscrim = true;
-        % nothing changes here, but might later
-    case {'31'}
-        % nothing changes here, but might later
-    case {'32'}
-        % nothing changes here, but might later
-    case {'33'}
-        % nothing changes here, but might later
-    case {'34'}
-        % nothing changes here, but might later
     otherwise
         error('unsupported mouse id. are you sure that the mouse is supposed to be here?')
 end

@@ -42,10 +42,7 @@ function r = setProtocol_mouseTraining_AG_01072013(r,subjIDs)
 % details for each subject are internally modifiable. 
 % define subjects
 
-MouseTrainingCohort_AG={'10','111','1111','13','118','17','18','19','20','24','27','30','32','42','43','49','56','58','51'... previous animals
-    '34','134','35','36','37','39','139','40','41','44','61','62',... box 1
-    '22','23','25','45','46','47','50','52','53','60'... box 2
-    '26','31','38','48','54','55','57','59','63',... box 3
+MouseTrainingCohort_AG={
     };
 ValidTestSubject={'demo1','999'};
 
@@ -55,17 +52,17 @@ svnCheckMode='none';
 
 for i=1:length(subjIDs)
     % create the trial steps
-    [fd_sto fd] = createFreeDrinksStepsAG(svnRev,svnCheckMode, subjIDs{i});
+    [fd_sto, fd] = createFreeDrinksStepsAG(svnRev,svnCheckMode, subjIDs{i});
     
     [ts_obj1] = createObjectTrialSteps(svnRev,svnCheckMode,subjIDs{i});
 
     
-    [or_optim or_sfSweep or_tfSweep or_ctrSweep or_orSweep] = createOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
-    [or_optimRev or_sfSweepRev or_tfSweepRev or_ctrSweepRev or_orSweepRev] = createReversalOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
-    [or_optimHR or_sfSweepHR or_tfSweepHR or_ctrSweepHR or_orSweepHR] = createOrientationSteps_halfRad(svnRev,svnCheckMode,subjIDs{i});
-    [or_optimQR or_sfSweepQR or_tfSweepQR or_ctrSweepQR or_orSweepQR] = createOrientationSteps_quatRad(svnRev,svnCheckMode,subjIDs{i});
-    [or_optimER or_sfSweepER or_tfSweepER or_ctrSweepER or_orSweepER] = createOrientationSteps_eighthsRad(svnRev,svnCheckMode,subjIDs{i});
-    [orwos_SurrCtrSweep orwos_SurrLowCtr orwos_SurrMedCtr orwos_SurrHighCtr orwos_SurrFullCtr] = createOrientationWithOrientedSurroundSteps(svnRev,svnCheckMode,subjIDs{i})
+    [or_optim, or_sfSweep, or_tfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
+    [or_optimRev, or_sfSweepRev, or_tfSweepRev, or_ctrSweepRev, or_orSweepRev] = createReversalOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
+    [or_optimHR, or_sfSweepHR, or_tfSweepHR, or_ctrSweepHR, or_orSweepHR] = createOrientationSteps_halfRad(svnRev,svnCheckMode,subjIDs{i});
+    [or_optimQR, or_sfSweepQR, or_tfSweepQR, or_ctrSweepQR, or_orSweepQR] = createOrientationSteps_quatRad(svnRev,svnCheckMode,subjIDs{i});
+    [or_optimER, or_sfSweepER, or_tfSweepER, or_ctrSweepER, or_orSweepER] = createOrientationSteps_eighthsRad(svnRev,svnCheckMode,subjIDs{i});
+    [orwos_SurrCtrSweep, orwos_SurrLowCtr, orwos_SurrMedCtr, orwos_SurrHighCtr, orwos_SurrFullCtr] = createOrientationWithOrientedSurroundSteps(svnRev,svnCheckMode,subjIDs{i});
     %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
     
     % here is the protocol
@@ -85,22 +82,20 @@ for i=1:length(subjIDs)
     
     stepNum = getStepNum(subjIDs{i});
     if ~ismember(subjIDs{i},ValidTestSubject)
-        [correctBox whichBox] = correctBoxForSubject(subjIDs{i},stepNum);
+        [correctBox, whichBox] = correctBoxForSubject(subjIDs{i},stepNum);
         if ~correctBox
             error('you are putting this subject in an unauthorized box. use the correct box num %d',whichBox);
         end
-    else
-        correctBox = true;
     end
     subjObj = getSubjectFromID(r,subjIDs{i});
     
     if ismember(subjIDs{i},MouseTrainingCohort_AG) % define ID list at top of this file
-        [subjObj r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
+        [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
             thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,...
             r, descriptiveString,'bas');
     elseif ismember(subjIDs{i}, ValidTestSubject),% for testing
         
-        [subjObj r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
+        [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
             thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,... % set demoStep at top
             r, descriptiveString,'bas');
     else
@@ -110,103 +105,7 @@ end
 end
 
 function step = getStepNum(id)
-switch id
-    case '10'
-        step = 24;
-    case '111'
-        step = 29;
-    case '134'
-        step = 5;    
-    case '1111'
-        step = 29;    
-    case '13'
-        step = 4;
-    case '17'
-        step = 4;
-    case '18'
-        step = 29;
-    case '19'
-        step = 24;
-    case '20'
-        step = 29;
-    case '22'
-        step = 3;
-    case '23'
-        step = 3;
-    case '24'
-        step = 3;
-    case '25'
-        step = 3;
-    case '26'
-        step = 2;
-    case '27'
-        step = 14;
-    case '30'
-        step = 9;
-    case '31'
-        step = 29;
-    case '32'
-        step = 1;
-    case '34'
-        step = 29;
-    case '35'
-        step = 6;
-    case '36'
-        step = 6;
-    case '37'
-        step = 5;
-    case '38'
-        step = 19;
-    case '39'
-        step = 7;    
-    case '40'
-        step = 7;
-    case '41'
-        step = 7;
-    case '42'
-        step = 2;
-    case '43'
-        step = 8;
-    case '44'
-        step = 6;
-    case '49'
-        step = 8;
-    case '50'
-        step = 3;
-    case '51'
-        step = 2;
-    case '48'
-        step = 3;
-    case '52'
-        step = 1;
-    case '53'
-        step = 1;
-    case '54'
-        step = 1;
-    case '55'
-        step = 1;
-    case '56'
-        step = 2;
-    case '57'
-        step = 2;
-    case '58'
-        step = 1;
-    case '59'
-        step = 1;    
-    case 'demo1'
-        step = 7;
-    case '139'
-        step = 7;
-    case '60'
-        step = 1;
-    case '61'
-        step = 1;
-    case '62'
-        step = 1;
-    case '63'
-        step = 2;    
-    case '118'
-        step = 29;    
+switch id   
     case '999'
         step = 3;
     otherwise
@@ -214,46 +113,36 @@ switch id
 end
 end
 
-function [correctBox whichBox] = correctBoxForSubject(subjID,stepNum)
-Box1Subjects = {'34','134','35','36','37','39','139','40','41','44','61','62'};
-Box2Subjects = {'22','23','25','45','46','47','50','52','53','60'};
-Box3Subjects = {'26','31','38','48','54','55','57','59','63'};
+function [correctBox, whichBox] = correctBoxForSubject(subjID,stepNum)
+Box1Subjects = {};
+Box2Subjects = {};
+Box3Subjects = {};
 Box4Subjects = {};
 Box5Subjects = {};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
-[succ mac] = getMACaddress();
+[~, mac] = getMACaddress();
 correctBox = false;
 switch mac
-    case '1' % BOX 1
+    case '001D7DA80EC2' %gLab-Behavior1
         if whichBox==1
             correctBox = true;
-        elseif (stepNum==1 || stepNum==2)
-            correctBox = true;
         end
-    case '2' % BOX 2
+    case '001D7DA80EFC' %gLab-Behavior2
         if whichBox==2
             correctBox = true;
-        elseif (stepNum==1 || stepNum==2)
-            correctBox = true;
         end
-    case '3' % BOX 3
+    case 'A41F726EC11C' %gLab-Behavior3
         if whichBox==3
             correctBox = true;
-        elseif (stepNum==1 || stepNum==2)
-            correctBox = true;
         end
-    case '4' % BOX 4
+    case '7845C4256F4C' %gLab-Behavior4
         if whichBox==4
             correctBox = true;
-        elseif (stepNum==1 || stepNum==2)
-            correctBox = true;
         end
-    case '5' % BOX 5
+    case '7845C42558D4' %gLab-Behavior5
         if whichBox==5
-            correctBox = true;
-        elseif (stepNum==1 || stepNum==2)
             correctBox = true;
         end
 end

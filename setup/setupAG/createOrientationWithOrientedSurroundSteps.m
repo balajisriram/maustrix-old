@@ -60,7 +60,7 @@ function out = getStepDetails(id)
 out.pixPerCycs={{128,128},{256,256}};
 out.driftfrequencies={{2,2},{0,0}};
 out.orientations={{-deg2rad([45 225]),deg2rad([45 225])},{[0 pi/2],[0 pi/2]}};
-orsSweep = [0,5,15,25,35,45,45,45,45,45,180,185,195,205,215,225,225,225,225,225];
+orsSweep = [0,3.33,6.67,10,13.33,16.67,20,45,180,183.33,186.67,190,193.33,196.66,200,225];
 out.orientationsSweep={{-deg2rad(orsSweep),deg2rad(orsSweep)},{[0 pi/2],[0 pi/2]}};
 out.phases={{0,0},{0:pi/8:pi,0:pi/8:pi}};
 out.contrastsSweep={{1,1},{[0.0625 0.125 0.25 0.5 0.75 0.9 0.99],[0.0625 0.125 0.25 0.5 0.75 0.9 0.99]}};
@@ -72,10 +72,10 @@ out.contrastsFull={{1,1},{1,1}};
 
 
 
-out.maxDuration={[inf],[inf]};
+out.maxDuration={inf,inf};
 out.radii={{0.125,0.125},{inf,inf}};
 out.radiusType = 'hardEdge';
-out.location={[.5 .5],[0.5 0.5]};      % center of mask
+out.location={[0.5 0.5],[0.5 0.5]};      % center of mask
 out.waveform= 'sine';     
 out.normalizationMethod='normalizeDiagonal';
 out.mean=0.5;
@@ -83,13 +83,34 @@ out.thresh=.00005;
 
 
 
-[a b] = getMACaddress;
-if strcmp(b,'BC305BD38BFB') % balaji's personal computer
-    out.maxWidth = 1920;
-    out.maxHeight = 1080;
-else
-    out.maxWidth=1024;
-    out.maxHeight=768;
+[a, b] = getMACaddress();
+switch b
+    case '001D7DA80EC2' %gLab-Behavior1
+        out.maxWidth = 1024;
+        out.maxHeight = 768;
+    case '001D7DA80EFC' %gLab-Behavior2
+        out.maxWidth = 1024;
+        out.maxHeight = 768;
+    case 'A41F726EC11C' %gLab-Behavior3
+        out.maxWidth = 1024;
+        out.maxHeight = 768;
+    case '7845C4256F4C' %gLab-Behavior4
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    case '7845C42558D4' %gLab-Behavior5
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    case 'BC305BD38BFB' %ephys-stim
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    case '180373337162' %ephys-data
+        out.maxWidth = 1920;
+        out.maxHeight = 1080;
+    otherwise
+        a
+        b
+        warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+        keyboard;
 end
 
 out.scaleFactor=0;
@@ -106,57 +127,11 @@ out.percentCorrectionTrials = 0.5;
 
 % make changes for specific mice here
 switch id
-    case '10'
-    case '111'
-    case '1111'
-    case '118'
-    case '13'
-    case '134'    
-    case '139' 
-    case '17'
-    case '18'
-    case '19'
-    case '20'
-    case '22'
-    case '23'
-    case '24'
-    case '25'
-    case '26'
-    case '27'
-    case '30'
-    case '31'
-    case '32'
-    case '34'
-    case '35'
-    case '36'
-    case '37'
-    case '38'
-    case '39'    
-    case '40'
-    case '41'
-    case '42'
-    case '43'
-    case '44'
-    case '45'
-    case '46'
-    case '47'
-    case '48'
-    case '49'
-    case '50'
-    case '51'
-    case '52'
-    case '53'
-    case '54'
-    case '55'
-    case '56'
-    case '57'
-    case '58'
-    case '59'
-    case '60'
-    case '61'
-    case '62'
-    case '63'
-    case {'demo1','999'}
+    case '999'
+        % nothing changes here, but might later    
+    case 'demo1'
+        out.maxDurationOpt = {[3],[3]};
+        out.doPostDiscrim = true;
     otherwise
         error('unsupported mouse id. are you sure that the mouse is supposed to be here?')
 end
