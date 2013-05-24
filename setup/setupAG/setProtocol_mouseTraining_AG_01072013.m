@@ -84,9 +84,13 @@ for i=1:length(subjIDs)
     thisIsANewStepNum=1;  %  typically 1
     
     stepNum = getStepNum(subjIDs{i});
-    [correctBox whichBox] = correctBoxForSubject(subjIDs{i},stepNum);
-    if ~correctBox
-        error('you are putting this subject in an unauthorized box. use the correct box num %d',whichBox);
+    if ~ismember(subjIDs{i},ValidTestSubject)
+        [correctBox whichBox] = correctBoxForSubject(subjIDs{i},stepNum);
+        if ~correctBox
+            error('you are putting this subject in an unauthorized box. use the correct box num %d',whichBox);
+        end
+    else
+        correctBox = true;
     end
     subjObj = getSubjectFromID(r,subjIDs{i});
     
@@ -204,7 +208,7 @@ switch id
     case '118'
         step = 29;    
     case '999'
-        step = 29;
+        step = 3;
     otherwise
         error('unsupported mouse id. are you sure that the mouse is supposed to be here?')
 end

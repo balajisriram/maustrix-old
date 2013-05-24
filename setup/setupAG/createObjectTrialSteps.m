@@ -40,7 +40,13 @@ tm= nAFC(sm, percentCorrectionTrials, constantRewards); %percentCorrectionTrials
 %parameters used for all object rec steps:
 % vary size and rotation very slightly
 imageRotation=[-20 20]; imageSize=[.75 1];
-imdir='C:\Documents and Settings\rlab\Desktop\maustrix\PRimageset'; % LOCAL copy
+[a,b] = getMACaddress();
+switch b
+    case 'A41F726EC11C'
+        imdir = 'C:\Users\glab\Desktop\ratrix\PRimageset';
+    otherwise
+        imdir='C:\Documents and Settings\rlab\Desktop\maustrix\PRimageset'; % LOCAL copy
+end
 
 imagelist = struct;
 % contains nike and blank, nike is target

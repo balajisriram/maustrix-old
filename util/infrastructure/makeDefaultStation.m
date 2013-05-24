@@ -36,6 +36,8 @@ if ~exist('pportaddr','var') || isempty(pportaddr)
                 pportaddr='FFF8'; %the pcmcia add on card
             case '001372708179' %dell machine w/ati card
                 pportaddr='B888'; %the pci add on card
+            case 'A41F726EC11C' % glab-Behavior3
+                pportaddr='D010';
             otherwise
                 %pass
         end

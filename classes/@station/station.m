@@ -127,10 +127,10 @@ function s=station(varargin)
 	end
 
 	if usingPport
-		if ismember(s.decPPortAddr,hex2dec({'B888','0378','FFF8'}))
+		if ismember(s.decPPortAddr,hex2dec({'B888','0378','FFF8','D010'}))
 			%pass
 		else
-			error('need a parallel port base address (should be ''0378'' (built-in) ''B888'' (pci) or ''FFF8'' (pcmcia)) -- under LPT ports in device manager, resources tab, I/O Range (first number is base address).');
+			error('need a parallel port base address (should be ''0378'' (built-in) ''B888'' (pci) or ''FFF8'' (pcmcia) or ''D010'' (pci-e)) -- under LPT ports in device manager, resources tab, I/O Range (first number is base address).');
 			%base address is DATA register -- output -- pins 2-9
 			%add 1 for STATUS register -- input -- pins 10,11(inverted),12,13,15
 			%add 2 for CONTROL register -- bidirectional -- pins 1(inverted),14(inverted),16,17(inverted)
