@@ -30,7 +30,27 @@ elseif ~islogical(recordInOracle)
 end
 
 if ~exist('backupToServer','var') || isempty(backupToServer)
-    backupToServer = false;
+    backupToServer = true;
+    [a, b] = getMACaddress();
+    switch b
+        case '001D7DA80EC2' %gLab-Behavior1
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Permanent';
+        case '001D7DA80EFC' %gLab-Behavior2
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Permanent';
+        case 'A41F726EC11C' %gLab-Behavior3
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Permanent';
+        case '7845C4256F4C' %gLab-Behavior4
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Permanent';
+        case '7845C42558D4' %gLab-Behavior5
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Permanent';
+        case 'BC305BD38BFB' %ephys-stim
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\ephys-stim\Permanent';
+        case '180373337162' %ephys-data
+            backupToServer = false;
+        otherwise
+            warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+            keyboard;
+    end
 elseif islogical(backupToServer);
     xtraServerBackupPath='\\Reinagel-lab.AD.ucsd.edu\RLAB\Rodent-Data\behavior\standAloneRecords';
 elseif isDirRemote(backupToServer)
