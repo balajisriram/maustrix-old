@@ -27,7 +27,7 @@ daysCNO = {};
 daysIntact = {};
 daysLesion = {};
 
-location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\56.compiledTrialRecords.1-8360.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
+location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\56.compiledTrialRecords.1-8596.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
 
 data1 = load(location1);
 

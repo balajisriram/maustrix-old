@@ -27,7 +27,7 @@ daysCNO = {'3/22/2013','3/25/2013','3/27/2013'};
 daysIntact = {};
 daysLesion = {};
 
-location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\59.compiledTrialRecords.1-12008.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
+location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\59.compiledTrialRecords.1-12133.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
 
 data1 = load(location1);
 % more fd steps are in box 2 but is not included for analysis.

@@ -28,10 +28,10 @@ daysIntact = {};
 daysLesion = {};
 
 % location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled\40.compiledTrialRecords.1-4352.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
-location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\40.compiledTrialRecords.1-12706.mat';
-location2 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled\40.compiledTrialRecords.1-1973.mat'; %or optimal
+location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\40.compiledTrialRecords.1-12922.mat';
+% location2 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled\40.compiledTrialRecords.1-1973.mat'; %or optimal
 data1 = load(location1);
-data2 = load(location2);
+% data2 = load(location2);
 %% FREEDRINKS
 % get the fd part
 fd1 = filterBehaviorData(data1,'tsName','freeDrinks');
@@ -215,13 +215,13 @@ out.imageData = imageData;
 
 %% +/- 45 GRATINGS
 opt = filterBehaviorData(data1,'tsName','orOptimal_nAFC');
-opt1 = filterBehaviorData(data2,'tsName','orOptimal_nAFC');
+% opt1 = filterBehaviorData(data2,'tsName','orOptimal_nAFC');
 trMax = max(opt.compiledTrialRecords.trialNumber);
-optData.trialNum = [opt.compiledTrialRecords.trialNumber opt1.compiledTrialRecords.trialNumber+trMax];
-optData.correct = [opt.compiledTrialRecords.correct opt1.compiledTrialRecords.correct];
-optData.correction = [opt.compiledTrialRecords.correctionTrial opt1.compiledTrialRecords.correctionTrial];
+optData.trialNum = [opt.compiledTrialRecords.trialNumber ];
+optData.correct = [opt.compiledTrialRecords.correct ];
+optData.correction = [opt.compiledTrialRecords.correctionTrial ];
 optData.correction(isnan(optData.correction)) = true;
-optData.time = [opt.compiledTrialRecords.date opt1.compiledTrialRecords.date] ;
+optData.time = [opt.compiledTrialRecords.date ] ;
 optData.date = floor(optData.time);
 optData.dates = unique(optData.date);
 
