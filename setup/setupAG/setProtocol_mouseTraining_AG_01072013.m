@@ -89,18 +89,10 @@ for i=1:length(subjIDs)
     end
     subjObj = getSubjectFromID(r,subjIDs{i});
     
-    if ismember(subjIDs{i},MouseTrainingCohort_AG) % define ID list at top of this file
-        [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
-            thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,...
-            r, descriptiveString,'bas');
-    elseif ismember(subjIDs{i}, ValidTestSubject),% for testing
-        
-        [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
-            thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,... % set demoStep at top
-            r, descriptiveString,'bas');
-    else
-        error('unexpected ID')
-    end
+    [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
+        thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,...
+        r, descriptiveString,'bas');
+
 end
 end
 

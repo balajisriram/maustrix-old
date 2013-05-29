@@ -178,13 +178,13 @@ switch id
     case '87'
         out.msPenalty = 10000; % changed to 10000 05292013,
     case '90'
-        out.msPenalty = 10000; % changed to 10000 05292013,
+        out.msPenalty = 15000; % changed to 10000 05292013,
     case '91'
-        out.msPenalty = 10000; % changed to 10000 05292013,
+        out.msPenalty = 15000; % changed to 15000 05292013,
     case '92'
         out.msPenalty = 10000; % changed to 10000 05292013,
     case '93'
-        out.msPenalty = 10000; % changed to 10000 05292013,
+        out.msPenalty = 15000; % changed to 15000 05292013,
     case '95'
         % nothing changes here, but might later
     case '96'
