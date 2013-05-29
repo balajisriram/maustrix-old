@@ -180,10 +180,10 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'37','38','40','41','56','59','60','86','87','91'};
-Box2Subjects = {'26','45','46','47','48','50','53','84','92','93'};
-Box3Subjects = {};
-Box4Subjects = {'61','62','63','64','65','66','67','88','89','90'};
+Box1Subjects = {'37','38','40','41','56','59','60','86','87'};
+Box2Subjects = {'45','46','47','50','53','84','92'};
+Box3Subjects = {'26','48','90','91','93'};
+Box4Subjects = {'61','62','63','64','65','66','67','88','89'};
 Box5Subjects = {'68','69','70','79','95','96'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
