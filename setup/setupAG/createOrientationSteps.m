@@ -127,8 +127,70 @@ out.rewardSize = 50;
 out.msPenalty = 5000;
 out.doPostDiscrim = false;
 switch id
+        case '26'
+        % nothing changes here, but might later
+    case '37'
+        % nothing changes here, but might later
+    case '38'
+        % nothing changes here, but might later
+    case '40'
+        % nothing changes here, but might later
+    case '41'
+        % nothing changes here, but might later
+    case '45'
+        % nothing changes here, but might later
+    case '47'
+        % nothing changes here, but might later
+    case '48'
+        % nothing changes here, but might later
+    case '50'
+        % nothing changes here, but might later
+    case '53'
+        % nothing changes here, but might later
+    case '56'
+        % nothing changes here, but might later
+    case '59'
+        % nothing changes here, but might later
+    case '60'
+        % nothing changes here, but might later
+    case '61'
+        % nothing changes here, but might later
+    case '62'
+        % nothing changes here, but might later
+    case '63'
+        % nothing changes here, but might later
+    case '64'
+        % nothing changes here, but might later
+    case '65'
+        % nothing changes here, but might later
+    case '66'
+        % nothing changes here, but might later
+    case '67'
+        % nothing changes here, but might later
+    case '70'
+        out.msPenalty = 25000; % changed to 25000 05292013,
+    case '79'
+        % nothing changes here, but might later
+    case '84'
+        % nothing changes here, but might later
+    case '86'
+        out.msPenalty = 10000; % changed to 10000 05292013,
+    case '87'
+        out.msPenalty = 10000; % changed to 10000 05292013,
+    case '90'
+        out.msPenalty = 10000; % changed to 10000 05292013,
+    case '91'
+        out.msPenalty = 10000; % changed to 10000 05292013,
+    case '92'
+        out.msPenalty = 10000; % changed to 10000 05292013,
+    case '93'
+        out.msPenalty = 10000; % changed to 10000 05292013,
+    case '95'
+        % nothing changes here, but might later
+    case '96'
+        % nothing changes here, but might later
     case '999'
-        % nothing changes here, but might later    
+        % nothing changes here, but might later
     case 'demo1'
         out.maxDurationOpt = {[3],[3]};
         out.doPostDiscrim = true;

@@ -97,6 +97,68 @@ out.requestRewardSizeULorMS = 10;
 out.pStochastic = 0.004;
 out.PPC = 64;
 switch id
+    case '26'
+        % nothing changes here, but might later
+    case '37'
+        % nothing changes here, but might later
+    case '38'
+        % nothing changes here, but might later
+    case '40'
+        % nothing changes here, but might later
+    case '41'
+        % nothing changes here, but might later
+    case '45'
+        % nothing changes here, but might later
+    case '47'
+        % nothing changes here, but might later
+    case '48'
+        % nothing changes here, but might later
+    case '50'
+        % nothing changes here, but might later
+    case '53'
+        % nothing changes here, but might later
+    case '56'
+        % nothing changes here, but might later
+    case '59'
+        % nothing changes here, but might later
+    case '60'
+        % nothing changes here, but might later
+    case '61'
+        % nothing changes here, but might later
+    case '62'
+        % nothing changes here, but might later
+    case '63'
+        % nothing changes here, but might later
+    case '64'
+        % nothing changes here, but might later
+    case '65'
+        % nothing changes here, but might later
+    case '66'
+        % nothing changes here, but might later
+    case '67'
+        % nothing changes here, but might later
+    case '70'
+        % nothing changes here, but might later
+    case '79'
+        % nothing changes here, but might later
+    case '84'
+        % nothing changes here, but might later
+    case '86'
+        % nothing changes here, but might later
+    case '87'
+        % nothing changes here, but might later
+    case '90'
+        % nothing changes here, but might later
+    case '91'
+        % nothing changes here, but might later
+    case '92'
+        % nothing changes here, but might later
+    case '93'
+        % nothing changes here, but might later
+    case '95'
+        % nothing changes here, but might later
+    case '96'
+        % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
     case 'demo1'

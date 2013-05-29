@@ -121,9 +121,71 @@ end
 
 function out = getStepDetails(id)
 out.rewardScalar = 0.25;
-out.msPenalty = 12000;
+out.msPenalty = 5000;
 out.rewardSize = 50;
 switch id
+    case '26'
+        % nothing changes here, but might later
+    case '37'
+        % nothing changes here, but might later
+    case '38'
+        % nothing changes here, but might later
+    case '40'
+        % nothing changes here, but might later
+    case '41'
+        % nothing changes here, but might later
+    case '45'
+        % nothing changes here, but might later
+    case '47'
+        % nothing changes here, but might later
+    case '48'
+        % nothing changes here, but might later
+    case '50'
+        % nothing changes here, but might later
+    case '53'
+        % nothing changes here, but might later
+    case '56'
+        % nothing changes here, but might later
+    case '59'
+        % nothing changes here, but might later
+    case '60'
+        % nothing changes here, but might later
+    case '61'
+        % nothing changes here, but might later
+    case '62'
+        % nothing changes here, but might later
+    case '63'
+        % nothing changes here, but might later
+    case '64'
+        % nothing changes here, but might later
+    case '65'
+        % nothing changes here, but might later
+    case '66'
+        % nothing changes here, but might later
+    case '67'
+        % nothing changes here, but might later
+    case '70'
+        % nothing changes here, but might later
+    case '79'
+        out.msPenalty = 15000; % changed to 15000 05292013,
+    case '84'
+        % nothing changes here, but might later
+    case '86'
+        % nothing changes here, but might later
+    case '87'
+        % nothing changes here, but might later
+    case '90'
+        % nothing changes here, but might later
+    case '91'
+        % nothing changes here, but might later
+    case '92'
+        % nothing changes here, but might later
+    case '93'
+        % nothing changes here, but might later
+    case '95'
+        % nothing changes here, but might later
+    case '96'
+        % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
     case 'demo1'

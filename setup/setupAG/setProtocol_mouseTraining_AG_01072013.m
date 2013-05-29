@@ -82,7 +82,7 @@ for i=1:length(subjIDs)
     
     stepNum = getStepNum(subjIDs{i});
     if ~ismember(subjIDs{i},ValidTestSubject)
-        [correctBox, whichBox] = correctBoxForSubject(subjIDs{i},stepNum);
+        [correctBox, whichBox] = correctBoxForSubject(subjIDs{i});
         if ~correctBox
             error('you are putting this subject in an unauthorized box. use the correct box num %d',whichBox);
         end
@@ -105,7 +105,73 @@ end
 end
 
 function step = getStepNum(id)
-switch id   
+switch id
+    case '26'
+        step = 8;
+    case '37'
+        step = 4;
+    case '38'
+        step = 4;
+    case '40'
+        step = 3;
+    case '41'
+        step = 4;
+    case '45'
+        step = 5;
+    case '47'
+        step = 3;
+    case '48'
+        step = 7;
+    case '50'
+        step = 4;
+    case '53'
+        step = 3;
+    case '56'
+        step = 3;
+    case '59'
+        step = 3;
+    case '60'
+        step = 3;
+    case '61'
+        step = 3;
+    case '62'
+        step = 8;
+    case '63'
+        step = 8;
+    case '64'
+        step = 8;
+    case '65'
+        step = 8;
+    case '66'
+        step = 8;
+    case '67'
+        step = 8;
+    case '70'
+        step = 3;
+    case '79'
+        step = 8;
+    case '84'
+        step = 3;
+    case '86'
+        step = 3;
+    case '87'
+        step = 3;
+    case '88'
+        step = 8;
+    case '89'
+        step = 8;
+    case '90'
+        step = 3;
+    case '91'
+        step = 3;
+    case '92'
+        step = 3;
+    case '93'
+        step = 3;
+    case '95'
+        step = 2;
+    case '96'
+        step = 2;
     case '999'
         step = 3;
     otherwise
@@ -113,12 +179,12 @@ switch id
 end
 end
 
-function [correctBox, whichBox] = correctBoxForSubject(subjID,stepNum)
-Box1Subjects = {};
-Box2Subjects = {};
+function [correctBox, whichBox] = correctBoxForSubject(subjID)
+Box1Subjects = {'37','38','40','41','56','59','60','86','87','91'};
+Box2Subjects = {'26','45','46','47','48','50','53','84','92','93'};
 Box3Subjects = {};
-Box4Subjects = {};
-Box5Subjects = {};
+Box4Subjects = {'61','62','63','64','65','66','67','88','89','90'};
+Box5Subjects = {'68','69','70','79','95','96'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
