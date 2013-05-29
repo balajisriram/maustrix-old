@@ -123,7 +123,7 @@ switch id
     case '59'
         step = 3;
     case '60'
-        step = 3;
+        step = 8;
     case '61'
         step = 3;
     case '62'
@@ -137,6 +137,10 @@ switch id
     case '66'
         step = 8;
     case '67'
+        step = 8;
+    case '68'
+        step = 3;
+    case '69'
         step = 8;
     case '70'
         step = 3;

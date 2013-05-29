@@ -164,6 +164,10 @@ switch id
         % nothing changes here, but might later
     case '67'
         % nothing changes here, but might later
+    case '68'
+        % nothing changes here, but might later
+    case '69'
+        % nothing changes here, but might later
     case '70'
         % nothing changes here, but might later
     case '79'

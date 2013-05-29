@@ -154,7 +154,7 @@ switch id
     case '60'
         % nothing changes here, but might later
     case '61'
-        % nothing changes here, but might later
+        out.msPenalty = 25000; % changed to 25000 05292013,
     case '62'
         % nothing changes here, but might later
     case '63'
@@ -166,6 +166,10 @@ switch id
     case '66'
         % nothing changes here, but might later
     case '67'
+        % nothing changes here, but might later
+    case '68'
+        out.msPenalty = 25000; % changed to 25000 05292013,
+    case '69'
         % nothing changes here, but might later
     case '70'
         out.msPenalty = 25000; % changed to 25000 05292013,
