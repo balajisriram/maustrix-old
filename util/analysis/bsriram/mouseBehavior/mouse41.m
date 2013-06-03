@@ -27,13 +27,17 @@ daysCNO = {};
 daysIntact = {};
 daysLesion = {};
 
-location1 = 'C:\Users\ephys-data\Desktop\Compiled\Box3\41.compiledTrialRecords.1-7935.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
+location1 = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled\41.compiledTrialRecords.1-13471.mat'; %freeDrinks,nAFC_images,orOptimal,orCTRSweep
 data1 = load(location1);
+
+doImages = false;
+doOptimal = true;
 %% FREEDRINKS
 % get the fd part
 fd1 = filterBehaviorData(data1,'tsName','freeDrinks');
 
 %% IMAGES
+if doImages
 im = filterBehaviorData(data1,'tsName','nAFC_images');%597 trials
 imageData.trialNum = im.compiledTrialRecords.trialNumber;
 imageData.correct = im.compiledTrialRecords.correct;
@@ -209,7 +213,7 @@ if plotOn
     ylabel('performance','FontName','Times New Roman','FontSize',12);
 end
 out.imageData = imageData;
-
+end
 %% +/- 45 GRATINGS
 opt = filterBehaviorData(data1,'tsName','orOptimal_nAFC');
 optData.trialNum = [opt.compiledTrialRecords.trialNumber];
@@ -392,7 +396,7 @@ ctrData.trialNum = [ctr1.compiledTrialRecords.trialNumber];
 ctrData.correct = [ctr1.compiledTrialRecords.correct];
 ctrData.correction = [ctr1.compiledTrialRecords.correctionTrial];
 ctrData.correction(isnan(ctrData.correction)) = true;
-ctrData.contrast = [ctr1.compiledDetails(2).records.contrasts];
+ctrData.contrast = [ctr1.compiledDetails(1).records.contrasts];
 ctrData.time = [ctr1.compiledTrialRecords.date];
 ctrData.date = floor(ctrData.time);
 ctrData.dates = unique(ctrData.date);
@@ -605,7 +609,7 @@ spatData.trialNum = [spat.compiledTrialRecords.trialNumber];
 spatData.correct = [spat.compiledTrialRecords.correct];
 spatData.correction = [spat.compiledTrialRecords.correctionTrial];
 spatData.correction(isnan(spatData.correction)) = true;
-spatData.spatFreq = [spat.compiledDetails(2).records.pixPerCycs];
+spatData.spatFreq = [spat.compiledDetails(1).records.pixPerCycs];
 spatData.time = [spat.compiledTrialRecords.date];
 spatData.date = floor(spatData.time);
 spatData.dates = unique(spatData.date);
@@ -814,12 +818,12 @@ end
 out.spatData = spatData;
 
 %% TEMP FREQ.
-temp2 = filterBehaviorData(data2,'tsName','orTFSweep');%1x1072 trials 
+temp2 = filterBehaviorData(data1,'tsName','orTFSweep');%1x1072 trials 
 tempData.trialNum = [temp2.compiledTrialRecords.trialNumber];
 tempData.correct = [temp2.compiledTrialRecords.correct];
 tempData.correction = [temp2.compiledTrialRecords.correctionTrial];
 tempData.correction(isnan(tempData.correction)) = true;
-tempData.spatFreq = [temp2.compiledDetails(2).records.pixPerCycs];
+tempData.spatFreq = [temp2.compiledDetails(1).records.pixPerCycs];
 tempData.time = [temp2.compiledTrialRecords.date];
 tempData.date = floor(tempData.time);
 tempData.dates = unique(tempData.date);

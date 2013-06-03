@@ -7,11 +7,11 @@ catch ex
     % java not working probably
     warning('This works only for ucsd.edu IP addresses');
     if IsWin
-        [~, b]=dos('ipconfig');
+        [junk, b]=dos('ipconfig');
     elseif IsOSX || IsLinux
-        [~, b]=system('ifconfig');
+        [junk, b]=system('ifconfig');
     end
-    [~, tokens] = regexpi(b, '(132.239.\d{2,3}.\d{2,3})', 'match', 'tokens'); % was 158
+    [junk, tokens] = regexpi(b, '(132.239.\d{2,3}.\d{2,3})', 'match', 'tokens'); % was 158
     if ~isempty(tokens) && length(tokens) == 1
         ip = tokens{1}{1};
     else

@@ -49,7 +49,7 @@ function [results] = autoGaussianSurfML(xi,yi,zi)
         %convolve zi with gaussian filters and find the maximum response
         %(matched filtering)
         zi2 = reflectconv(reflectconv(zi,thefilty)',thefiltx)';
-        [~,pos] = max(zi2(:));
+        [junk,pos] = max(zi2(:));
         x0 = xi(pos);
         y0 = yi(pos);
         %[y0,x0] = ind2sub(sz,pos);
@@ -62,7 +62,7 @@ function [results] = autoGaussianSurfML(xi,yi,zi)
     end
     
     %Find sigma with corresponding least error
-    [~,optsigma] = min(res(:,1));
+    [junk,optsigma] = min(res(:,1));
     
     %Fit the parameters again through lsqcurvefit
     opts = optimset('Display','Iter');

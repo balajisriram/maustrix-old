@@ -184,7 +184,7 @@ Box5Subjects = {'68','69','70','79','95','96'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
-[~, mac] = getMACaddress();
+[junk, mac] = getMACaddress();
 correctBox = false;
 switch mac
     case '001D7DA80EC2' %gLab-Behavior1
