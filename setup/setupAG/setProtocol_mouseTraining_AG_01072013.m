@@ -99,7 +99,7 @@ end
 function step = getStepNum(id)
 switch id
     case '26'
-        step = 8;
+        step = 3;
     case '37'
         step = 4;
     case '38'
@@ -113,7 +113,7 @@ switch id
     case '47'
         step = 3;
     case '48'
-        step = 7;
+        step = 4;
     case '50'
         step = 4;
     case '53'
