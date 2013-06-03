@@ -31,7 +31,6 @@ end
 if length(fieldNames)~=length(fields(compiledTrialRecords))
     setdiff(fieldNames,fields(compiledTrialRecords))
     warning('compiledTrialRecords have different fields than the targets (this is okay now because we have nan padding)');
-    keyboard
 end
 for m=1:length(fieldNames)
     if ~ismember(fieldNames{m},fields(compiledTrialRecords))
