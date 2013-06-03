@@ -203,7 +203,7 @@ switch mac
         if whichBox==4
             correctBox = true;
         end
-    case '7845C42558D4' %gLab-Behavior5
+    case '7845C42558DF' %gLab-Behavior5
         if whichBox==5
             correctBox = true;
         end
