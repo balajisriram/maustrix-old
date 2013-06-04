@@ -48,11 +48,11 @@ constantRewards=constantReinforcement(rewardSize,requestRewardSize,doAllRequests
 tm= nAFC(sm, percentCorrectionTrials, constantRewards);
     
 % training step using other objects as passed in
-ts_SurrCtrSweep = trainingStep(tm, afcwos_SurrCtrSweep, impossPC, sch, svnRev, svnCheckMode,'SurrCtrSweep');
-ts_SurrLowCtr = trainingStep(tm, afcwos_SurrLowCtr, impossPC, sch, svnRev, svnCheckMode,'SurrLowCtr');
-ts_SurrMedCtr = trainingStep(tm, afcwos_SurrMedCtr, impossPC, sch, svnRev, svnCheckMode,'SurrMedCtr');
-ts_SurrHighCtr = trainingStep(tm, afcwos_SurrHighCtr, impossPC, sch, svnRev, svnCheckMode,'SurrHighCtr');
-ts_SurrFullCtr = trainingStep(tm, afcwos_SurrFullCtr, impossPC, sch, svnRev, svnCheckMode,'SurrFullCtr');
+ts_SurrCtrSweep = trainingStep(tm, afcwos_SurrCtrSweep, crit, sch, svnRev, svnCheckMode,'SurrCtrSweep');
+ts_SurrLowCtr = trainingStep(tm, afcwos_SurrLowCtr, crit, sch, svnRev, svnCheckMode,'SurrLowCtr');
+ts_SurrMedCtr = trainingStep(tm, afcwos_SurrMedCtr, crit, sch, svnRev, svnCheckMode,'SurrMedCtr');
+ts_SurrHighCtr = trainingStep(tm, afcwos_SurrHighCtr, crit, sch, svnRev, svnCheckMode,'SurrHighCtr');
+ts_SurrFullCtr = trainingStep(tm, afcwos_SurrFullCtr, crit, sch, svnRev, svnCheckMode,'SurrFullCtr');
 end
 
 function out = getStepDetails(id)
@@ -192,6 +192,22 @@ switch id
     case '95'
         % nothing changes here, but might later
     case '96'
+        % nothing changes here, but might later
+    case '97'
+        % nothing changes here, but might later
+    case '98'
+        % nothing changes here, but might later
+    case '99'
+        % nothing changes here, but might later
+    case '200'
+        % nothing changes here, but might later
+    case '201'
+        % nothing changes here, but might later
+    case '202'
+        % nothing changes here, but might later
+    case '203'
+        % nothing changes here, but might later
+    case '204'
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later

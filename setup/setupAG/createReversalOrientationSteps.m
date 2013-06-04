@@ -53,11 +53,11 @@ constantRewards=constantReinforcement(rewardSize,requestRewardSize,doAllRequests
 tm= nAFC(sm, percentCorrectionTrials, constantRewards);
 
 % training step using other objects as passed in
-ts_optim = trainingStep(tm, afc_optim, impossPC, sch, svnRev, svnCheckMode,'orOptimal_Reversal');
-ts_sfSweep = trainingStep(tm, afc_sfSweep, impossPC, sch, svnRev, svnCheckMode,'orSFSweep_Reversal');
-ts_tfSweep = trainingStep(tm, afc_tfSweep, impossPC, sch, svnRev, svnCheckMode,'orTFSweep_Reversal');
-ts_ctrSweep = trainingStep(tm, afc_ctrSweep, impossPC, sch, svnRev, svnCheckMode,'orCTRSweep_Reversal');
-ts_orSweep = trainingStep(tm, afc_orSweep, impossPC, sch, svnRev, svnCheckMode,'orORSweep_Reversal');
+ts_optim = trainingStep(tm, afc_optim, crit, sch, svnRev, svnCheckMode,'orOptimal_Reversal');
+ts_sfSweep = trainingStep(tm, afc_sfSweep, crit, sch, svnRev, svnCheckMode,'orSFSweep_Reversal');
+ts_tfSweep = trainingStep(tm, afc_tfSweep, crit, sch, svnRev, svnCheckMode,'orTFSweep_Reversal');
+ts_ctrSweep = trainingStep(tm, afc_ctrSweep, crit, sch, svnRev, svnCheckMode,'orCTRSweep_Reversal');
+ts_orSweep = trainingStep(tm, afc_orSweep, crit, sch, svnRev, svnCheckMode,'orORSweep_Reversal');
 end
 
 function out = getStepDetails(id)
@@ -194,6 +194,22 @@ switch id
     case '95'
         % nothing changes here, but might later
     case '96'
+        % nothing changes here, but might later
+    case '97'
+        % nothing changes here, but might later
+    case '98'
+        % nothing changes here, but might later
+    case '99'
+        % nothing changes here, but might later
+    case '200'
+        % nothing changes here, but might later
+    case '201'
+        % nothing changes here, but might later
+    case '202'
+        % nothing changes here, but might later
+    case '203'
+        % nothing changes here, but might later
+    case '204'
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later

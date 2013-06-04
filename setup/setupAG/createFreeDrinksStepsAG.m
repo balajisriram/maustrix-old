@@ -163,6 +163,22 @@ switch id
         % nothing changes here, but might later
     case '96'
         % nothing changes here, but might later
+    case '97'
+        % nothing changes here, but might later
+    case '98'
+        % nothing changes here, but might later
+    case '99'
+        % nothing changes here, but might later
+    case '200'
+        % nothing changes here, but might later
+    case '201'
+        % nothing changes here, but might later
+    case '202'
+        % nothing changes here, but might later
+    case '203'
+        % nothing changes here, but might later
+    case '204'
+        % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
     case 'demo1'

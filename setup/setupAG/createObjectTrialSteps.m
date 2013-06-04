@@ -20,7 +20,7 @@ sch=noTimeOff(); % runs until swapper ends session
 % graduation criteria for graduation
 easy_pc=performanceCriterion([0.8],int16([200]));
 strict_pc=performanceCriterion([0.85, 0.8],int16([200, 500]));
- 
+crit = repeatIndefinitely();
 % take reinforcement manager from setProtocolTest but with params from Pam
 requestRewardSize   =	0; 
 rewardSize          =   out.rewardSize; % try this, may need to increase water rwd
@@ -106,7 +106,7 @@ imagestim = images(imdir,ypos_nAFC, background_nAFC,...
     maxWidth,maxHeight,scaleFactor,interTrialLuminance_nAFC, imlist,...
     imageSelectionMode,imageSize,imageSizeYoked,imageRotation,imageRotationYoked,...
     percentCorrectionTrials,drawingMode);
-ts_obj1 = trainingStep(tm, imagestim, easy_pc, sch,svnRev,svnCheckMode);
+ts_obj1 = trainingStep(tm, imagestim, crit, sch,svnRev,svnCheckMode);
 
 % % step 5 = go to S+ ignore S- (try discobolos, mirror imaged)
 % step 4 = go to S+
@@ -116,7 +116,7 @@ imagestim = images(imdir,ypos_nAFC, background_nAFC,...
     maxWidth,maxHeight,scaleFactor,interTrialLuminance_nAFC, imlist,...
     imageSelectionMode,imageSize,imageSizeYoked,imageRotation,imageRotationYoked,...
     percentCorrectionTrials,drawingMode);
-ts_obj2 = trainingStep(tm, imagestim, easy_pc, sch,svnRev,svnCheckMode);
+ts_obj2 = trainingStep(tm, imagestim, crit, sch,svnRev,svnCheckMode);
 end
 
 function out = getStepDetails(id)
@@ -189,6 +189,22 @@ switch id
     case '95'
         % nothing changes here, but might later
     case '96'
+        % nothing changes here, but might later
+    case '97'
+        % nothing changes here, but might later
+    case '98'
+        % nothing changes here, but might later
+    case '99'
+        % nothing changes here, but might later
+    case '200'
+        % nothing changes here, but might later
+    case '201'
+        % nothing changes here, but might later
+    case '202'
+        % nothing changes here, but might later
+    case '203'
+        % nothing changes here, but might later
+    case '204'
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
