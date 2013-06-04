@@ -42,8 +42,6 @@ function r = setProtocol_mouseTraining_AG_01072013(r,subjIDs)
 % details for each subject are internally modifiable. 
 % define subjects
 
-MouseTrainingCohort_AG={
-    };
 ValidTestSubject={'demo1','999'};
 
 % define ratrix version to use
@@ -101,21 +99,21 @@ switch id
     case '26'
         step = 9; % changed from step 8 on 6/3/2013
     case '37'
-        step = 4;
+        step = 5; % changed from step 4 6/4
     case '38'
-        step = 4;
+        step = 5; % changed from step 4 6/4
     case '40'
         step = 8; % changed from step 3 on 6/3/2013
     case '41'
         step = 4;
     case '45'
-        step = 5;
+        step = 4; % changed from step 4 6/4
     case '47'
         step = 3;
     case '48'
         step = 4; % changed from step 7 on 6/3/2013
     case '50'
-        step = 4;
+        step = 5; % changed from step 4 6/4
     case '53'
         step = 3;
     case '56'
@@ -168,6 +166,22 @@ switch id
         step = 2;
     case '96'
         step = 2;
+    case '97'
+        step = 1;
+    case '98'
+        step = 1;
+    case '99'
+        step = 1;
+    case '200'
+        step = 1;
+    case '201'
+        step = 1;
+    case '202'
+        step = 1;
+    case '203'
+        step = 1;
+    case '204'
+        step = 1;
     case '999'
         step = 3;
     otherwise
@@ -177,10 +191,10 @@ end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
 Box1Subjects = {'37','38','40','41','56','60','86','87'};
-Box2Subjects = {'45','46','47','50','53','84','92'};
-Box3Subjects = {'26','48','90','91','93','59'};
-Box4Subjects = {'61','62','63','64','65','66','67','88','89'};
-Box5Subjects = {'68','69','70','79','95','96'};
+Box2Subjects = {'45','46','47','50','53','84','92','97'};
+Box3Subjects = {'26','48','90','91','93','59','98','99'};
+Box4Subjects = {'61','62','63','64','65','66','67','88','89','204'};
+Box5Subjects = {'68','69','70','79','95','96','200','201','202','203'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
