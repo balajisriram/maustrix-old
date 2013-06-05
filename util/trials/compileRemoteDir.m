@@ -1,4 +1,4 @@
-function compileRemoteDir(boxes,mice,recompile)
+function compileRemoteDir(RemoteDirBase,boxes,mice,recompile)
 
 if ~exist('boxes','var') || isempty(boxes)
     boxes = {'Box1','Box2','Box3','Box4','Box4'};
@@ -17,21 +17,31 @@ if ~exist('recompile','var') || isempty(recompile)
 elseif ~isogical(recompile)
     error('recompile should be a logical');
 end
-BaseDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\';
 
+if ~exist('RemoteDirBase','var') || isempty(RemoteDirBase)
+    RemoteDirBase = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\';
+end
+completedMice = {};
 for i = 1:length(boxes)
-    currBoxDir = fullfile(BaseDir,boxes{i});
+    currBoxDir = fullfile(RemoteDirBase,boxes{i});
     miceInBox = dir(fullfile(currBoxDir,'Permanent'));
     miceInBox = miceInBox([miceInBox.isdir]);
-    miceInBox = miceInBox(~ismember({miceInBox.name},{'.','..','.DS_Store','.AppleDouble'}));
+    miceInBox = miceInBox(~ismember({miceInBox.name},{'.','..','.DS_Store','.AppleDouble','999'}));
     miceInBox = {miceInBox.name};
-    if isstr(mice) && strcmp(mice,'all')
+    if ischar(mice) && strcmp(mice,'all')
         miceToCompile = miceInBox;
     else
         miceToCompile = intersect(mice,miceInBox);
     end
-    for j = 1:length(mice)
-        error('not yet ready');
-    end
+    compileDetailedRecords([],miceToCompile,recompile,fullfile(currBoxDir,'Permanent'),fullfile(currBoxDir,'Compiled'));
+    completedMice = union(completedMice,miceToCompile);
 end
+
+if iscell(mice) && ~isempty(setdiff(mice,completedMice))
+    which = setdiff(mice,completedMice);
+    fprintf('Some mice have not been compiled::');
+    disp(which);
+    keyboard
+end
+
 end
