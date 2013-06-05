@@ -103,7 +103,7 @@ switch id
     case '38'
         step = 5; % changed from step 4 6/4
     case '40'
-        step = 8; % changed from step 3 on 6/3/2013
+        step = 3; % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
     case '41'
         step = 4;
         error('not being run'); % decided on 6/4/2013
@@ -122,25 +122,25 @@ switch id
     case '59'
         step = 3;
     case '60'
-        step = 8;
+        step = 3; % lots of autograduations ! now hard set to 3. 6/5
     case '61'
         step = 3;
     case '62'
         step = 8;
     case '63'
-        step = 8;
+        step = 3; % changed 6/4
     case '64'
         step = 8;
     case '65'
-        step = 8;
+        step = 3; % changed 6/4
     case '66'
-        step = 8;
+        step = 8; % will check status on this end of week
     case '67'
-        step = 8;
+        step = 3; % graduated from 8 on 6/5
     case '68'
         step = 3;
     case '69'
-        step = 8;
+        step = 3; % changed 6/4
     case '70'
         step = 3;
     case '79'

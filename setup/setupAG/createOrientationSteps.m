@@ -127,7 +127,7 @@ out.rewardSize = 50;
 out.msPenalty = 5000;
 out.doPostDiscrim = false;
 switch id
-        case '26'
+    case '26'
         % nothing changes here, but might later
     case '37'
         % nothing changes here, but might later
@@ -176,19 +176,26 @@ switch id
     case '79'
         % nothing changes here, but might later
     case '84'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.15; % reduced from 0.2 to 0.15 on 6/5
     case '86'
-        out.msPenalty = 10000; % changed to 10000 05292013,
+        out.rewardScalar = 0.15; 
+        % changed to 10000 05292013, 
+        % penalty set to 500 and scalar reduced to 0.15 6/5
     case '87'
         out.msPenalty = 10000; % changed to 10000 05292013,
     case '90'
-        out.msPenalty = 15000; % changed to 10000 05292013,
+        out.rewardScalar = 0.15;  
+        % changed to 10000 05292013,
+        % set timeout back to original and set rewardscalar to 0.15 6/5
     case '91'
-        out.msPenalty = 15000; % changed to 15000 05292013,
+        out.rewardScalar = 0.15;  
+        % changed to 15000 05292013,
+        % set timeout back to original and set rewardscalar to 0.15 6/5
     case '92'
         out.msPenalty = 10000; % changed to 10000 05292013,
     case '93'
-        out.msPenalty = 15000; % changed to 15000 05292013,
+        out.msPenalty = 15000; 
+        % changed to 15000 05292013,
     case '95'
         % nothing changes here, but might later
     case '96'
