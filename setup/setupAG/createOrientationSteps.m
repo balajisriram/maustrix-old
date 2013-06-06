@@ -193,6 +193,7 @@ switch id
         % set timeout back to original and set rewardscalar to 0.15 6/5
     case '92'
         out.msPenalty = 10000; % changed to 10000 05292013,
+        out.rewardScalar = 0.15; % changed for 6/6
     case '93'
         out.msPenalty = 15000; 
         % changed to 15000 05292013,

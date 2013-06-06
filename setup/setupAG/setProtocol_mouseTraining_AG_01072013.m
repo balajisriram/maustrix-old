@@ -126,7 +126,8 @@ switch id
     case '61'
         step = 3;
     case '62'
-        step = 8;
+        step = 3; 
+        % graduated from step 8 to step 3 for 6/6
     case '63'
         step = 3; % changed 6/4
     case '64'
