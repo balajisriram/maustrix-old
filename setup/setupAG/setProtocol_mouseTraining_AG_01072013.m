@@ -131,11 +131,12 @@ switch id
     case '63'
         step = 3; % changed 6/4
     case '64'
-        step = 8;
+        step = 3; 
+        % changed to step 3 for 6/10 from step 8
     case '65'
         step = 3; % changed 6/4
     case '66'
-        step = 8; % will check status on this end of week
+        step = 3; % changed protocol for 6/10
     case '67'
         step = 3; % graduated from 8 on 6/5
     case '68'
@@ -165,9 +166,11 @@ switch id
     case '93'
         step = 3;
     case '95'
-        step = 2;
+        step = 8; 
+        % force graduate starting on 6/10
     case '96'
-        step = 2;
+        step = 8;
+        % force graduate starting on 6/10
     case '97'
         step = 1;
     case '98'
