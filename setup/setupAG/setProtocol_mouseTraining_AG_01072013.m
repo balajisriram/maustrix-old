@@ -172,21 +172,29 @@ switch id
         step = 8;
         % force graduate starting on 6/10
     case '97'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '98'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '99'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '200'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '201'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '202'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '203'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '204'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/12
     case '999'
         step = 3;
     otherwise

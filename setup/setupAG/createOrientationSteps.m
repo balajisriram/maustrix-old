@@ -178,9 +178,11 @@ switch id
     case '84'
         out.rewardScalar = 0.15; % reduced from 0.2 to 0.15 on 6/5
     case '86'
-        out.rewardScalar = 0.15; 
+        out.rewardScalar = 0.10; 
+        out.msPenalty  = 10000;
         % changed to 10000 05292013, 
         % penalty set to 500 and scalar reduced to 0.15 6/5
+        % reduced scalar to 0.1 and increased penalty to 10000 6/12
     case '87'
         out.msPenalty = 10000; % changed to 10000 05292013,
     case '90'

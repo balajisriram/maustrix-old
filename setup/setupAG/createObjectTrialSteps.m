@@ -171,7 +171,8 @@ switch id
     case '70'
         % nothing changes here, but might later
     case '79'
-        out.msPenalty = 5000; 
+        out.msPenalty = 5000;
+        out.rewardScalar = 0.15;
         % changed to 15000 05292013,
         % changed back to 5000 6/5
     case '84'
