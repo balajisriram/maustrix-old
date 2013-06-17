@@ -97,7 +97,9 @@ end
 function step = getStepNum(id)
 switch id
     case '26'
-        step = 9; % changed from step 8 on 6/3/2013
+        step = 10; 
+        % changed from step 8 on 6/3/2013
+        % changed from rev on 6/17
     case '37'
         step = 5; % changed from step 4 6/4
     case '38'
@@ -110,39 +112,56 @@ switch id
     case '45'
         step = 4; % changed from step 4 6/4
     case '47'
-        step = 3;
+        step = 8;
+        % getting more images trials for week of 6/17
     case '48'
         step = 4; % changed from step 7 on 6/3/2013
     case '50'
         step = 5; % changed from step 4 6/4
     case '53'
-        step = 3;
+        step = 8;
+        % obtaining more object task trials week of 6/17
     case '56'
-        step = 3;
+        step = 6;
+        % knows step 3 will go to varied contrast week of 6/17
     case '59'
         step = 3;
     case '60'
-        step = 3; % lots of autograduations ! now hard set to 3. 6/5
+        step = 6; 
+        % lots of autograduations ! now hard set to 3. 6/5
+        % changed from step 3 to step 6 on 6/17
     case '61'
         step = 3;
     case '62'
-        step = 3; 
+        step = 6; 
         % graduated from step 8 to step 3 for 6/6
+        % changed from step 3 to step 6 on 6/17
     case '63'
-        step = 3; % changed 6/4
+        step = 6; 
+        % changed 6/4
+        % changed from step 3 to step 6 on 6/17
     case '64'
-        step = 3; 
+        step = 6; 
         % changed to step 3 for 6/10 from step 8
+        % changed from step 3 to step 6 on 6/17
     case '65'
-        step = 3; % changed 6/4
+        step = 6; 
+        % changed 6/4
+        % changed from step 3 to step 6 on 6/17
     case '66'
-        step = 3; % changed protocol for 6/10
+        step = 6; 
+        % changed protocol for 6/10
+        % changed from step 3 to step 6 on 6/17
     case '67'
-        step = 3; % graduated from 8 on 6/5
+        step = 6; 
+        % graduated from 8 on 6/5
+        % changed from step 3 to step 6 on 6/17
     case '68'
         step = 3;
     case '69'
-        step = 3; % changed 6/4
+        step = 6; 
+        % changed 6/4
+        % changed from step 3 to step 6 on 6/17
     case '70'
         step = 3;
     case '79'
