@@ -192,6 +192,7 @@ switch id
     case '95'
         % nothing changes here, but might later
     case '96'
+        out.rewardScalar = 0.15;
         % nothing changes here, but might later
     case '97'
         % nothing changes here, but might later

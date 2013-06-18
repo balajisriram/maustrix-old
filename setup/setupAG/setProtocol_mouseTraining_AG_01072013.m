@@ -101,23 +101,31 @@ switch id
         % changed from step 8 on 6/3/2013
         % changed from rev on 6/17
     case '37'
-        step = 5; % changed from step 4 6/4
+        step = 8; 
+        % changed from step 4 6/4
+        % changed to step 8 in prep for lesioning. 6/18
     case '38'
-        step = 5; % changed from step 4 6/4
+        step = 8; 
+        % changed from step 4 6/4
+        % changed to step 8 in prep for lesioning. 6/18
     case '40'
         step = 3; % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
     case '41'
         step = 4;
         error('not being run'); % decided on 6/4/2013
     case '45'
-        step = 4; % changed from step 4 6/4
+        step = 8; 
+        % changed from step 4 6/4
+        % changed to step 8 in prep for lesioning. 6/18
     case '47'
         step = 8;
         % getting more images trials for week of 6/17
     case '48'
         step = 4; % changed from step 7 on 6/3/2013
     case '50'
-        step = 5; % changed from step 4 6/4
+        step = 8; 
+        % changed from step 4 6/4
+        % changed to step 8 in prep for lesioning. 6/18
     case '53'
         step = 8;
         % obtaining more object task trials week of 6/17
@@ -197,8 +205,9 @@ switch id
         step = 2;
         % graduated to step 2 6/12
     case '99'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/12
+        % graduated to step 8 6/18
     case '200'
         step = 8;
         % graduated to step 2 6/12
@@ -215,8 +224,9 @@ switch id
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
     case '204'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/12
+        % graduated to step 8 6/18
     case '999'
         step = 3;
     otherwise
