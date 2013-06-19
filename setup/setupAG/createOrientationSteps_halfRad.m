@@ -213,6 +213,14 @@ switch id
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
+    case '205'
+        % nothing changes here, but might later
+    case '206'
+        % nothing changes here, but might later
+    case '207'
+        % nothing changes here, but might later
+    case '208'
+        % nothing changes here, but might later
     case 'demo1'
         out.maxDurationOpt = {[3],[3]};
         out.doPostDiscrim = true;

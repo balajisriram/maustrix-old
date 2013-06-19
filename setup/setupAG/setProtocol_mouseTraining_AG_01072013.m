@@ -122,6 +122,7 @@ switch id
         % getting more images trials for week of 6/17
     case '48'
         step = 4; % changed from step 7 on 6/3/2013
+        error('not being run'); % finished week of 6/17
     case '50'
         step = 8; 
         % changed from step 4 6/4
@@ -173,7 +174,8 @@ switch id
     case '70'
         step = 3;
     case '79'
-        step = 8;
+        step = 3;
+        % graduated to step 3 on 6/19
     case '84'
         step = 3;
     case '86'
@@ -227,6 +229,14 @@ switch id
         step = 8;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
+    case '205'
+        step = 1;
+    case '206'
+        step = 1;
+    case '207'
+        step = 1;
+    case '208'
+        step = 1;
     case '999'
         step = 3;
     otherwise
@@ -235,9 +245,9 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'37','38','40','56','60','86','87'};
+Box1Subjects = {'37','38','40','56','60','86','87','205','206'};
 Box2Subjects = {'45','47','50','53','84','92','97','98'};
-Box3Subjects = {'26','48','90','91','93','59','99'};
+Box3Subjects = {'26','48','90','91','93','59','99','207','208'};
 Box4Subjects = {'61','62','63','64','65','66','67','88','89','203','204'};
 Box5Subjects = {'68','69','70','79','95','96','200','201','202'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
