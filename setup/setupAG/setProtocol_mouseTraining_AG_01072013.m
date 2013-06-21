@@ -219,8 +219,9 @@ switch id
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
     case '202'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/12
+        % graduated to step 8 6/21
     case '203'
         step = 8;
         % graduated to step 2 6/12
