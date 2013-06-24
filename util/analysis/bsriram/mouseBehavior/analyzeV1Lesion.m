@@ -230,6 +230,8 @@ plotDetails.requestedPlot = 'performanceByDay';
 analysisFor.analyzeOpt = true;
 analysisFor.analyzeImages = false;
 analysisFor.analyzeRevOpt = false;
+analysisFor.analyzeContrast = false;
+analysisFor.analyzeRevContrast = false;
 
 trialNumCutoff = 25;
 

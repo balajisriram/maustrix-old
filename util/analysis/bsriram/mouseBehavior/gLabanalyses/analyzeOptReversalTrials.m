@@ -142,7 +142,7 @@ if plotDetails.plotOn
                     xlabel('num days','FontName','Times New Roman','FontSize',12);
                     ylabel('num trials','FontName','Times New Roman','FontSize',12);
             
-                case 'performanceBycondition'
+                case 'performanceByCondition'
                     if ~isnan(optRevData.performanceByConditionWCO(1,1)),plot(1,optRevData.performanceByConditionWCO(1,1),'bd','MarkerFaceColor','b'),...
                             plot([1 1],optRevData.performanceByConditionWCO(2:3,1),'LineWidth',2,'color','b'), else plot(1,0.5,'bx'), end
                     if ~isnan(optRevData.performanceByConditionWCO(1,2)),plot(2,optRevData.performanceByConditionWCO(1,2),'rd','MarkerFaceColor','r'),...
