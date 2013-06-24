@@ -101,22 +101,27 @@ switch id
         % changed from step 8 on 6/3/2013
         % changed from rev on 6/17
     case '37'
-        step = 8; 
+        step = 3; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
+        % couple of days of orientation data week of 6/24
     case '38'
-        step = 8; 
+        step = 3; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
+        % couple of days of orientation data week of 6/24
     case '40'
-        step = 3; % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
+        step = 8; 
+        % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
+        % getting data on step 8 for wek of 6/24
     case '41'
         step = 4;
         error('not being run'); % decided on 6/4/2013
     case '45'
-        step = 8; 
+        step = 3; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
+        % couple of days of orientation data week of 6/24
     case '47'
         step = 8;
         % getting more images trials for week of 6/17
@@ -124,17 +129,20 @@ switch id
         step = 4; % changed from step 7 on 6/3/2013
         error('not being run'); % finished week of 6/17
     case '50'
-        step = 8; 
+        step = 3; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
+        % couple of days of orientation data week of 6/24
     case '53'
         step = 8;
         % obtaining more object task trials week of 6/17
     case '56'
-        step = 6;
+        step = 7;
         % knows step 3 will go to varied contrast week of 6/17
+        % performed ~ 750 trials onstep 6 now on step 7 6/24        
     case '59'
-        step = 3;
+        step = 6;
+        % knows step 3. goes to step 6 6/24
     case '60'
         step = 6; 
         % lots of autograduations ! now hard set to 3. 6/5
