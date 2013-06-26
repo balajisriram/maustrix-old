@@ -152,6 +152,7 @@ switch id
         % changed from step 3 to step 6 on 6/17
     case '61'
         step = 3;
+        error('not being run');% as of 6/24
     case '62'
         step = 6; 
         % graduated from step 8 to step 3 for 6/6
@@ -191,6 +192,7 @@ switch id
         % graduated to step 3 on 6/19
     case '84'
         step = 3;
+        error('not being run'); % as of 6/22
     case '86'
         step = 3;
     case '87'
@@ -201,6 +203,7 @@ switch id
         step = 8;
     case '90'
         step = 3;
+        error('not being run'); % as of 6/22
     case '91'
         step = 3;
     case '92'
@@ -244,12 +247,32 @@ switch id
         % graduated to step 2 6/12
         % graduated to step 8 6/18
     case '205'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/26
     case '206'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/26
     case '207'
-        step = 1;
+        step = 2;
+        % graduated to step 2 6/26
     case '208'
+        step = 2;
+        % graduated to step 2 6/26
+    case '209'
+        step = 1;
+    case '210'
+        step = 1;
+    case '211'
+        step = 1;
+    case '212'
+        step = 1;
+    case '213'
+        step = 1;
+    case '214'
+        step = 1;
+    case '215'
+        step = 1;
+    case '216'
         step = 1;
     case '999'
         step = 3;

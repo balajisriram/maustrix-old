@@ -190,7 +190,8 @@ switch id
     case '93'
         % nothing changes here, but might later
     case '95'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 6/26
     case '96'
         out.rewardScalar = 0.15;
         % nothing changes here, but might later
@@ -199,7 +200,8 @@ switch id
     case '98'
         % nothing changes here, but might later
     case '99'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 6/26
     case '200'
         % nothing changes here, but might later
     case '201'
@@ -207,9 +209,11 @@ switch id
     case '202'
         % nothing changes here, but might later
     case '203'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 6/26
     case '204'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1;
+        % reward reduced to 0.1 on 6/26
     case '205'
         % nothing changes here, but might later
     case '206'
@@ -217,6 +221,22 @@ switch id
     case '207'
         % nothing changes here, but might later
     case '208'
+        % nothing changes here, but might later
+    case '209'
+        % nothing changes here, but might later
+    case '210'
+        % nothing changes here, but might later
+    case '211'
+        % nothing changes here, but might later
+    case '212'
+        % nothing changes here, but might later
+    case '213'
+        % nothing changes here, but might later
+    case '214'
+        % nothing changes here, but might later
+    case '215'
+        % nothing changes here, but might later
+    case '216'
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later

@@ -177,7 +177,7 @@ switch id
         out.msPenalty = 25000; % changed to 25000 05292013,
         out.rewardScalar = 0.1; %changed on 6/17
     case '79'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; %changed on 6/26
     case '84'
         out.rewardScalar = 0.15; % reduced from 0.2 to 0.15 on 6/5
     case '86'
@@ -231,6 +231,22 @@ switch id
     case '207'
         % nothing changes here, but might later
     case '208'
+        % nothing changes here, but might later
+    case '209'
+        % nothing changes here, but might later
+    case '210'
+        % nothing changes here, but might later
+    case '211'
+        % nothing changes here, but might later
+    case '212'
+        % nothing changes here, but might later
+    case '213'
+        % nothing changes here, but might later
+    case '214'
+        % nothing changes here, but might later
+    case '215'
+        % nothing changes here, but might later
+    case '216'
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
