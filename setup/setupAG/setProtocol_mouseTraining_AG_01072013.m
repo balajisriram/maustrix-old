@@ -152,7 +152,6 @@ switch id
         % changed from step 3 to step 6 on 6/17
     case '61'
         step = 3;
-        error('not being run');% as of 6/24
     case '62'
         step = 6; 
         % graduated from step 8 to step 3 for 6/6
