@@ -219,34 +219,39 @@ switch id
         step = 8; 
         % force graduate starting on 6/10
     case '96'
-        step = 8;
+        step = 3;
         % force graduate starting on 6/10
+        % graduated to step 3 7/2
     case '97'
         step = 2;
         % graduated to step 2 6/12
     case '98'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/12
+        % graduated to step 8 on 7/2
     case '99'
         step = 8;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
     case '200'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
+        % graduated to step 3 7/2
     case '201'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
+        % graduated to step 3 7/2
     case '202'
         step = 8;
         % graduated to step 2 6/12
         % graduated to step 8 6/21
     case '203'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
+        % graduated to step 3 7/2
     case '204'
         step = 8;
         % graduated to step 2 6/12
@@ -258,8 +263,9 @@ switch id
         step = 2;
         % graduated to step 2 6/26
     case '207'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/26
+        % graduated to step 8 7/2
     case '208'
         step = 2;
         % graduated to step 2 6/26

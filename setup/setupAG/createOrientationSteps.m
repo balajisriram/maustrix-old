@@ -177,7 +177,9 @@ switch id
         out.msPenalty = 25000; % changed to 25000 05292013,
         out.rewardScalar = 0.1; %changed on 6/17
     case '79'
-        out.rewardScalar = 0.1; %changed on 6/26
+        out.rewardScalar = 0.05; 
+        %changed to 0.1 on 6/26
+        % canged to lower on 7/2
     case '84'
         out.rewardScalar = 0.15; % reduced from 0.2 to 0.15 on 6/5
     case '86'
@@ -205,7 +207,8 @@ switch id
         % changed to 15000 05292013,
         out.rewardScalar = 0.10; % changed for 6/6, changed from 0.15 on 6/12
     case '95'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10;
+        % changed to 0.1 on 7/2
     case '96'
         % nothing changes here, but might later
     case '97'
