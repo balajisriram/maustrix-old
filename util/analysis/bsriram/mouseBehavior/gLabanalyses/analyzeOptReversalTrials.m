@@ -3,6 +3,7 @@ function optRevData = analyzeOptReversalTrials(mouseID,data,filters,plotDetails,
 if islogical(plotDetails)
     plotDetails.plotOn = true;
     plotDetails.plotWhere = 'makeFigure';
+    plotDetails.forStudy = 'none';
 end
 
 %% +/- 45 GRATINGS REVERSAL
@@ -143,21 +144,45 @@ if plotDetails.plotOn
                     ylabel('num trials','FontName','Times New Roman','FontSize',12);
             
                 case 'performanceByCondition'
-                    if ~isnan(optRevData.performanceByConditionWCO(1,1)),plot(1,optRevData.performanceByConditionWCO(1,1),'bd','MarkerFaceColor','b'),...
-                            plot([1 1],optRevData.performanceByConditionWCO(2:3,1),'LineWidth',2,'color','b'), else plot(1,0.5,'bx'), end
-                    if ~isnan(optRevData.performanceByConditionWCO(1,2)),plot(2,optRevData.performanceByConditionWCO(1,2),'rd','MarkerFaceColor','r'),...
-                            plot([2 2],optRevData.performanceByConditionWCO(2:3,2),'LineWidth',2,'color','r'), else plot(2,0.5,'rx'), end
-                    if ~isnan(optRevData.performanceByConditionWCO(1,3)),plot(3,optRevData.performanceByConditionWCO(1,3),'bd','MarkerFaceColor','b'),...
-                            plot([3 3],optRevData.performanceByConditionWCO(2:3,3),'LineWidth',2,'color','b'), else plot(3,0.5,'bx'), end
-                    if ~isnan(optRevData.performanceByConditionWCO(1,4)),plot(4,optRevData.performanceByConditionWCO(1,4),'rd','MarkerFaceColor','r'),...
-                            plot([4 4],optRevData.performanceByConditionWCO(2:3,4),'LineWidth',2,'color','r'), else plot(4,0.5,'rx'), end
-                    if ~isnan(optRevData.performanceByConditionWCO(1,5)),plot(5,optRevData.performanceByConditionWCO(1,5),'kd','MarkerFaceColor','k'),...
-                            plot([5 5],optRevData.performanceByConditionWCO(2:3,5),'LineWidth',2,'color','k'), else plot(5,0.5,'kx'), end
-                    plot([0.1 5.9],[0.5 0.5],'k-');
-                    plot([0.1 5.9],[0.7 0.7],'k--');
-                    set(gca,'xlim',[0 6],'ylim',[0.2 1],'xtick',[1 2 3 4 5],'xticklabel',{'PBS','CNO','Intact','Lesion','Other'},'FontName','Times New Roman','FontSize',12);
-                    ylabel('performance','FontName','Times New Roman','FontSize',12);
-            
+                    switch plotDetails.forStudy
+                        case 'Lesion'
+                            plot([0.25 0.75],[optRevData.performanceByConditionWCO(1,3),optRevData.performanceByConditionWCO(1,4)],'k');
+                            if ~isnan(optRevData.performanceByConditionWCO(1,3)),plot(0.25,optRevData.performanceByConditionWCO(1,3),'bd','MarkerFaceColor','b'),...
+                                    plot([0.25 0.25],optRevData.performanceByConditionWCO(2:3,3),'LineWidth',2,'color','b'), else plot(3,0.5,'bx'), end
+                            if ~isnan(optRevData.performanceByConditionWCO(1,4)),plot(0.75,optRevData.performanceByConditionWCO(1,4),'rd','MarkerFaceColor','r'),...
+                                    plot([0.75 0.75],optRevData.performanceByConditionWCO(2:3,4),'LineWidth',2,'color','r'), else plot(4,0.5,'rx'), end
+                            Y1 = optRevData.performanceByConditionWCO(1,3)*optRevData.numTrialsByConditionWCO{1,3};
+                            n1 = optRevData.numTrialsByConditionWCO{1,3};
+                            Y2 = optRevData.performanceByConditionWCO(1,4)*optRevData.numTrialsByConditionWCO{1,4};
+                            n2 = optRevData.numTrialsByConditionWCO{1,4};
+                            p1 = (Y1+1)/(n1+2);
+                            p2 = (Y2+1)/(n2+2);
+                            pDiff = p1-p2;
+                            Za = 1.96;
+                            CI_PDiff = Za*sqrt((p1*(1-p1)/(n1+2))+(p2*(1-p2)/(n2+2)));
+                            if abs(pDiff)>CI_PDiff && plotDetails.plotSignificance
+                                % significant!!
+                                plot(0.5,[((Y1/n1)+(Y2/n2))/2+0.05],'*');
+                            end
+                            plot([0.1 0.9],[0.5 0.5],'k-');
+                            set(gca,'xlim',[0 1],'ylim',[0.2 1],'xtick',[0.25 0.75],'xticklabel',{'Intact','Lesion'},'FontName','Times New Roman','FontSize',12);
+                            ylabel('performance','FontName','Times New Roman','FontSize',12);
+                        otherwise
+                            if ~isnan(optRevData.performanceByConditionWCO(1,1)),plot(1,optRevData.performanceByConditionWCO(1,1),'bd','MarkerFaceColor','b'),...
+                                    plot([1 1],optRevData.performanceByConditionWCO(2:3,1),'LineWidth',2,'color','b'), else plot(1,0.5,'bx'), end
+                            if ~isnan(optRevData.performanceByConditionWCO(1,2)),plot(2,optRevData.performanceByConditionWCO(1,2),'rd','MarkerFaceColor','r'),...
+                                    plot([2 2],optRevData.performanceByConditionWCO(2:3,2),'LineWidth',2,'color','r'), else plot(2,0.5,'rx'), end
+                            if ~isnan(optRevData.performanceByConditionWCO(1,3)),plot(3,optRevData.performanceByConditionWCO(1,3),'bd','MarkerFaceColor','b'),...
+                                    plot([3 3],optRevData.performanceByConditionWCO(2:3,3),'LineWidth',2,'color','b'), else plot(3,0.5,'bx'), end
+                            if ~isnan(optRevData.performanceByConditionWCO(1,4)),plot(4,optRevData.performanceByConditionWCO(1,4),'rd','MarkerFaceColor','r'),...
+                                    plot([4 4],optRevData.performanceByConditionWCO(2:3,4),'LineWidth',2,'color','r'), else plot(4,0.5,'rx'), end
+                            if ~isnan(optRevData.performanceByConditionWCO(1,5)),plot(5,optRevData.performanceByConditionWCO(1,5),'kd','MarkerFaceColor','k'),...
+                                    plot([5 5],optRevData.performanceByConditionWCO(2:3,5),'LineWidth',2,'color','k'), else plot(5,0.5,'kx'), end
+                            plot([0.1 5.9],[0.5 0.5],'k-');
+                            plot([0.1 5.9],[0.7 0.7],'k--');
+                            set(gca,'xlim',[0 6],'ylim',[0.2 1],'xtick',[1 2 3 4 5],'xticklabel',{'PBS','CNO','Intact','Lesion','Other'},'FontName','Times New Roman','FontSize',12);
+                            ylabel('performance','FontName','Times New Roman','FontSize',12);
+                    end
                 case 'performanceByDay'
                     plot([0 max(optRevData.dates)-min(optRevData.dates)+1],[0.5 0.5],'k');
                     plot([0 max(optRevData.dates)-min(optRevData.dates)+1],[0.7 0.7],'k--');

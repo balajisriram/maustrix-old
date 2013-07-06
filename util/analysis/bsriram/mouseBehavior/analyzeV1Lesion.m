@@ -232,6 +232,10 @@ analysisFor.analyzeImages = false;
 analysisFor.analyzeRevOpt = false;
 analysisFor.analyzeContrast = false;
 analysisFor.analyzeRevContrast = false;
+analysisFor.analyzeSpatFreq = false;
+analysisFor.analyzeRevSpatFreq = false;
+analysisFor.analyzeOrientation = false;
+analysisFor.analyzeRevOrientation = false;
 
 trialNumCutoff = 25;
 
@@ -240,32 +244,205 @@ splits.daysCNO = {};
 splits.daysIntact = {};
 splits.daysLesion = {};
 
-plotDetails.axHan = subplot(3,4,1);
+plotDetails.axHan = subplot(3,3,1);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
 analyzeMouse('48',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotDetails.axHan = subplot(3,4,2);
+plotDetails.axHan = subplot(3,3,2);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
 analyzeMouse('40',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotDetails.axHan = subplot(3,4,3);
+plotDetails.axHan = subplot(3,3,3);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled';
 analyzeMouse('47',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotDetails.axHan = subplot(3,4,4);
+plotDetails.axHan = subplot(3,3,4);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled';
 analyzeMouse('53',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotDetails.axHan = subplot(3,4,6);
+plotDetails.axHan = subplot(3,3,6);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
 analyzeMouse('56',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotDetails.axHan = subplot(3,4,7);
+plotDetails.axHan = subplot(3,3,8);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
 analyzeMouse('59',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotDetails.axHan = subplot(3,4,5);analysisFor.analyzeOpt = false; analysisFor.analyzeRevOpt = true;
+plotDetails.axHan = subplot(3,3,5);
+analysisFor.analyzeOpt = false; 
+analysisFor.analyzeRevOpt = true;
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
 analyzeMouse('26',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-    
+%% Performance by condition separate
+f = figure('name','V1 LESION ANIMALS');
+
+plotDetails.plotOn = true;
+plotDetails.plotWhere = 'givenAxes';
+plotDetails.requestedPlot = 'performanceByCondition';
+plotDetails.plotSignificance = true;
+plotDetails.forStudy = 'Lesion';
+
+
+analysisFor.analyzeOpt = true;
+analysisFor.analyzeImages = false;
+analysisFor.analyzeRevOpt = false;
+analysisFor.analyzeContrast = false;
+analysisFor.analyzeRevContrast = false;
+analysisFor.analyzeSpatFreq = false;
+analysisFor.analyzeRevSpatFreq = false;
+analysisFor.analyzeOrientation = false;
+analysisFor.analyzeRevOrientation = false;
+
+trialNumCutoff = 25;
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [735336      735339      735340      735341      735342      735343];
+splits.daysLesion = [735353      735354      735355];
+plotDetails.axHan = subplot(3,3,1);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
+analyzeMouse('48',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [735367      735368];
+splits.daysLesion = [ 735381      735382      735383      735384      735388      735390      735391      735392      735395      735396      735397      735398      735399      735402      735403      735404      735405  735406      735409];
+plotDetails.axHan = subplot(3,3,2);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
+analyzeMouse('40',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735367      735368];
+splits.daysLesion = [ 735381      735382      735383 735388      735389      735390      735391      735395      735396      735397      735398      735399];
+plotDetails.axHan = subplot(3,3,3);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled';
+analyzeMouse('47',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735360      735361      735362      735363      735364      735367      735368];
+splits.daysLesion = [ 735381      735382      735383      735388      735389      735390      735391      735392      735395      735396     735397      735398      735399];
+plotDetails.axHan = subplot(3,3,4);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled';
+analyzeMouse('53',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735356      735357      735360      735361      735362      735366      735367];
+splits.daysLesion = [ 735381      735382      735383      735384      735388      735389      735390      735391      735392      735395      735396      735397      735398      735399];
+plotDetails.axHan = subplot(3,3,6);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
+analyzeMouse('56',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735356      735357      735360      735361      735362      735367];
+splits.daysLesion = [ 735381      735382      735383      735384      735385      735388      735389      735390      735391      735392      735395      735396      735397      735398      735399      735402      735403      735404      735405      735406];
+plotDetails.axHan = subplot(3,3,8);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
+analyzeMouse('59',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735339      735340      735341      735342      735343 ] ;
+splits.daysLesion = [ 735353      735354      735355      735356      735357      735360      735382      735388      735389      735390      735391      735392      735395      735396      735397      735398      735399];
+plotDetails.axHan = subplot(3,3,5);
+analysisFor.analyzeOpt = false; 
+analysisFor.analyzeRevOpt = true;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
+analyzeMouse('26',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+%% Performance by condition together
+f = figure('name','V1 LESION ANIMALS');
+
+plotDetails.plotOn = true;
+plotDetails.plotWhere = 'givenAxes';
+plotDetails.requestedPlot = 'performanceByCondition';
+plotDetails.plotSignificance = false;
+plotDetails.forStudy = 'Lesion';
+
+
+analysisFor.analyzeOpt = true;
+analysisFor.analyzeImages = false;
+analysisFor.analyzeRevOpt = false;
+analysisFor.analyzeContrast = false;
+analysisFor.analyzeRevContrast = false;
+analysisFor.analyzeSpatFreq = false;
+analysisFor.analyzeRevSpatFreq = false;
+analysisFor.analyzeOrientation = false;
+analysisFor.analyzeRevOrientation = false;
+
+trialNumCutoff = 25;
+ax = axes;
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [735336      735339      735340      735341      735342      735343];
+splits.daysLesion = [735353      735354      735355];
+plotDetails.axHan = ax;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
+analyzeMouse('48',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [735367      735368];
+splits.daysLesion = [ 735381      735382      735383      735384      735388      735390      735391      735392      735395      735396      735397      735398      735399      735402      735403      735404      735405  735406      735409];
+plotDetails.axHan = ax;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
+analyzeMouse('40',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735367      735368];
+splits.daysLesion = [ 735381      735382      735383 735388      735389      735390      735391      735395      735396      735397      735398      735399];
+plotDetails.axHan = ax;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled';
+analyzeMouse('47',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735360      735361      735362      735363      735364      735367      735368];
+splits.daysLesion = [ 735381      735382      735383      735388      735389      735390      735391      735392      735395      735396     735397      735398      735399];
+plotDetails.axHan = ax;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Compiled';
+analyzeMouse('53',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735356      735357      735360      735361      735362      735366      735367];
+splits.daysLesion = [ 735381      735382      735383      735384      735388      735389      735390      735391      735392      735395      735396      735397      735398      735399];
+plotDetails.axHan = ax;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
+analyzeMouse('56',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735356      735357      735360      735361      735362      735367];
+splits.daysLesion = [ 735381      735382      735383      735384      735385      735388      735389      735390      735391      735392      735395      735396      735397      735398      735399      735402      735403      735404      735405      735406];
+plotDetails.axHan = ax;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
+analyzeMouse('59',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%
+splits.daysPBS = {};
+splits.daysCNO = {};
+splits.daysIntact = [ 735339      735340      735341      735342      735343 ] ;
+splits.daysLesion = [ 735353      735354      735355      735356      735357      735360      735382      735388      735389      735390      735391      735392      735395      735396      735397      735398      735399];
+plotDetails.axHan = ax;
+analysisFor.analyzeOpt = false; 
+analysisFor.analyzeRevOpt = true;
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Compiled';
+analyzeMouse('26',[],plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);

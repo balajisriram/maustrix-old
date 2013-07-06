@@ -19,7 +19,7 @@ Aineq = [-1 0 0;1 0 0;0 0 -1;0 0 1];
 bineq = [0;1;0;1];
 % x = fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)
 % model = fmincon (@(x) HyperbolicError(x,c,pHat,params),x_0,Aineq,bineq,[],[],[],[],[],opt);
-model = lsqnonlin(@(x) LSQFitFn(x,c,pHat,params),x_0,lb,ub,opt);
+[model, resnorm, residual, exitflag] = lsqnonlin(@(x) LSQFitFn(x,c,pHat,params),x_0,lb,ub,opt);
 out.pMax = model(1);
 out.n = model(2);
 out.c50 = model(3);
@@ -31,7 +31,12 @@ out.fittedModel.c = 0:0.01:1;
 pModel = model(1)*((out.fittedModel.c).^model(2))./((model(3)^model(2))+((out.fittedModel.c).^model(2)));
 out.fittedModel.pModel = pModel/2+0.5;
 
-plotOn = true;
+out.resnorm = resnorm;
+out.residual = residual;
+out.exitflag = exitflag;
+temp = xcorr(out.data.pHat,out.fittedModel.pModel);
+out.quality = temp(2);
+plotOn = false;
 if plotOn
     figure; axes;
     plot(out.data.c,out.data.pHat,'kd','markerfacecolor','k');
