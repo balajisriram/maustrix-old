@@ -102,15 +102,17 @@ switch id
         % changed from step 8 on 6/3/2013
         % changed from rev on 6/17
     case '37'
-        step = 3; 
+        step = 8; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
+        % changed to step 8 for week of 7/8
     case '38'
-        step = 3; 
+        step = 8; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
+        % changed to step 8 for week of 7/8
     case '40'
         step = 8; 
         % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
@@ -223,16 +225,18 @@ switch id
         % force graduate starting on 6/10
         % graduated to step 3 7/2
     case '97'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/12
+        % graduated to step 8 7/8
     case '98'
         step = 8;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
     case '99'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
+        % graduated to step 3 7/8
     case '200'
         step = 3;
         % graduated to step 2 6/12
@@ -257,8 +261,9 @@ switch id
         % graduated to step 2 6/12
         % graduated to step 8 6/18
     case '205'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/26
+        % graduated to step 8 7/8
     case '206'
         step = 2;
         % graduated to step 2 6/26
@@ -267,24 +272,33 @@ switch id
         % graduated to step 2 6/26
         % graduated to step 8 7/2
     case '208'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/26
+        % graduated to step 8 7/8
     case '209'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '210'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '211'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '212'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '213'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '214'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '215'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '216'
-        step = 1;
+        step = 2;
+        % graduated to step 2 7/8
     case '999'
         step = 3;
     otherwise

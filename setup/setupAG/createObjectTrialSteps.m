@@ -207,12 +207,13 @@ switch id
     case '201'
         % nothing changes here, but might later
     case '202'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 7/8
     case '203'
         out.rewardScalar = 0.1; 
         % reward reduced to 0.1 on 6/26
     case '204'
-        out.rewardScalar = 0.1;
+        out.rewardScalar = 0.0.081;
         % reward reduced to 0.1 on 6/26
     case '205'
         % nothing changes here, but might later

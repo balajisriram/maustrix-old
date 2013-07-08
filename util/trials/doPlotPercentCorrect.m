@@ -108,13 +108,26 @@ if addSteps
         else
             stepColor=stepColors(whichColor,:);
             stepTitle=num2str(steps(i));
-            whichTrialsThisStep=find(d.step==steps(i));
+            whichTrialsThisStep=d.step==steps(i);
+            flips = diff([0 whichTrialsThisStep]);
+            runsStart = find(flips==1);
+            runsEnd = find(flips==-1);
+            if length(runsEnd) == length(runsStart) % the step started multiple times and ended each time
+                % do nothing
+            elseif (length(runsStart)-length(runsEnd))==1
+                runsEnd(end+1) = length(whichTrialsThisStep); % the step continues....
+            else
+                error('wtf')
+                keyboard;
+            end
         end
-        stepStart=min(whichTrialsThisStep);
-        stepEnd=max(whichTrialsThisStep);
-        stepWidth=stepEnd-stepStart;
-        hr=rectangle('Position',[stepStart, stepYBottom, stepWidth+eps, stepHeight],'FaceColor',[stepColor],'EdgeColor',[1 1 1]);
-        h=text(stepStart, stepYCenter, stepTitle);
+        for j = 1:length(runsStart)
+            stepStart=runsStart(j);
+            stepEnd=runsEnd(j);
+            stepWidth=stepEnd-stepStart;
+            hr=rectangle('Position',[stepStart, stepYBottom, stepWidth+eps, stepHeight],'FaceColor',[stepColor],'EdgeColor',[1 1 1]);
+            h=text(stepStart, stepYCenter, stepTitle);
+        end
     end
 
     %only some have this
