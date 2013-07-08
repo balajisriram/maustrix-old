@@ -213,7 +213,7 @@ switch id
         out.rewardScalar = 0.1; 
         % reward reduced to 0.1 on 6/26
     case '204'
-        out.rewardScalar = 0.0.081;
+        out.rewardScalar = 0.08;
         % reward reduced to 0.1 on 6/26
     case '205'
         % nothing changes here, but might later
