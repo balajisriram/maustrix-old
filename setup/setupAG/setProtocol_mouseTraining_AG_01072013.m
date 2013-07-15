@@ -102,17 +102,19 @@ switch id
         % changed from step 8 on 6/3/2013
         % changed from rev on 6/17
     case '37'
-        step = 8; 
+        step = 3; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % changed to step 8 for week of 7/8
+        % back to optimal for week of 7/15
     case '38'
-        step = 8; 
+        step = 3; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % changed to step 8 for week of 7/8
+        % back to optimal for week of 7/15
     case '40'
         step = 8; 
         % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
@@ -122,10 +124,11 @@ switch id
         step = 4;
         error('not being run'); % decided on 6/4/2013
     case '45'
-        step = 3; 
+        step = 8; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
+        % 1 week of step 8 week of 7/15
     case '47'
         step = 8;
         % getting more images trials for week of 6/17
@@ -135,10 +138,11 @@ switch id
         step = 4; % changed from step 7 on 6/3/2013
         error('not being run'); % finished week of 6/17
     case '50'
-        step = 3; 
+        step = 8; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
+        % 1 week of step 8 week of 7/15
     case '53'
         step = 8;
         % obtaining more object task trials week of 6/17
@@ -154,43 +158,51 @@ switch id
         % knows step 3. goes to step 6 6/24
         % moved to step 7 week of 7/1
     case '60'
-        step = 7; 
+        step = 4; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '61'
         step = 3;
     case '62'
-        step = 7; 
+        step = 4; 
         % graduated from step 8 to step 3 for 6/6
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '63'
-        step = 7; 
+        step = 4; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '64'
-        step = 7; 
+        step = 4; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '65'
-        step = 7; 
+        step = 4; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '66'
-        step = 7; 
+        step = 4; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '67'
-        step = 7; 
+        step = 4; 
         % graduated from 8 on 6/5
         % changed from step 3 to step 6 on 6/17
+        % varied s.f. week of 7/15
     case '68'
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69'
-        step = 7; 
+        step = 4; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
+        % varied s.f. week of 7/15
     case '70'
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
