@@ -102,14 +102,14 @@ switch id
         % changed from step 8 on 6/3/2013
         % changed from rev on 6/17
     case '37'
-        step = 3; 
+        step = 4; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % changed to step 8 for week of 7/8
         % back to optimal for week of 7/15
     case '38'
-        step = 3; 
+        step = 4; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
@@ -124,7 +124,7 @@ switch id
         step = 4;
         error('not being run'); % decided on 6/4/2013
     case '45'
-        step = 8; 
+        step = 4; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
@@ -138,7 +138,7 @@ switch id
         step = 4; % changed from step 7 on 6/3/2013
         error('not being run'); % finished week of 6/17
     case '50'
-        step = 8; 
+        step = 4; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
