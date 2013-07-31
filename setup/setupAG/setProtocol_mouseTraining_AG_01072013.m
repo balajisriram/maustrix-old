@@ -158,39 +158,39 @@ switch id
         % knows step 3. goes to step 6 6/24
         % moved to step 7 week of 7/1
     case '60'
-        step = 4; 
+        step = 24; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
     case '61'
         step = 3;
     case '62'
-        step = 4; 
+        step = 24; 
         % graduated from step 8 to step 3 for 6/6
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
     case '63'
-        step = 4; 
+        step = 24; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
     case '64'
-        step = 4; 
+        step = 24; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
     case '65'
-        step = 4; 
+        step = 24; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
     case '66'
-        step = 4; 
+        step = 24; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
     case '67'
-        step = 4; 
+        step = 24; 
         % graduated from 8 on 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -198,7 +198,7 @@ switch id
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69'
-        step = 4; 
+        step = 24; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
@@ -261,7 +261,7 @@ switch id
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
     case '202'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 6/21
     case '203'
