@@ -108,6 +108,7 @@ switch id
         % couple of days of orientation data week of 6/24
         % changed to step 8 for week of 7/8
         % back to optimal for week of 7/15
+        error('not being run');
     case '38'
         step = 4; 
         % changed from step 4 6/4
@@ -115,48 +116,56 @@ switch id
         % couple of days of orientation data week of 6/24
         % changed to step 8 for week of 7/8
         % back to optimal for week of 7/15
+        error('not being run');
     case '40'
         step = 8; 
         % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
         % getting data on step 4 for wek of 6/24
         % moved to step 8 week of 7/1
+        error('not being run');
     case '41'
         step = 4;
         error('not being run'); % decided on 6/4/2013
     case '45'
-        step = 4; 
+        step = 6; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % 1 week of step 8 week of 7/15
+        % varied contrast week starting 1/8
     case '47'
         step = 8;
         % getting more images trials for week of 6/17
         % step 4 for week of 6/24
         % moved to step 8 week of 7/1
+        error('not being run');
     case '48'
         step = 4; % changed from step 7 on 6/3/2013
         error('not being run'); % finished week of 6/17
     case '50'
-        step = 4; 
+        step = 6; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % 1 week of step 8 week of 7/15
+        % varied contrast week starting 1/8
     case '53'
         step = 8;
         % obtaining more object task trials week of 6/17
         % step 4 for week of 6/24
         % moved to step 8 week of 7/1
+        error('not being run');
     case '56'
         step = 4;
         % knows step 3 will go to varied contrast week of 6/17
         % performed ~ 750 trials onstep 6 now on step 7 6/24   
         % moved to step 4 week of 7/1
+        error('not being run');
     case '59'
         step = 7;
         % knows step 3. goes to step 6 6/24
         % moved to step 7 week of 7/1
+        error('not being run');
     case '60'
         step = 24; 
         % lots of autograduations ! now hard set to 3. 6/5
