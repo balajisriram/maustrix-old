@@ -50,6 +50,8 @@ if ~exist('analysisFor','var')||isempty(analysisFor)
     analyzeRevSpatFreq = true;
     analyzeOrientation = true;
     analyzeRevOrientation = true;
+    analyzeTempFreq = true;
+    analyzeRevTempFreq = true;
 else
     analyzeImages = analysisFor.analyzeImages;
     analyzeOpt = analysisFor.analyzeOpt;
@@ -60,6 +62,8 @@ else
     analyzeRevSpatFreq = analysisFor.analyzeRevSpatFreq;
     analyzeOrientation = analysisFor.analyzeOrientation;
     analyzeRevOrientation = analysisFor.analyzeRevOrientation;
+    analyzeTempFreq = analysisFor.analyzeTempFreq;
+    analyzeRevTempFreq = analysisFor.analyzeRevTempFreq;
 end
 
 if ~exist('splits','var')||isempty(splits)
@@ -129,12 +133,12 @@ if analyzeRevOrientation
 end
 
 %% TEMP FREQ
-if analyzeOrientation
+if analyzeTempFreq
     out.tfData = analyzeTempFreqTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
 end
 
 %% REVERSAL TEMP FREQ
-if analyzeRevOrientation
+if analyzeRevTempFreq
     out.tfRevData = analyzeTempFreqReversalTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
 end
 end

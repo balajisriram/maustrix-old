@@ -162,6 +162,7 @@ switch id
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '61'
         step = 3;
     case '62'
@@ -169,31 +170,37 @@ switch id
         % graduated from step 8 to step 3 for 6/6
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '63'
         step = 24; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '64'
         step = 24; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '65'
         step = 24; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '66'
         step = 24; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '67'
         step = 24; 
         % graduated from 8 on 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '68'
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
@@ -203,6 +210,7 @@ switch id
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
         % varied s.f. week of 7/15
+        % small aperture starting 7/31
     case '70'
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
@@ -213,9 +221,11 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '86'
-        step = 3;
+        step = 8;
+        % back with step 8 on 8/1
     case '87'
-        step = 3;
+        step = 8;
+        % back with step 8 on 8/1
     case '88'
         step = 8;
     case '89'
@@ -224,9 +234,11 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '91'
-        step = 3;
+        step = 8;
+        % back with step 8 on 8/1
     case '92'
-        step = 3;
+        step = 8;
+        % back with step 8 on 8/1
     case '93'
         step = 3;
     case '95'
