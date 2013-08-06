@@ -167,59 +167,67 @@ switch id
         % moved to step 7 week of 7/1
         error('not being run');
     case '60'
-        step = 24; 
+        step = 19; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '61'
         step = 3;
     case '62'
-        step = 24; 
+        step = 19; 
         % graduated from step 8 to step 3 for 6/6
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '63'
-        step = 24; 
+        step = 19; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '64'
-        step = 24; 
+        step = 19; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '65'
-        step = 24; 
+        step = 19; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '66'
-        step = 24; 
+        step = 19; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '67'
-        step = 24; 
+        step = 19; 
         % graduated from 8 on 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        error('died on 8/5');
     case '68'
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69'
-        step = 24; 
+        step = 19; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
         % varied s.f. week of 7/15
         % small aperture starting 7/31
+        % increased aperture size 8/6
     case '70'
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
@@ -308,7 +316,7 @@ switch id
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/2
-	% graduated to step 3 7/22
+        % graduated to step 3 7/22
     case '208'
         step = 8;
         % graduated to step 2 6/26
