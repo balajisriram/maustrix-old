@@ -301,8 +301,9 @@ switch id
         % graduated to step 8 7/8
         % graduate to step 3 8/2
     case '206'
-        step = 2;
+        step = 8;
         % graduated to step 2 6/26
+        % graduated to step 8 8/6
     case '207'
         step = 3;
         % graduated to step 2 6/26
@@ -342,9 +343,10 @@ switch id
 		% graduated to step 8 7/22
         % graduate to step 3 8/25
     case '216'
-        step = 8;
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
+        % graduated to step 3 8/6
     case '999'
         step = 3;
     otherwise

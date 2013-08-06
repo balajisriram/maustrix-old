@@ -184,9 +184,11 @@ switch id
     case '90'
         % nothing changes here, but might later
     case '91'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '92'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '93'
         % nothing changes here, but might later
     case '95'
@@ -196,9 +198,11 @@ switch id
         out.rewardScalar = 0.15;
         % nothing changes here, but might later
     case '97'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '98'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '99'
         out.rewardScalar = 0.1; 
         % reward reduced to 0.1 on 6/26
@@ -222,23 +226,29 @@ switch id
     case '207'
         % nothing changes here, but might later
     case '208'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed on 8/5
     case '209'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '210'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '211'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '212'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '213'
         % nothing changes here, but might later
     case '214'
         % nothing changes here, but might later
     case '215'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '216'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % reward reduced to 0.1 on 8/5
     case '999'
         % nothing changes here, but might later
     case 'demo1'

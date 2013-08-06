@@ -192,9 +192,10 @@ switch id
     case '87'
         out.msPenalty = 10000; % changed to 10000 05292013,
     case '90'
-        out.rewardScalar = 0.15;  
+        out.rewardScalar = 0.10;  
         % changed to 10000 05292013,
         % set timeout back to original and set rewardscalar to 0.15 6/5
+        % reduced reward to 0.1 on 8/5
     case '91'
         out.rewardScalar = 0.10;  
         % changed to 15000 05292013,
@@ -211,7 +212,7 @@ switch id
         out.rewardScalar = 0.10;
         % changed to 0.1 on 7/2
     case '96'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; % changed on 8/5
     case '97'
         % nothing changes here, but might later
     case '98'
@@ -225,16 +226,16 @@ switch id
     case '202'
         % nothing changes here, but might later
     case '203'
+        out.rewardScalar = 0.10; % changed on 8/5
         out.msPenalty = 10000;
-        % nothing changes here, but might later
     case '204'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/5
     case '205'
         % nothing changes here, but might later
     case '206'
         % nothing changes here, but might later
     case '207'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed on 8/5
     case '208'
         % nothing changes here, but might later
     case '209'
