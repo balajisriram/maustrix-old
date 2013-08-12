@@ -127,12 +127,13 @@ switch id
         step = 4;
         error('not being run'); % decided on 6/4/2013
     case '45'
-        step = 6; 
+        step = 7; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % 1 week of step 8 week of 7/15
         % varied contrast week starting 1/8
+        % varied orientation week of 12/8
     case '47'
         step = 8;
         % getting more images trials for week of 6/17
@@ -143,12 +144,13 @@ switch id
         step = 4; % changed from step 7 on 6/3/2013
         error('not being run'); % finished week of 6/17
     case '50'
-        step = 6; 
+        step = 7; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
         % couple of days of orientation data week of 6/24
         % 1 week of step 8 week of 7/15
         % varied contrast week starting 1/8
+        % varied orientation week of 12/8
     case '53'
         step = 8;
         % obtaining more object task trials week of 6/17
@@ -167,51 +169,57 @@ switch id
         % moved to step 7 week of 7/1
         error('not being run');
     case '60'
-        step = 19; 
+        step = 22; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '61'
         step = 3;
     case '62'
-        step = 19; 
+        step = 22; 
         % graduated from step 8 to step 3 for 6/6
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '63'
-        step = 19; 
+        step = 22; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '64'
-        step = 19; 
+        step = 22; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '65'
-        step = 19; 
+        step = 22; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '66'
-        step = 19; 
+        step = 22; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '67'
-        step = 19; 
+        step = 22; 
         % graduated from 8 on 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -221,13 +229,14 @@ switch id
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69'
-        step = 19; 
+        step = 22; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
+        % varied contrast with aperture 8/12
     case '70'
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
@@ -238,11 +247,13 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '86'
-        step = 8;
+        step = 3;
         % back with step 8 on 8/1
+        % starting on step 3 for a week with pbs inj.
     case '87'
-        step = 8;
+        step = 3;
         % back with step 8 on 8/1
+        % starting on step 3 for a week with pbs inj.
     case '88'
         step = 8;
     case '89'
@@ -251,11 +262,13 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '91'
-        step = 8;
+        step = 3;
         % back with step 8 on 8/1
+        % starting on step 3 for a week with pbs inj.
     case '92'
-        step = 8;
+        step = 3;
         % back with step 8 on 8/1
+        % starting on step 3 for a week with pbs inj.
     case '93'
         step = 3;
     case '95'
@@ -331,9 +344,10 @@ switch id
 		% graduated to step 8 7/22
         % graduated to step 3 8/8
     case '211'
-        step = 8;
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
+        % graduated to step 3 8/12
     case '212'
         step = 8;
         % graduated to step 2 7/8
