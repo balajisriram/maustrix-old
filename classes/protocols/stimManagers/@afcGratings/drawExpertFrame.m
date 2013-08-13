@@ -64,7 +64,6 @@ try
         end
         % Draw mask texture: (with no rotation)
         Screen('DrawTexture', window, expertCache.masktexs, [], destRect,[], filtMode);
-        Screen('Close',expertCache.masktexs);
     end
     if ~isempty(stim.annuliMatrices{1})
         Screen('BlendFunction', window, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -73,9 +72,8 @@ try
         end
         % Draw mask texture: (with no rotation)
         Screen('DrawTexture',window,expertCache.annulitexs,[],destRect,[],filtMode);
-        Screen('Close',expertCache.annulitexs);
     end
-catch
+catch ex
     sca;
     keyboard
 end
