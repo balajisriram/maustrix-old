@@ -175,7 +175,7 @@ if ~isempty(stim.masks)
         annulusDestRec=destRect;
         Screen('DrawTexture',window,expertCache.annulitexs{stim.annuliInds(gratingToDraw)},[],annulusDestRec,[],filtMode);
     end
-    
+    Screen('Close',expertCache.masktexs{stim.maskInds(gratingToDraw)});
     
 end
 
