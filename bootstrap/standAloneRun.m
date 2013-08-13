@@ -21,6 +21,7 @@ function standAloneRun(ratrixPath,setupFile,subjectID,recordInOracle,backupToSer
 % if true, will also replicate to a hard-coded server path
 % all trial record indexing (standAlonePath) is still handled locally
 
+%
 setupEnvironment;
 
 if ~exist('recordInOracle','var') || isempty(recordInOracle)
@@ -195,10 +196,14 @@ try
         subjectAnalysis(compilePath);
     end
     cleanup;
+    % testing
+    clear all
 catch ex
     disp(['CAUGHT ERROR: ' getReport(ex,'extended')])
     cleanup;
     rethrow(ex)
+    % testing
+    clear all
 end
 
 function cleanup
