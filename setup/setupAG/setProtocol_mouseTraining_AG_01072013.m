@@ -389,7 +389,7 @@ whichBox = find(cellfun(@ismember,currSubj,Subjects));
 [junk, mac] = getMACaddress();
 correctBox = false;
 switch mac
-    case '001D7DA80EC2' %gLab-Behavior1
+    case 'A41F7278B4DE' %gLab-Behavior1
         if whichBox==1
             correctBox = true;
         end

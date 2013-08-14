@@ -29,8 +29,8 @@ if ~exist('pportaddr','var') || isempty(pportaddr)
         case '001372708179' %dell machine w/ati card
             pportaddr='B888'; %the pci add on card
             
-        case '001D7DA80EC2' %gLab-Behavior1
-            pportaddr= '0378';
+        case 'A41F7278B4DE' %gLab-Behavior1
+            pportaddr= 'D010';
         case '001D7DA80EFC' %gLab-Behavior2
             pportaddr= '0378';
         case 'A41F726EC11C' %gLab-Behavior3

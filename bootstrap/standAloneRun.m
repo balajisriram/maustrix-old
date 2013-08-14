@@ -34,7 +34,7 @@ if ~exist('backupToServer','var') || isempty(backupToServer)
     backupToServer = true;
     [a, b] = getMACaddress();
     switch b
-        case '001D7DA80EC2' %gLab-Behavior1
+        case 'A41F7278B4DE' %gLab-Behavior1
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Permanent';
         case '001D7DA80EFC' %gLab-Behavior2
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Permanent';
