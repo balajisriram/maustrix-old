@@ -70,7 +70,7 @@ drawingMode='expert';
 
 [a,b] = getMACaddress();
 switch b
-    case '001D7DA80EC2' %gLab-Behavior1
+    case 'A41F7278B4DE' %gLab-Behavior1
         maxWidth = 1024;
         maxHeight = 768;
     case '001D7DA80EFC' %gLab-Behavior2
