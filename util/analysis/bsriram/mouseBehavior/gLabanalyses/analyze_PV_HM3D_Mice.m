@@ -92,7 +92,7 @@ if oldFits
     end
 end
 
-numResamples = 1000;
+numResamples = 10;
 c50Difference = nan(1,numResamples);
 qPBS = c50Difference;
 qCNO = qPBS;
