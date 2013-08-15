@@ -212,7 +212,8 @@ switch id
         out.rewardScalar = 0.10;
         % changed to 0.1 on 7/2
     case '96'
-        out.msPenalty = 10000; % changed on 8/5
+        out.rewardScalar = 0.1; % changed to 0.1 on 8/15
+        out.msPenalty = 15000; % changed on 8/15
     case '97'
         % nothing changes here, but might later
     case '98'
@@ -226,8 +227,8 @@ switch id
     case '202'
         % nothing changes here, but might later
     case '203'
-        out.rewardScalar = 0.10; % changed on 8/5
-        out.msPenalty = 10000;
+        out.rewardScalar = 0.05; % changed on 8/15
+        out.msPenalty = 15000;
     case '204'
         out.rewardScalar = 0.10; % changed 8/5
     case '205'
@@ -253,7 +254,8 @@ switch id
     case '215'
         % nothing changes here, but might later
     case '216'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; 
+        % increased penalty 8/15
     case '999'
         % nothing changes here, but might later
     case 'demo1'
