@@ -177,7 +177,8 @@ switch id
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
     case '61'
-        step = 3;
+        step = 8;
+        % back from the injections. going to run 8/19
     case '62'
         step = 22; 
         % graduated from step 8 to step 3 for 6/6
@@ -280,9 +281,10 @@ switch id
         % force graduate starting on 6/10
         % graduated to step 3 7/2
     case '97'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 7/8
+        % graduated to step 3 8/19
     case '98'
         step = 8;
         % graduated to step 2 6/12
@@ -293,15 +295,17 @@ switch id
         % graduated to step 8 6/18
         % graduated to step 3 7/8
     case '200'
-        step = 3;
+        step = 8;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
+        % back from injections. starting 8/19
     case '201'
-        step = 3;
+        step = 8;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
+        % back from injections. starting 8/19
     case '202'
         step = 3;
         % graduated to step 2 6/12
