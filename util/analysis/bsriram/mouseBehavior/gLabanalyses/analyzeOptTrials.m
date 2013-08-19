@@ -142,7 +142,6 @@ if plotDetails.plotOn
                     bar(optData.dates-min(optData.dates)+1,optData.numTrialsByDate);
                     xlabel('num days','FontName','Times New Roman','FontSize',12);
                     ylabel('num trials','FontName','Times New Roman','FontSize',12);
-                    
                 case 'performanceByCondition'
                     switch plotDetails.forStudy
                         case 'Lesion'
@@ -205,6 +204,45 @@ if plotDetails.plotOn
                     set(gca,'ylim',[0.2 1]);
                     xlabel('day num','FontName','Times New Roman','FontSize',12)
                     ylabel('performance','FontName','Times New Roman','FontSize',12)
+                case 'learningProcess'
+                    disp('this assumes you have done the legwork to filter data appropriately. If not, the issue is on your head');
+                    hold on;
+                    corrects = optData.correct;
+                    whichToRemove = isnan(corrects) | ~ismember(optData.date,filters.optFilter);
+                    corrects(whichToRemove) = [];
+                    runningAverage = nan(size(corrects));
+                    pHats = runningAverage;
+                    pCITop = pHats;
+                    pCIBot = pHats;
+                    for trNum = 1:length(corrects)
+                        if trNum<100
+                            relevant = corrects(1:trNum);
+                            L = trNum;
+                            p = sum(relevant);
+                            [pHat pCI] = binofit(p,L);
+                            pHats(trNum) = pHat;
+                            pCITop(trNum) = pCI(1);
+                            pCIBot(trNum) = pCI(2);
+                        else
+                            relevant = corrects(trNum-99:trNum);
+                            L = 100;
+                            p = sum(relevant);
+                            [pHat pCI] = binofit(p,L);
+                            pHats(trNum) = pHat;
+                            pCITop(trNum) = pCI(1);
+                            pCIBot(trNum) = pCI(2);
+                        end
+                        if rand<0.1
+                        if corrects(trNum)
+                            plot(trNum,0.2+0.01*randn,'g.');
+                        else
+                            plot(trNum,0.2+0.01*randn,'r.')
+                        end
+                        end
+                    end
+                    plot(1:length(corrects),pHats,'k');hold on;
+%                     plot()
+                    keyboard
                 otherwise
                     error('wtf!');
             end
