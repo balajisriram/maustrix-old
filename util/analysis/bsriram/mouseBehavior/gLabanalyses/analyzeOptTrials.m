@@ -210,6 +210,8 @@ if plotDetails.plotOn
                     corrects = optData.correct;
                     whichToRemove = isnan(corrects) | ~ismember(optData.date,filters.optFilter);
                     corrects(whichToRemove) = [];
+                    dates = optData.date;
+                    dates(whichToRemove) = [];
                     runningAverage = nan(size(corrects));
                     pHats = runningAverage;
                     pCITop = pHats;
@@ -221,28 +223,89 @@ if plotDetails.plotOn
                             p = sum(relevant);
                             [pHat pCI] = binofit(p,L);
                             pHats(trNum) = pHat;
-                            pCITop(trNum) = pCI(1);
-                            pCIBot(trNum) = pCI(2);
+                            pCITop(trNum) = pCI(2);
+                            pCIBot(trNum) = pCI(1);
                         else
                             relevant = corrects(trNum-99:trNum);
                             L = 100;
                             p = sum(relevant);
                             [pHat pCI] = binofit(p,L);
                             pHats(trNum) = pHat;
-                            pCITop(trNum) = pCI(1);
-                            pCIBot(trNum) = pCI(2);
+                            pCITop(trNum) = pCI(2);
+                            pCIBot(trNum) = pCI(1);
                         end
                         if rand<0.1
-                        if corrects(trNum)
-                            plot(trNum,0.2+0.01*randn,'g.');
-                        else
-                            plot(trNum,0.2+0.01*randn,'r.')
-                        end
+                            if corrects(trNum)
+                                plot(trNum,0.3+0.01*randn,'g.');
+                            else
+                                plot(trNum,0.3+0.01*randn,'r.')
+                            end
                         end
                     end
-                    plot(1:length(corrects),pHats,'k');hold on;
-%                     plot()
+                    plot(50:length(corrects),pHats(50:end),'k','linewidth',1);hold on;
+                    fh = fill([50:length(corrects) fliplr(50:length(corrects))],[pCITop(50:end) fliplr(pCIBot(50:end))],'k'); set(fh,'edgealpha',0,'faceAlpha',0.1);
+                    plot([0,length(corrects)],[0.5 0.5],'k--');
+                    set(gca,'xlim',[0,length(corrects)],'ylim',[0.2 1]);
+                    
+                    threshold = 0.8;
+                    pointsAboveThreshold = pCITop>threshold;
+                    thresholdTrial = find(abs(filter(ones(1,50)/50,1,pointsAboveThreshold)-1)<1e-6,1,'first');
+                    plot(thresholdTrial,threshold,'rx');
+                    optData.trialsToThreshold = thresholdTrial;
+                    
+                    % days
+                    dateChanges = find(diff([dates dates(end)]));
+                    for dayNum = 1:length(dateChanges)
+                        plot([dateChanges(dayNum) dateChanges(dayNum)],[0.2 1],'color',0.9*[1 1 1],'LineStyle','--');
+                    end
+                    uniqDates = unique(dates);
+                    optData.dayNumAtThreshold = find(uniqDates==dates(thresholdTrial),1,'first');
                     keyboard
+                case 'learningProcessOnlyAverage'
+                    disp('this assumes you have done the legwork to filter data appropriately. If not, the issue is on your head');
+                    hold on;
+                    corrects = optData.correct;
+                    whichToRemove = isnan(corrects) | ~ismember(optData.date,filters.optFilter);
+                    corrects(whichToRemove) = [];
+                    dates = optData.date;
+                    dates(whichToRemove) = [];
+                    runningAverage = nan(size(corrects));
+                    pHats = runningAverage;
+                    pCITop = pHats;
+                    pCIBot = pHats;
+                    for trNum = 1:length(corrects)
+                        if trNum<100
+                            relevant = corrects(1:trNum);
+                            L = trNum;
+                            p = sum(relevant);
+                            [pHat pCI] = binofit(p,L);
+                            pHats(trNum) = pHat;
+                            pCITop(trNum) = pCI(2);
+                            pCIBot(trNum) = pCI(1);
+                        else
+                            relevant = corrects(trNum-99:trNum);
+                            L = 100;
+                            p = sum(relevant);
+                            [pHat pCI] = binofit(p,L);
+                            pHats(trNum) = pHat;
+                            pCITop(trNum) = pCI(2);
+                            pCIBot(trNum) = pCI(1);
+                        end
+                    end
+                    plot(50:length(corrects),pHats(50:end),'color',[0.75 0.75 0.75],'linewidth',1);hold on;
+                    plot([0,length(corrects)],[0.5 0.5],'k--');
+                    currXLim = get(gca,'xlim');
+                    set(gca,'xlim',[0,max(currXLim(2),length(corrects))],'ylim',[0.2 1]);
+                    
+                    threshold = 0.8;
+                    pointsAboveThreshold = pCITop>threshold;
+                    thresholdTrial = find(abs(filter(ones(1,50)/50,1,pointsAboveThreshold)-1)<1e-6,1,'first');
+                    plot(thresholdTrial,threshold,'rx');
+                    optData.trialsToThreshold = thresholdTrial;
+                    
+                    % days
+                    uniqDates = unique(dates);
+                    optData.dayNumAtThreshold = find(uniqDates==dates(thresholdTrial),1,'first');
                 otherwise
                     error('wtf!');
             end
