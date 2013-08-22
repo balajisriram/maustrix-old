@@ -201,8 +201,9 @@ switch id
         out.rewardScalar = 0.1; 
         % reward reduced to 0.1 on 8/5
     case '98'
-        out.rewardScalar = 0.1; 
+        out.rewardScalar = 0.05; 
         % reward reduced to 0.1 on 8/5
+        % reward reduced to 0.05 8/22
     case '99'
         out.rewardScalar = 0.1; 
         % reward reduced to 0.1 on 6/26
@@ -222,7 +223,7 @@ switch id
     case '205'
         % nothing changes here, but might later
     case '206'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed on 8/22
     case '207'
         % nothing changes here, but might later
     case '208'

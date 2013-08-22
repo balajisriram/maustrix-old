@@ -177,10 +177,11 @@ switch id
         out.msPenalty = 25000; % changed to 25000 05292013,
         out.rewardScalar = 0.1; %changed on 6/17
     case '79'
-        out.rewardScalar = 0.1; 
+        out.rewardScalar = 0.05; 
         %changed to 0.1 on 6/26
         % canged to lower on 7/2
         % changed back to 0.1 on 7/8
+        % lowered reward on 8/22. look back in 1 week
     case '84'
         out.rewardScalar = 0.15; % reduced from 0.2 to 0.15 on 6/5
     case '86'
@@ -209,51 +210,54 @@ switch id
         % changed to 15000 05292013,
         out.rewardScalar = 0.10; % changed for 6/6, changed from 0.15 on 6/12
     case '95'
-        out.rewardScalar = 0.10;
-        % changed to 0.1 on 7/2
+        out.rewardScalar = 0.10; % changed to 0.1 on 7/2
+        out.msPenalty = 10000; % changed on 8/22
     case '96'
-        out.rewardScalar = 0.1; % changed to 0.1 on 8/15
+        out.rewardScalar = 0.05; % changed to 0.1 on 8/15, 0,05 on 8/22
         out.msPenalty = 15000; % changed on 8/15
     case '97'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '98'
         % nothing changes here, but might later
     case '99'
-        % nothing changes here, but might later
+        out.msPenalty = 15000; % changed on 8/22
     case '200'
         % nothing changes here, but might later
     case '201'
         % nothing changes here, but might later
     case '202'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '203'
         out.rewardScalar = 0.05; % changed on 8/15
-        out.msPenalty = 15000;
+        out.msPenalty = 20000; % changed 8/22
     case '204'
         out.rewardScalar = 0.10; % changed 8/5
+        out.msPenalty = 10000; % changed 8/22
     case '205'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '206'
         % nothing changes here, but might later
     case '207'
         out.rewardScalar = 0.10; % changed on 8/5
+        out.msPenalty = 10000 % changed on 8/22
     case '208'
         % nothing changes here, but might later
     case '209'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '210'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '211'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; % changed 8/22
     case '212'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '213'
         % nothing changes here, but might later
     case '214'
         % nothing changes here, but might later
     case '215'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed 8/22
     case '216'
+        out.rewardScalar = 0.10; % changed 8/22
         out.msPenalty = 10000; 
         % increased penalty 8/15
     case '999'

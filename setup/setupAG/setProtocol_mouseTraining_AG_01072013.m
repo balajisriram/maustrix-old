@@ -295,17 +295,19 @@ switch id
         % graduated to step 8 6/18
         % graduated to step 3 7/8
     case '200'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
         % back from injections. starting 8/19
+        % all good at step 8. Continue at step 3 8/22
     case '201'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
         % back from injections. starting 8/19
+        % all good at step 8. Continue at step 3 8/22
     case '202'
         step = 3;
         % graduated to step 2 6/12
@@ -357,13 +359,15 @@ switch id
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
     case '213'
-        step = 8;
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
+        % gradauted to step 3 on 8/22
     case '214'
-        step = 8;
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
+        % graduate to step 3 on 8/22
     case '215'
         step = 3;
         % graduated to step 2 7/8
@@ -383,10 +387,10 @@ end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
 Box1Subjects = {'86','87','205','209','210','211','216'};
-Box2Subjects = {'45','50','60','92','97','98','212'};
-Box3Subjects = {'91','93','99','206','207','208','213','214','215'};
-Box4Subjects = {'61','62','63','64','65','66','67','88','89','203','204'};
-Box5Subjects = {'69','70','79','95','96','200','201','202'};
+Box2Subjects = {'60','92','97','98','212'};
+Box3Subjects = {'91','99','206','207','208','213','214','215'};
+Box4Subjects = {'61','63','64','65','66','203','204'};
+Box5Subjects = {'69','79','95','96','200','201','202'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
