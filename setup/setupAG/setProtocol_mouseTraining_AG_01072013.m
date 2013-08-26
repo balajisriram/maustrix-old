@@ -248,13 +248,15 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '86'
-        step = 3;
+        step = 19;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
+        % aperture on 8/26
     case '87'
-        step = 3;
+        step = 19;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
+        % aperture on 8/26
     case '88'
         step = 8;
     case '89'
@@ -263,13 +265,15 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '91'
-        step = 3;
+        step = 19;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
+        % aperture on 8/26
     case '92'
-        step = 3;
+        step = 19;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
+        % aperture on 8/26
     case '93'
         step = 3;
     case '95'
@@ -286,9 +290,10 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 8/19
     case '98'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
+        % graduate step 3 on 8/26
     case '99'
         step = 3;
         % graduated to step 2 6/12
@@ -328,18 +333,20 @@ switch id
         % graduated to step 8 7/8
         % graduate to step 3 8/2
     case '206'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 8/6
+        % graduated to step 3 8/26
     case '207'
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/2
         % graduated to step 3 7/22
     case '208'
-        step = 8;
+        step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
+        % graduated to step 3 on 8/26
     case '209'
         step = 8;
         % graduated to step 2 7/8

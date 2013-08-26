@@ -52,8 +52,8 @@ yPosPct = .65;
 [a, b] = getMACaddress();
 switch b
     case 'A41F7278B4DE' %gLab-Behavior1
-        maxWidth = 1024;
-        maxHeight = 768;
+        maxWidth = 1600;
+        maxHeight = 900;
     case '001D7DA80EFC' %gLab-Behavior2
         maxWidth = 1024;
         maxHeight = 768;
