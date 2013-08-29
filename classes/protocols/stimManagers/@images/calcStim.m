@@ -4,7 +4,7 @@ function [stimulus,updateSM,resolutionIndex,preRequestStim,preResponseStim,discr
 % see ratrixPath\documentation\stimManager.calcStim.txt for argument specification (applies to calcStims of all stimManagers)
 trialManagerClass = class(trialManager);
 LUT=makeStandardLUT(LUTbits);
-[resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[100 60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+[resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
 
 type = stimulus.drawingMode; % 12/9/08 - user can specify to use 'cache' (default) or 'expert' mode (optional)
 indexPulses=[];

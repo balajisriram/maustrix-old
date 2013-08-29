@@ -8,7 +8,7 @@ indexPulses=[];
 imagingTasks=[];
 [LUT stimulus updateSM]=getLUT(stimulus,LUTbits);
 
-[resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[100 60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+[resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
 
 if isnan(resolutionIndex)
     resolutionIndex=1;
