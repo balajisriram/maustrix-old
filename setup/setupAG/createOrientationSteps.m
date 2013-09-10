@@ -94,7 +94,7 @@ switch b
     case 'A41F7278B4DE' %gLab-Behavior1
         out.maxWidth = 1600;
         out.maxHeight = 900;
-    case '001D7DA80EFC' %gLab-Behavior2
+    case 'A41F729213E2' %gLab-Behavior2
         out.maxWidth = 1024;
         out.maxHeight = 768;
     case 'A41F726EC11C' %gLab-Behavior3

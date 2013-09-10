@@ -32,7 +32,7 @@ if ~exist('pportaddr','var') || isempty(pportaddr)
         case 'A41F7278B4DE' %gLab-Behavior1
             pportaddr= 'D010';
         case '001D7DA80EFC' %gLab-Behavior2
-            pportaddr= '0378';
+            pportaddr= 'D010';
         case 'A41F726EC11C' %gLab-Behavior3
             pportaddr= 'D010';
         case '7845C4256F4C' %gLab-Behavior4
