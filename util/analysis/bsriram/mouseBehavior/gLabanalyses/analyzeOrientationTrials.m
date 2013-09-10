@@ -44,6 +44,7 @@ for i = 1:length(orData.dates)
         correctionThatDate = orData.correction(dateFilter);
         orsThatDate = orData.orientation(dateFilter);
         % filter out the nans
+        correctionThatDate(isnan(correctionThatDate)) = false;
         whichGood = ~isnan(correctThatDate) & ~correctionThatDate;
         correctThatDate = correctThatDate(whichGood);
         orsThatDate = orsThatDate(whichGood);
@@ -186,10 +187,16 @@ if plotDetails.plotOn
                 case 'performanceByCondition'
                     conditionColor = {'b','r','b','r','k'};
                     for i = 1:size(orData.performanceByConditionWCO,3)
-                        for j = 1:size(orData.performanceByConditionWCO,1)
-                            if ~isnan(orData.performanceByConditionWCO(j,1,i))
-                                plot(orData.orientations(j),orData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
-                                plot([orData.orientations(j) orData.orientations(j)],[orData.performanceByConditionWCO(j,2,i) orData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                        if isfield(plotDetails,'plotMeansOnly') && plotDetails.plotMeansOnly
+                            means = orData.performanceByConditionWCO(:,1,i);
+                            which = ~isnan(orData.performanceByConditionWCO(:,1,i));
+                            plot(orData.orientations(which),means(which),'color',conditionColor{i})
+                        else
+                            for j = 1:size(orData.performanceByConditionWCO,1)
+                                if ~isnan(orData.performanceByConditionWCO(j,1,i))
+                                    plot(orData.orientations(j),orData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
+                                    plot([orData.orientations(j) orData.orientations(j)],[orData.performanceByConditionWCO(j,2,i) orData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                                end
                             end
                         end
                     end

@@ -1,4 +1,11 @@
-function imageData = analyzeImagesTrials(mouseID,data,filters,plotOn,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion)
+function imageData = analyzeImagesTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion)
+
+if islogical(plotDetails)
+    plotDetails.plotOn = true;
+    plotDetails.plotWhere = 'makeFigure';
+    plotDetails.forStudy = 'none';
+end
+
 
 im = filterBehaviorData(data,'tsName','nAFC_images');%1031 trials
 imageData.trialNum = im.compiledTrialRecords.trialNumber;
@@ -127,50 +134,132 @@ imageData.performanceByCondition(2:3,:) = pci';
 imageData.performanceByConditionWCO(1,:) = phat;
 imageData.performanceByConditionWCO(2:3,:) = pci';
 
-if plotOn
-    figName = sprintf('%s::IMAGES',mouseID);
-    f = figure('name',figName);
-    ax1 = subplot(2,2,1); hold on;
-    bar(imageData.dates-min(imageData.dates)+1,imageData.numTrialsByDate);
-    xlabel('num days','FontName','Times New Roman','FontSize',12);
-    ylabel('num trials','FontName','Times New Roman','FontSize',12);
-    
-    ax2 = subplot(2,2,2); hold on;
-    if ~isnan(imageData.performanceByConditionWCO(1,1)),plot(1,imageData.performanceByConditionWCO(1,1),'bd','MarkerFaceColor','b'),... 
-            plot([1 1],imageData.performanceByConditionWCO(2:3,1),'LineWidth',2,'color','b'), else plot(1,0.5,'bx'), end
-    if ~isnan(imageData.performanceByConditionWCO(1,2)),plot(2,imageData.performanceByConditionWCO(1,2),'rd','MarkerFaceColor','r'),...
-            plot([2 2],imageData.performanceByConditionWCO(2:3,2),'LineWidth',2,'color','r'), else plot(2,0.5,'rx'), end
-    if ~isnan(imageData.performanceByConditionWCO(1,3)),plot(3,imageData.performanceByConditionWCO(1,3),'bd','MarkerFaceColor','b'),...
-            plot([3 3],imageData.performanceByConditionWCO(2:3,3),'LineWidth',2,'color','b'), else plot(3,0.5,'bx'), end
-    if ~isnan(imageData.performanceByConditionWCO(1,4)),plot(4,imageData.performanceByConditionWCO(1,4),'rd','MarkerFaceColor','r'),...
-            plot([4 4],imageData.performanceByConditionWCO(2:3,4),'LineWidth',2,'color','r'), else plot(4,0.5,'rx'), end
-    if ~isnan(imageData.performanceByConditionWCO(1,5)),plot(5,imageData.performanceByConditionWCO(1,5),'kd','MarkerFaceColor','k'),...
-            plot([5 5],imageData.performanceByConditionWCO(2:3,5),'LineWidth',2,'color','k'), else plot(5,0.5,'kx'), end
-    plot([0.1 5.9],[0.5 0.5],'k-');
-    plot([0.1 5.9],[0.7 0.7],'k--');
-    set(gca,'xlim',[0 6],'ylim',[0.2 1],'xtick',[1 2 3 4 5],'xticklabel',{'PBS','CNO','Intact','Lesion','Other'});
-    ylabel('performance','FontName','Times New Roman','FontSize',12);
-    
-    ax3 = subplot(2,2,3:4); hold on;
-    plot([0 max(imageData.dates)-min(imageData.dates)+1],[0.5 0.5],'k');
-    plot([0 max(imageData.dates)-min(imageData.dates)+1],[0.7 0.7],'k--');
-    for i = 1:length(imageData.dates)
-        if ~isnan(imageData.dayMetCutOffCriterion(i))
-            if imageData.dayMetCutOffCriterion(i)
-                xloc = imageData.dates(i)-min(imageData.dates)+1;
-                plot(xloc,imageData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor','k','MarkerFaceColor','k');
-                plot([xloc xloc],imageData.performanceByDate(2:3,i),'color','k','LineWidth',2);
-            else
-                xloc = imageData.dates(i)-min(imageData.dates)+1;
-                plot(xloc,imageData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor',0.75*[1 1 1],'MarkerFaceColor',0.75*[1 1 1]);
-                plot([xloc xloc],imageData.performanceByDate(2:3,i),'color',0.75*[1 1 1],'LineWidth',2);
+if plotDetails.plotOn
+    switch plotDetails.plotWhere
+        case 'givenAxes'
+            axes(plotDetails.axHan); hold on;
+            title(sprintf('%s::OPTIMAL',mouseID));
+            switch plotDetails.requestedPlot
+                case 'trialsByDay'
+                case 'performanceByCondition'
+                case 'performanceByDay'
+                    plot([0 max(imageData.dates)-min(floor(data.compiledTrialRecords.date))+1],[0.5 0.5],'k');
+                    plot([0 max(imageData.dates)-min(floor(data.compiledTrialRecords.date))+1],[0.7 0.7],'k--');
+                    for i = 1:length(imageData.dates)
+                        if ~isnan(imageData.dayMetCutOffCriterion(i))
+                            if imageData.dayMetCutOffCriterion(i)
+                                xloc = imageData.dates(i)-min(floor(data.compiledTrialRecords.date))+1;
+                                plot(xloc,imageData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor','k','MarkerFaceColor','k');
+                                plot([xloc xloc],imageData.performanceByDate(2:3,i),'color','k','LineWidth',2);
+                            else
+                                xloc = imageData.dates(i)-min(floor(data.compiledTrialRecords.date))+1;
+                                plot(xloc,imageData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor',0.75*[1 1 1],'MarkerFaceColor',0.75*[1 1 1]);
+                                plot([xloc xloc],imageData.performanceByDate(2:3,i),'color',0.75*[1 1 1],'LineWidth',2);
+                            end
+                        else
+                            xloc = imageData.dates(i)-min(floor(data.compiledTrialRecords.date))+1;
+                            plot(xloc,0.5,'Marker','x','color','k');
+                        end
+                    end
+                    set(gca,'ylim',[0.2 1]);
+                    xlabel('day num','FontName','Times New Roman','FontSize',12)
+                    ylabel('performance','FontName','Times New Roman','FontSize',12)
+                case 'learningProcessOnlyAverage'
+                    disp('this assumes you have done the legwork to filter data appropriately. If not, the issue is on your head');
+                    hold on;
+                    
+                    corrects = imageData.correct;
+                    whichToRemove = isnan(corrects) | ~ismember(imageData.date,filters.imFilter);
+                    corrects(whichToRemove) = [];
+                    dates = imageData.date;
+                    dates(whichToRemove) = [];
+                    runningAverage = nan(size(corrects));
+                    pHats = runningAverage;
+                    pCITop = pHats;
+                    pCIBot = pHats;
+                    for trNum = 1:length(corrects)
+                        if trNum<100
+                            relevant = corrects(1:trNum);
+                            L = trNum;
+                            p = sum(relevant);
+                            [pHat pCI] = binofit(p,L);
+                            pHats(trNum) = pHat;
+                            pCITop(trNum) = pCI(2);
+                            pCIBot(trNum) = pCI(1);
+                        else
+                            relevant = corrects(trNum-99:trNum);
+                            L = 100;
+                            p = sum(relevant);
+                            [pHat pCI] = binofit(p,L);
+                            pHats(trNum) = pHat;
+                            pCITop(trNum) = pCI(2);
+                            pCIBot(trNum) = pCI(1);
+                        end
+                    end
+                    plot(50:length(corrects),pHats(50:end),'color',[0.75 0.75 0.75],'linewidth',1);hold on;
+                    plot([0,length(corrects)],[0.5 0.5],'k--');
+                    currXLim = get(gca,'xlim');
+                    set(gca,'xlim',[0,max(currXLim(2),length(corrects))],'ylim',[0.2 1]);
+                    
+                    threshold = 0.8;
+                    pointsAboveThreshold = pCITop>threshold;
+                    thresholdTrial = find(abs(filter(ones(1,100)/100,1,pointsAboveThreshold)-1)<1e-6,1,'first');
+                    plot(thresholdTrial,threshold,'rx');
+                    imageData.trialsToThreshold = thresholdTrial;
+                    
+                    % days
+                    uniqDates = unique(dates);
+                    imageData.dayNumAtThreshold = find(uniqDates==dates(thresholdTrial),1,'first');
+                    
+                    
+                otherwise
+                    error('wtf!');
             end
-        else
-            xloc = imageData.dates(i)-min(imageData.dates)+1;
-            plot(xloc,0.5,'Marker','x','color','k');
-        end
+        case {'givenFigure','makeFigure'}
+            figName = sprintf('%s::IMAGES',mouseID);
+            f = figure('name',figName);
+            ax1 = subplot(2,2,1); hold on;
+            bar(imageData.dates-min(imageData.dates)+1,imageData.numTrialsByDate);
+            xlabel('num days','FontName','Times New Roman','FontSize',12);
+            ylabel('num trials','FontName','Times New Roman','FontSize',12);
+            
+            ax2 = subplot(2,2,2); hold on;
+            if ~isnan(imageData.performanceByConditionWCO(1,1)),plot(1,imageData.performanceByConditionWCO(1,1),'bd','MarkerFaceColor','b'),...
+                    plot([1 1],imageData.performanceByConditionWCO(2:3,1),'LineWidth',2,'color','b'), else plot(1,0.5,'bx'), end
+            if ~isnan(imageData.performanceByConditionWCO(1,2)),plot(2,imageData.performanceByConditionWCO(1,2),'rd','MarkerFaceColor','r'),...
+                    plot([2 2],imageData.performanceByConditionWCO(2:3,2),'LineWidth',2,'color','r'), else plot(2,0.5,'rx'), end
+            if ~isnan(imageData.performanceByConditionWCO(1,3)),plot(3,imageData.performanceByConditionWCO(1,3),'bd','MarkerFaceColor','b'),...
+                    plot([3 3],imageData.performanceByConditionWCO(2:3,3),'LineWidth',2,'color','b'), else plot(3,0.5,'bx'), end
+            if ~isnan(imageData.performanceByConditionWCO(1,4)),plot(4,imageData.performanceByConditionWCO(1,4),'rd','MarkerFaceColor','r'),...
+                    plot([4 4],imageData.performanceByConditionWCO(2:3,4),'LineWidth',2,'color','r'), else plot(4,0.5,'rx'), end
+            if ~isnan(imageData.performanceByConditionWCO(1,5)),plot(5,imageData.performanceByConditionWCO(1,5),'kd','MarkerFaceColor','k'),...
+                    plot([5 5],imageData.performanceByConditionWCO(2:3,5),'LineWidth',2,'color','k'), else plot(5,0.5,'kx'), end
+            plot([0.1 5.9],[0.5 0.5],'k-');
+            plot([0.1 5.9],[0.7 0.7],'k--');
+            set(gca,'xlim',[0 6],'ylim',[0.2 1],'xtick',[1 2 3 4 5],'xticklabel',{'PBS','CNO','Intact','Lesion','Other'});
+            ylabel('performance','FontName','Times New Roman','FontSize',12);
+            
+            ax3 = subplot(2,2,3:4); hold on;
+            plot([0 max(imageData.dates)-min(imageData.dates)+1],[0.5 0.5],'k');
+            plot([0 max(imageData.dates)-min(imageData.dates)+1],[0.7 0.7],'k--');
+            for i = 1:length(imageData.dates)
+                if ~isnan(imageData.dayMetCutOffCriterion(i))
+                    if imageData.dayMetCutOffCriterion(i)
+                        xloc = imageData.dates(i)-min(imageData.dates)+1;
+                        plot(xloc,imageData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor','k','MarkerFaceColor','k');
+                        plot([xloc xloc],imageData.performanceByDate(2:3,i),'color','k','LineWidth',2);
+                    else
+                        xloc = imageData.dates(i)-min(imageData.dates)+1;
+                        plot(xloc,imageData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor',0.75*[1 1 1],'MarkerFaceColor',0.75*[1 1 1]);
+                        plot([xloc xloc],imageData.performanceByDate(2:3,i),'color',0.75*[1 1 1],'LineWidth',2);
+                    end
+                else
+                    xloc = imageData.dates(i)-min(imageData.dates)+1;
+                    plot(xloc,0.5,'Marker','x','color','k');
+                end
+            end
+            set(ax3,'ylim',[0.2 1]);
+            xlabel('day num','FontName','Times New Roman','FontSize',12);
+            ylabel('performance','FontName','Times New Roman','FontSize',12);
     end
-    set(ax3,'ylim',[0.2 1]);
-    xlabel('day num','FontName','Times New Roman','FontSize',12);
-    ylabel('performance','FontName','Times New Roman','FontSize',12);
 end

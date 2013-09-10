@@ -185,10 +185,16 @@ if plotDetails.plotOn
                 case 'performanceByCondition'
                     conditionColor = {'b','r','b','r','k'};
                     for i = 1:size(ctrData.performanceByConditionWCO,3)
-                        for j = 1:size(ctrData.performanceByConditionWCO,1)
-                            if ~isnan(ctrData.performanceByConditionWCO(j,1,i))
-                                plot(ctrData.contrasts(j),ctrData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
-                                plot([ctrData.contrasts(j) ctrData.contrasts(j)],[ctrData.performanceByConditionWCO(j,2,i) ctrData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                        if isfield(plotDetails,'plotMeansOnly') && plotDetails.plotMeansOnly
+                            means = ctrData.performanceByConditionWCO(:,1,i);
+                            which = ~isnan(ctrData.performanceByConditionWCO(:,1,i));
+                            plot(ctrData.contrasts(which),means(which),'color',conditionColor{i})
+                        else
+                            for j = 1:size(ctrData.performanceByConditionWCO,1)
+                                if ~isnan(ctrData.performanceByConditionWCO(j,1,i))
+                                    plot(ctrData.contrasts(j),ctrData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
+                                    plot([ctrData.contrasts(j) ctrData.contrasts(j)],[ctrData.performanceByConditionWCO(j,2,i) ctrData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                                end
                             end
                         end
                     end

@@ -184,21 +184,21 @@ if plotDetails.plotOn
                             ylabel('performance','FontName','Times New Roman','FontSize',12);
                     end
                 case 'performanceByDay'
-                    plot([0 max(optRevData.dates)-min(optRevData.dates)+1],[0.5 0.5],'k');
-                    plot([0 max(optRevData.dates)-min(optRevData.dates)+1],[0.7 0.7],'k--');
+                    plot([0 max(optRevData.dates)-min(floor(data.compiledTrialRecords.date))+1],[0.5 0.5],'k');
+                    plot([0 max(optRevData.dates)-min(floor(data.compiledTrialRecords.date))+1],[0.7 0.7],'k--');
                     for i = 1:length(optRevData.dates)
                         if ~isnan(optRevData.dayMetCutOffCriterion(i))
                             if optRevData.dayMetCutOffCriterion(i)
-                                xloc = optRevData.dates(i)-min(optRevData.dates)+1;
+                                xloc = optRevData.dates(i)-min(floor(data.compiledTrialRecords.date))+1;
                                 plot(xloc,optRevData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor','k','MarkerFaceColor','k');
                                 plot([xloc xloc],optRevData.performanceByDate(2:3,i),'color','k','LineWidth',2);
                             else
-                                xloc = optRevData.dates(i)-min(optRevData.dates)+1;
+                                xloc = optRevData.dates(i)-min(floor(data.compiledTrialRecords.date))+1;
                                 plot(xloc,optRevData.performanceByDate(1,i),'Marker','d','MarkerEdgeColor',0.75*[1 1 1],'MarkerFaceColor',0.75*[1 1 1]);
                                 plot([xloc xloc],optRevData.performanceByDate(2:3,i),'color',0.75*[1 1 1],'LineWidth',2);
                             end
                         else
-                            xloc = optRevData.dates(i)-min(optRevData.dates)+1;
+                            xloc = optRevData.dates(i)-min(floor(data.compiledTrialRecords.date))+1;
                             plot(xloc,0.5,'Marker','x','color','k');
                         end
                     end

@@ -1,4 +1,4 @@
-function out = collateData(compiledFilesDir,mouseID)
+function out = collateData(compiledFilesDir,mouseID,localSaveID)
 out = load(findCompiledRecordsForSubject(compiledFilesDir{1},mouseID{1}));
 maxLUTNum = length(out.compiledLUT);
 maxTrialNum = max(out.compiledTrialRecords.trialNumber);
@@ -75,6 +75,26 @@ for i = 2:length(mouseID)
                     out.compiledDetails(whichInOlder).records.radii                = [out.compiledDetails(whichInOlder).records.radii                 tempCurr.compiledDetails(j).records.radii               ];
                     out.compiledDetails(whichInOlder).records.annuli               = [out.compiledDetails(whichInOlder).records.annuli                tempCurr.compiledDetails(j).records.annuli              ];
                     out.compiledDetails(whichInOlder).records.afcGratingType       = [out.compiledDetails(whichInOlder).records.afcGratingType        tempCurr.compiledDetails(j).records.afcGratingType      ];
+                case 'afcGratingsWithOrientedSurround'
+                    tempCurr.compiledDetails(j).records.afcGratingType = tempCurr.compiledDetails(j).records.afcGratingType+maxLUTNum;
+                    
+                    out.compiledDetails(whichInOlder).records.correctionTrial               = [out.compiledDetails(whichInOlder).records.correctionTrial                tempCurr.compiledDetails(j).records.correctionTrial         ];
+                    out.compiledDetails(whichInOlder).records.pctCorrectionTrials           = [out.compiledDetails(whichInOlder).records.pctCorrectionTrials            tempCurr.compiledDetails(j).records.pctCorrectionTrials     ];
+                    out.compiledDetails(whichInOlder).records.doCombos                      = [out.compiledDetails(whichInOlder).records.doCombos                       tempCurr.compiledDetails(j).records.doCombos                ];
+                    out.compiledDetails(whichInOlder).records.pixPerCycsCenter              = [out.compiledDetails(whichInOlder).records.pixPerCycsCenter               tempCurr.compiledDetails(j).records.pixPerCycsCenter        ];
+                    out.compiledDetails(whichInOlder).records.driftfrequenciesCenter        = [out.compiledDetails(whichInOlder).records.driftfrequenciesCenter         tempCurr.compiledDetails(j).records.driftfrequenciesCenter  ];
+                    out.compiledDetails(whichInOlder).records.orientationsCenter            = [out.compiledDetails(whichInOlder).records.orientationsCenter             tempCurr.compiledDetails(j).records.orientationsCenter      ];
+                    out.compiledDetails(whichInOlder).records.phasesCenter                  = [out.compiledDetails(whichInOlder).records.phasesCenter                   tempCurr.compiledDetails(j).records.phasesCenter            ];
+                    out.compiledDetails(whichInOlder).records.contrastsCenter               = [out.compiledDetails(whichInOlder).records.contrastsCenter                tempCurr.compiledDetails(j).records.contrastsCenter         ];
+                    out.compiledDetails(whichInOlder).records.radiiCenter                   = [out.compiledDetails(whichInOlder).records.radiiCenter                    tempCurr.compiledDetails(j).records.radiiCenter             ];
+                    out.compiledDetails(whichInOlder).records.pixPerCycsSurround            = [out.compiledDetails(whichInOlder).records.pixPerCycsSurround             tempCurr.compiledDetails(j).records.pixPerCycsSurround      ];
+                    out.compiledDetails(whichInOlder).records.driftfrequenciesSurround      = [out.compiledDetails(whichInOlder).records.driftfrequenciesSurround       tempCurr.compiledDetails(j).records.driftfrequenciesSurround];
+                    out.compiledDetails(whichInOlder).records.orientationsSurround          = [out.compiledDetails(whichInOlder).records.orientationsSurround           tempCurr.compiledDetails(j).records.orientationsSurround    ];
+                    out.compiledDetails(whichInOlder).records.phasesSurround                = [out.compiledDetails(whichInOlder).records.phasesSurround                 tempCurr.compiledDetails(j).records.phasesSurround          ];
+                    out.compiledDetails(whichInOlder).records.contrastsSurround             = [out.compiledDetails(whichInOlder).records.contrastsSurround              tempCurr.compiledDetails(j).records.contrastsSurround       ];
+                    out.compiledDetails(whichInOlder).records.radiiSurround                 = [out.compiledDetails(whichInOlder).records.radiiSurround                  tempCurr.compiledDetails(j).records.radiiSurround           ];
+                    out.compiledDetails(whichInOlder).records.maxDuration                   = [out.compiledDetails(whichInOlder).records.maxDuration                    tempCurr.compiledDetails(j).records.maxDuration             ];
+                    out.compiledDetails(whichInOlder).records.afcGratingType                = [out.compiledDetails(whichInOlder).records.afcGratingType                 tempCurr.compiledDetails(j).records.afcGratingType          ];
                 otherwise
                     currClassName
                     error('dont knowhow to deal with this class');
@@ -87,6 +107,8 @@ for i = 2:length(mouseID)
                 case 'images'
                 case 'afcGratings'
                     tempCurr.compiledDetails(j).records.afcGratingType = tempCurr.compiledDetails(j).records.afcGratingType+maxLUTNum;
+                case 'afcGratingsWithOrientedSurround'
+                    tempCurr.compiledDetails(j).records.afcGratingType = tempCurr.compiledDetails(j).records.afcGratingType+maxLUTNum;
                 otherwise
                     currClassName
                     error('dont knowhow to deal with this class');
@@ -98,5 +120,16 @@ for i = 2:length(mouseID)
     % update the running tallys now
     maxLUTNum = length(out.compiledLUT);
     maxTrialNum = max(out.compiledTrialRecords.trialNumber);
+end
+if nargin==3
+    saveLoc = fullfile(localSaveID{1},sprintf('%s.compiledTrialRecords.1-%d.mat',localSaveID{2},length(out.compiledTrialRecords.trialNumber)))
+    compiledTrialRecords = out.compiledTrialRecords;
+    compiledDetails = out.compiledDetails;
+    compiledLUT = out.compiledLUT;
+    save(saveLoc,'compiledTrialRecords','compiledDetails','compiledLUT');
+    keyboard
+    clear compiledTrialRecords
+    clear compiledDetails
+    clear compiledLUT
 end
 end
