@@ -36,7 +36,7 @@ if ~exist('backupToServer','var') || isempty(backupToServer)
     switch b
         case 'A41F7278B4DE' %gLab-Behavior1
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Permanent';
-        case '001D7DA80EFC' %gLab-Behavior2
+        case 'A41F729213E2' %gLab-Behavior2 'A41F729213E2','001D7DA80EFC'
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Permanent';
         case 'A41F726EC11C' %gLab-Behavior3
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Permanent';

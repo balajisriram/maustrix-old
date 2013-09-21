@@ -422,7 +422,7 @@ switch mac
         if whichBox==1
             correctBox = true;
         end
-    case '001D7DA80EFC' %gLab-Behavior2
+    case 'A41F729213E2' %gLab-Behavior2
         if whichBox==2
             correctBox = true;
         end
