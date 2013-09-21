@@ -156,7 +156,7 @@ switch id
     case '60'
         % nothing changes here, but might later
     case '61'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 9/20
     case '62'
         % nothing changes here, but might later
     case '63'
@@ -180,15 +180,16 @@ switch id
     case '84'
         % nothing changes here, but might later
     case '86'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 9/20
     case '87'
+        out.msPenalty = 10000;
         % nothing changes here, but might later
     case '90'
         % nothing changes here, but might later
     case '91'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 9/20
     case '92'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 9/20
     case '93'
         % nothing changes here, but might later
     case '95'
@@ -204,9 +205,9 @@ switch id
     case '200'
         % nothing changes here, but might later
     case '201'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; % changed 9/20
     case '202'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; % changed 9/20
     case '203'
         % nothing changes here, but might later
     case '204'
@@ -222,7 +223,7 @@ switch id
     case '209'
         % nothing changes here, but might later
     case '210'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; % changed 9/20
     case '211'
         % nothing changes here, but might later
     case '212'
@@ -234,6 +235,7 @@ switch id
     case '215'
         % nothing changes here, but might later
     case '216'
+        out.msPenalty = 10000;
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later

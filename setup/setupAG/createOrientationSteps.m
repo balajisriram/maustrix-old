@@ -216,13 +216,16 @@ switch id
         out.rewardScalar = 0.05; % changed to 0.1 on 8/15, 0,05 on 8/22
         out.msPenalty = 15000; % changed on 8/15
     case '97'
-        out.rewardScalar = 0.10; % changed 8/22
+        out.rewardScalar = 0.05; 
+        % changed to 0.1 8/22
+        % changed to 0.05 9/20
     case '98'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % changed to 0.1 9/20
     case '99'
         out.msPenalty = 15000; % changed on 8/22
     case '200'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed on 9/20
     case '201'
         % nothing changes here, but might later
     case '202'
@@ -231,31 +234,44 @@ switch id
         out.rewardScalar = 0.05; % changed on 8/15
         out.msPenalty = 20000; % changed 8/22
     case '204'
-        out.rewardScalar = 0.10; % changed 8/5
+        out.rewardScalar = 0.05; 
+        % changed to 0.1 8/5
+        % changed to 0.05 on 9/20
         out.msPenalty = 10000; % changed 8/22
     case '205'
-        out.rewardScalar = 0.10; % changed 8/22
+        out.rewardScalar = 0.05; 
+        % changed 8/22 to 0.1
+        % changed to 0.05 on 9/20
     case '206'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.10; % changed on 9/20
     case '207'
-        out.rewardScalar = 0.10; % changed on 8/5
-        out.msPenalty = 10000 % changed on 8/22
+        out.rewardScalar = 0.05; 
+        % changed to 0.1 on 8/5
+        % changed to 0.05 on 9/20
+        out.msPenalty = 10000; % changed on 8/22
     case '208'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % changed to 0.1 on 9/20
     case '209'
         out.rewardScalar = 0.10; % changed 8/22
+        out.msPenalty = 10000; % changed on 9/20
     case '210'
         out.rewardScalar = 0.10; % changed 8/22
     case '211'
         out.msPenalty = 10000; % changed 8/22
     case '212'
         out.rewardScalar = 0.10; % changed 8/22
+        out.msPenalty = 10000; % changed 9/20
     case '213'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % changed to 0.1 on 9/20
     case '214'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; 
+        % changed to 0.1 on 9/20
     case '215'
-        out.rewardScalar = 0.10; % changed 8/22
+        out.rewardScalar = 0.05; 
+        % changed to 0.1 on 8/22
+        % changed to 0.05 on 9/20
     case '216'
         out.rewardScalar = 0.10; % changed 8/22
         out.msPenalty = 10000; 

@@ -169,13 +169,14 @@ switch id
         % moved to step 7 week of 7/1
         error('not being run');
     case '60'
-        step = 22; 
+        step = 23; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
+        % varied orientation starting 9/20
     case '61'
         step = 19;
         % back from the injections. going to run 8/19
