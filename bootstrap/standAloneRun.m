@@ -192,7 +192,8 @@ try
         dailyAnalysisPath = fullfile(fileparts(getStandAlonePath(rx)),'DailyAnalysis');
         mkdir(dailyAnalysisPath);
         compileDetailedRecords([],{subjectID},[],getStandAlonePath(rx),compilePath);
-        plotAndSaveDailyReport(compilePath,dailyAnalysisPath,subjectID);
+        % removed daily plotting and subject analysis
+%         plotAndSaveDailyReport(compilePath,dailyAnalysisPath,subjectID);
         subjectAnalysis(compilePath);
     end
     cleanup;
