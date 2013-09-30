@@ -307,12 +307,13 @@ switch id
         % graduated to step 8 6/18
         % graduated to step 3 7/8
     case '200'
-        step = 3;
+        step = 19;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
         % back from injections. starting 8/19
         % all good at step 8. Continue at step 3 8/22
+        % showing small aperture starting 9/30
     case '201'
         step = 19;
         % graduated to step 2 6/12

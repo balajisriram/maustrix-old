@@ -55,8 +55,8 @@ switch b
         maxWidth = 1600;
         maxHeight = 900;
     case 'A41F729213E2' %gLab-Behavior2
-        maxWidth = 1024;
-        maxHeight = 768;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case 'A41F726EC11C' %gLab-Behavior3
         maxWidth = 1024;
         maxHeight = 768;
