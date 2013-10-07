@@ -92,26 +92,26 @@ out.thresh=.00005;
 [a, b] = getMACaddress();
 switch b
     case 'A41F7278B4DE' %gLab-Behavior1
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case 'A41F729213E2' %gLab-Behavior2
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case 'A41F726EC11C' %gLab-Behavior3
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case '7845C4256F4C' %gLab-Behavior4
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1280;
+        maxHeight = 720;
     case '7845C42558DF' %gLab-Behavior5
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1280;
+        maxHeight = 720;
     case 'BC305BD38BFB' %ephys-stim
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case '180373337162' %ephys-data
-        out.maxWidth = 1280;
-        out.maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     otherwise
         a
         b
