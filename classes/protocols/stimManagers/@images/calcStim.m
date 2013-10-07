@@ -4,7 +4,13 @@ function [stimulus,updateSM,resolutionIndex,preRequestStim,preResponseStim,discr
 % see ratrixPath\documentation\stimManager.calcStim.txt for argument specification (applies to calcStims of all stimManagers)
 trialManagerClass = class(trialManager);
 LUT=makeStandardLUT(LUTbits);
-[resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+[junk, mac] = getMACaddress();
+switch mac
+    case {'A41F7278B4DE','A41F729213E2','A41F726EC11C', '7845C4256F4C', '7845C42558DF'} %gLab-Behavior rigs
+        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[50],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+    otherwise 
+        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+end
 
 type = stimulus.drawingMode; % 12/9/08 - user can specify to use 'cache' (default) or 'expert' mode (optional)
 indexPulses=[];

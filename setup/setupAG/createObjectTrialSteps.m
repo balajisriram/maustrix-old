@@ -71,26 +71,26 @@ drawingMode='expert';
 [a,b] = getMACaddress();
 switch b
     case 'A41F7278B4DE' %gLab-Behavior1
-        maxWidth = 1600;
-        maxHeight = 900;
+        maxWidth = 1280;
+        maxHeight = 720;
     case 'A41F729213E2' %gLab-Behavior2
-        maxWidth = 1920;
-        maxHeight = 1080;
+        maxWidth = 1280;
+        maxHeight = 720;
     case 'A41F726EC11C' %gLab-Behavior3
-        maxWidth = 1024;
-        maxHeight = 768;
+        maxWidth = 1280;
+        maxHeight = 720;
     case '7845C4256F4C' %gLab-Behavior4
-        maxWidth = 1920;
-        maxHeight = 1080;
+        maxWidth = 1280;
+        maxHeight = 720;
     case '7845C42558DF' %gLab-Behavior5
-        maxWidth = 1920;
-        maxHeight = 1080;
+        maxWidth = 1280;
+        maxHeight = 720;
     case 'BC305BD38BFB' %ephys-stim
-        maxWidth = 1920;
-        maxHeight = 1080;
+        maxWidth = 1280;
+        maxHeight = 720;
     case '180373337162' %ephys-data
-        maxWidth = 1920;
-        maxHeight = 1080;
+        maxWidth = 1280;
+        maxHeight = 720;
     otherwise
         warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
         keyboard;
