@@ -80,11 +80,11 @@ switch b
         maxWidth = 1920;
         maxHeight = 1080;
     case '7845C4256F4C' %gLab-Behavior4
-        maxWidth = 1280;
-        maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case '7845C42558DF' %gLab-Behavior5
-        maxWidth = 1280;
-        maxHeight = 720;
+        maxWidth = 1920;
+        maxHeight = 1080;
     case 'BC305BD38BFB' %ephys-stim
         maxWidth = 1920;
         maxHeight = 1080;

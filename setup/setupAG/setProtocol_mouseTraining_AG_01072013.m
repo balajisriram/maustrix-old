@@ -190,7 +190,7 @@ switch id
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
     case '63'
-        step = 23; 
+        step = 22; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -198,6 +198,7 @@ switch id
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
+        % changed back to varied contrast with aperture starting 10/9
     case '64'
         step = 23; 
         % changed to step 3 for 6/10 from step 8
@@ -208,7 +209,7 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
     case '65'
-        step = 23; 
+        step = 22; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -216,6 +217,7 @@ switch id
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
+        % changed back to varie dcontrast with aperture starting 10/9
     case '66'
         step = 23; 
         % changed protocol for 6/10
@@ -236,7 +238,7 @@ switch id
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69'
-        step = 23; 
+        step = 22; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
@@ -245,6 +247,7 @@ switch id
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10 
+        % changed back to varied contrast with aperture starting 10/9
     case '70'
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
@@ -315,13 +318,14 @@ switch id
         % all good at step 8. Continue at step 3 8/22
         % showing small aperture starting 9/30
     case '201'
-        step = 19;
+        step = 22;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
         % back from injections. starting 8/19
         % all good at step 8. Continue at step 3 8/22
         % aperture task starting 9/10
+        % starting varied contrast with aperture starting 10/9
     case '202'
         step = 19;
         % graduated to step 2 6/12
