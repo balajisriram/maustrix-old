@@ -40,6 +40,9 @@ try
     %4) Be pretty verbose about information and hints to optimize your code and system.
     %5) Levels 5 and higher enable very verbose debugging output, mostly useful for debugging PTB itself, not generally useful for end-users.
     
+    Screen('Preference', 'ConserveVRAM', 4); % added by BAS. conserves VRAM levels to prevent weiird errors XXXX remove this if there is a problem
+    
+    
     preScreen=GetSecs();
     if isempty(imagingTasks)
         % do not do this even if you "know" what you are doing
