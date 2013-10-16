@@ -201,6 +201,24 @@ try
     clear all
 catch ex
     disp(['CAUGHT ERROR: ' getReport(ex,'extended')])
+    
+    [~, b] = getMACaddress();
+    switch b
+        case 'A41F7278B4DE' %gLab-Behavior1
+            gmail('balajisriram@gmail.com','Screen error in Rig 1');
+        case 'A41F729213E2' %gLab-Behavior2
+            gmail('balajisriram@gmail.com','Screen error in Rig 2');
+        case 'A41F726EC11C' %gLab-Behavior3
+            gmail('balajisriram@gmail.com','Screen error in Rig 3');
+        case '7845C4256F4C' %gLab-Behavior4
+            gmail('balajisriram@gmail.com','Screen error in Rig 4');
+        case '7845C42558DF' %gLab-Behavior5
+            gmail('balajisriram@gmail.com','Screen error in Rig 5');
+        otherwise
+            warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+            keyboard;
+    end
+    
     cleanup;
     rethrow(ex)
     % testing
