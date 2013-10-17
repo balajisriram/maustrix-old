@@ -218,11 +218,10 @@ catch ex
             warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
             keyboard;
     end
-    
+    warning('this is weird, but going to retry starting the stimulus again.... will this work?')
+    standAloneRun(ratrixPath,setupFile,subjectID,recordInOracle,backupToServer,testMode);
     cleanup;
     rethrow(ex)
-    % testing
-    clear all
 end
 
 function cleanup
