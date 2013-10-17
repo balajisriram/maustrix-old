@@ -1,4 +1,14 @@
 function gmail(address,subject,message)
+if ~exist('address','var')
+    error('gmail:variableRequired','address is missing');
+end
+if ~exist('subject','var')
+    error('gmail:variableRequired','subject is missing');
+end
+if ~exist('message','var')
+    warning('gmail:variablePreferred','message is missing.using default message');
+    message = '';
+end
 % Define these variables appropriately:
 mail = 'ghoshlab@gmail.com'; %Your GMail email address
 password = 'cortex'; %Your GMail password
