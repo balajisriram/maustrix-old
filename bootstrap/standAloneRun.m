@@ -203,17 +203,19 @@ catch ex
     disp(['CAUGHT ERROR: ' getReport(ex,'extended')])
     
     [~, b] = getMACaddress();
+    c = clock;
+    message = sprintf('Failed for subject:: %s at time::%d:%d on %d-%d-%d',subjectID,c(4),c(5),c(2),c(3),c(1));
     switch b
         case 'A41F7278B4DE' %gLab-Behavior1
-            gmail('balajisriram@gmail.com','Screen error in Rig 1');
+            gmail('balajisriram@gmail.com','Screen error in Rig 1',message);
         case 'A41F729213E2' %gLab-Behavior2
-            gmail('balajisriram@gmail.com','Screen error in Rig 2');
+            gmail('balajisriram@gmail.com','Screen error in Rig 2',message);
         case 'A41F726EC11C' %gLab-Behavior3
-            gmail('balajisriram@gmail.com','Screen error in Rig 3');
+            gmail('balajisriram@gmail.com','Screen error in Rig 3',message);
         case '7845C4256F4C' %gLab-Behavior4
-            gmail('balajisriram@gmail.com','Screen error in Rig 4');
+            gmail('balajisriram@gmail.com','Screen error in Rig 4',message);
         case '7845C42558DF' %gLab-Behavior5
-            gmail('balajisriram@gmail.com','Screen error in Rig 5');
+            gmail('balajisriram@gmail.com','Screen error in Rig 5',message);
         otherwise
             warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
             keyboard;
