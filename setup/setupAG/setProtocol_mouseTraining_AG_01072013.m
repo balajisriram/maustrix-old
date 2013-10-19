@@ -415,7 +415,7 @@ end
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
 Box1Subjects = {'86','87','205','209','210','211'};
 Box2Subjects = {'60','92','97','98','212','216'};
-Box3Subjects = {'91','99','206','207','208','213','214'};
+Box3Subjects = {'91','206','207','208','213','214'};
 Box4Subjects = {'61','63','64','65','66','203','204'};
 Box5Subjects = {'69','95','96','200','201','202','215'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};

@@ -1,4 +1,4 @@
-function r=doTrials(s,r,n,rn,trustOsRecordFiles)
+function [r, exitByFinishingTrialQuota]=doTrials(s,r,n,rn,trustOsRecordFiles)
 %this will doTrials on station=(s) of ratrix=(r).
 %n=number of trials, where 0 means repeat indefinitely
 %rn is a ratrix network object, which only the server uses, otherwise leave empty
@@ -10,7 +10,7 @@ function r=doTrials(s,r,n,rn,trustOsRecordFiles)
 if ~exist('trustOsRecordFiles','var')
     trustOsRecordFiles=false;
 end
-
+exitByFinishingTrialQuota = false;
 if isa(r,'ratrix') && (isempty(rn) || isa(rn,'rnet'))
     if ~isempty(getStationByID(r,s.id))
 
@@ -127,7 +127,7 @@ if isa(r,'ratrix') && (isempty(rn) || isa(rn,'rnet'))
 
                     if n>0 && trialNum>=n
                         keepWorking=0;
-
+                        exitByFinishingTrialQuota = true;
                     end
                 end
 
