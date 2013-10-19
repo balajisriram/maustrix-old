@@ -183,7 +183,7 @@ try
     %struct(st(1))
     maxTrialsPerSession = 250;
     exitByFinishingTrialQuota = true;
-    if exitByFinishingTrialQuota
+    while exitByFinishingTrialQuota
         [rx,exitByFinishingTrialQuota]=doTrials(st(1),rx,maxTrialsPerSession,[],~recordInOracle);
         replicateTrialRecords(replicationPaths,deleteOnSuccess, recordInOracle);
     end
