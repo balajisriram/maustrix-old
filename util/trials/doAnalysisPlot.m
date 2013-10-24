@@ -249,6 +249,12 @@ else
         processedRecords.info.subject={subjectID};
 
         switch type
+            case 'animal status'
+                set(gcf,'position',[657 247 1107 420]);
+                ax1 = subplot (1,2,1);
+                doPlot('plotTrialsPerDay',processedRecords,[],[],[],[],[],~includeKeyboard);
+                ax2 = subplot(1,2,2);
+                doPlot('percentCorrect',processedRecords,[],[],[],[],[],~includeKeyboard);
             case 'trials per day'
                 doPlot('plotTrialsPerDay',processedRecords,[],[],[],[],[],~includeKeyboard);
             case 'performance'

@@ -214,8 +214,9 @@ switch id
     case '95'
         out.rewardScalar = 0.05; % changed to 0.1 on 7/2
         % reduced to 0.05 10/2
-        out.msPenalty = 15000; % changed on 8/22
+        out.msPenalty = 20000; % changed on 8/22
         % increased timeout to 15s 10/2
+        % increased timeout to 20 s 10/24
     case '96'
         out.rewardScalar = 0.05; % changed to 0.1 on 8/15, 0,05 on 8/22
         out.msPenalty = 20000; % changed on 8/15
@@ -224,10 +225,12 @@ switch id
         out.rewardScalar = 0.05; 
         % changed to 0.1 8/22
         % changed to 0.05 9/20
+        out.msPenalty = 10000; % changed on 10/24
     case '98'
         out.rewardScalar = 0.05; 
         % changed to 0.1 9/20
         % changed to 0.05 10/2
+        out.msPenalty = 10000; % changed on 10/24
     case '99'
         out.rewardScalar = 0.1; % reduced 10/2
         out.msPenalty = 20000; % changed on 8/22
@@ -245,16 +248,19 @@ switch id
         out.rewardScalar = 0.05; 
         % changed to 0.1 8/5
         % changed to 0.05 on 9/20
-        out.msPenalty = 15000; % changed 8/22
+        out.msPenalty = 20000; % changed 8/22
         % increased penalty to 15 s 10/2
+        % increased penalty to 20 s 10/24
     case '205'
         out.rewardScalar = 0.05;
-        out.msPenalty = 10000; % increased 10/2
+        out.msPenalty = 15000; % increased 10/2
         % changed 8/22 to 0.1
         % changed to 0.05 on 9/20
+        % increased penalty to 15 seconds
     case '206'
         out.rewardScalar = 0.05; % changed on 9/20
         % reduced to 0.05 10/2
+        out.msPenalty = 10000; % increased 10/24
     case '207'
         out.rewardScalar = 0.05; 
         % changed to 0.1 on 8/5
@@ -265,6 +271,7 @@ switch id
         out.rewardScalar = 0.05; 
         % changed to 0.1 on 9/20
         % reduced reward to 0.05 on 10/2
+        out.msPenalty = 10000; % changed on 10/24
     case '209'
         out.rewardScalar = 0.10; % changed 8/22
         out.msPenalty = 10000; % changed on 9/20
@@ -280,11 +287,13 @@ switch id
     case '213'
         out.rewardScalar = 0.1; 
         % changed to 0.1 on 9/20
-        out.msPenalty = 10000; % cahnged 10/2
+        out.msPenalty = 15000; % cahnged 10/2
+        % changed 10/24
     case '214'
-        out.rewardScalar = 0.1; 
+        out.rewardScalar = 0.05; 
         % changed to 0.1 on 9/20
-        out.msPenalty = 10000; % cahnged 10/2
+        % reduced reward scalar 10/24
+        out.msPenalty = 15000; % cahnged 10/24
     case '215'
         out.rewardScalar = 0.05;
         out.msPenalty = 10000; % changed 10/2

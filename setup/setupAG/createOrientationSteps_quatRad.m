@@ -156,7 +156,9 @@ switch id
     case '60'
         % nothing changes here, but might later
     case '61'
-        out.rewardScalar = 0.1; % changed 9/20
+        out.rewardScalar = 0.05; % changed 9/20
+        % reduced on 10/24
+        out.msPenalty = 10000; % increased 10/24
     case '62'
         % nothing changes here, but might later
     case '63'
@@ -186,6 +188,7 @@ switch id
         out.msPenalty = 20000;
         % increased penalty to 20 s 10/2
         % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 10/24
     case '90'
         % nothing changes here, but might later
     case '91'
@@ -206,8 +209,10 @@ switch id
     case '99'
         % nothing changes here, but might later
     case '200'
-        out.rewardScalar = 0.1; % changed 10/2
-        out.msPenalty = 10000; % changed 10/2
+        out.rewardScalar = 0.05; % changed 10/2
+        % changed reward on 10/24
+        out.msPenalty = 15000; % changed 10/2
+        % changed penalty to 15 s on 10/24
     case '201'
         out.rewardScalar = 0.1; % changed 10/2
         out.msPenalty = 10000; % changed 9/20
@@ -226,20 +231,24 @@ switch id
     case '208'
         % nothing changes here, but might later
     case '209'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 10/24
+        out.msPenalty = 10000; % changed 10/24
     case '210'
         out.msPenalty = 20000; % changed 9/20
         % increased to 20 s 10/20
+        out.rewardScalar = 0.1; % changed 10/24 - halved reward to increase trials run
     case '211'
         % nothing changes here, but might later
     case '212'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; % changed 10/24
+        out.rewardScalar = 0.1; % changed 10/24
     case '213'
         % nothing changes here, but might later
     case '214'
         % nothing changes here, but might later
     case '215'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1; % changed 10/24
+        out.msPenalty = 10000; % changed 10/24
     case '216'
         out.msPenalty = 10000;
         % nothing changes here, but might later

@@ -191,13 +191,18 @@ try
     if ~testMode
         compilePath=fullfile(fileparts(getStandAlonePath(rx)),'CompiledTrialRecords');
         mkdir(compilePath);
-        %     compileTrialRecords([],[],[],{subjectID},getStandAlonePath(rx),compilePath);
         dailyAnalysisPath = fullfile(fileparts(getStandAlonePath(rx)),'DailyAnalysis');
         mkdir(dailyAnalysisPath);
         compileDetailedRecords([],{subjectID},[],getStandAlonePath(rx),compilePath);
-        % removed daily plotting and subject analysis
-%         plotAndSaveDailyReport(compilePath,dailyAnalysisPath,subjectID);
-        subjectAnalysis(compilePath);
+        
+        selection.type = 'animal status';
+        selection.filter = 'all';
+        selection.filterVal = [];
+        selection.filterParam = [];
+        selection.titles = {sprintf('subject %s',subjectID)};
+        selection.subjects = {subjectID};
+        fs=analysisPlotter(selection,compilePath,true);
+%         subjectAnalysis(compilePath);
     end
     cleanup;
     % testing
@@ -207,7 +212,7 @@ catch ex
     
     [~, b] = getMACaddress();
     c = clock;
-    message = sprintf('Failed for subject:: %s at time::%d:%d on %d-%d-%d',subjectID,c(4),c(5),c(2),c(3),c(1));
+    message = {sprintf('Failed for subject::%s at time::%d:%d on %d-%d-%d',subjectID,c(4),c(5),c(2),c(3),c(1)),getReport(ex,'extended','hyperlinks','off')};
     switch b
         case 'A41F7278B4DE' %gLab-Behavior1
             gmail('balajisriram@gmail.com','Error in Rig 1',message);
