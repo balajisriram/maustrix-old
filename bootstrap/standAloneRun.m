@@ -44,6 +44,8 @@ if ~exist('backupToServer','var') || isempty(backupToServer)
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Permanent';
         case '7845C42558DF' %gLab-Behavior5
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Permanent';
+        case 'A41F729211B1' %gLab-Behavior6
+            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box6\Permanent';
         case 'BC305BD38BFB' %ephys-stim
             xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\ephys-stim\Permanent';
         case '180373337162' %ephys-data
@@ -224,6 +226,8 @@ catch ex
             gmail('balajisriram@gmail.com','Error in Rig 4',message);
         case '7845C42558DF' %gLab-Behavior5
             gmail('balajisriram@gmail.com','Error in Rig 5',message);
+        case 'A41F729211B1' %gLab-Behavior5
+            gmail('balajisriram@gmail.com','Error in Rig 6',message);
         otherwise
             warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
             keyboard;

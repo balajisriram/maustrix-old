@@ -29,8 +29,10 @@ switch mac
         pportaddr = 'D010';
     case '7845C42558DF' %gLab-Behavior5
         pportaddr = 'D010';
+    case 'A41F729211B1' %gLab-Behavior6
+        pportaddr = 'D010';
     case 'BC305BD38BFB' %ephys-stim
-        pportaddr = '0378';    
+        pportaddr = '0378';
     otherwise
         warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
         keyboard;

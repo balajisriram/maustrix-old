@@ -106,6 +106,9 @@ switch b
     case '7845C42558DF' %gLab-Behavior5
         out.maxWidth = 1920;
         out.maxHeight = 1080;
+    case 'A41F729211B1' %gLab-Behavior6
+        out.maxWidth = 1600;
+        out.maxHeight = 900;
     case 'BC305BD38BFB' %ephys-stim
         out.maxWidth = 1920;
         out.maxHeight = 1080;

@@ -419,8 +419,9 @@ Box2Subjects = {'60','92','97','98','212','216'};
 Box3Subjects = {'91','206','207','208','213','214'};
 Box4Subjects = {'61','63','64','65','66','203','204'};
 Box5Subjects = {'69','95','96','200','201','202','215'};
-Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
-currSubj = {subjID,subjID,subjID,subjID,subjID};
+Box6Subjects = {};
+Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
+currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
 [junk, mac] = getMACaddress();
 correctBox = false;
@@ -443,6 +444,10 @@ switch mac
         end
     case '7845C42558DF' %gLab-Behavior5
         if whichBox==5
+            correctBox = true;
+        end
+    case 'A41F729211B1' %gLab-Behavior6
+        if whichBox==6
             correctBox = true;
         end
 end

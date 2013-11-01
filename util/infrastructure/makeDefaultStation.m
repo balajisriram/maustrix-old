@@ -39,6 +39,8 @@ if ~exist('pportaddr','var') || isempty(pportaddr)
             pportaddr= 'D010';
         case '7845C42558DF' %gLab-Behavior5
             pportaddr= 'D010';
+        case 'A41F729211B1' %gLab-Behavior6
+            pportaddr= 'D010';
         case 'BC305BD38BFB' %ephys-stim
             pportaddr= '0378';
         otherwise
