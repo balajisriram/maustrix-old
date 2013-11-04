@@ -206,6 +206,22 @@ switch id
         % nothing changes here, but might later
     case '216'
         % nothing changes here, but might later
+    case '217'
+        out.pStochastic = 0.001;
+    case '218'
+        out.pStochastic = 0.001;
+    case '219'
+        out.pStochastic = 0.001;
+    case '220'
+        out.pStochastic = 0.001;
+    case '221'
+        out.pStochastic = 0.001;
+    case '222'
+        out.pStochastic = 0.001;
+    case '223'
+        out.pStochastic = 0.001;
+    case '224'
+        out.pStochastic = 0.001;
     case '999'
         % nothing changes here, but might later
     case 'demo1'

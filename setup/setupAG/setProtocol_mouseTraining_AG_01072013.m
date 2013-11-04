@@ -280,10 +280,11 @@ switch id
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
     case '92'
-        step = 19;
+        step = 22;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
+        % moving to varied contrast with aperture 11/4
     case '93'
         step = 3;
     case '95'
@@ -398,14 +399,30 @@ switch id
     case '215'
         step = 19;
         % graduated to step 2 7/8
-		% graduated to step 8 7/22
+        % graduated to step 8 7/22
         % graduate to step 3 8/25
     case '216'
         step = 19;
         % graduated to step 2 7/8
-		% graduated to step 8 7/22
+        % graduated to step 8 7/22
         % graduated to step 3 8/6
         % graduated to step 19 9/10
+    case '217'
+        step = 1;
+    case '218'
+        step = 1;
+    case '219'
+        step = 1;
+    case '220'
+        step = 1;
+    case '221'
+        step = 1;
+    case '222'
+        step = 1;
+    case '223'
+        step = 1;
+    case '224'
+        step = 1;
     case '999'
         step = 3;
     otherwise
@@ -419,7 +436,7 @@ Box2Subjects = {'60','92','97','98','212','216'};
 Box3Subjects = {'91','206','207','208','213','214'};
 Box4Subjects = {'61','63','64','65','66','203','204'};
 Box5Subjects = {'69','95','96','200','201','202','215'};
-Box6Subjects = {};
+Box6Subjects = {'217','218','219','220','221','222','223','224'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));

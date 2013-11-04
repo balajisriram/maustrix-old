@@ -256,6 +256,22 @@ switch id
     case '216'
         out.rewardScalar = 0.1; 
         % reward reduced to 0.1 on 8/5
+    case '217'
+        % nothing changes here, but might later
+    case '218'
+        % nothing changes here, but might later
+    case '219'
+        % nothing changes here, but might later
+    case '220'
+        % nothing changes here, but might later
+    case '221'
+        % nothing changes here, but might later
+    case '222'
+        % nothing changes here, but might later
+    case '223'
+        % nothing changes here, but might later
+    case '224'
+        % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
     case 'demo1'
