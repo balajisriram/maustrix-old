@@ -1,7 +1,7 @@
 function compileRemoteDir(RemoteDirBase,boxes,mice,recompile)
 
 if ~exist('boxes','var') || isempty(boxes)
-    boxes = {'Box1','Box2','Box3','Box4','Box5'};
+    boxes = {'Box1','Box2','Box3','Box4','Box5','Box6'};
 elseif ~iscell(boxes)
     error('either dont give boxes or give it as a sequence of cellstrs');
 end
