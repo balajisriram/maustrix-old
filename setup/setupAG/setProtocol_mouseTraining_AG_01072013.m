@@ -52,7 +52,7 @@ for i=1:length(subjIDs)
     % create the trial steps
     [fd_sto, fd] = createFreeDrinksStepsAG(svnRev,svnCheckMode, subjIDs{i});
     
-    [ts_obj1] = createObjectTrialSteps(svnRev,svnCheckMode,subjIDs{i});
+    [ts_obj1,ts_obj2] = createObjectTrialSteps(svnRev,svnCheckMode,subjIDs{i});
 
     
     [or_optim, or_sfSweep, or_tfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
@@ -70,7 +70,8 @@ for i=1:length(subjIDs)
         or_optimHR,or_sfSweepHR,or_tfSweepHR,or_ctrSweepHR,or_orSweepHR,...
         or_optimQR,or_sfSweepQR,or_tfSweepQR,or_ctrSweepQR,or_orSweepQR,...
         or_optimER,or_sfSweepER,or_tfSweepER,or_ctrSweepER,or_orSweepER,...
-        orwos_SurrCtrSweep,orwos_SurrLowCtr,orwos_SurrMedCtr,orwos_SurrHighCtr,orwos_SurrFullCtr});
+        orwos_SurrCtrSweep,orwos_SurrLowCtr,orwos_SurrMedCtr,orwos_SurrHighCtr,orwos_SurrFullCtr,...
+        ts_obj2});
 
     
     %%%%%%%%%%%%
