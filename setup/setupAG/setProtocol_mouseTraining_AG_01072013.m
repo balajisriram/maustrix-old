@@ -420,17 +420,17 @@ switch id
         % graduated to step 3 8/6
         % graduated to step 19 9/10
     case '217'
-        step = 1;
+        step = 2;
     case '218'
-        step = 1;
+        step = 2;
     case '219'
-        step = 1;
+        step = 2;
     case '220'
-        step = 1;
+        step = 2;
     case '221'
-        step = 1;
+        step = 2;
     case '222'
-        step = 1;
+        step = 2;
     case '223'
         step = 1;
     case '224'
