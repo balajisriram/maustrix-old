@@ -1,7 +1,7 @@
 function V1LesionPaperFigures
 
 plotFigure1 = true;
-
+todayDate = datenum('9/13/2013');
 if plotFigure1
     %$ basic analysis
     clc;
@@ -81,7 +81,7 @@ if plotFigure1
     % 22,23,25,26,48,40,47,53,56,59,37,38,45,50
     
     % 22
-    filters = 1:today;
+    filters = 1:todayDate;
     out = {};
     plotDetails.axHan = subplot(3,5,1); out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     plotDetails.axHan = subplot(3,5,2); out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -162,7 +162,7 @@ if plotFigure1
         compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
     end
     
-    filters = 1:today;
+    filters = 1:todayDate;
     out = {};
     plotDetails.axHan = subplot(3,5,1); out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     plotDetails.axHan = subplot(3,5,2); out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -244,7 +244,7 @@ if plotFigure1
         compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
     end
     
-    filters = 1:today;
+    filters = 1:todayDate;
     out = {};
     filters = 1:datenum('Jan-15-2013');plotDetails.axHan = subplot(3,5,1); out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
 %     plotDetails.axHan = subplot(3,5,2); out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -307,7 +307,7 @@ if plotFigure1
     plotDetails.plotMeansOnly = false;
     compiledFilesDirs = {compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,...
         compiledFilesDir,compiledFilesDir,compiledFilesDir};
-    filters = 1:today;plotDetails.axHan = axHan; outTotal = analyzeMouse({'22','25','26','48','40','53','56','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
+    filters = 1:todayDate;plotDetails.axHan = axHan; outTotal = analyzeMouse({'22','25','26','48','40','53','56','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
     
     %% and now orientation
     
@@ -340,24 +340,24 @@ if plotFigure1
     out = {};
     plotDetails.plotMeansOnly = true;
 %     filters = 1:datenum('Jan-15-2013');plotDetails.axHan = axHan; out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{3} = analyzeMouse('25',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    analysisFor.analyzeRevOrientation = true;analysisFor.analyzeOrientation = false;filters = 1:today;plotDetails.axHan = axHan; out{4} = analyzeMouse('26',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    analysisFor.analyzeRevOrientation = false;analysisFor.analyzeOrientation = true;filters = 1:today; plotDetails.axHan = axHan; out{5} = analyzeMouse('48',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{6} = analyzeMouse('40',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{7} = analyzeMouse('47',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{8} = analyzeMouse('53',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{9} = analyzeMouse('56',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{10} = analyzeMouse('59',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{11} = analyzeMouse('37',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{12} = analyzeMouse('38',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{13} = analyzeMouse('45',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:today;plotDetails.axHan = axHan; out{14} = analyzeMouse('50',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{3} = analyzeMouse('25',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeRevOrientation = true;analysisFor.analyzeOrientation = false;filters = 1:todayDate;plotDetails.axHan = axHan; out{4} = analyzeMouse('26',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeRevOrientation = false;analysisFor.analyzeOrientation = true;filters = 1:todayDate; plotDetails.axHan = axHan; out{5} = analyzeMouse('48',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{6} = analyzeMouse('40',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{7} = analyzeMouse('47',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{8} = analyzeMouse('53',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{9} = analyzeMouse('56',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{10} = analyzeMouse('59',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{11} = analyzeMouse('37',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{12} = analyzeMouse('38',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{13} = analyzeMouse('45',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{14} = analyzeMouse('50',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     
     plotDetails.plotMeansOnly = false;
     compiledFilesDirs = {compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,...
         compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir};
-    filters = 1:today;plotDetails.axHan = axHan; outTotal = analyzeMouse({'23','25','26','48','40','47','53','56','59','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
+    filters = 1:todayDate;plotDetails.axHan = axHan; outTotal = analyzeMouse({'23','25','26','48','40','47','53','56','59','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
   
 end
 
@@ -368,7 +368,7 @@ if plotFigure2
     
     % plotting the training for a Opt for this mouse
     mouseID = '26';
-    filters = 1:today;
+    filters = 1:todayDate;
     
     fighan = figure;
     set(fighan, 'DefaultTextFontSize', 12); % [pt]
@@ -410,7 +410,7 @@ if plotFigure2
     disp('Figure1a is a schematic');
     
     % plotting the training for a Opt for this mouse
-    filters = 1:today;
+    filters = 1:todayDate;
     
     fighan = figure;
     set(fighan, 'DefaultTextFontSize', 12); % [pt]
@@ -445,24 +445,24 @@ if plotFigure2
     end
     out = {};
     numDaysBefore = 10;
-    mouseID = '22'; filters = datenum('Jan-20-2013')-5:today;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '23'; filters = datenum('Jan-14-2013')-5:today;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '25'; filters = datenum('Jan-14-2013')-5:today;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '22'; filters = datenum('Jan-20-2013')-5:todayDate;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '23'; filters = datenum('Jan-14-2013')-5:todayDate;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '25'; filters = datenum('Jan-14-2013')-5:todayDate;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     analysisFor.analyzeOpt = false;
     analysisFor.analyzeRevOpt = true;
-    mouseID = '26'; filters = datenum('Apr-22-2013')-5:today;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '26'; filters = datenum('Apr-22-2013')-5:todayDate;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     analysisFor.analyzeOpt = true;
     analysisFor.analyzeRevOpt = false;
-    mouseID = '48'; filters = datenum('Apr-22-2013')-5:today;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '40'; filters = datenum('May-15-2013')-5:today;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '47'; filters = datenum('May-15-2013')-5:today;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '53'; filters = datenum('May-15-2013')-5:today;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '56'; filters = datenum('May-12-2013')-5:today;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '59'; filters = datenum('May-17-2013')-5:today;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '37'; filters = datenum('Jun-25-2013')-5:today;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '38'; filters = datenum('Jun-25-2013')-5:today;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '45'; filters = datenum('Jul-1-2013')-5:today;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '50'; filters = datenum('Jul-1-2013')-5:today;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '48'; filters = datenum('Apr-22-2013')-5:todayDate;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '40'; filters = datenum('May-15-2013')-5:todayDate;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '47'; filters = datenum('May-15-2013')-5:todayDate;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '53'; filters = datenum('May-15-2013')-5:todayDate;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '56'; filters = datenum('May-12-2013')-5:todayDate;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '59'; filters = datenum('May-17-2013')-5:todayDate;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '37'; filters = datenum('Jun-25-2013')-5:todayDate;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '38'; filters = datenum('Jun-25-2013')-5:todayDate;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '45'; filters = datenum('Jul-1-2013')-5:todayDate;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '50'; filters = datenum('Jul-1-2013')-5:todayDate;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     
     
     %% lesion before and after
@@ -471,7 +471,7 @@ if plotFigure2
     disp('Figure1a is a schematic');
     
     % plotting the training for a Opt for this mouse
-    filters = 1:today;
+    filters = 1:todayDate;
     
     fighan = figure;
     set(fighan, 'DefaultTextFontSize', 12); % [pt]
@@ -545,24 +545,24 @@ if plotFigure2
     nBefore(4) = out{4}.optReversalData.numTrialsByConditionWCO{5};
     
     
-    mouseID = '22'; filters = datenum('Jan-20-2013'):today;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '23'; filters = datenum('Jan-14-2013'):today;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '25'; filters = datenum('Jan-14-2013'):today;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '22'; filters = datenum('Jan-20-2013'):todayDate;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '23'; filters = datenum('Jan-14-2013'):todayDate;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '25'; filters = datenum('Jan-14-2013'):todayDate;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     analysisFor.analyzeOpt = false;
     analysisFor.analyzeRevOpt = true;
-    mouseID = '26'; filters = datenum('Apr-22-2013'):today;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '26'; filters = datenum('Apr-22-2013'):todayDate;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     analysisFor.analyzeOpt = true;
     analysisFor.analyzeRevOpt = false;
-    mouseID = '48'; filters = datenum('Apr-22-2013'):today;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '40'; filters = datenum('May-15-2013'):today;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '47'; filters = datenum('May-15-2013'):today;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '53'; filters = datenum('May-15-2013'):today;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '56'; filters = datenum('May-12-2013'):today;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '59'; filters = datenum('May-17-2013'):today;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '37'; filters = datenum('Jun-25-2013'):today;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '38'; filters = datenum('Jun-25-2013'):today;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '45'; filters = datenum('Jul-1-2013'):today;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '50'; filters = datenum('Jul-1-2013'):today;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '48'; filters = datenum('Apr-22-2013'):todayDate;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '40'; filters = datenum('May-15-2013'):todayDate;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '47'; filters = datenum('May-15-2013'):todayDate;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '53'; filters = datenum('May-15-2013'):todayDate;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '56'; filters = datenum('May-12-2013'):todayDate;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '59'; filters = datenum('May-17-2013'):todayDate;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '37'; filters = datenum('Jun-25-2013'):todayDate;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '38'; filters = datenum('Jun-25-2013'):todayDate;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '45'; filters = datenum('Jul-1-2013'):todayDate;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '50'; filters = datenum('Jul-1-2013'):todayDate;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     
     for i = [1:3 5:14]
         afterPerf(i) = out{i}.optData.performanceByConditionWCO(1,5);
@@ -575,12 +575,23 @@ if plotFigure2
     afterHCI(4) = out{4}.optReversalData.performanceByConditionWCO(3,5);
     nAfter(4) = out{4}.optReversalData.numTrialsByConditionWCO{5};
     
+    significanceOpt = IsSignificant(beforePerf,nBefore,afterPerf,nAfter);
+    
+    dP = 100*significanceOpt.dP;
+    edges = -50:10:50;
+    histnSig = histc(dP(significanceOpt.IsSignificant),edges);
+    b = bar(edges,histnSig);set(b,'facecolor','b');
+    hold on
+    histnNotSig = histc(dP(~significanceOpt.IsSignificant),edges);
+    b = bar(edges,histnNotSig);set(b,'facecolor','k');
+    plot(nanmean(dP),6,'kx')
+
      %% lesioning image data
     
     clc;
     
     % plotting the training for a Opt for this mouse
-    filters = 1:today;
+    filters = 1:todayDate;
     
     fighan = figure;
     set(fighan, 'DefaultTextFontSize', 12); % [pt]
@@ -615,20 +626,20 @@ if plotFigure2
     end
     out = {};
     numDaysBefore = 10;
-    mouseID = '22'; filters = datenum('Jan-20-2013')-100:today;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '23'; filters = datenum('Jan-14-2013')-50:today;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-%     mouseID = '25'; filters = datenum('Jan-14-2013')-50:today;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '26'; filters = datenum('Apr-22-2013')-15:today;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '48'; filters = datenum('Apr-22-2013')-15:today;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '40'; filters = datenum('May-15-2013')-15:today;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '47'; filters = datenum('May-15-2013')-15:today;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '53'; filters = datenum('May-15-2013')-35:today;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '56'; filters = datenum('May-12-2013')-15:today;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '59'; filters = datenum('May-17-2013')-20:today;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '37'; filters = datenum('Jun-25-2013')-15:today;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '38'; filters = datenum('Jun-25-2013')-15:today;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '45'; filters = datenum('Jul-1-2013')-15:today;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '50'; filters = datenum('Jul-1-2013')-15:today;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '22'; filters = datenum('Jan-20-2013')-100:todayDate;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '23'; filters = datenum('Jan-14-2013')-50:todayDate;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+%     mouseID = '25'; filters = datenum('Jan-14-2013')-50:todayDate;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '26'; filters = datenum('Apr-22-2013')-15:todayDate;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '48'; filters = datenum('Apr-22-2013')-15:todayDate;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '40'; filters = datenum('May-15-2013')-15:todayDate;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '47'; filters = datenum('May-15-2013')-15:todayDate;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '53'; filters = datenum('May-15-2013')-35:todayDate;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '56'; filters = datenum('May-12-2013')-15:todayDate;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '59'; filters = datenum('May-17-2013')-20:todayDate;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '37'; filters = datenum('Jun-25-2013')-15:todayDate;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '38'; filters = datenum('Jun-25-2013')-15:todayDate;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '45'; filters = datenum('Jul-1-2013')-15:todayDate;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '50'; filters = datenum('Jul-1-2013')-15:todayDate;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     
     %% lesion before and after images
     
@@ -698,20 +709,20 @@ if plotFigure2
     end
     
     out = {};
-    mouseID = '22'; filters = datenum('Jan-20-2013'):today;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '23'; filters = datenum('Jan-14-2013'):today;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-%     mouseID = '25'; filters = datenum('Jan-14-2013'):today;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '26'; filters = datenum('Apr-22-2013'):today;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '48'; filters = datenum('Apr-22-2013'):today;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '40'; filters = datenum('May-15-2013'):today;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '47'; filters = datenum('May-15-2013'):today;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '53'; filters = datenum('May-15-2013'):today;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '56'; filters = datenum('May-12-2013'):today;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '59'; filters = datenum('May-17-2013'):today;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '37'; filters = datenum('Jun-25-2013'):today;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '38'; filters = datenum('Jun-25-2013'):today;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '45'; filters = datenum('Jul-1-2013'):today;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    mouseID = '50'; filters = datenum('Jul-1-2013'):today;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '22'; filters = datenum('Jan-20-2013'):todayDate;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '23'; filters = datenum('Jan-14-2013'):todayDate;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+%     mouseID = '25'; filters = datenum('Jan-14-2013'):todayDate;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '26'; filters = datenum('Apr-22-2013'):todayDate;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '48'; filters = datenum('Apr-22-2013'):todayDate;out{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '40'; filters = datenum('May-15-2013'):todayDate;out{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '47'; filters = datenum('May-15-2013'):todayDate;out{7} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '53'; filters = datenum('May-15-2013'):todayDate;out{8} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '56'; filters = datenum('May-12-2013'):todayDate;out{9} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '59'; filters = datenum('May-17-2013'):todayDate;out{10} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '37'; filters = datenum('Jun-25-2013'):todayDate;out{11} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '38'; filters = datenum('Jun-25-2013'):todayDate;out{12} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '45'; filters = datenum('Jul-1-2013'):todayDate;out{13} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '50'; filters = datenum('Jul-1-2013'):todayDate;out{14} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     
     for i = [1:2 4:14]
         afterPerf(i) = out{i}.imageData.performanceByConditionWCO(1,5);
@@ -719,7 +730,16 @@ if plotFigure2
         afterHCI(i) = out{i}.imageData.performanceByConditionWCO(3,5);
         nAfter(i) = out{i}.imageData.numTrialsByConditionWCO{5};
     end
-
+    significanceIm = IsSignificant(beforePerf,nBefore,afterPerf,nAfter);
+    
+    dP = 100*significanceIm.dP;
+    edges = -50:10:50;
+    histnSig = histc(dP(significanceIm.IsSignificant),edges);
+    b = bar(edges,histnSig);set(b,'facecolor','b');
+    hold on
+    histnNotSig = histc(dP(~significanceIm.IsSignificant),edges);
+    b = bar(edges,histnNotSig);set(b,'facecolor','k');
+    plot(nanmean(dP),6,'kx')
     %%
     LesionDetails = {
         '22',   'Jan-15-2013',  'Mech';
@@ -737,4 +757,5 @@ if plotFigure2
         '45',   'Jul-1-2013',   'IBO';
         '50',   'Jul-1-2013',   'IBO'};
     
+end
 end

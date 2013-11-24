@@ -1,11 +1,11 @@
-function ctrData = analyzeContrastTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion)
+function ctrData = analyzeQuatRadContrastTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion)
 
 if islogical(plotDetails)
     plotDetails.plotOn = true;
     plotDetails.plotWhere = 'makeFigure';
 end
 
-ctr = filterBehaviorData(data,'tsName','orCTRSweep');
+ctr = filterBehaviorData(data,'tsName','orCTRSweep_quatRad');
 ctrData.trialNum = [ctr.compiledTrialRecords.trialNumber];
 ctrData.correct = [ctr.compiledTrialRecords.correct];
 ctrData.correction = [ctr.compiledTrialRecords.correctionTrial];

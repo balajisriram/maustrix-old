@@ -18,7 +18,7 @@ function doAnalysisPlot(records,subjectID,type,filter,filterVal,filterParam,incl
 %         end
 %     end
 % end
-% 
+%
 % switch filter
 %     case 'all'
 %     case 'first'
@@ -26,7 +26,7 @@ function doAnalysisPlot(records,subjectID,type,filter,filterVal,filterParam,incl
 %     otherwise
 %         error('bad filter')
 % end
-% 
+%
 % switch filterParam
 %     case 'days'
 %     case 'trials'
@@ -36,20 +36,20 @@ function doAnalysisPlot(records,subjectID,type,filter,filterVal,filterParam,incl
 % end
 
 if strcmp(type,'weight')
-
+    
     gotConn=false;
     while ~gotConn
         try
             conn=dbConn; %calling this too rapidly throws connection exception: ORA-12516, TNS:listener could not find available handler with matching protocol stack
             gotConn=true;
-        catch ex 
-             disp(['CAUGHT ERROR: ' getReport(ex,'extended')])
+        catch ex
+            disp(['CAUGHT ERROR: ' getReport(ex,'extended')])
         end
     end
     %[weights dates] = getBodyWeightHistory(conn,subjectID); %this is fast
     [weights dates thresholds thresholds_90pct ages] = getBodyWeightHistory(conn,subjectID); % 10/30/08 - added 90% IACUC thresholds
     %need a faster solution, see: http://132.239.158.177/trac/rlab_hardware/ticket/129
-%     thresholds=.85*thresholds; % 10/20/08 - the thresholds from getBodyWeightHistory are already scaled to 85%
+    %     thresholds=.85*thresholds; % 10/20/08 - the thresholds from getBodyWeightHistory are already scaled to 85%
     % 11/4/08 - get free water information as well
     [free_water_dates free_water_amounts free_water_units] = getFreeWaterHistory(conn,subjectID);
     free_water_minutes=[];
@@ -108,23 +108,23 @@ if strcmp(type,'weight')
             end
             alreadyPlotted{end+1}='weight';
             set(gcf,'UserData',alreadyPlotted);
-        end  
+        end
     catch ex
         %disp(['CAUGHT ERROR: ' getReport(ex,'extended')])
         rethrow(ex)
-%         plot(0)
-%         dates
-%         weights
-%         thresholds
-%         thresholds_90pct
-%         size(dates)
-%         size(weights)
-%         size(thresholds)
-%         size(thresholds_90pct)
+        %         plot(0)
+        %         dates
+        %         weights
+        %         thresholds
+        %         thresholds_90pct
+        %         size(dates)
+        %         size(weights)
+        %         size(thresholds)
+        %         size(thresholds_90pct)
         warning('weights, dates, and thresholds have different sizes')
     end
     % 11/4/08 - set axes/plot properties with new plotyy architecture
-
+    
     set(H2(1), 'Color', 'blue');
     set(H2(2), 'Color', 'red');
     set(H2(3), 'Color', [0 0.6 0]);
@@ -171,24 +171,24 @@ if strcmp(type,'weight')
         set(AX(1),'YTick', linspace(yLimits(1),yLimits(2),4));
     end
     datetick(AX(2),'x','mm/dd','keeplimits','keepticks')
-
+    
 else
-
+    
     if ~isempty(records)
         storageMethod='vector'; %'structArray'
-
+        
         switch storageMethod
             case 'structArray'
-
+                
                 fprintf('converting records')
                 t=GetSecs();
-
+                
                 processedRecords.response=zeros(1,length(records));
                 processedRecords.correctionTrial=zeros(1,length(records));
                 processedRecords.date=zeros(1,length(records));
                 processedRecords.correct=zeros(1,length(records));
                 processedRecords.step=zeros(1,length(records));
-
+                
                 for i=1:length(records)
                     %records(i).stimDetails
                     if ismember('orientations',fields(records(i).stimDetails))
@@ -211,11 +211,11 @@ else
                     end
                 end
                 processedRecords.correct=[records.correct];
-
+                
                 fprintf('\ttime elapsed: %g\n\n',GetSecs-t)
-
+                
             case 'vector'
-
+                
                 %do filtering:
                 switch filter
                     case 'all'
@@ -242,19 +242,19 @@ else
                         filter
                         error ('bad filter type')
                 end
-
+                
             otherwise
                 error('unrecognized storage method')
         end
         processedRecords.info.subject={subjectID};
-
+        
         switch type
             case 'animal status'
                 set(gcf,'position',[657 247 1107 420]);
                 ax1 = subplot (1,2,1);
                 doPlot('plotTrialsPerDay',processedRecords,[],[],[],[],[],~includeKeyboard);
                 ax2 = subplot(1,2,2);
-                doPlot('percentCorrect',processedRecords,[],[],[],[],[],~includeKeyboard);
+                doPlot('percentCorrect',processedRecords,[],[],[],[],[],~includeKeyboard);                
             case 'trials per day'
                 doPlot('plotTrialsPerDay',processedRecords,[],[],[],[],[],~includeKeyboard);
             case 'performance'
@@ -268,7 +268,7 @@ else
             otherwise
                 error('bad type')
         end
-
+        
     else
         subjectID
         records
@@ -276,4 +276,5 @@ else
         filter
         warning('didn''t find any records')
     end
+end
 end

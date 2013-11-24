@@ -23,6 +23,7 @@ if ~exist('filters','var') || isempty(filters)
     filters.orRevFilters = 1:today;
     filters.tfFilter = 1:today;
     filters.tfRevFilter = 1:today;
+    filters.ctrQuatRadFilter = 1:today;
 elseif isnumeric(filters)
     temp = filters;
     filters.fdFilter = temp;
@@ -37,6 +38,7 @@ elseif isnumeric(filters)
     filters.orRevFilters = temp;
     filters.tfFilter = temp;
     filters.tfRevFilter = temp;
+    filters.ctrQuatRadFilter = temp;
     clear temp
 end
 
@@ -52,6 +54,7 @@ if ~exist('analysisFor','var')||isempty(analysisFor)
     analyzeRevOrientation = true;
     analyzeTempFreq = true;
     analyzeRevTempFreq = true;
+    analyzeQuatRadContrast = true;
 else
     analyzeImages = analysisFor.analyzeImages;
     analyzeOpt = analysisFor.analyzeOpt;
@@ -64,6 +67,7 @@ else
     analyzeRevOrientation = analysisFor.analyzeRevOrientation;
     analyzeTempFreq = analysisFor.analyzeTempFreq;
     analyzeRevTempFreq = analysisFor.analyzeRevTempFreq;
+    analyzeQuatRadContrast = analysisFor.analyzeQuatRadContrast;
 end
 
 if ~exist('splits','var')||isempty(splits)
@@ -140,6 +144,11 @@ end
 %% REVERSAL TEMP FREQ
 if analyzeRevTempFreq
     out.tfRevData = analyzeTempFreqReversalTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
+end
+
+%% QUAT. RAD. CONTRAST
+if analyzeQuatRadContrast
+    out.ctrQuatRadData = analyzeQuatRadContrastTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
 end
 end
 

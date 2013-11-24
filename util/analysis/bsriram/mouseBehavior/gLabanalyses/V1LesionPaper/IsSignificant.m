@@ -10,7 +10,7 @@ q22 = 1-p22;
 dP = p11-p22;
 warning('using 95% confidence intervals');
 
-Za_2 = norminv(0.995,0,1);
+Za_2 = norminv(0.975,0,1);
 
 dP_CI = Za_2*sqrt(((p11.*q11)./m)+((p22.*q22)./n));
 out.IsSignificant = abs(dP)>dP_CI;
