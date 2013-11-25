@@ -39,6 +39,8 @@ function r = setProtocol_mouseTraining_AG_01072013(r,subjIDs)
 % 32. -45 and 45 orientations with oriented surrounds task - high contrasts
 % 33. -45 and 45 orientations with oriented surrounds task - full contrasts
 
+% 34. Varied contrast object task
+
 % details for each subject are internally modifiable. 
 % define subjects
 
@@ -180,10 +182,11 @@ switch id
         % varied orientation starting 9/20
         % back to step 19 11/19
     case '61' % PV-cre
-        step = 8;
+        step = 34;
         % back from the injections. going to run 8/19
         % performed admirably at step 3 for a day. will start on step 19 9/10
         % back to step 8 11/19
+        % sent to step 34. 11/25
     case '62' % PV-cre
         step = 19; 
         % graduated from step 8 to step 3 for 6/6
@@ -194,7 +197,7 @@ switch id
         % varied contrast with aperture 8/12
         % back to step 19 11/19
     case '63' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -204,6 +207,7 @@ switch id
         % varied orientation with aperture 9/10
         % changed back to varied contrast with aperture starting 10/9
         % back to step 8 11/19
+        % sent to step 34. 11/25
     case '64' % PV-cre
         step = 19; 
         % changed to step 3 for 6/10 from step 8
@@ -215,7 +219,7 @@ switch id
         % varied orientation with aperture 9/10
         % back to step 19 11/19
     case '65' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -225,6 +229,7 @@ switch id
         % varied orientation with aperture 9/10
         % changed back to varie dcontrast with aperture starting 10/9
         % back to step 8 11/19
+        % sent to step 34. 11/25
     case '66' % PV-cre
         step = 19; 
         % changed protocol for 6/10
@@ -246,7 +251,7 @@ switch id
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
@@ -257,6 +262,7 @@ switch id
         % varied orientation with aperture 9/10 
         % changed back to varied contrast with aperture starting 10/9
         % back to step 8 11/19
+        % sent to step 34. 11/25
     case '70' % PV-cre
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
@@ -324,7 +330,7 @@ switch id
         % graduated to step 8 6/18
         % graduated to step 3 7/8
     case '200' % PV-cre
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
@@ -332,8 +338,9 @@ switch id
         % all good at step 8. Continue at step 3 8/22
         % showing small aperture starting 9/30
         % back to step 8 11/19
+        % sent to step 34. 11/25
     case '201' % PV-cre
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
@@ -342,6 +349,7 @@ switch id
         % aperture task starting 9/10
         % starting varied contrast with aperture starting 10/9
         % back to step 8 11/19
+        % sent to step 34. 11/25
     case '202' % PV-cre
         step = 19;
         % graduated to step 2 6/12
