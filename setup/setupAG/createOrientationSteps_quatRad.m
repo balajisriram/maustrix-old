@@ -234,12 +234,17 @@ switch id
     case '208'
         % nothing changes here, but might later
     case '209'
-        out.rewardScalar = 0.1; % changed 10/24
+        out.rewardScalar = 0.05; 
+        % changed to 0.1 10/24
+        % changed to 0.05 11/24
         out.msPenalty = 10000; % changed 10/24
     case '210'
-        out.msPenalty = 20000; % changed 9/20
+        out.msPenalty = 10000; % changed 9/20
         % increased to 20 s 10/20
-        out.rewardScalar = 0.1; % changed 10/24 - halved reward to increase trials run
+        % increased to 10 s 11/24
+        out.rewardScalar = 0.05; 
+        % changed 10/24 - halved reward to increase trials run
+        % changed to 0.05 11/24
     case '211'
         % nothing changes here, but might later
     case '212'

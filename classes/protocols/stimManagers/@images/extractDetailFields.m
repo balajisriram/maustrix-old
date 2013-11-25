@@ -56,10 +56,10 @@ else
     end
     
     % 1/2/09 - LUT-ize
-    [indices newLUT] = addOrFindInLUT(newLUT, out.leftIm);
-    out.leftIm = indices+LUTparams.lastIndex;
+    [indices, newLUT] = addOrFindInLUT(newLUT, out.leftIm);
+    out.leftIm = indices;%+LUTparams.lastIndex;
     [indices newLUT] = addOrFindInLUT(newLUT, out.rightIm);
-    out.rightIm = indices+LUTparams.lastIndex;
+    out.rightIm = indices;%+LUTparams.lastIndex;
     
     % we dont need this check ? 12/12/08
 %     if ~any(strcmp(out.leftIm,out.rightIm))

@@ -183,13 +183,14 @@ switch id
     case '84'
         % nothing changes here, but might later
     case '86'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.05; % changed 11/24
     case '87'
-        % nothing changes here, but might later
+        out.msPenalty = 20000; % changed 11/24
+        out.rewardScalar = 0.05; % changed 11/24
     case '90'
         % nothing changes here, but might later
     case '91'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.05; % changed 11/24
     case '92'
         % nothing changes here, but might later
     case '93'

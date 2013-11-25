@@ -296,7 +296,7 @@ switch id
         out.rewardScalar = 0.05; 
         % changed to 0.1 on 9/20
         % reduced reward scalar 10/24
-        out.msPenalty = 15000; % cahnged 10/24
+        out.msPenalty = 20000; % cahnged 11/24
     case '215'
         out.rewardScalar = 0.05;
         out.msPenalty = 10000; % changed 10/2

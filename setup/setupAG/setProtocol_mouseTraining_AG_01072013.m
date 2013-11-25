@@ -97,12 +97,12 @@ end
 
 function step = getStepNum(id)
 switch id
-    case '26'
+    case '26' % WT
         step = 10;
         error('not being run'); % changed on 6/24
         % changed from step 8 on 6/3/2013
         % changed from rev on 6/17
-    case '37'
+    case '37' % SOM-cre
         step = 4; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
@@ -110,7 +110,7 @@ switch id
         % changed to step 8 for week of 7/8
         % back to optimal for week of 7/15
         error('not being run');
-    case '38'
+    case '38' % SOM-cre
         step = 4; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
@@ -118,16 +118,16 @@ switch id
         % changed to step 8 for week of 7/8
         % back to optimal for week of 7/15
         error('not being run');
-    case '40'
+    case '40' % SOM-cre
         step = 8; 
         % changed from step 3 on 6/3/2013; actually 40 has a lot of data on step 8. It will continue to run on step 3 for a week.
         % getting data on step 4 for wek of 6/24
         % moved to step 8 week of 7/1
         error('not being run');
-    case '41'
+    case '41' % SOM-cre
         step = 4;
         error('not being run'); % decided on 6/4/2013
-    case '45'
+    case '45' % WT
         step = 7; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
@@ -135,16 +135,16 @@ switch id
         % 1 week of step 8 week of 7/15
         % varied contrast week starting 1/8
         % varied orientation week of 12/8
-    case '47'
+    case '47' % WT
         step = 8;
         % getting more images trials for week of 6/17
         % step 4 for week of 6/24
         % moved to step 8 week of 7/1
         error('not being run');
-    case '48'
+    case '48' % WT
         step = 4; % changed from step 7 on 6/3/2013
         error('not being run'); % finished week of 6/17
-    case '50'
+    case '50' % WT
         step = 7; 
         % changed from step 4 6/4
         % changed to step 8 in prep for lesioning. 6/18
@@ -152,24 +152,24 @@ switch id
         % 1 week of step 8 week of 7/15
         % varied contrast week starting 1/8
         % varied orientation week of 12/8
-    case '53'
+    case '53' % CART-cre
         step = 8;
         % obtaining more object task trials week of 6/17
         % step 4 for week of 6/24
         % moved to step 8 week of 7/1
         error('not being run');
-    case '56'
+    case '56' % CART-cre
         step = 4;
         % knows step 3 will go to varied contrast week of 6/17
         % performed ~ 750 trials onstep 6 now on step 7 6/24   
         % moved to step 4 week of 7/1
         error('not being run');
-    case '59'
+    case '59' % CHAT-cre
         step = 7;
         % knows step 3. goes to step 6 6/24
         % moved to step 7 week of 7/1
         error('not being run');
-    case '60'
+    case '60' % PV-cre
         step = 19; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
@@ -179,12 +179,12 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation starting 9/20
         % back to step 19 11/19
-    case '61'
+    case '61' % PV-cre
         step = 8;
         % back from the injections. going to run 8/19
         % performed admirably at step 3 for a day. will start on step 19 9/10
         % back to step 8 11/19
-    case '62'
+    case '62' % PV-cre
         step = 19; 
         % graduated from step 8 to step 3 for 6/6
         % changed from step 3 to step 6 on 6/17
@@ -193,7 +193,7 @@ switch id
         % increased aperture size 8/6
         % varied contrast with aperture 8/12
         % back to step 19 11/19
-    case '63'
+    case '63' % PV-cre
         step = 8; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
@@ -204,7 +204,7 @@ switch id
         % varied orientation with aperture 9/10
         % changed back to varied contrast with aperture starting 10/9
         % back to step 8 11/19
-    case '64'
+    case '64' % PV-cre
         step = 19; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
@@ -214,7 +214,7 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
         % back to step 19 11/19
-    case '65'
+    case '65' % PV-cre
         step = 8; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
@@ -225,7 +225,7 @@ switch id
         % varied orientation with aperture 9/10
         % changed back to varie dcontrast with aperture starting 10/9
         % back to step 8 11/19
-    case '66'
+    case '66' % PV-cre
         step = 19; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
@@ -235,17 +235,17 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
         % back to step 19 11/19
-    case '67'
+    case '67' % PV-cre
         step = 22; 
         % graduated from 8 on 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
         % small aperture starting 7/31
         error('died on 8/5');
-    case '68'
+    case '68' % PV-cre
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
-    case '69'
+    case '69' % PV-cre
         step = 8; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
@@ -257,70 +257,73 @@ switch id
         % varied orientation with aperture 9/10 
         % changed back to varied contrast with aperture starting 10/9
         % back to step 8 11/19
-    case '70'
+    case '70' % PV-cre
         step = 3;
         error('not being run'); % poor performer and not doing enough trials 6/24
-    case '79'
+    case '79' % SOM-cre
         step = 3;
         % graduated to step 3 on 6/19
-    case '84'
+    case '84' % SOM-cre
         step = 3;
         error('not being run'); % as of 6/22
-    case '86'
-        step = 19;
+    case '86' % SOM-cre
+        step = 14;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
-    case '87'
-        step = 19;
+        % not doing well on quat rad. shifting to half rad
+    case '87' % SOM-cre
+        step = 14;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
-    case '88'
+        % not doing well on quat rad. shifting to half rad
+    case '88' % SOM-cre
         step = 8;
-    case '89'
+    case '89' % SOM-cre
         step = 8;
-    case '90'
+    case '90' % SOM-cre
         step = 3;
         error('not being run'); % as of 6/22
-    case '91'
-        step = 19;
+    case '91' % SOM-cre
+        step = 14;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
-    case '92'
+        % poor performance on quat rad. now go to half-rad
+    case '92' % VIP-cre
         step = 19;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
         % moving to varied contrast with aperture 11/4
         % back to step 19 11/19
-    case '93'
+    case '93' % VIP-cre
         step = 3;
-    case '95'
+    case '95' % SOM-cre
         step = 3; 
         % force graduate starting on 6/10
         % graduated to step 3 7/22
-    case '96'
+    case '96' % SOM-cre
         step = 3;
         % force graduate starting on 6/10
         % graduated to step 3 7/2
-    case '97'
+    case '97' % SOM-cre
         step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 7/8
         % graduated to step 3 8/19
-    case '98'
+    case '98' % SOM-cre
         step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
         % graduate step 3 on 8/26
-    case '99'
-        step = 3;
+    case '99' % SOM-cre
+        step = 3; 
         % graduated to step 2 6/12
         % graduated to step 8 6/18
         % graduated to step 3 7/8
-    case '200'
+    case '200' % PV-cre
         step = 8;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
@@ -329,7 +332,7 @@ switch id
         % all good at step 8. Continue at step 3 8/22
         % showing small aperture starting 9/30
         % back to step 8 11/19
-    case '201'
+    case '201' % PV-cre
         step = 8;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
@@ -339,98 +342,104 @@ switch id
         % aperture task starting 9/10
         % starting varied contrast with aperture starting 10/9
         % back to step 8 11/19
-    case '202'
+    case '202' % PV-cre
         step = 19;
         % graduated to step 2 6/12
         % graduated to step 8 6/21
         % aperture task starting 9/10
-    case '203'
+    case '203' % PV-cre
         step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
-    case '204'
+    case '204' % PV-cre
         step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
         % graduated to step 3 7/15
-    case '205'
+    case '205' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
-    case '206'
+    case '206' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 8/6
         % graduated to step 3 8/26
-    case '207'
+    case '207' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/2
         % graduated to step 3 7/22
-    case '208'
+    case '208' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
-    case '209'
+    case '209' % PV-cre
         step = 19;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/24
-    case '210'
+    case '210' % PV-cre
         step = 19;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/8
         % graduated to step 19 9/10
-    case '211'
+    case '211' % PV-cre
         step = 19;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/12
         % graduated to step 19 9/10
-    case '212'
+    case '212' % PV-cre
         step = 19;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/2
-    case '213'
+    case '213' % VGAT-cre
         step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
-    case '214'
+    case '214' % VGAT-cre
         step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduate to step 3 on 8/22
-    case '215'
+    case '215' % VGAT-cre
         step = 19;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduate to step 3 8/25
-    case '216'
+    case '216' % VGAT-cre
         step = 19;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduated to step 3 8/6
         % graduated to step 19 9/10
     case '217'
-        step = 2;
+        step = 8;
+        % graduated to step 8 11/24
     case '218'
-        step = 2;
+        step = 8;
+        % graduated to step 8 11/24
     case '219'
-        step = 2;
+        step = 8;
+        % graduated to step 8 11/24
     case '220'
-        step = 2;
+        step = 8;
+        % graduated to step 8 11/24
     case '221'
-        step = 2;
+        step = 8;
+        % graduated to step 8 11/24
     case '222'
-        step = 2;
+        step = 8;
+        % graduated to step 8 11/24
     case '223'
         step = 1;
     case '224'
