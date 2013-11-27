@@ -466,11 +466,11 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'86','87','205','209','210','211','223'};
-Box2Subjects = {'60','92','97','98','212','216','224'};
-Box3Subjects = {'91','206','207','208','213','214','227'};
-Box4Subjects = {'61','63','64','65','66','203','204','225','226','228'};
-Box5Subjects = {'69','95','96','200','201','202','215'};
+Box1Subjects = {'86','205','209','210','211','223'}; % 87 found dead 11/27
+Box2Subjects = {'92','97','98','212','216','224'}; % 60 gone for inj
+Box3Subjects = {'206','207','208','213','214','227'}; % 91 sacced 11/27
+Box4Subjects = {'61','63','65','204','225','226'}; % 64 and 66 out for surgery
+Box5Subjects = {'69','95','200','201','202','215'};
 Box6Subjects = {'217','218','219','220','221','222'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
