@@ -255,6 +255,10 @@ switch id
         % nothing changes here, but might later
     case '224'
         % nothing changes here, but might later
+    case '225'
+        % nothing changes here, but might later
+    case '226'
+        % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
     case 'demo1'

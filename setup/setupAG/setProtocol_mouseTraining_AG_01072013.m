@@ -361,10 +361,11 @@ switch id
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
     case '204' % PV-cre
-        step = 3;
+        step = 14;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
         % graduated to step 3 7/15
+        % graduating to half rad step 14 on 11/26
     case '205' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
@@ -410,10 +411,11 @@ switch id
         % graduated to step 3 9/10
         % graduated to step 19 10/2
     case '213' % VGAT-cre
-        step = 3;
+        step = 14;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
+        % graduating to half-rad step 14 on 11/26 
     case '214' % VGAT-cre
         step = 3;
         % graduated to step 2 7/8
@@ -430,28 +432,32 @@ switch id
         % graduated to step 8 7/22
         % graduated to step 3 8/6
         % graduated to step 19 9/10
-    case '217'
+    case '217' % PV-cre
         step = 8;
         % graduated to step 8 11/24
-    case '218'
+    case '218' % PV-cre
         step = 8;
         % graduated to step 8 11/24
-    case '219'
+    case '219' % PV-cre
         step = 8;
         % graduated to step 8 11/24
-    case '220'
+    case '220' % PV-cre
+        step = 8; 
+        % graduated to step 8 11/24
+    case '221' % VGAT-cre
         step = 8;
         % graduated to step 8 11/24
-    case '221'
+    case '222' % VGAT-cre
         step = 8;
         % graduated to step 8 11/24
-    case '222'
-        step = 8;
-        % graduated to step 8 11/24
-    case '223'
+    case '223' % VGAT-cre
         step = 1;
-    case '224'
+    case '224' % VGAT-cre
         step = 1;
+    case '225' % PV-cre
+        step = 1; 
+    case '226' % PV-cre
+        step = 1; 
     case '999'
         step = 3;
     otherwise
@@ -460,12 +466,12 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'86','87','205','209','210','211'};
-Box2Subjects = {'60','92','97','98','212','216'};
+Box1Subjects = {'86','87','205','209','210','211','223','224'};
+Box2Subjects = {'60','92','97','98','212','216','225','226'};
 Box3Subjects = {'91','206','207','208','213','214'};
-Box4Subjects = {'61','63','64','65','66','203','204'};
+Box4Subjects = {'61','63','64','65','66','203','204','227','228'};
 Box5Subjects = {'69','95','96','200','201','202','215'};
-Box6Subjects = {'217','218','219','220','221','222','223','224'};
+Box6Subjects = {'217','218','219','220','221','222'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
