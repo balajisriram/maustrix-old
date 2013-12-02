@@ -351,10 +351,11 @@ switch id
         % back to step 8 11/19
         % sent to step 34. 11/25
     case '202' % PV-cre
-        step = 19;
+        step = 8;
         % graduated to step 2 6/12
         % graduated to step 8 6/21
         % aperture task starting 9/10
+        % back to training  start step 8 for week of dec 2
     case '203' % PV-cre
         step = 3;
         % graduated to step 2 6/12
@@ -399,17 +400,19 @@ switch id
         % graduated to step 3 8/8
         % graduated to step 19 9/10
     case '211' % PV-cre
-        step = 19;
+        step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/12
         % graduated to step 19 9/10
+        % back to training  start step 8 for week of dec 2
     case '212' % PV-cre
-        step = 19;
+        step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/2
+        % back to training  start step 8 for week of dec 2
     case '213' % VGAT-cre
         step = 14;
         % graduated to step 2 7/8
