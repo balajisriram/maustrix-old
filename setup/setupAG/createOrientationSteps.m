@@ -256,10 +256,11 @@ switch id
         % increased penalty to 20 s 10/24
     case '205'
         out.rewardScalar = 0.05;
-        out.msPenalty = 15000; % increased 10/2
+        out.msPenalty = 20000; % increased 10/2
         % changed 8/22 to 0.1
         % changed to 0.05 on 9/20
         % increased penalty to 15 seconds
+        % increased penalty to 20 s 12/3
     case '206'
         out.rewardScalar = 0.05; % changed on 9/20
         % reduced to 0.05 10/2

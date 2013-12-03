@@ -273,11 +273,12 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '86' % SOM-cre
-        step = 14;
+        step = 3;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
         % not doing well on quat rad. shifting to half rad
+        % going back to step 3 :( 12/3
     case '87' % SOM-cre
         step = 14;
         % back with step 8 on 8/1
@@ -297,7 +298,7 @@ switch id
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
         % poor performance on quat rad. now go to half-rad
-    case '92' % VIP-cre
+    case '92' % VIP-cre + V1 hM3D
         step = 19;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
@@ -306,7 +307,7 @@ switch id
         % back to step 19 11/19
     case '93' % VIP-cre
         step = 3;
-    case '95' % SOM-cre
+    case '95' % SOM-cre future V1 hM3D?
         step = 3; 
         % force graduate starting on 6/10
         % graduated to step 3 7/22
@@ -314,12 +315,12 @@ switch id
         step = 3;
         % force graduate starting on 6/10
         % graduated to step 3 7/2
-    case '97' % SOM-cre
+    case '97' % SOM-cre plan to remove
         step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 7/8
         % graduated to step 3 8/19
-    case '98' % SOM-cre
+    case '98' % SOM-cre Future SC lesion
         step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
@@ -361,18 +362,18 @@ switch id
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
-    case '204' % PV-cre
+    case '204' % PV-cre Future SC lesion
         step = 14;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
         % graduated to step 3 7/15
         % graduating to half rad step 14 on 11/26
-    case '205' % VIP-cre
+    case '205' % VIP-cre Future SC lesion
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
-    case '206' % VIP-cre
+    case '206' % VIP-cre plan to remove
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 8/6
@@ -382,59 +383,62 @@ switch id
         % graduated to step 2 6/26
         % graduated to step 8 7/2
         % graduated to step 3 7/22
-    case '208' % VIP-cre
+    case '208' % VIP-cre plan to remove
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
-    case '209' % PV-cre
-        step = 19;
+    case '209' % PV-cre Future SC lesion
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/24
-    case '210' % PV-cre
-        step = 19;
+    case '210' % PV-cre Future SC lesion
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/8
         % graduated to step 19 9/10
-    case '211' % PV-cre
+    case '211' % PV-cre + TRN hM3D
         step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/12
         % graduated to step 19 9/10
         % back to training  start step 8 for week of dec 2
-    case '212' % PV-cre
+    case '212' % PV-cre + TRN hM3D
         step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/2
         % back to training  start step 8 for week of dec 2
-    case '213' % VGAT-cre
-        step = 14;
+    case '213' % VGAT-cre future SC lesion
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
         % graduating to half-rad step 14 on 11/26 
+        % going back to step 3 for a few days
     case '214' % VGAT-cre
         step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduate to step 3 on 8/22
-    case '215' % VGAT-cre
-        step = 19;
+    case '215' % VGAT-cre Future SC lesion
+        step = 7;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduate to step 3 8/25
-    case '216' % VGAT-cre
-        step = 19;
+        % varied contrast starting 12/3
+    case '216' % VGAT-cre Future SC Lesion
+        step = 7;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduated to step 3 8/6
         % graduated to step 19 9/10
+        % went to varied contrast task 12/3
     case '217' % PV-cre
         step = 8;
         % graduated to step 8 11/24
@@ -454,13 +458,16 @@ switch id
         step = 8;
         % graduated to step 8 11/24
     case '223' % VGAT-cre
-        step = 1;
+        step = 2;
+        % graduated to step 2 12/3
     case '224' % VGAT-cre
-        step = 1;
+        step = 2;
+        % graduated to step 2 12/3
     case '225' % PV-cre
         step = 1; 
     case '226' % PV-cre
-        step = 1;
+        step = 2;
+        % graduated to step 2 12/3
     case '227' % PV-cre
         step = 1;
     case '999'
