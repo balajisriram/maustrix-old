@@ -164,11 +164,41 @@ if exist('setupFile','var') && ~isempty(setupFile)
     %http://blogs.mathworks.com/loren/2005/12/28/evading-eval/
 end
 
+onGoingExperiments = {...
+    'PV-V1-hM3D',{'61','63','65','67','69','200','201'};...
+    'PV-TRN-hM3D',{'60','64','66','202','211','212'};...
+    'V1Lesion',{'22','23','25','26','37','38','40','45','47','48','50','53','56','59'};...
+    'SCLesion',{}...
+    };
+isExperimentSubject = false;
+for i = 1:size(onGoingExperiments,1)
+    currentExperiment = onGoingExperiments{i,1};
+    if ismember(subjectID,onGoingExperiments{i,2})
+        isExperimentSubject = true;
+        switch currentExperiment
+            case 'PV-V1-hM3D'
+                xtraExptBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Permanent';
+            case 'PV-TRN-hM3D'
+                xtraExptBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-TRN-hM3D\Permanent';
+            case 'V1Lesion'
+                xtraExptBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Permanent';
+            case 'SCLesion'
+                xtraExptBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Permanent';
+        end
+    else
+        xtraExptBackupPath = '';
+    end
+end
+
 try
     deleteOnSuccess = true; 
     
     if backupToServer
-        replicationPaths={getStandAlonePath(rx),xtraServerBackupPath};
+        if isExperimentSubject
+            replicationPaths={getStandAlonePath(rx),xtraServerBackupPath,xtraExptBackupPath};
+        else
+            replicationPaths={getStandAlonePath(rx),xtraServerBackupPath};
+        end
     else
         replicationPaths={getStandAlonePath(rx)};
     end
