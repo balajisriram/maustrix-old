@@ -182,7 +182,7 @@ switch id
         % varied orientation starting 9/20
         % back to step 19 11/19
     case '61' % PV-cre
-        step = 7;
+        step = 6;
         % back from the injections. going to run 8/19
         % performed admirably at step 3 for a day. will start on step 19 9/10
         % back to step 8 11/19
@@ -199,7 +199,7 @@ switch id
         % varied contrast with aperture 8/12
         % back to step 19 11/19
     case '63' % PV-cre
-        step = 7; 
+        step = 6; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -223,7 +223,7 @@ switch id
         % varied orientation with aperture 9/10
         % back to step 19 11/19
     case '65' % PV-cre
-        step = 7; 
+        step = 6; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -257,7 +257,7 @@ switch id
         step = 3;
         error('not being run'); % not doing enough trials, 6/24
     case '69' % PV-cre
-        step = 7; 
+        step = 6; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % moved to varied orientation 
@@ -339,7 +339,7 @@ switch id
         % graduated to step 8 6/18
         % graduated to step 3 7/8
     case '200' % PV-cre
-        step = 7;
+        step = 6;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
@@ -351,7 +351,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '201' % PV-cre
-        step = 7;
+        step = 6;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
