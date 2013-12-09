@@ -185,11 +185,12 @@ experimentBackupLocation = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM
 
 x = cellfun(@any,cellfun(@ismember,onGoingExperimentSubjects,repmat({subjectID},size(onGoingExperimentSubjects)),'UniformOutput',false));
 isExperimentSubject = any(x);
-
+if sum(double(x))>1
+    error('need to assign animals to exactly one experiment');
+end
 if isExperimentSubject
     xtraExptBackupPath = experimentBackupLocation{x};
 end
-isExperimentSubject = false;
 try
     deleteOnSuccess = true; 
     
