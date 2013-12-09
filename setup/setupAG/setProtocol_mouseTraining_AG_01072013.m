@@ -172,7 +172,7 @@ switch id
         % moved to step 7 week of 7/1
         error('not being run');
     case '60' % PV-cre
-        step = 19; 
+        step = 8; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -181,6 +181,7 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation starting 9/20
         % back to step 19 11/19
+        % back after TRN surgery. doing go to stim 12/8
     case '61' % PV-cre
         step = 6;
         % back from the injections. going to run 8/19
@@ -213,7 +214,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '64' % PV-cre
-        step = 19; 
+        step = 8; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -222,6 +223,7 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
         % back to step 19 11/19
+        % back after TRN surgery. doing go to stim 12/8
     case '65' % PV-cre
         step = 6; 
         % changed 6/4
@@ -237,7 +239,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '66' % PV-cre
-        step = 19; 
+        step = 8; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -246,6 +248,7 @@ switch id
         % varied contrast with aperture 8/12
         % varied orientation with aperture 9/10
         % back to step 19 11/19
+        % back after TRN surgery. doing go to stim 12/8
     case '67' % PV-cre
         step = 22; 
         % graduated from 8 on 6/5
@@ -281,12 +284,13 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '86' % SOM-cre
-        step = 3;
+        step = 8;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
         % not doing well on quat rad. shifting to half rad
         % going back to step 3 :( 12/3
+        % okay going to use this mouse for SC lesion
     case '87' % SOM-cre
         step = 14;
         % back with step 8 on 8/1
@@ -307,12 +311,13 @@ switch id
         % aperture on 8/26
         % poor performance on quat rad. now go to half-rad
     case '92' % VIP-cre + V1 hM3D
-        step = 19;
+        step = 6;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
         % moving to varied contrast with aperture 11/4
         % back to step 19 11/19
+        % sent to varied C for manipulation
     case '93' % VIP-cre
         step = 3;
     case '95' % SOM-cre future V1 hM3D?
@@ -329,10 +334,11 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 8/19
     case '98' % SOM-cre Future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
         % graduate step 3 on 8/26
+        % sent to varied C for future sc lesion 12/8
     case '99' % SOM-cre
         step = 3; 
         % graduated to step 2 6/12
@@ -375,21 +381,23 @@ switch id
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
     case '204' % PV-cre Future SC lesion
-        step = 14;
+        step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
         % graduated to step 3 7/15
         % graduating to half rad step 14 on 11/26
+        % sent to full screen or task 12/8
     case '205' % VIP-cre Future SC lesion
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
     case '206' % VIP-cre plan to remove
-        step = 3;
+        step = 8;
         % graduated to step 2 6/26
         % graduated to step 8 8/6
         % graduated to step 3 8/26
+        % going to use animal for SC lesion
     case '207' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
@@ -407,11 +415,12 @@ switch id
         % graduated to step 3 9/10
         % graduated to step 19 10/24
     case '210' % PV-cre Future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/8
         % graduated to step 19 9/10
+        % sent to varied C before SC lesion
     case '211' % PV-cre + TRN hM3D
         step = 8;
         % graduated to step 2 7/8
@@ -427,17 +436,19 @@ switch id
         % graduated to step 19 10/2
         % back to training  start step 8 for week of dec 2
     case '213' % VGAT-cre future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
         % graduating to half-rad step 14 on 11/26 
         % going back to step 3 for a few days
+        % sent to varied C. for future SC lesion
     case '214' % VGAT-cre
-        step = 3;
+        step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduate to step 3 on 8/22
+        % going to use this guys for the object task 12/8
     case '215' % VGAT-cre Future SC lesion
         step = 7;
         % graduated to step 2 7/8
@@ -445,12 +456,13 @@ switch id
         % graduate to step 3 8/25
         % varied contrast starting 12/3
     case '216' % VGAT-cre Future SC Lesion
-        step = 7;
+        step = 6;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduated to step 3 8/6
         % graduated to step 19 9/10
-        % went to varied contrast task 12/3
+        % went to varied contrast task 12/3 (sent to step 7 instead)
+        % sent mouse to wrong step :( 12/8. now sent to step 6
     case '217' % PV-cre
         step = 8;
         % graduated to step 8 11/24
@@ -490,11 +502,11 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'86','205','209','210','211','223'}; % 87 found dead 11/27
-Box2Subjects = {'92','97','98','212','216','224'}; % 60 gone for inj
-Box3Subjects = {'206','207','208','213','214','227'}; % 91 sacced 11/27
-Box4Subjects = {'61','63','65','204','225','226'}; % 64 and 66 out for surgery
-Box5Subjects = {'69','95','200','201','202','215'};
+Box1Subjects = {'205','209','210','223','224','225'}; % 87 found dead 11/27
+Box2Subjects = {'216','60','64','66','92','98'}; % 60 gone for inj
+Box3Subjects = {'213','202','211','212','214','227'}; % 91 sacced 11/27
+Box4Subjects = {'204','61','63','65','86','226'}; % 64 and 66 out for surgery
+Box5Subjects = {'95','69','200','201','215','206'};
 Box6Subjects = {'217','218','219','220','221','222'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
