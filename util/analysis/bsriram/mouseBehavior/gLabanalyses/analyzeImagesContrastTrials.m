@@ -17,7 +17,7 @@ imageData.correction = im.compiledTrialRecords.correctionTrial;
 imForTrialsLR = [im.compiledDetails(1).records.leftIm;im.compiledDetails(1).records.rightIm];
 imForTrials = nan(1,size(imForTrialsLR,2));
 whichIsBlank = find(~cellfun(@isempty,strfind(im.compiledLUT,'blank')));
-imForTrials = im.compiledLUT(sum(imForTrialsLR.*double(~(imForTrialsLR==whichIsBlank))));
+imForTrials = im.compiledLUT(sum(imForTrialsLR.*double(~ismember(imForTrialsLR,whichIsBlank))));
 warning('making assumptions about the nature of the string');
 [matches tokens] = regexp(imForTrials,'\w_C(\d+)','tokens','match');
 contrasts = cellfun(@(x) x{1},matches);

@@ -71,6 +71,8 @@ if plotFigure1
     analysisFor.analyzeRevOrientation = false;
     analysisFor.analyzeTempFreq = false;
     analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
     
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
@@ -81,7 +83,7 @@ if plotFigure1
     % 22,23,25,26,48,40,47,53,56,59,37,38,45,50
     
     % 22
-    filters = 1:todayDate;
+    filters = 1:today;
     out = {};
     plotDetails.axHan = subplot(3,5,1); out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     plotDetails.axHan = subplot(3,5,2); out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -162,7 +164,7 @@ if plotFigure1
         compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
     end
     
-    filters = 1:todayDate;
+    filters = 1:today;
     out = {};
     plotDetails.axHan = subplot(3,5,1); out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     plotDetails.axHan = subplot(3,5,2); out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);

@@ -34,12 +34,12 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
 compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+%     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
-ctrAll = analyzeMouse({'63','65','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+ctrAll = analyzeMouse({'63','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotResponsetimes = true;
+plotResponseTimes = false;
 if plotResponseTimes
     temp = ctrAll.ctrData.correction; temp(isnan(temp)) = true;
     whichOK = ~isnan(ctrAll.ctrData.correct)&~(temp);
@@ -307,11 +307,11 @@ analysisFor.analyzeRevTempFreq = false;
 analysisFor.analyzeQuatRadContrast = true;
 analysisFor.analyzeImagesContrast = false;
 
-filters = 735458:735542; %'Jun-17-2013':today ,,735542,,735486
+filters = 735460:735487;%735541; %'Jun-17-2013':today ,,735542,,735486
 trialNumCutoff = 25;
 
-splits.daysPBS = [];
-splits.daysCNO = [];
+splits.daysPBS = [735460 735466 735468 735472 735474 735476 735480 735482 735486 735488 735489];
+splits.daysCNO = [735461 735465 735467 735469 735473 735475 735481 735487];
 splits.daysIntact = [];
 splits.daysLesion = [];
 
@@ -343,3 +343,67 @@ analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiled
 plotDetails.axHan = subplot(3,2,6);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
 analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+%% Final run of contrast
+analysisFor.analyzeOpt = false;
+analysisFor.analyzeImages = false;
+analysisFor.analyzeRevOpt = false;
+analysisFor.analyzeContrast = true;
+analysisFor.analyzeRevContrast = false;
+analysisFor.analyzeSpatFreq = false;
+analysisFor.analyzeRevSpatFreq = false;
+analysisFor.analyzeOrientation = false;
+analysisFor.analyzeRevOrientation = false;
+analysisFor.analyzeTempFreq = false;
+analysisFor.analyzeRevTempFreq = false;
+analysisFor.analyzeQuatRadContrast = false;
+analysisFor.analyzeImagesContrast = false;
+
+filters = 735576:735578; %'Jun-17-2013':today ,,735542,,735486
+trialNumCutoff = 25;
+
+splits.daysPBS = [735576 735578];
+splits.daysCNO = [735577];
+splits.daysIntact = [];
+splits.daysLesion = [];
+
+f = figure('name','HM3D PERFORMANCE BY CONTRAST');
+plotDetails.plotOn = true;
+plotDetails.plotWhere = 'givenAxes';
+plotDetails.requestedPlot = 'performanceByCondition';
+
+
+plotDetails.axHan = subplot(4,2,1:2);
+compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
+ctrAll = analyzeMouse({'61','63','65','69','200','201'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+
+plotDetails.axHan = subplot(4,2,3);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+analyzeMouse('61',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(4,2,4);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(4,2,5);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(4,2,6);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(4,2,7);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+analyzeMouse('200',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(4,2,8);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+analyzeMouse('201',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+

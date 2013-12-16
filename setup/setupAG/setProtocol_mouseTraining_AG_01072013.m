@@ -284,13 +284,14 @@ switch id
         step = 3;
         error('not being run'); % as of 6/22
     case '86' % SOM-cre
-        step = 8;
+        step = 34;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
         % not doing well on quat rad. shifting to half rad
         % going back to step 3 :( 12/3
         % okay going to use this mouse for SC lesion
+        % varied contrast on the object task
     case '87' % SOM-cre
         step = 14;
         % back with step 8 on 8/1
@@ -370,34 +371,37 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '202' % PV-cre
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % graduated to step 8 6/21
         % aperture task starting 9/10
         % back to training  start step 8 for week of dec 2
+        % varied contrast in the object task 12/15
     case '203' % PV-cre
         step = 3;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
     case '204' % PV-cre Future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 6/12
         % graduated to step 8 6/18
         % graduated to step 3 7/15
         % graduating to half rad step 14 on 11/26
         % sent to full screen or task 12/8
+        % varied contrast for week of 12/15
     case '205' % VIP-cre Future SC lesion
         step = 3;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
     case '206' % VIP-cre plan to remove
-        step = 8;
+        step = 34;
         % graduated to step 2 6/26
         % graduated to step 8 8/6
         % graduated to step 3 8/26
         % going to use animal for SC lesion
+        % sent to varied contrast object task for 12/15
     case '207' % VIP-cre
         step = 3;
         % graduated to step 2 6/26
@@ -409,32 +413,36 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/24
+        % varied contrast orientation week of 12/15
     case '210' % PV-cre Future SC lesion
-        step = 6;
+        step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/8
         % graduated to step 19 9/10
         % sent to varied C before SC lesion
+        % doing step 8 today but moving to step 34 tomorrow 12/15
     case '211' % PV-cre + TRN hM3D
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/12
         % graduated to step 19 9/10
         % back to training  start step 8 for week of dec 2
+        % varied contrast in the object task 12/15
     case '212' % PV-cre + TRN hM3D
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
         % graduated to step 19 10/2
         % back to training  start step 8 for week of dec 2
+        % varied contrast in the object task 12/15
     case '213' % VGAT-cre future SC lesion
         step = 6;
         % graduated to step 2 7/8
@@ -450,19 +458,21 @@ switch id
         % graduate to step 3 on 8/22
         % going to use this guys for the object task 12/8
     case '215' % VGAT-cre Future SC lesion
-        step = 7;
+        step = 6;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduate to step 3 8/25
-        % varied contrast starting 12/3
+        % varied orientation starting 12/3
+        % varied contrast starting 12/15
     case '216' % VGAT-cre Future SC Lesion
-        step = 6;
+        step = 8;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduated to step 3 8/6
         % graduated to step 19 9/10
         % went to varied contrast task 12/3 (sent to step 7 instead)
         % sent mouse to wrong step :( 12/8. now sent to step 6
+        % step 8 one day (12/15) but will move to step 34 tomorrow 12/16
     case '217' % PV-cre
         step = 8;
         % graduated to step 8 11/24
@@ -482,13 +492,16 @@ switch id
         step = 8;
         % graduated to step 8 11/24
     case '223' % VGAT-cre
-        step = 2;
+        step = 8;
         % graduated to step 2 12/3
+        % graduated to object task 12/15
     case '224' % VGAT-cre
-        step = 2;
+        step = 8;
         % graduated to step 2 12/3
+        % graduated to object task 12/15
     case '225' % PV-cre
-        step = 1; 
+        step = 8;
+        % graduated to object task 12/15
     case '226' % PV-cre
         step = 2;
         % graduated to step 2 12/3

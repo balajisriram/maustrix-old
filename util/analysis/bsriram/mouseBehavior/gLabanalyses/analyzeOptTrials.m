@@ -260,7 +260,6 @@ if plotDetails.plotOn
                     end
                     uniqDates = unique(dates);
                     optData.dayNumAtThreshold = find(uniqDates==dates(thresholdTrial),1,'first');
-                    keyboard
                 case 'learningProcessOnlyAverage'
                     disp('this assumes you have done the legwork to filter data appropriately. If not, the issue is on your head');
                     hold on;

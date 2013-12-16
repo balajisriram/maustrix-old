@@ -57,8 +57,8 @@ for i = 2:length(mouseID)
                 case 'images'
                     out.compiledDetails(whichInOlder).records.correctionTrial = [out.compiledDetails(whichInOlder).records.correctionTrial tempCurr.compiledDetails(j).records.correctionTrial];
                     out.compiledDetails(whichInOlder).records.pctCorrectionTrials = [out.compiledDetails(whichInOlder).records.pctCorrectionTrials tempCurr.compiledDetails(j).records.pctCorrectionTrials];
-                    out.compiledDetails(whichInOlder).records.leftIm = [out.compiledDetails(whichInOlder).records.leftIm tempCurr.compiledDetails(j).records.leftIm];
-                    out.compiledDetails(whichInOlder).records.rightIm = [out.compiledDetails(whichInOlder).records.rightIm tempCurr.compiledDetails(j).records.rightIm];
+                    out.compiledDetails(whichInOlder).records.leftIm = [out.compiledDetails(whichInOlder).records.leftIm tempCurr.compiledDetails(j).records.leftIm+maxLUTNum];
+                    out.compiledDetails(whichInOlder).records.rightIm = [out.compiledDetails(whichInOlder).records.rightIm tempCurr.compiledDetails(j).records.rightIm+maxLUTNum];
                     out.compiledDetails(whichInOlder).records.suffices = [out.compiledDetails(whichInOlder).records.suffices tempCurr.compiledDetails(j).records.suffices];
                 case 'afcGratings'
                     tempCurr.compiledDetails(j).records.afcGratingType = tempCurr.compiledDetails(j).records.afcGratingType+maxLUTNum;
