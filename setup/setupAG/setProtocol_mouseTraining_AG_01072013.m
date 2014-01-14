@@ -503,10 +503,12 @@ switch id
         step = 8;
         % graduated to object task 12/15
     case '226' % PV-cre
-        step = 2;
+        step = 8;
         % graduated to step 2 12/3
+        % graduated to step 8 1/14
     case '227' % PV-cre
-        step = 1;
+        step = 8;
+        % graduated to step 8 1/14
     case '999'
         step = 3;
     otherwise
