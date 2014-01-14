@@ -172,7 +172,7 @@ switch id
         % moved to step 7 week of 7/1
         error('not being run');
     case '60' % PV-cre
-        step = 8; 
+        step = 34; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -214,7 +214,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '64' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed to step 3 for 6/10 from step 8
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -239,7 +239,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '66' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
