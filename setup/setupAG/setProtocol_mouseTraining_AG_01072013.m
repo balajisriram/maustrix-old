@@ -98,6 +98,7 @@ end
 end
 
 function step = getStepNum(id)
+% testing for commit
 switch id
     case '26' % WT
         step = 10;
