@@ -397,6 +397,8 @@ if plotFigure2
     analysisFor.analyzeRevOrientation = false;
     analysisFor.analyzeTempFreq = false;
     analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
     
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
@@ -439,6 +441,8 @@ if plotFigure2
     analysisFor.analyzeRevOrientation = false;
     analysisFor.analyzeTempFreq = false;
     analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
     
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
@@ -587,7 +591,28 @@ if plotFigure2
     histnNotSig = histc(dP(~significanceOpt.IsSignificant),edges);
     b = bar(edges,histnNotSig);set(b,'facecolor','k');
     plot(nanmean(dP),6,'kx')
-
+    
+    fighanForPerfChecking = figure;
+    set(fighan, 'DefaultTextFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontName', 'Times New Roman');
+    set(fighan, 'DefaultTextFontName', 'Times New Roman');
+    axhan = subplot(1,2,1); hold on;
+    for i = 1:length(beforePerf)
+        if significanceOpt.IsSignificant(i)
+            if significanceOpt.dP>0
+                col = [0 0 1];
+            else
+                col = [1 0 0];
+            end
+        else
+            col = 0.5*[1 1 1];
+        end
+        plot([0.25 0.75],[beforePerf(i) afterPerf(i)],'color',col,'linewidth',2);
+    end
+    axis([0.2 0.8 0.4 1]);
+    plot([0.2 0.8],[0.5 0.5],'k--');
+    set(gca,'xtick',[0.25 0.75],'xticklabel',{'before','after'},'ytick',[0.5 1]);
      %% lesioning image data
     
     clc;
@@ -654,7 +679,7 @@ if plotFigure2
     set(fighan, 'DefaultTextFontName', 'Times New Roman');
     
     
-    plotDetails.plotOn = false;
+    plotDetails.plotOn = true;
     plotDetails.plotWhere = 'makeFigure';
     plotDetails.axHan = axes;
     plotDetails.requestedPlot = 'performanceByDay';
@@ -742,6 +767,25 @@ if plotFigure2
     histnNotSig = histc(dP(~significanceIm.IsSignificant),edges);
     b = bar(edges,histnNotSig);set(b,'facecolor','k');
     plot(nanmean(dP),6,'kx')
+    
+    
+    figure(fighanForPerfChecking);
+    axhan = subplot(1,2,2); hold on;
+    for i = 1:length(beforePerf)
+        if significanceIm.IsSignificant(i)
+            if significanceIm.dP(i)>0
+                col = [1 0 0];
+            else
+                col = [0 0 1];
+            end
+        else
+            col = 0.5*[1 1 1];
+        end
+        plot([0.25 0.75],[beforePerf(i) afterPerf(i)],'color',col,'linewidth',2);
+    end
+    axis([0.2 0.8 0.4 1]);
+    plot([0.2 0.8],[0.5 0.5],'k--');
+    set(gca,'xtick',[0.25 0.75],'xticklabel',{'before','after'},'ytick',[0.5 1]);
     %%
     LesionDetails = {
         '22',   'Jan-15-2013',  'Mech';
@@ -759,5 +803,113 @@ if plotFigure2
         '45',   'Jul-1-2013',   'IBO';
         '50',   'Jul-1-2013',   'IBO'};
     
+    %% spatial frequency details
+    
+    clc;
+        
+    fighan = figure;
+    set(fighan, 'DefaultTextFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontName', 'Times New Roman');
+    set(fighan, 'DefaultTextFontName', 'Times New Roman');
+    
+    
+    plotDetails.plotOn = true;
+    plotDetails.plotWhere = 'givenAxes';
+    plotDetails.requestedPlot = 'performanceByCondition';
+    
+    trialNumCutoff = 25;
+    
+    analysisFor.analyzeImages = false;% true, false
+    analysisFor.analyzeOpt = false;
+    analysisFor.analyzeRevOpt = false; % true, false
+    analysisFor.analyzeContrast = false;
+    analysisFor.analyzeRevContrast = false;
+    analysisFor.analyzeSpatFreq = true;
+    analysisFor.analyzeRevSpatFreq = false;
+    analysisFor.analyzeOrientation = false;
+    analysisFor.analyzeRevOrientation = false;
+    analysisFor.analyzeTempFreq = false;
+    analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
+
+    
+    
+    if ismac
+        compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
+    elseif IsWin
+        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
+    end
+    out1 = {};
+    beforePerf = nan(14,1);
+    nBefore = nan(14,1);
+    afterPerf = nan(14,1);
+    nAfter = nan(14,1);
+    beforeLCI = nan(14,1);
+    beforeHCI = nan(14,1);
+    afterLCI = nan(14,1);
+    afterHCI = nan(14,1);
+    
+    analysisFor.analyzeSpatFreq = false;
+    analysisFor.analyzeRevSpatFreq = true;
+    plotDetails.axHan =subplot(3,3,1);mouseID = '26'; filters = 1:datenum('Apr-22-2013');out1{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeSpatFreq = true;
+    analysisFor.analyzeRevSpatFreq = false;
+    plotDetails.axHan =subplot(3,3,2);mouseID = '48'; filters = 1:datenum('Apr-22-2013');out1{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,3);mouseID = '40'; filters = 1:datenum('May-15-2013');out1{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,4);mouseID = '47'; filters = 1:datenum('May-15-2013');out1{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,7);mouseID = '45'; filters = 1:datenum('Jul-1-2013');out1{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,8);mouseID = '50'; filters = 1:datenum('Jul-1-2013');out1{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    
+    figure;
+    out2 = {};
+    analysisFor.analyzeSpatFreq = false;
+    analysisFor.analyzeRevSpatFreq = true;
+    plotDetails.axHan =subplot(3,3,1);mouseID = '26'; filters = datenum('Apr-22-2013'):todayDate;out2{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeSpatFreq = true;
+    analysisFor.analyzeRevSpatFreq = false;
+    plotDetails.axHan =subplot(3,3,2);mouseID = '48'; filters = datenum('Apr-22-2013'):todayDate;out2{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,3);mouseID = '40'; filters = datenum('May-15-2013'):todayDate;out2{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,4);mouseID = '47'; filters = datenum('May-15-2013'):todayDate;out2{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,7);mouseID = '45'; filters = datenum('Jul-1-2013'):todayDate;out2{5} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    plotDetails.axHan =subplot(3,3,8);mouseID = '50'; filters = datenum('Jul-1-2013'):todayDate;out2{6} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    
+    minSF = 0.0339647218215715;
+    maxSF = 0.494944172780733;
+    sfRange = logspace(log10(minSF),log10(maxSF),100);
+    
+    perfsBefore = nan(6,100);
+    perfsBefore(1,:) = interp1(out1{1}.spatRevData.spatFreqs,out1{1}.spatRevData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsBefore(2,:) = interp1(out1{2}.spatData.spatFreqs,out1{2}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsBefore(3,:) = interp1(out1{3}.spatData.spatFreqs,out1{3}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsBefore(4,:) = interp1(out1{4}.spatData.spatFreqs,out1{4}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsBefore(5,:) = interp1(out1{5}.spatData.spatFreqs,out1{5}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsBefore(6,:) = interp1(out1{6}.spatData.spatFreqs,out1{6}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    
+    perfsAfter = nan(6,100);
+    perfsAfter(1,:) = interp1(out2{1}.spatRevData.spatFreqs,out2{1}.spatRevData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsAfter(2,:) = interp1(out2{2}.spatData.spatFreqs,out2{2}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsAfter(3,:) = interp1(out2{3}.spatData.spatFreqs,out2{3}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsAfter(4,:) = interp1(out2{4}.spatData.spatFreqs,out2{4}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsAfter(5,:) = interp1(out2{5}.spatData.spatFreqs,out2{5}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+    perfsAfter(6,:) = interp1(out2{6}.spatData.spatFreqs,out2{6}.spatData.performanceByConditionWCO(:,1,5),sfRange);
+
+    figure;
+    subplot(2,1,1);
+    semilogx(sfRange,mean(perfsBefore),'k','linewidth',3); hold on;
+    semilogx(sfRange,[mean(perfsBefore)-std(perfsBefore)/sqrt(6)],'k--','linewidth',2);
+    semilogx(sfRange,[mean(perfsBefore)+std(perfsBefore)/sqrt(6)],'k--','linewidth',2);
+    
+    semilogx(sfRange,mean(perfsAfter),'b','linewidth',3); hold on;
+    semilogx(sfRange,[mean(perfsAfter)-std(perfsAfter)/sqrt(6)],'b--','linewidth',2);
+    semilogx(sfRange,[mean(perfsAfter)+std(perfsAfter)/sqrt(6)],'b--','linewidth',2);
+    
+    
+    perfsRatio = (perfsBefore)./(perfsAfter);
+    subplot(2,1,2);
+    semilogx(sfRange,mean(perfsRatio),'k','linewidth',3); hold on;
+    semilogx(sfRange,[mean(perfsRatio)-std(perfsRatio)/sqrt(6)],'k--','linewidth',2);
+    semilogx(sfRange,[mean(perfsRatio)+std(perfsRatio)/sqrt(6)],'k--','linewidth',2);
 end
 end

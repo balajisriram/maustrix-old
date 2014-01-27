@@ -10,11 +10,11 @@ spatFreqData.trialNum = [spat.compiledTrialRecords.trialNumber];
 spatFreqData.correct = [spat.compiledTrialRecords.correct];
 spatFreqData.correction = [spat.compiledTrialRecords.correctionTrial];
 whichDetailFileNum = find(strcmp({spat.compiledDetails.className},'afcGratings'));
-spatFreqData.contrast = [spat.compiledDetails(whichDetailFileNum).records.contrasts];
+spatFreqData.spatFreq = 1./rad2deg(atan(0.00110243055*[spat.compiledDetails(whichDetailFileNum).records.pixPerCycs]));
 spatFreqData.time = [spat.compiledTrialRecords.date];
 spatFreqData.date = floor(spatFreqData.time);
 spatFreqData.dates = unique(spatFreqData.date);
-spatFreqData.contrasts = unique(spatFreqData.contrast);
+spatFreqData.spatFreqs = unique(spatFreqData.spatFreq);
 
 % performance on a day by day basis
 spatFreqData.trialNumByDate = cell(1,length(spatFreqData.dates));
@@ -25,29 +25,27 @@ spatFreqData.conditionNum = nan(1,length(spatFreqData.dates));
 spatFreqData.dayMetCutOffCriterion = nan(1,length(spatFreqData.dates));
 
 %performance by condition
-spatFreqData.trialNumsByCondition = cell(length(spatFreqData.contrasts),5);
-spatFreqData.numTrialsByCondition = zeros(length(spatFreqData.contrasts),5);
-spatFreqData.correctByCondition = zeros(length(spatFreqData.contrasts),5);
-spatFreqData.performanceByCondition = nan(length(spatFreqData.contrasts),3,5);
+spatFreqData.trialNumsByCondition = cell(length(spatFreqData.spatFreqs),5);
+spatFreqData.numTrialsByCondition = zeros(length(spatFreqData.spatFreqs),5);
+spatFreqData.correctByCondition = zeros(length(spatFreqData.spatFreqs),5);
+spatFreqData.performanceByCondition = nan(length(spatFreqData.spatFreqs),3,5);
 
 %performance by condition with trial number cutoff
-spatFreqData.trialNumsByConditionWCO = cell(length(spatFreqData.contrasts),5);
-spatFreqData.numTrialsByConditionWCO = zeros(length(spatFreqData.contrasts),5);
-spatFreqData.correctByConditionWCO = zeros(length(spatFreqData.contrasts),5);
-spatFreqData.performanceByConditionWCO = nan(length(spatFreqData.contrasts),3,5);
+spatFreqData.trialNumsByConditionWCO = cell(length(spatFreqData.spatFreqs),5);
+spatFreqData.numTrialsByConditionWCO = zeros(length(spatFreqData.spatFreqs),5);
+spatFreqData.correctByConditionWCO = zeros(length(spatFreqData.spatFreqs),5);
+spatFreqData.performanceByConditionWCO = nan(length(spatFreqData.spatFreqs),3,5);
 
 for i = 1:length(spatFreqData.dates)
-    warning('need to select mainly for spat. freq.');
-    keyboard
-    if ismember(spatFreqData.dates(i),filters.ctrFilter)
+    if ismember(spatFreqData.dates(i),filters.sfFilter)
         dateFilter = spatFreqData.date==spatFreqData.dates(i);
         correctThatDate = spatFreqData.correct(dateFilter);
         correctionThatDate = spatFreqData.correction(dateFilter);
-        contrastThatDate = spatFreqData.contrast(dateFilter);
+        spatFreqThatDate = spatFreqData.spatFreq(dateFilter);
         % filter out the nans
         whichGood = ~isnan(correctThatDate) & ~correctionThatDate;
         correctThatDate = correctThatDate(whichGood);
-        contrastThatDate = contrastThatDate(whichGood);
+        spatFreqThatDate = spatFreqThatDate(whichGood);
  
         spatFreqData.trialNumByDate{i} = spatFreqData.trialNum(dateFilter);
         spatFreqData.trialNumByDate{i} = spatFreqData.trialNumByDate{i}(whichGood);
@@ -79,76 +77,76 @@ for i = 1:length(spatFreqData.dates)
         end
                 
         if spatFreqData.conditionNum(i) == 1
-            for j = 1:length(spatFreqData.contrasts)
-                whichCurrContrast = contrastThatDate==spatFreqData.contrasts(j);
-                currContrastCorrect = correctThatDate(whichCurrContrast);
+            for j = 1:length(spatFreqData.spatFreqs)
+                whichCurrSpatFreq = spatFreqThatDate==spatFreqData.spatFreqs(j);
+                currContrastCorrect = correctThatDate(whichCurrSpatFreq);
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
-                spatFreqData.trialNumsByCondition{j,1} = [spatFreqData.trialNumsByCondition{j,1} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                spatFreqData.trialNumsByCondition{j,1} = [spatFreqData.trialNumsByCondition{j,1} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                 spatFreqData.numTrialsByCondition(j,1) = spatFreqData.numTrialsByCondition(j,1)+n1;
                 spatFreqData.correctByCondition(j,1) = spatFreqData.correctByCondition(j,1)+x1;
                 if spatFreqData.dayMetCutOffCriterion(i)
-                    spatFreqData.trialNumsByConditionWCO{j,1} = [spatFreqData.trialNumsByConditionWCO{j,1} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                    spatFreqData.trialNumsByConditionWCO{j,1} = [spatFreqData.trialNumsByConditionWCO{j,1} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                     spatFreqData.numTrialsByConditionWCO(j,1) = spatFreqData.numTrialsByConditionWCO(j,1)+n1;
                     spatFreqData.correctByConditionWCO(j,1) = spatFreqData.correctByConditionWCO(j,1)+x1;
                 end
             end
         elseif spatFreqData.conditionNum(i) == 2
-            for j = 1:length(spatFreqData.contrasts)
-                whichCurrContrast = contrastThatDate==spatFreqData.contrasts(j);
-                currContrastCorrect = correctThatDate(whichCurrContrast);
+            for j = 1:length(spatFreqData.spatFreqs)
+                whichCurrSpatFreq = spatFreqThatDate==spatFreqData.spatFreqs(j);
+                currContrastCorrect = correctThatDate(whichCurrSpatFreq);
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
-                spatFreqData.trialNumsByCondition{j,2} = [spatFreqData.trialNumsByCondition{j,2} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                spatFreqData.trialNumsByCondition{j,2} = [spatFreqData.trialNumsByCondition{j,2} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                 spatFreqData.numTrialsByCondition(j,2) = spatFreqData.numTrialsByCondition(j,2)+n1;
                 spatFreqData.correctByCondition(j,2) = spatFreqData.correctByCondition(j,2)+x1;
                 if spatFreqData.dayMetCutOffCriterion(i)
-                    spatFreqData.trialNumsByConditionWCO{j,2} = [spatFreqData.trialNumsByConditionWCO{j,2} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                    spatFreqData.trialNumsByConditionWCO{j,2} = [spatFreqData.trialNumsByConditionWCO{j,2} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                     spatFreqData.numTrialsByConditionWCO(j,2) = spatFreqData.numTrialsByConditionWCO(j,2)+n1;
                     spatFreqData.correctByConditionWCO(j,2) = spatFreqData.correctByConditionWCO(j,2)+x1;
                 end
             end
         elseif spatFreqData.conditionNum(i) == 3
-            for j = 1:length(spatFreqData.contrasts)
-                whichCurrContrast = contrastThatDate==spatFreqData.contrasts(j);
-                currContrastCorrect = correctThatDate(whichCurrContrast);
+            for j = 1:length(spatFreqData.spatFreqs)
+                whichCurrSpatFreq = spatFreqThatDate==spatFreqData.spatFreqs(j);
+                currContrastCorrect = correctThatDate(whichCurrSpatFreq);
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
-                spatFreqData.trialNumsByCondition{j,3} = [spatFreqData.trialNumsByCondition{j,3} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                spatFreqData.trialNumsByCondition{j,3} = [spatFreqData.trialNumsByCondition{j,3} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                 spatFreqData.numTrialsByCondition(j,3) = spatFreqData.numTrialsByCondition(j,3)+n1;
                 spatFreqData.correctByCondition(j,3) = spatFreqData.correctByCondition(j,3)+x1;
                 if spatFreqData.dayMetCutOffCriterion(i)
-                    spatFreqData.trialNumsByConditionWCO{j,3} = [spatFreqData.trialNumsByConditionWCO{j,3} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                    spatFreqData.trialNumsByConditionWCO{j,3} = [spatFreqData.trialNumsByConditionWCO{j,3} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                     spatFreqData.numTrialsByConditionWCO(j,3) = spatFreqData.numTrialsByConditionWCO(j,3)+n1;
                     spatFreqData.correctByConditionWCO(j,3) = spatFreqData.correctByConditionWCO(j,3)+x1;
                 end
             end
         elseif spatFreqData.conditionNum(i) == 4
-            for j = 1:length(spatFreqData.contrasts)
-                whichCurrContrast = contrastThatDate==spatFreqData.contrasts(j);
-                currContrastCorrect = correctThatDate(whichCurrContrast);
+            for j = 1:length(spatFreqData.spatFreqs)
+                whichCurrSpatFreq = spatFreqThatDate==spatFreqData.spatFreqs(j);
+                currContrastCorrect = correctThatDate(whichCurrSpatFreq);
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
-                spatFreqData.trialNumsByCondition{j,4} = [spatFreqData.trialNumsByCondition{j,4} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                spatFreqData.trialNumsByCondition{j,4} = [spatFreqData.trialNumsByCondition{j,4} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                 spatFreqData.numTrialsByCondition(j,4) = spatFreqData.numTrialsByCondition(j,4)+n1;
                 spatFreqData.correctByCondition(j,4) = spatFreqData.correctByCondition(j,4)+x1;
                 if spatFreqData.dayMetCutOffCriterion(i)
-                    spatFreqData.trialNumsByConditionWCO{j,4} = [spatFreqData.trialNumsByConditionWCO{j,4} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                    spatFreqData.trialNumsByConditionWCO{j,4} = [spatFreqData.trialNumsByConditionWCO{j,4} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                     spatFreqData.numTrialsByConditionWCO(j,4) = spatFreqData.numTrialsByConditionWCO(j,4)+n1;
                     spatFreqData.correctByConditionWCO(j,4) = spatFreqData.correctByConditionWCO(j,4)+x1;
                 end
             end
         elseif spatFreqData.conditionNum(i) == 5
-            for j = 1:length(spatFreqData.contrasts)
-                whichCurrContrast = contrastThatDate==spatFreqData.contrasts(j);
-                currContrastCorrect = correctThatDate(whichCurrContrast);
+            for j = 1:length(spatFreqData.spatFreqs)
+                whichCurrSpatFreq = spatFreqThatDate==spatFreqData.spatFreqs(j);
+                currContrastCorrect = correctThatDate(whichCurrSpatFreq);
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
-                spatFreqData.trialNumsByCondition{j,5} = [spatFreqData.trialNumsByCondition{j,5} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                spatFreqData.trialNumsByCondition{j,5} = [spatFreqData.trialNumsByCondition{j,5} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                 spatFreqData.numTrialsByCondition(j,5) = spatFreqData.numTrialsByCondition(j,5)+n1;
                 spatFreqData.correctByCondition(j,5) = spatFreqData.correctByCondition(j,5)+x1;
                 if spatFreqData.dayMetCutOffCriterion(i)
-                    spatFreqData.trialNumsByConditionWCO{j,5} = [spatFreqData.trialNumsByConditionWCO{j,5} makerow(spatFreqData.trialNumByDate{i}(whichCurrContrast))];
+                    spatFreqData.trialNumsByConditionWCO{j,5} = [spatFreqData.trialNumsByConditionWCO{j,5} makerow(spatFreqData.trialNumByDate{i}(whichCurrSpatFreq))];
                     spatFreqData.numTrialsByConditionWCO(j,5) = spatFreqData.numTrialsByConditionWCO(j,5)+n1;
                     spatFreqData.correctByConditionWCO(j,5) = spatFreqData.correctByConditionWCO(j,5)+x1;
                 end
@@ -161,7 +159,7 @@ for i = 1:length(spatFreqData.dates)
 end
 
 
-for j = 1:length(spatFreqData.contrasts)
+for j = 1:length(spatFreqData.spatFreqs)
     [phat,pci] = binofit(spatFreqData.correctByCondition(j,:),spatFreqData.numTrialsByCondition(j,:));
     spatFreqData.performanceByCondition(j,1,:) = phat;
     spatFreqData.performanceByCondition(j,2:3,:) = pci';
@@ -189,13 +187,13 @@ if plotDetails.plotOn
                     for i = 1:size(spatFreqData.performanceByConditionWCO,3)
                         for j = 1:size(spatFreqData.performanceByConditionWCO,1)
                             if ~isnan(spatFreqData.performanceByConditionWCO(j,1,i))
-                                plot(spatFreqData.contrasts(j),spatFreqData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
-                                plot([spatFreqData.contrasts(j) spatFreqData.contrasts(j)],[spatFreqData.performanceByConditionWCO(j,2,i) spatFreqData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                                plot(spatFreqData.spatFreqs(j),spatFreqData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
+                                plot([spatFreqData.spatFreqs(j) spatFreqData.spatFreqs(j)],[spatFreqData.performanceByConditionWCO(j,2,i) spatFreqData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
                             end
                         end
                     end
                     set(gca,'ylim',[0.2 1.1],'xlim',[0 1],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
-                    xlabel('contrast','FontName','Times New Roman','FontSize',12);
+                    xlabel('spatFreq','FontName','Times New Roman','FontSize',12);
                     ylabel('performance','FontName','Times New Roman','FontSize',12);
                     
                 case 'performanceByDay'
@@ -269,13 +267,13 @@ if plotDetails.plotOn
             for i = 1:size(spatFreqData.performanceByConditionWCO,3)
                 for j = 1:size(spatFreqData.performanceByConditionWCO,1)
                     if ~isnan(spatFreqData.performanceByConditionWCO(j,1,i))
-                        plot(spatFreqData.contrasts(j),spatFreqData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
-                        plot([spatFreqData.contrasts(j) spatFreqData.contrasts(j)],[spatFreqData.performanceByConditionWCO(j,2,i) spatFreqData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                        plot(spatFreqData.spatFreqs(j),spatFreqData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
+                        plot([spatFreqData.spatFreqs(j) spatFreqData.spatFreqs(j)],[spatFreqData.performanceByConditionWCO(j,2,i) spatFreqData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
                     end
                 end
             end
             set(ax3,'ylim',[0.2 1.1],'xlim',[0 1],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
-            xlabel('contrast','FontName','Times New Roman','FontSize',12);
+            xlabel('spatFreq','FontName','Times New Roman','FontSize',12);
             ylabel('performance','FontName','Times New Roman','FontSize',12);
     end
 end
