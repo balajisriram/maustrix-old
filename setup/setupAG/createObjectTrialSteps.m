@@ -287,7 +287,7 @@ switch id
     case '226'
         % nothing changes here, but might later
     case '227'
-        % nothing changes here, but might later
+        out.rewardScalar = 0.1;
     case '999'
         % nothing changes here, but might later
     case 'demo1'

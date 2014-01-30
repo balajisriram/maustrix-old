@@ -316,11 +316,11 @@ switch id
     case '220'
         % nothing changes here, but might later
     case '221'
-        % nothing changes here, but might later
+        out.msPenalty = 10000;
     case '222'
         % nothing changes here, but might later
     case '223'
-        % nothing changes here, but might later
+        out.msPenalty = 10000;
     case '224'
         % nothing changes here, but might later
     case '225'

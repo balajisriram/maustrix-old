@@ -327,10 +327,11 @@ switch id
     case '93' % VIP-cre
         step = 3;
     case '95' % SOM-cre future V1 hM3D?
-        step = 8; 
+        step = 34; 
         % force graduate starting on 6/10
         % graduated to step 3 7/22
         % ok was shit - sent to step 8 for SC lesion?
+        % sent to step 34 1/30
     case '96' % SOM-cre
         step = 3;
         % force graduate starting on 6/10
@@ -424,7 +425,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 34;
+        step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
@@ -432,6 +433,7 @@ switch id
         % varied contrast orientation week of 12/15
         % go to object task for a couple of days then varied contrast on
         % object 1/27
+        % somehow went to step 34. going to step 8 1/30
     case '210' % PV-cre Future SC lesion
         step = 34;
         % graduated to step 2 7/8
@@ -475,13 +477,14 @@ switch id
         % going to use this guys for the object task 12/8
         % varied contrast on object task 12/16
     case '215' % VGAT-cre Future SC lesion
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduate to step 3 8/25
         % varied orientation starting 12/3
         % varied contrast starting 12/15
         % object for today and then step 34 tomorrow
+        % step 34 starting 1/30
     case '216' % VGAT-cre Future SC Lesion
         step = 34;
         % graduated to step 2 7/8
@@ -493,9 +496,10 @@ switch id
         % step 8 one day (12/15) but will move to step 34 tomorrow 12/16
         % movied to varied contrast with object 12/16
     case '217' % PV-cre
-        step = 2;
+        step = 8;
         % graduated to step 8 11/24
         % not doing enough trials - sending back to step 2 1/27
+        % okay back to step 8 - 1/30
     case '218' % PV-cre
         step = 3;
         % graduated to step 8 11/24
