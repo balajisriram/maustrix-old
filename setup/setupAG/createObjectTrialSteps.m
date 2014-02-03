@@ -288,6 +288,18 @@ switch id
         % nothing changes here, but might later
     case '227'
         out.rewardScalar = 0.1;
+    case '228'
+        % nothing changes here, but might later
+    case '229'
+        % nothing changes here, but might later
+    case '230'
+        % nothing changes here, but might later
+    case '231'
+        % nothing changes here, but might later
+    case '232'
+        % nothing changes here, but might later
+    case '233'
+        % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
     case 'demo1'

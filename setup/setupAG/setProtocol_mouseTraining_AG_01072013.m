@@ -540,6 +540,18 @@ switch id
     case '227' % PV-cre
         step = 8;
         % graduated to step 8 1/14
+    case '228'
+        step = 1;
+    case '229'
+        step = 1;
+    case '230'
+        step = 1;
+    case '231'
+        step = 1;
+    case '232'
+        step = 1;
+    case '233'
+        step = 1;
     case '999'
         step = 3;
     otherwise
@@ -548,12 +560,12 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'205','209','210','223','224','225'}; % 87 found dead 11/27
-Box2Subjects = {'216','60','64','66','92','98'}; % 60 gone for inj
-Box3Subjects = {'213','202','211','212','214','227'}; % 91 sacced 11/27
-Box4Subjects = {'204','61','63','65','86','226'}; % 64 and 66 out for surgery
+Box1Subjects = {'205','209','210','223','225','225'}; % 87 found dead 11/27, '224' f.d.
+Box2Subjects = {'216','60','92','66','98','230'}; % 60 gone for inj,'64' sacced
+Box3Subjects = {'213','202','211','214','227','231'}; % 91 sacced 11/27,'212' f.d.
+Box4Subjects = {'226','61','86','65','228','232'}; % '204' sacced, '63' sacced
 Box5Subjects = {'95','69','200','201','215','206'};
-Box6Subjects = {'217','218','219','220','221','222'};
+Box6Subjects = {'217','218','220','221','222','233'}; %'219' f.d.
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
