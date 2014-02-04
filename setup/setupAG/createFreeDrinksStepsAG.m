@@ -240,6 +240,8 @@ switch id
         out.pStochastic = 0.001;
     case '233'
         out.pStochastic = 0.001;
+    case '234'
+        out.pStochastic = 0.001;
     case '999'
         % nothing changes here, but might later
     case 'demo1'
