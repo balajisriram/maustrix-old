@@ -342,13 +342,14 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 8/19
     case '98' % SOM-cre Future SC lesion
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
         % graduate step 3 on 8/26
         % sent to varied C for future sc lesion 12/8
         % going to one day for object task. then onto varied contrast for
         % future lesion
+        %sent to varied object contrast 2/4
     case '99' % SOM-cre
         step = 3; 
         % graduated to step 2 6/12
@@ -401,11 +402,12 @@ switch id
         % varied contrast for week of 12/15
         % step 8 for a days
     case '205' % VIP-cre Future SC lesion
-        step = 6;
+        step = 8;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
         % varied contrast starting 1/27
+        % sent to object task 2/4 
     case '206' % VIP-cre plan to remove
         step = 3;
         % graduated to step 2 6/26
@@ -425,7 +427,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
@@ -434,6 +436,7 @@ switch id
         % go to object task for a couple of days then varied contrast on
         % object 1/27
         % somehow went to step 34. going to step 8 1/30
+        % varied contrast on object task starting tomorrow
     case '210' % PV-cre Future SC lesion
         step = 34;
         % graduated to step 2 7/8
@@ -461,7 +464,7 @@ switch id
         % back to training  start step 8 for week of dec 2
         % varied contrast in the object task 12/15
     case '213' % VGAT-cre future SC lesion
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
@@ -469,13 +472,15 @@ switch id
         % going back to step 3 for a few days
         % sent to varied C. for future SC lesion
         % sent to object today and then onto varied c on obj 1/27
+        % sent to varied contrast on object 2/4
     case '214' % VGAT-cre
-        step = 34;
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduate to step 3 on 8/22
         % going to use this guys for the object task 12/8
         % varied contrast on object task 12/16
+        % sending back to orientation hoping he lenrs 2/4
     case '215' % VGAT-cre Future SC lesion
         step = 34;
         % graduated to step 2 7/8
@@ -534,22 +539,33 @@ switch id
         % graduated to object task 12/15
         % graduated to orientation 1/27
     case '226' % PV-cre
-        step = 8;
+        step = 3;
         % graduated to step 2 12/3
         % graduated to step 8 1/14
+        % graduated to step 3 2/4
     case '227' % PV-cre
         step = 8;
         % graduated to step 8 1/14
     case '228'
-        step = 1;
+        step = 2;
+        % started 2/2
+        % gradauted to step 2 2/4
     case '229'
-        step = 1;
+        step = 2;
+        % started 2/2
+        % gradauted to step 2 2/4
     case '230'
-        step = 1;
+        step = 2;
+        % started 2/2
+        % gradauted to step 2 2/4
     case '231'
-        step = 1;
+        step = 2;
+        % started 2/2
+        % gradauted to step 2 2/4
     case '232'
-        step = 1;
+        step = 2;
+        % started 2/2
+        % gradauted to step 2 2/4
     case '233'
         step = 1;
     case '234'
@@ -566,7 +582,7 @@ Box1Subjects = {'205','209','210','223','225','229'}; % 87 found dead 11/27, '22
 Box2Subjects = {'216','60','92','66','98','230'}; % 60 gone for inj,'64' sacced
 Box3Subjects = {'213','202','211','214','227','231'}; % 91 sacced 11/27,'212' f.d.
 Box4Subjects = {'226','61','86','65','228','232'}; % '204' sacced, '63' sacced
-Box5Subjects = {'95','69','200','201','215','206','233'}; % '69' f.d.
+Box5Subjects = {'95','200','201','215','206','233'}; % '69' f.d.
 Box6Subjects = {'217','218','220','221','222','234'}; %'219' f.d.
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
