@@ -316,7 +316,7 @@ switch id
         % aperture on 8/26
         % poor performance on quat rad. now go to half-rad
     case '92' % VIP-cre + V1 hM3D
-        step = 8;
+        step = 34;
         % back with step 8 on 8/1
         % starting on step 3 for a week with pbs inj.
         % aperture on 8/26
@@ -324,6 +324,7 @@ switch id
         % back to step 19 11/19
         % sent to varied C for manipulation
         % okay step 8 for a couple of days and then back to 34
+        % step 34 starting 2/10
     case '93' % VIP-cre
         step = 3;
     case '95' % SOM-cre future V1 hM3D?
@@ -547,13 +548,15 @@ switch id
         step = 8;
         % graduated to step 8 1/14
     case '228'
-        step = 2;
+        step = 3;
         % started 2/2
         % gradauted to step 2 2/4
+        % graduated to step 8 for 2/9
     case '229'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
+        % graduated to step 8 2/10
     case '230'
         step = 2;
         % started 2/2
@@ -567,9 +570,13 @@ switch id
         % started 2/2
         % gradauted to step 2 2/4
     case '233'
-        step = 1;
+        step = 2;
+        % started 2/4
+        % graduated to step 2 2/9
     case '234'
-        step = 1;
+        step = 2;
+        % started 2/4
+        % graduated to step 2 2/9
     case '999'
         step = 3;
     otherwise
