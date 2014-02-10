@@ -310,7 +310,7 @@ switch id
     case '217'
         % nothing changes here, but might later
     case '218'
-        % nothing changes here, but might later
+        out.msPenalty = 10000;
     case '219'
         % nothing changes here, but might later
     case '220'
@@ -320,7 +320,7 @@ switch id
     case '222'
         % nothing changes here, but might later
     case '223'
-        out.msPenalty = 10000;
+        out.msPenalty = 15000;
     case '224'
         % nothing changes here, but might later
     case '225'

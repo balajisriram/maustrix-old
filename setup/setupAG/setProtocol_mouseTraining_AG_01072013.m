@@ -172,7 +172,7 @@ switch id
         % moved to step 7 week of 7/1
         error('not being run');
     case '60' % PV-cre
-        step = 3; 
+        step = 6; 
         % lots of autograduations ! now hard set to 3. 6/5
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -183,6 +183,7 @@ switch id
         % back to step 19 11/19
         % back after TRN surgery. doing go to stim 12/8
         % moving to orientation task this week 12/16
+        % moved to varied contrast on orientation 2/11
     case '61' % PV-cre
         step = 6;
         % back from the injections. going to run 8/19
@@ -241,7 +242,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
     case '66' % PV-cre
-        step = 3; 
+        step = 6; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -252,6 +253,7 @@ switch id
         % back to step 19 11/19
         % back after TRN surgery. doing go to stim 12/8
         % moving to orientation task this week 12/16
+        % moving to varied contrast task - 2/10
     case '67' % PV-cre
         step = 22; 
         % graduated from 8 on 6/5
@@ -403,12 +405,13 @@ switch id
         % varied contrast for week of 12/15
         % step 8 for a days
     case '205' % VIP-cre Future SC lesion
-        step = 8;
+        step = 34;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
         % varied contrast starting 1/27
         % sent to object task 2/4 
+        % varied contrast on object starting 2/11
     case '206' % VIP-cre plan to remove
         step = 3;
         % graduated to step 2 6/26
@@ -548,23 +551,26 @@ switch id
         step = 8;
         % graduated to step 8 1/14
     case '228'
-        step = 3;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 for 2/9
+        % graduated to step 8 2/11
     case '229'
         step = 8;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 2/10
     case '230'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
+        % graduate to step 8 2/10
     case '231'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
+        % graduate to step 8 2/11
     case '232'
         step = 2;
         % started 2/2
