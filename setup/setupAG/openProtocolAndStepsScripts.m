@@ -9,3 +9,4 @@ edit createOrientationSteps_halfRad.m;
 edit createOrientationSteps_quatRad.m;
 edit createOrientationSteps_eighthsRad.m;
 edit createOrientationWithOrientedSurroundSteps.m;
+edit createSpecialOrientationSteps;

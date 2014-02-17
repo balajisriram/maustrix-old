@@ -29,6 +29,8 @@ switch n
     case 2        
         if all(ismember(sweptParameters,{'contrasts','radii'}))
             out = 'afcGratings_cntrXradSweep';
+        elseif all(ismember(sweptParameters,{'contrasts','pixPerCycs'}))
+            out = 'afcGratings_cntrXsfSweep';
         else
             sweptParameters
             error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
