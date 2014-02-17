@@ -326,7 +326,7 @@ switch id
     case '225'
         % nothing changes here, but might later
     case '226'
-        % nothing changes here, but might later
+        out.msPenalty = 10000; %increased penalty 2/14
     case '227'
         % nothing changes here, but might later
     case '228'

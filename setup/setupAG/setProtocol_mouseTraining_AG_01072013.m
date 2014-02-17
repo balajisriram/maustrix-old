@@ -63,6 +63,7 @@ for i=1:length(subjIDs)
     [or_optimQR, or_sfSweepQR, or_tfSweepQR, or_ctrSweepQR, or_orSweepQR] = createOrientationSteps_quatRad(svnRev,svnCheckMode,subjIDs{i});
     [or_optimER, or_sfSweepER, or_tfSweepER, or_ctrSweepER, or_orSweepER] = createOrientationSteps_eighthsRad(svnRev,svnCheckMode,subjIDs{i});
     [orwos_SurrCtrSweep, orwos_SurrLowCtr, orwos_SurrMedCtr, orwos_SurrHighCtr, orwos_SurrFullCtr] = createOrientationWithOrientedSurroundSteps(svnRev,svnCheckMode,subjIDs{i});
+    [or_ctrXsfSweep] = createSpecialOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
     %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
     
     % here is the protocol
@@ -73,7 +74,7 @@ for i=1:length(subjIDs)
         or_optimQR,or_sfSweepQR,or_tfSweepQR,or_ctrSweepQR,or_orSweepQR,...
         or_optimER,or_sfSweepER,or_tfSweepER,or_ctrSweepER,or_orSweepER,...
         orwos_SurrCtrSweep,orwos_SurrLowCtr,orwos_SurrMedCtr,orwos_SurrHighCtr,orwos_SurrFullCtr,...
-        ts_obj2});
+        ts_obj2,or_ctrXsfSweep});
 
     
     %%%%%%%%%%%%
@@ -548,8 +549,9 @@ switch id
         % graduated to step 8 1/14
         % graduated to step 3 2/4
     case '227' % PV-cre
-        step = 8;
+        step = 3;
         % graduated to step 8 1/14
+        % graduate to step 3 2/14
     case '228'
         step = 8;
         % started 2/2
@@ -567,22 +569,27 @@ switch id
         % gradauted to step 2 2/4
         % graduate to step 8 2/10
     case '231'
-        step = 8;
+        step = 3;
         % started 2/2
         % gradauted to step 2 2/4
         % graduate to step 8 2/11
+        % graduate to tep 3 2/14
     case '232'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
+        % graduated to step 8 2/14
     case '233'
-        step = 2;
+        step = 1;
         % started 2/4
         % graduated to step 2 2/9
+        % not doing enough trials.getting back to step 1 2/14 pStosub=0.001
     case '234'
-        step = 2;
+        step = 8;
         % started 2/4
         % graduated to step 2 2/9
+        % graduate to step 8 2/14 (look to see if subject performs plenty
+        % of trials
     case '999'
         step = 3;
     otherwise
