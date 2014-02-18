@@ -590,6 +590,10 @@ switch id
         % graduated to step 2 2/9
         % graduate to step 8 2/14 (look to see if subject performs plenty
         % of trials
+    case '235'
+        step = 1;
+    case '236'
+        step = 1;
     case '999'
         step = 3;
     otherwise
@@ -602,8 +606,8 @@ Box1Subjects = {'205','209','210','223','225','229'}; % 87 found dead 11/27, '22
 Box2Subjects = {'216','60','92','66','98','230'}; % 60 gone for inj,'64' sacced
 Box3Subjects = {'213','202','211','214','227','231'}; % 91 sacced 11/27,'212' f.d.
 Box4Subjects = {'226','61','86','65','228','232'}; % '204' sacced, '63' sacced
-Box5Subjects = {'95','200','201','215','206','233'}; % '69' f.d.
-Box6Subjects = {'217','218','220','221','222','234'}; %'219' f.d.
+Box5Subjects = {'95','200','201','215','206','235'}; % '69' f.d., '233' f.d.
+Box6Subjects = {'218','220','221','222','234','236'}; %'219' f.d., '217' removed due to low trial numbers
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
