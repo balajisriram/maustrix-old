@@ -331,7 +331,7 @@ switch id
     case '93' % VIP-cre
         step = 3;
     case '95' % SOM-cre future V1 hM3D?
-        step = 34; 
+        step = 8; 
         % force graduate starting on 6/10
         % graduated to step 3 7/22
         % ok was shit - sent to step 8 for SC lesion?
@@ -346,7 +346,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 8/19
     case '98' % SOM-cre Future SC lesion
-        step = 34;
+        step = 8;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
         % graduate step 3 on 8/26
@@ -406,7 +406,7 @@ switch id
         % varied contrast for week of 12/15
         % step 8 for a days
     case '205' % VIP-cre Future SC lesion
-        step = 34;
+        step = 8;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
@@ -414,7 +414,7 @@ switch id
         % sent to object task 2/4 
         % varied contrast on object starting 2/11
     case '206' % VIP-cre plan to remove
-        step = 3;
+        step = 8;
         % graduated to step 2 6/26
         % graduated to step 8 8/6
         % graduated to step 3 8/26
@@ -432,7 +432,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 34;
+        step = 8;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
