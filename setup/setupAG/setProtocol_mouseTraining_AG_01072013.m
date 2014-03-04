@@ -34,7 +34,7 @@ function r = setProtocol_mouseTraining_AG_01072013(r,subjIDs)
 % 28. -45,-35,-25,-15,-5,0,5,15,25,35,45 orientation sweep EIGHTSRAD
 
 % 29. -45 and 45 orientations with oriented surrounds task - contrast sweep
- %30. -45 and 45 orientations with oriented surrounds task - low contrasts
+% 30. -45 and 45 orientations with oriented surrounds task - low contrasts
 % 31. -45 and 45 orientations with oriented surrounds task - medium contrasts
 % 32. -45 and 45 orientations with oriented surrounds task - high contrasts
 % 33. -45 and 45 orientations with oriented surrounds task - full contrasts
@@ -469,7 +469,7 @@ switch id
         % back to training  start step 8 for week of dec 2
         % varied contrast in the object task 12/15
     case '213' % VGAT-cre future SC lesion
-        step = 34;
+        step = 3;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
@@ -478,6 +478,7 @@ switch id
         % sent to varied C. for future SC lesion
         % sent to object today and then onto varied c on obj 1/27
         % sent to varied contrast on object 2/4
+        % sent to orientaiion for a few days before sending to ctrXsf
     case '214' % VGAT-cre
         step = 3;
         % graduated to step 2 7/8
@@ -496,7 +497,7 @@ switch id
         % object for today and then step 34 tomorrow
         % step 34 starting 1/30
     case '216' % VGAT-cre Future SC Lesion
-        step = 34;
+        step = 3;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduated to step 3 8/6
@@ -505,6 +506,7 @@ switch id
         % sent mouse to wrong step :( 12/8. now sent to step 6
         % step 8 one day (12/15) but will move to step 34 tomorrow 12/16
         % movied to varied contrast with object 12/16
+        % sent to orientaiion for a few days before sending to ctrXsf
     case '217' % PV-cre
         step = 8;
         % graduated to step 8 11/24
@@ -553,21 +555,24 @@ switch id
         % graduated to step 8 1/14
         % graduate to step 3 2/14
     case '228'
-        step = 8;
+        step = 2;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 for 2/9
         % graduated to step 8 2/11
+        % sent back to step 2 because of not rials - 3/3
     case '229'
-        step = 8;
+        step = 2;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 2/10
+        % sent back to step 2 - not doing enough trials 3/3
     case '230'
-        step = 8;
+        step = 2;
         % started 2/2
         % gradauted to step 2 2/4
         % graduate to step 8 2/10
+        % sent back to step 2 - not doing enough trials 3/3
     case '231'
         step = 3;
         % started 2/2
@@ -591,9 +596,13 @@ switch id
         % graduate to step 8 2/14 (look to see if subject performs plenty
         % of trials
     case '235'
-        step = 1;
+        step = 2;
+        % started 2/17
+        %graduated to step 2 2/20
     case '236'
-        step = 1;
+        step = 2;
+        % started 2/17
+        %graduated to step 2 2/20
     case '999'
         step = 3;
     otherwise

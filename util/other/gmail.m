@@ -11,7 +11,7 @@ if ~exist('message','var')
 end
 % Define these variables appropriately:
 mail = 'ghoshlab@gmail.com'; %Your GMail email address
-password = 'cortex'; %Your GMail password
+password = 'visualcortex'; %Your GMail password
 
 % Then this code will set up the preferences properly:
 setpref('Internet','E_mail',mail);

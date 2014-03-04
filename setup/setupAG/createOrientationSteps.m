@@ -310,7 +310,7 @@ switch id
     case '217'
         % nothing changes here, but might later
     case '218'
-        out.msPenalty = 10000;
+        out.msPenalty = 20000;
     case '219'
         % nothing changes here, but might later
     case '220'
@@ -318,34 +318,46 @@ switch id
     case '221'
         out.msPenalty = 10000;
     case '222'
-        % nothing changes here, but might later
-    case '223'
         out.msPenalty = 15000;
+    case '223'
+        out.msPenalty = 25000;
     case '224'
         % nothing changes here, but might later
     case '225'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '226'
-        out.msPenalty = 10000; %increased penalty 2/14
+        out.rewardScalar = 0.10;
+        out.msPenalty = 15000; %increased penalty 2/14
     case '227'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '228'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '229'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '230'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '231'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '232'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '233'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '234'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '235'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '236'
+        out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '999'
         % nothing changes here, but might later
