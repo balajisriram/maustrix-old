@@ -297,7 +297,7 @@ switch id
         out.rewardScalar = 0.05; 
         % changed to 0.1 on 9/20
         % reduced reward scalar 10/24
-        out.msPenalty = 20000; % cahnged 11/24
+        out.msPenalty = 25000; % cahnged 11/24
     case '215'
         out.rewardScalar = 0.05;
         out.msPenalty = 10000; % changed 10/2
@@ -330,7 +330,7 @@ switch id
         out.rewardScalar = 0.10;
         out.msPenalty = 15000; %increased penalty 2/14
     case '227'
-        out.rewardScalar = 0.10;
+        out.rewardScalar = 0.05;
         % nothing changes here, but might later
     case '228'
         out.rewardScalar = 0.10;
@@ -343,7 +343,7 @@ switch id
         % nothing changes here, but might later
     case '231'
         out.rewardScalar = 0.10;
-        % nothing changes here, but might later
+        out.msPenalty = 5000; %increased penalty 3/11
     case '232'
         out.rewardScalar = 0.10;
         % nothing changes here, but might later

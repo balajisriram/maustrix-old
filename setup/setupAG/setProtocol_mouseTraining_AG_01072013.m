@@ -331,11 +331,12 @@ switch id
     case '93' % VIP-cre
         step = 3;
     case '95' % SOM-cre future V1 hM3D?
-        step = 8; 
+        step = 3; 
         % force graduate starting on 6/10
         % graduated to step 3 7/22
         % ok was shit - sent to step 8 for SC lesion?
         % sent to step 34 1/30
+        % sent to orientation to see if the num trials is still high
     case '96' % SOM-cre
         step = 3;
         % force graduate starting on 6/10
@@ -346,7 +347,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 8/19
     case '98' % SOM-cre Future SC lesion
-        step = 8;
+        step = 3;
         % graduated to step 2 6/12
         % graduated to step 8 on 7/2
         % graduate step 3 on 8/26
@@ -354,6 +355,8 @@ switch id
         % going to one day for object task. then onto varied contrast for
         % future lesion
         %sent to varied object contrast 2/4
+        % going to varied or for a day to see if number of trials is still
+        % high
     case '99' % SOM-cre
         step = 3; 
         % graduated to step 2 6/12
@@ -406,7 +409,7 @@ switch id
         % varied contrast for week of 12/15
         % step 8 for a days
     case '205' % VIP-cre Future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
@@ -414,6 +417,7 @@ switch id
         % sent to object task 2/4 
         % varied contrast on object starting 2/11
         % testing on orientatino task 3/4
+        % varied contrast starting 3/11
     case '206' % VIP-cre plan to remove
         step = 8;
         % graduated to step 2 6/26
@@ -433,7 +437,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 3;
+        step = 6;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
@@ -444,6 +448,7 @@ switch id
         % somehow went to step 34. going to step 8 1/30
         % varied contrast on object task starting tomorrow
         % testing on orientatino task 3/4
+        % varied contrast starting 3/11
     case '210' % PV-cre Future SC lesion
         step = 34;
         % graduated to step 2 7/8
@@ -490,7 +495,7 @@ switch id
         % varied contrast on object task 12/16
         % sending back to orientation hoping he lenrs 2/4
     case '215' % VGAT-cre Future SC lesion
-        step = 34;
+        step = 3;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduate to step 3 8/25
@@ -498,6 +503,7 @@ switch id
         % varied contrast starting 12/15
         % object for today and then step 34 tomorrow
         % step 34 starting 1/30
+        % sending to irientation for a day - seeing potential use for beads
     case '216' % VGAT-cre Future SC Lesion
         step = 3;
         % graduated to step 2 7/8
@@ -523,13 +529,15 @@ switch id
         % graduated to step 8 11/24
         % not doing enough trials -sending back tp step 2
     case '220' % PV-cre
-        step = 3; 
+        step = 35; 
         % graduated to step 8 11/24
         % graduated to step 3 1/24
+        % contrast sf sweep 3/11
     case '221' % VGAT-cre
-        step = 3;
+        step = 35;
         % graduated to step 8 11/24
         % graduated to step 3 1/27
+        % contrast sf sweep 3/11
     case '222' % VGAT-cre
         step = 3;
         % graduated to step 8 11/24
@@ -557,12 +565,13 @@ switch id
         % graduated to step 8 1/14
         % graduate to step 3 2/14
     case '228'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 for 2/9
         % graduated to step 8 2/11
         % sent back to step 2 because of not rials - 3/3
+        % ok trying step 8 again 3/11
     case '229'
         step = 2;
         % started 2/2
@@ -582,10 +591,11 @@ switch id
         % graduate to step 8 2/11
         % graduate to tep 3 2/14
     case '232'
-        step = 8;
+        step = 2;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 2/14
+        % getting back to step 2 as not doing enough trials 3/11
     case '233'
         step = 1;
         % started 2/4
@@ -598,13 +608,15 @@ switch id
         % graduate to step 8 2/14 (look to see if subject performs plenty
         % of trials
     case '235'
-        step = 2;
+        step = 8;
         % started 2/17
         %graduated to step 2 2/20
+        % graduate to step 8 3/11
     case '236'
-        step = 2;
+        step = 8;
         % started 2/17
         %graduated to step 2 2/20
+        % sending to step 8 3/11
     case '999'
         step = 3;
     otherwise
