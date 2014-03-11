@@ -579,11 +579,12 @@ switch id
         % graduated to step 8 2/10
         % sent back to step 2 - not doing enough trials 3/3
     case '230'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
         % graduate to step 8 2/10
         % sent back to step 2 - not doing enough trials 3/3
+        % okay back to 8 3/11
     case '231'
         step = 3;
         % started 2/2
