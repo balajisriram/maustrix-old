@@ -409,7 +409,7 @@ switch id
         % varied contrast for week of 12/15
         % step 8 for a days
     case '205' % VIP-cre Future SC lesion
-        step = 6;
+        step = 7;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
@@ -418,6 +418,7 @@ switch id
         % varied contrast on object starting 2/11
         % testing on orientatino task 3/4
         % varied contrast starting 3/11
+        % varied or 3/20
     case '206' % VIP-cre plan to remove
         step = 8;
         % graduated to step 2 6/26
@@ -437,7 +438,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 6;
+        step = 7;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
@@ -449,6 +450,7 @@ switch id
         % varied contrast on object task starting tomorrow
         % testing on orientatino task 3/4
         % varied contrast starting 3/11
+        % varied or 3/20
     case '210' % PV-cre Future SC lesion
         step = 34;
         % graduated to step 2 7/8
@@ -476,7 +478,7 @@ switch id
         % back to training  start step 8 for week of dec 2
         % varied contrast in the object task 12/15
     case '213' % VGAT-cre future SC lesion
-        step = 3;
+        step = 35;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % gradauted to step 3 on 8/22
@@ -486,6 +488,7 @@ switch id
         % sent to object today and then onto varied c on obj 1/27
         % sent to varied contrast on object 2/4
         % sent to orientaiion for a few days before sending to ctrXsf
+        % ctrxsf 3/20
     case '214' % VGAT-cre
         step = 3;
         % graduated to step 2 7/8
@@ -505,7 +508,7 @@ switch id
         % step 34 starting 1/30
         % sending to irientation for a day - seeing potential use for beads
     case '216' % VGAT-cre Future SC Lesion
-        step = 3;
+        step = 35;
         % graduated to step 2 7/8
         % graduated to step 8 7/22
         % graduated to step 3 8/6
@@ -515,6 +518,7 @@ switch id
         % step 8 one day (12/15) but will move to step 34 tomorrow 12/16
         % movied to varied contrast with object 12/16
         % sent to orientaiion for a few days before sending to ctrXsf
+        % sfxctr 3/20
     case '217' % PV-cre
         step = 8;
         % graduated to step 8 11/24
@@ -552,14 +556,16 @@ switch id
         % graduated to step 2 12/3
         % graduated to object task 12/15
     case '225' % PV-cre
-        step = 3;
+        step = 35;
         % graduated to object task 12/15
         % graduated to orientation 1/27
+        % sfxctr 3/20
     case '226' % PV-cre
-        step = 3;
+        step = 35;
         % graduated to step 2 12/3
         % graduated to step 8 1/14
         % graduated to step 3 2/4
+        % sf x ctr 3/20
     case '227' % PV-cre
         step = 3;
         % graduated to step 8 1/14
@@ -579,7 +585,7 @@ switch id
         % graduated to step 8 2/10
         % sent back to step 2 - not doing enough trials 3/3
     case '230'
-        step = 8;
+        step = 3;
         % started 2/2
         % gradauted to step 2 2/4
         % graduate to step 8 2/10
@@ -592,11 +598,12 @@ switch id
         % graduate to step 8 2/11
         % graduate to tep 3 2/14
     case '232'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 2/14
         % getting back to step 2 as not doing enough trials 3/11
+        % back to step 8 3/20
     case '233'
         step = 1;
         % started 2/4
