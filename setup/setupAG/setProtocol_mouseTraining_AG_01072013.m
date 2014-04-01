@@ -409,7 +409,7 @@ switch id
         % varied contrast for week of 12/15
         % step 8 for a days
     case '205' % VIP-cre Future SC lesion
-        step = 7;
+        step = 4;
         % graduated to step 2 6/26
         % graduated to step 8 7/8
         % graduate to step 3 8/2
@@ -419,6 +419,7 @@ switch id
         % testing on orientatino task 3/4
         % varied contrast starting 3/11
         % varied or 3/20
+        % varies sf 4/1
     case '206' % VIP-cre plan to remove
         step = 8;
         % graduated to step 2 6/26
@@ -438,7 +439,7 @@ switch id
         % graduated to step 8 7/8
         % graduated to step 3 on 8/26
     case '209' % PV-cre Future SC lesion
-        step = 7;
+        step = 4;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 9/10
@@ -451,6 +452,7 @@ switch id
         % testing on orientatino task 3/4
         % varied contrast starting 3/11
         % varied or 3/20
+        % varies sf 4/1
     case '210' % PV-cre Future SC lesion
         step = 34;
         % graduated to step 2 7/8
