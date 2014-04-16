@@ -1,7 +1,7 @@
 function compileRemoteDir(RemoteDirBase,boxes,mice,recompile)
-
+except = {'230'};
 if ~exist('boxes','var') || isempty(boxes)
-    boxes = {'Box1','Box2','Box3','Box4','Box5','Box6','PV-V1-hM3D','PV-TRN-hM3D'};
+    boxes = {'Box1','Box2','Box3','Box4','Box5','Box6','PV-V1-hM3D','PV-TRN-hM3D','SCLesion','RocheProject'};
 elseif ~iscell(boxes)
     error('either dont give boxes or give it as a sequence of cellstrs');
 end
@@ -27,6 +27,7 @@ for i = 1:length(boxes)
     miceInBox = dir(fullfile(currBoxDir,'Permanent'));
     miceInBox = miceInBox([miceInBox.isdir]);
     miceInBox = miceInBox(~ismember({miceInBox.name},{'.','..','.DS_Store','.AppleDouble','999'}));
+    miceInBox = miceInBox(~ismember({miceInBox.name},except));
     miceInBox = {miceInBox.name};
     if ischar(mice) && strcmp(mice,'all')
         miceToCompile = miceInBox;
