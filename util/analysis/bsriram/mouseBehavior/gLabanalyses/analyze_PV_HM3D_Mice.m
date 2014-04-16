@@ -18,6 +18,7 @@ analysisFor.analyzeOrientation = false;
 analysisFor.analyzeRevOrientation = false;
 analysisFor.analyzeTempFreq = false;
 analysisFor.analyzeRevTempFreq = false;
+analysisFor.analyzeCtrSensitivity = false;
 
 filters = 735402:735414; %'Jun-17-2013':today
 trialNumCutoff = 25;
@@ -196,17 +197,17 @@ end
 in.cntr = ctrAll.ctrData.contrasts;
 in.pHat = ctrAll.ctrData.performanceByConditionWCO(:,1,1)';
 fit = fitHyperbolicRatio(in);
-% plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'b','linewidth',3);
+plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'b','linewidth',3);
 PBSBestC50 = fit.c50;
 
 % best CNO
 in.cntr = ctrAll.ctrData.contrasts;
 in.pHat = ctrAll.ctrData.performanceByConditionWCO(:,1,2)';
 fit = fitHyperbolicRatio(in);
-% plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'r','linewidth',3);
+plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'r','linewidth',3);
 CNOBestC50 = fit.c50;
 
-keyboard
+% keyboard
 plotDetails.axHan = subplot(3,2,2);
 edges = 0:0.025:1;
 nPBS = histc(PBSFit,edges);
@@ -215,11 +216,11 @@ fh = fill([edges fliplr(edges)],[nPBS/length(PBSFit) zeros(size(nPBS))],'b');set
 fh = fill([edges fliplr(edges)],[nCNO/length(CNOFit) zeros(size(nCNO))],'r');set(fh,'edgealpha',0,'facealpha',0.5);
 xlabel('c50');
 ylabel('fraction');
-[h p] = ttest2(PBSFit,CNOFit)
+[h p] = ttest2(PBSBestC50,CNOBestC50)
 plot(PBSBestC50,0.25,'bd');
 plot(CNOBestC50,0.25,'rd');
 set(gca,'ylim',[0 0.3]);
-keyboard
+% keyboard
 
 
 plotDetails.axHan = subplot(3,2,3);
@@ -251,7 +252,9 @@ analysisFor.analyzeOrientation = true;
 analysisFor.analyzeRevOrientation = false;
 analysisFor.analyzeTempFreq = false;
 analysisFor.analyzeRevTempFreq = false;
-
+analysisFor.analyzeQuatRadContrast = false;
+analysisFor.analyzeImagesContrast = false;
+analysisFor.analyzeCtrSensitivity = false;
 filters = 735416:today; %'Jun-17-2013':today
 trialNumCutoff = 25;
 

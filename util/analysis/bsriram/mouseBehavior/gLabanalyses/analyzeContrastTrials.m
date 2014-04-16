@@ -30,12 +30,16 @@ ctrData.trialNumsByCondition = cell(length(ctrData.contrasts),5);
 ctrData.numTrialsByCondition = zeros(length(ctrData.contrasts),5);
 ctrData.correctByCondition = zeros(length(ctrData.contrasts),5);
 ctrData.performanceByCondition = nan(length(ctrData.contrasts),3,5);
+ctrData.responseTimesByCondition = cell(length(ctrData.contrasts),5);
+ctrData.responseTimesForCorrectByCondition = cell(length(ctrData.contrasts),5);
 
 %performance by condition with trial number cutoff
 ctrData.trialNumsByConditionWCO = cell(length(ctrData.contrasts),5);
 ctrData.numTrialsByConditionWCO = zeros(length(ctrData.contrasts),5);
 ctrData.correctByConditionWCO = zeros(length(ctrData.contrasts),5);
 ctrData.performanceByConditionWCO = nan(length(ctrData.contrasts),3,5);
+ctrData.responseTimesByConditionWCO = cell(length(ctrData.contrasts),5);
+ctrData.responseTimesForCorrectByConditionWCO = cell(length(ctrData.contrasts),5);
 
 for i = 1:length(ctrData.dates)
     if ismember(ctrData.dates(i),filters.ctrFilter)
@@ -43,11 +47,14 @@ for i = 1:length(ctrData.dates)
         correctThatDate = ctrData.correct(dateFilter);
         correctionThatDate = ctrData.correction(dateFilter);
         contrastThatDate = ctrData.contrast(dateFilter);
+        responseTimeThatDate = ctrData.responseTime(dateFilter);
+
         % filter out the nans
-        whichGood = ~isnan(correctThatDate) & ~correctionThatDate;
+        whichGood = ~isnan(correctThatDate) & ~correctionThatDate & responseTimeThatDate<5;
         correctThatDate = correctThatDate(whichGood);
         contrastThatDate = contrastThatDate(whichGood);
- 
+        responseTimeThatDate = responseTimeThatDate(whichGood);
+        
         ctrData.trialNumByDate{i} = ctrData.trialNum(dateFilter);
         ctrData.trialNumByDate{i} = ctrData.trialNumByDate{i}(whichGood);
         ctrData.numTrialsByDate(i) = length(ctrData.trialNumByDate{i});
@@ -81,75 +88,110 @@ for i = 1:length(ctrData.dates)
             for j = 1:length(ctrData.contrasts)
                 whichCurrContrast = contrastThatDate==ctrData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 ctrData.trialNumsByCondition{j,1} = [ctrData.trialNumsByCondition{j,1} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                 ctrData.numTrialsByCondition(j,1) = ctrData.numTrialsByCondition(j,1)+n1;
                 ctrData.correctByCondition(j,1) = ctrData.correctByCondition(j,1)+x1;
+                ctrData.responseTimesByCondition{j,1} = [ctrData.responseTimesByCondition{j,1} makerow(currResponseTimes)];
+                ctrData.responseTimesForCorrectByCondition{j,1} = [ctrData.responseTimesForCorrectByCondition{j,1} makerow(currCorrectResponseTimes)];
+
                 if ctrData.dayMetCutOffCriterion(i)
                     ctrData.trialNumsByConditionWCO{j,1} = [ctrData.trialNumsByConditionWCO{j,1} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                     ctrData.numTrialsByConditionWCO(j,1) = ctrData.numTrialsByConditionWCO(j,1)+n1;
                     ctrData.correctByConditionWCO(j,1) = ctrData.correctByConditionWCO(j,1)+x1;
+                    ctrData.responseTimesByConditionWCO{j,1} = [ctrData.responseTimesByConditionWCO{j,1} makerow(currResponseTimes)];
+                    ctrData.responseTimesForCorrectByConditionWCO{j,1} = [ctrData.responseTimesForCorrectByConditionWCO{j,1} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif ctrData.conditionNum(i) == 2
             for j = 1:length(ctrData.contrasts)
                 whichCurrContrast = contrastThatDate==ctrData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 ctrData.trialNumsByCondition{j,2} = [ctrData.trialNumsByCondition{j,2} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                 ctrData.numTrialsByCondition(j,2) = ctrData.numTrialsByCondition(j,2)+n1;
                 ctrData.correctByCondition(j,2) = ctrData.correctByCondition(j,2)+x1;
+                ctrData.responseTimesByCondition{j,2} = [ctrData.responseTimesByCondition{j,2} makerow(currResponseTimes)];
+                ctrData.responseTimesForCorrectByCondition{j,2} = [ctrData.responseTimesForCorrectByCondition{j,2} makerow(currCorrectResponseTimes)];
+                
                 if ctrData.dayMetCutOffCriterion(i)
                     ctrData.trialNumsByConditionWCO{j,2} = [ctrData.trialNumsByConditionWCO{j,2} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                     ctrData.numTrialsByConditionWCO(j,2) = ctrData.numTrialsByConditionWCO(j,2)+n1;
                     ctrData.correctByConditionWCO(j,2) = ctrData.correctByConditionWCO(j,2)+x1;
+                    ctrData.responseTimesByConditionWCO{j,2} = [ctrData.responseTimesByConditionWCO{j,2} makerow(currResponseTimes)];
+                    ctrData.responseTimesForCorrectByConditionWCO{j,2} = [ctrData.responseTimesForCorrectByConditionWCO{j,2} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif ctrData.conditionNum(i) == 3
             for j = 1:length(ctrData.contrasts)
                 whichCurrContrast = contrastThatDate==ctrData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 ctrData.trialNumsByCondition{j,3} = [ctrData.trialNumsByCondition{j,3} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                 ctrData.numTrialsByCondition(j,3) = ctrData.numTrialsByCondition(j,3)+n1;
                 ctrData.correctByCondition(j,3) = ctrData.correctByCondition(j,3)+x1;
+                ctrData.responseTimesByCondition{j,3} = [ctrData.responseTimesByCondition{j,3} makerow(currResponseTimes)];
+                ctrData.responseTimesForCorrectByCondition{j,3} = [ctrData.responseTimesForCorrectByCondition{j,3} makerow(currCorrectResponseTimes)];
+                
                 if ctrData.dayMetCutOffCriterion(i)
                     ctrData.trialNumsByConditionWCO{j,3} = [ctrData.trialNumsByConditionWCO{j,3} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                     ctrData.numTrialsByConditionWCO(j,3) = ctrData.numTrialsByConditionWCO(j,3)+n1;
                     ctrData.correctByConditionWCO(j,3) = ctrData.correctByConditionWCO(j,3)+x1;
+                    ctrData.responseTimesByConditionWCO{j,3} = [ctrData.responseTimesByConditionWCO{j,3} makerow(currResponseTimes)];
+                    ctrData.responseTimesForCorrectByConditionWCO{j,3} = [ctrData.responseTimesForCorrectByConditionWCO{j,3} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif ctrData.conditionNum(i) == 4
             for j = 1:length(ctrData.contrasts)
                 whichCurrContrast = contrastThatDate==ctrData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 ctrData.trialNumsByCondition{j,4} = [ctrData.trialNumsByCondition{j,4} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                 ctrData.numTrialsByCondition(j,4) = ctrData.numTrialsByCondition(j,4)+n1;
                 ctrData.correctByCondition(j,4) = ctrData.correctByCondition(j,4)+x1;
+                ctrData.responseTimesByCondition{j,4} = [ctrData.responseTimesByCondition{j,4} makerow(currResponseTimes)];
+                ctrData.responseTimesForCorrectByCondition{j,4} = [ctrData.responseTimesForCorrectByCondition{j,4} makerow(currCorrectResponseTimes)];
+                
                 if ctrData.dayMetCutOffCriterion(i)
                     ctrData.trialNumsByConditionWCO{j,4} = [ctrData.trialNumsByConditionWCO{j,4} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                     ctrData.numTrialsByConditionWCO(j,4) = ctrData.numTrialsByConditionWCO(j,4)+n1;
                     ctrData.correctByConditionWCO(j,4) = ctrData.correctByConditionWCO(j,4)+x1;
+                    ctrData.responseTimesByConditionWCO{j,4} = [ctrData.responseTimesByConditionWCO{j,4} makerow(currResponseTimes)];
+                    ctrData.responseTimesForCorrectByConditionWCO{j,4} = [ctrData.responseTimesForCorrectByConditionWCO{j,4} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif ctrData.conditionNum(i) == 5
             for j = 1:length(ctrData.contrasts)
                 whichCurrContrast = contrastThatDate==ctrData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 ctrData.trialNumsByCondition{j,5} = [ctrData.trialNumsByCondition{j,5} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                 ctrData.numTrialsByCondition(j,5) = ctrData.numTrialsByCondition(j,5)+n1;
                 ctrData.correctByCondition(j,5) = ctrData.correctByCondition(j,5)+x1;
+                ctrData.responseTimesByCondition{j,5} = [ctrData.responseTimesByCondition{j,5} makerow(currResponseTimes)];
+                ctrData.responseTimesForCorrectByCondition{j,5} = [ctrData.responseTimesForCorrectByCondition{j,5} makerow(currCorrectResponseTimes)];
+                
                 if ctrData.dayMetCutOffCriterion(i)
                     ctrData.trialNumsByConditionWCO{j,5} = [ctrData.trialNumsByConditionWCO{j,5} makerow(ctrData.trialNumByDate{i}(whichCurrContrast))];
                     ctrData.numTrialsByConditionWCO(j,5) = ctrData.numTrialsByConditionWCO(j,5)+n1;
                     ctrData.correctByConditionWCO(j,5) = ctrData.correctByConditionWCO(j,5)+x1;
+                    ctrData.responseTimesByConditionWCO{j,5} = [ctrData.responseTimesByConditionWCO{j,5} makerow(currResponseTimes)];
+                    ctrData.responseTimesForCorrectByConditionWCO{j,5} = [ctrData.responseTimesForCorrectByConditionWCO{j,5} makerow(currCorrectResponseTimes)];
                 end
             end
         else
@@ -271,7 +313,7 @@ if plotDetails.plotOn
             ylabel('performance','FontName','Times New Roman','FontSize',12);
             
             % performance by condition
-            ax3 = subplot(3,2,3:6); hold on;
+            ax3 = subplot(3,2,3:4); hold on;
             conditionColor = {'b','r','b','r','k'};
             for i = 1:size(ctrData.performanceByConditionWCO,3)
                 for j = 1:size(ctrData.performanceByConditionWCO,1)
@@ -284,5 +326,39 @@ if plotDetails.plotOn
             set(ax3,'ylim',[0.2 1.1],'xlim',[-0.05 1.05],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
             xlabel('contrast','FontName','Times New Roman','FontSize',12);
             ylabel('performance','FontName','Times New Roman','FontSize',12);
+                        
+            % response times
+            ax4 = subplot(3,2,5); hold on;
+            conditionColor = {'b','r','b','r','k'};
+            for i = 1:size(ctrData.responseTimesByConditionWCO,2)
+                for j = 1:size(ctrData.responseTimesByConditionWCO,1)
+                    if ~(isempty(ctrData.responseTimesByConditionWCO{j,i}))
+                        m = mean(ctrData.responseTimesByConditionWCO{j,i});
+                        sem = std(ctrData.responseTimesByConditionWCO{j,i})/sqrt(length(ctrData.responseTimesByConditionWCO{j,i}));
+                        plot(ctrData.contrasts(j),m,'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
+                        plot([ctrData.contrasts(j) ctrData.contrasts(j)],[m-sem m+sem],'color',conditionColor{i},'linewidth',5);
+                    end
+                end
+            end
+            set(ax4,'ylim',[0 3],'xlim',[-0.05 1.05],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0 1 2 3],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
+            xlabel('contrast','FontName','Times New Roman','FontSize',12);
+            ylabel('responseTime','FontName','Times New Roman','FontSize',12);
+            
+            % response times for correct
+            ax5 = subplot(3,2,6); hold on;
+            conditionColor = {'b','r','b','r','k'};
+            for i = 1:size(ctrData.responseTimesForCorrectByConditionWCO,2)
+                for j = 1:size(ctrData.responseTimesForCorrectByConditionWCO,1)
+                    if ~(isempty(ctrData.responseTimesForCorrectByConditionWCO{j,i}))
+                        m = mean(ctrData.responseTimesForCorrectByConditionWCO{j,i});
+                        sem = std(ctrData.responseTimesForCorrectByConditionWCO{j,i})/sqrt(length(ctrData.responseTimesForCorrectByConditionWCO{j,i}));
+                        plot(ctrData.contrasts(j),m,'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
+                        plot([ctrData.contrasts(j) ctrData.contrasts(j)],[m-sem m+sem],'color',conditionColor{i},'linewidth',5);
+                    end
+                end
+            end
+            set(ax5,'ylim',[0 3],'xlim',[-0.05 1.05],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0 1 2 3],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
+            xlabel('contrast','FontName','Times New Roman','FontSize',12);
+            ylabel('responseTimeForCorrect','FontName','Times New Roman','FontSize',12);
     end
 end

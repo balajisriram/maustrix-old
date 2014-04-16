@@ -25,6 +25,7 @@ if ~exist('filters','var') || isempty(filters)
     filters.tfRevFilter = 1:today;
     filters.ctrQuatRadFilter = 1:today;
     filters.ctrImages = 1:today;
+    filters.ctrSensitivity = 1:today;
 elseif isnumeric(filters)
     temp = filters;
     filters.fdFilter = temp;
@@ -41,6 +42,7 @@ elseif isnumeric(filters)
     filters.tfRevFilter = temp;
     filters.ctrQuatRadFilter = temp;
     filters.ctrImages = temp;
+    filters.ctrSensitivity = temp;
     clear temp
 end
 
@@ -58,6 +60,7 @@ if ~exist('analysisFor','var')||isempty(analysisFor)
     analyzeRevTempFreq = true;
     analyzeQuatRadContrast = true;
     analyzeImagesContrast = true;
+    analyzeCtrSensitivity = true;
 else
     analyzeImages = analysisFor.analyzeImages;
     analyzeOpt = analysisFor.analyzeOpt;
@@ -72,6 +75,7 @@ else
     analyzeRevTempFreq = analysisFor.analyzeRevTempFreq;
     analyzeQuatRadContrast = analysisFor.analyzeQuatRadContrast;
     analyzeImagesContrast = analysisFor.analyzeImagesContrast;
+    analyzeCtrSensitivity = analysisFor.analyzeCtrSensitivity;
 end
 
 if ~exist('splits','var')||isempty(splits)
@@ -158,6 +162,11 @@ end
 %% IMAGES CONTRAST
 if analyzeImagesContrast
     out.ctrImageData = analyzeImagesContrastTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
+end
+
+%% CONTRAST SENSITIVITY
+if analyzeCtrSensitivity
+    out.ctrSensitivityData = analyzeCtrSensitivityTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
 end
 end
 

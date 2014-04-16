@@ -36,7 +36,8 @@ if plotFigure1
     analysisFor.analyzeRevOrientation = false;
     analysisFor.analyzeTempFreq = false;
     analysisFor.analyzeRevTempFreq = false;
-    
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
@@ -912,4 +913,224 @@ if plotFigure2
     semilogx(sfRange,[mean(perfsRatio)-std(perfsRatio)/sqrt(6)],'k--','linewidth',2);
     semilogx(sfRange,[mean(perfsRatio)+std(perfsRatio)/sqrt(6)],'k--','linewidth',2);
 end
+%%
+plotFigure5 = true;
+if plotFigure5
+    
+    % plotting the training for a Opt for this mouse
+    filters = 1:today;
+    
+    fighan = figure;
+    set(fighan, 'DefaultTextFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontName', 'Times New Roman');
+    set(fighan, 'DefaultTextFontName', 'Times New Roman');
+    
+    
+    plotDetails.plotOn = false;
+    plotDetails.plotWhere = 'makeFigure';
+    plotDetails.axHan = axes;
+    plotDetails.requestedPlot = 'performanceByDay';
+    
+    trialNumCutoff = 25;
+    
+    analysisFor.analyzeImages = false;% true, false
+    analysisFor.analyzeOpt = true;
+    analysisFor.analyzeRevOpt = false; % true, false
+    analysisFor.analyzeContrast = false;
+    analysisFor.analyzeRevContrast = false;
+    analysisFor.analyzeSpatFreq = false;
+    analysisFor.analyzeRevSpatFreq = false;
+    analysisFor.analyzeOrientation = false;
+    analysisFor.analyzeRevOrientation = false;
+    analysisFor.analyzeTempFreq = false;
+    analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
+    
+    if ismac
+        compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
+    elseif IsWin
+        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
+    end
+    out = {};
+    beforePerf = nan(4,1);
+    nBefore = nan(4,1);
+    afterPerf = nan(4,1);
+    nAfter = nan(4,1);
+    beforeLCI = nan(4,1);
+    beforeHCI = nan(4,1);
+    afterLCI = nan(4,1);
+    afterHCI = nan(4,1);
+    
+    mouseID = '95'; filters = datenum('Jan-1-2014'):datenum('Feb-23-2014');out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '98'; filters = datenum('Dec-5-2013'):datenum('Feb-23-2014');out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '205'; filters = datenum('Jan-1-2014'):datenum('Feb-23-2014');out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '209'; filters = datenum('Dec-10-2013'):datenum('Feb-23-2014');out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    
+    for i = 1:4
+        beforePerf(i) = out{i}.optData.performanceByConditionWCO(1,5);
+        beforeLCI(i) = out{i}.optData.performanceByConditionWCO(2,5);
+        beforeHCI(i) = out{i}.optData.performanceByConditionWCO(3,5);
+        nBefore(i) = out{i}.optData.numTrialsByConditionWCO{5};
+    end
+    beforePerf(1) = 0.78
+    
+    
+    mouseID = '95'; filters = datenum('Feb-23-2014'):today;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '98'; filters = datenum('Feb-23-2014'):today;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '205'; filters = datenum('Feb-23-2014'):today;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '209'; filters = datenum('Feb-23-2014'):today;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+
+    for i = 1:4
+        afterPerf(i) = out{i}.optData.performanceByConditionWCO(1,5);
+        afterLCI(i) = out{i}.optData.performanceByConditionWCO(2,5);
+        afterHCI(i) = out{i}.optData.performanceByConditionWCO(3,5);
+        nAfter(i) = out{i}.optData.numTrialsByConditionWCO{5};
+    end
+    afterPerf
+    
+    significanceOpt = IsSignificant(beforePerf,nBefore,afterPerf,nAfter);
+    
+    dP = 100*significanceOpt.dP;
+    edges = -50:10:50;
+    histnSig = histc(dP(significanceOpt.IsSignificant),edges);
+    b = bar(edges,histnSig);set(b,'facecolor','b');
+    hold on
+    histnNotSig = histc(dP(~significanceOpt.IsSignificant),edges);
+    b = bar(edges,histnNotSig);set(b,'facecolor','k');
+    plot(nanmean(dP),6,'kx')
+    
+    fighanForPerfChecking = figure;
+    set(fighan, 'DefaultTextFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontName', 'Times New Roman');
+    set(fighan, 'DefaultTextFontName', 'Times New Roman');
+    axhan = subplot(1,2,1); hold on;
+    for i = 1:length(beforePerf)
+        if significanceOpt.IsSignificant(i)
+            if significanceOpt.dP>0
+                col = [0 0 1];
+            else
+                col = [1 0 0];
+            end
+        else
+            col = 0.5*[1 1 1];
+        end
+        plot([0.25 0.75],[beforePerf(i) afterPerf(i)],'color',col,'linewidth',2);
+    end
+    axis([0.2 0.8 0.4 1]);
+    plot([0.2 0.8],[0.5 0.5],'k--');
+    set(gca,'xtick',[0.25 0.75],'xticklabel',{'before','after'},'ytick',[0.5 1]);
+end
+%%
+plotFigure5b = true;
+if plotFigure5b
+    
+    % plotting the training for a Opt for this mouse
+    filters = 1:today;
+    
+    fighan = figure;
+    set(fighan, 'DefaultTextFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontName', 'Times New Roman');
+    set(fighan, 'DefaultTextFontName', 'Times New Roman');
+    
+    
+    plotDetails.plotOn = false;
+    plotDetails.plotWhere = 'makeFigure';
+    plotDetails.axHan = axes;
+    plotDetails.requestedPlot = 'performanceByDay';
+    
+    trialNumCutoff = 25;
+    
+    analysisFor.analyzeImages = true;% true, false
+    analysisFor.analyzeOpt = false;
+    analysisFor.analyzeRevOpt = false; % true, false
+    analysisFor.analyzeContrast = false;
+    analysisFor.analyzeRevContrast = false;
+    analysisFor.analyzeSpatFreq = false;
+    analysisFor.analyzeRevSpatFreq = false;
+    analysisFor.analyzeOrientation = false;
+    analysisFor.analyzeRevOrientation = false;
+    analysisFor.analyzeTempFreq = false;
+    analysisFor.analyzeRevTempFreq = false;
+    
+    if ismac
+        compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
+    elseif IsWin
+        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
+    end
+    
+    out = {};
+    beforePerf = nan(4,1);
+    nBefore = nan(4,1);
+    afterPerf = nan(4,1);
+    nAfter = nan(4,1);
+    beforeLCI = nan(4,1);
+    beforeHCI = nan(4,1);
+    afterLCI = nan(4,1);
+    afterHCI = nan(4,1);
+    
+    mouseID = '95'; filters = datenum('Jan-1-2014'):datenum('Feb-23-2014');out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '98'; filters = datenum('Jan-25-2014'):datenum('Feb-23-2014');out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '205'; filters = datenum('Feb-15-2014'):datenum('27-Feb-2014');out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);% datenum('Feb-23-2014')
+    mouseID = '209'; filters = datenum('Dec-10-2013'):datenum('Feb-23-2014');out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    
+    for i = 1:4
+        beforePerf(i) = out{i}.imageData.performanceByConditionWCO(1,5);
+        beforeLCI(i) = out{i}.imageData.performanceByConditionWCO(2,5);
+        beforeHCI(i) = out{i}.imageData.performanceByConditionWCO(3,5);
+        nBefore(i) = out{i}.imageData.numTrialsByConditionWCO{5};
+    end
+    beforePerf
+    
+    
+    mouseID = '95'; filters = datenum('Feb-23-2014'):today;out{1} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '98'; filters = datenum('Feb-23-2014'):today;out{2} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '205'; filters = datenum('27-Feb-2014'):today;out{3} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    mouseID = '209'; filters = datenum('Feb-23-2014'):today;out{4} = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+
+    for i = 1:4
+        afterPerf(i) = out{i}.imageData.performanceByConditionWCO(1,5);
+        afterLCI(i) = out{i}.imageData.performanceByConditionWCO(2,5);
+        afterHCI(i) = out{i}.imageData.performanceByConditionWCO(3,5);
+        nAfter(i) = out{i}.imageData.numTrialsByConditionWCO{5};
+    end
+    afterPerf
+    
+    significanceOpt = IsSignificant(beforePerf,nBefore,afterPerf,nAfter);
+    
+    dP = 100*significanceOpt.dP;
+    edges = -50:10:50;
+    histnSig = histc(dP(significanceOpt.IsSignificant),edges);
+    b = bar(edges,histnSig);set(b,'facecolor','b');
+    hold on
+    histnNotSig = histc(dP(~significanceOpt.IsSignificant),edges);
+    b = bar(edges,histnNotSig);set(b,'facecolor','k');
+    plot(nanmean(dP),6,'kx')
+    
+    figure(fighanForPerfChecking);
+    set(fighan, 'DefaultTextFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontSize', 12); % [pt]
+    set(fighan, 'DefaultAxesFontName', 'Times New Roman');
+    set(fighan, 'DefaultTextFontName', 'Times New Roman');
+    axhan = subplot(1,2,2); hold on;
+    for i = 1:length(beforePerf)
+        if significanceOpt.IsSignificant(i)
+            if significanceOpt.dP>0
+                col = [0 0 1];
+            else
+                col = [1 0 0];
+            end
+        else
+            col = 0.5*[1 1 1];
+        end
+        plot([0.25 0.75],[beforePerf(i) afterPerf(i)],'color',col,'linewidth',2);
+    end
+    axis([0.2 0.8 0.4 1]);
+    plot([0.2 0.8],[0.5 0.5],'k--');
+    set(gca,'xtick',[0.25 0.75],'xticklabel',{'before','after'},'ytick',[0.5 1]);
+end
+
 end

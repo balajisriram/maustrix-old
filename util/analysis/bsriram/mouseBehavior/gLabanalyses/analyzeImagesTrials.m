@@ -35,7 +35,6 @@ imageData.trialNumsByConditionWCO = {[],[],[],[],[]};
 imageData.numTrialsByConditionWCO = {0,0,0,0,0};
 imageData.correctByConditionWCO = {0,0,0,0,0};
 imageData.performanceByConditionWCO = nan(3,5);
-
 for i = 1:length(imageData.dates)
     if ismember(imageData.dates(i),filters.imFilter)
         dateFilter = imageData.date==imageData.dates(i);
