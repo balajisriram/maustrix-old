@@ -199,7 +199,7 @@ try
     
     if backupToServer
         if isExperimentSubject
-            replicationPaths{z}={getStandAlonePath(rx),xtraServerBackupPath}
+            replicationPaths={getStandAlonePath(rx),xtraServerBackupPath};
             for z = 1:length(xtraExptBackupPath)
                 replicationPaths{end+1}=xtraExptBackupPath{z};
             end
