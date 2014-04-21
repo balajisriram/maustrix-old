@@ -187,7 +187,7 @@ switch id
         % moved to varied contrast on orientation 2/11
         % moved to object task post sc lesion 4/14
     case '61' % PV-cre
-        step = 8;
+        step = 34;
         % back from the injections. going to run 8/19
         % performed admirably at step 3 for a day. will start on step 19 9/10
         % back to step 8 11/19
@@ -195,6 +195,7 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '62' % PV-cre
         step = 19; 
         % graduated from step 8 to step 3 for 6/6
@@ -231,7 +232,7 @@ switch id
         % back after TRN surgery. doing go to stim 12/8
         % moving to orientation task this week 12/16
     case '65' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed 6/4
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -245,8 +246,9 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '66' % PV-cre
-        step = 8; 
+        step = 34; 
         % changed protocol for 6/10
         % changed from step 3 to step 6 on 6/17
         % varied s.f. week of 7/15
@@ -259,6 +261,7 @@ switch id
         % moving to orientation task this week 12/16
         % moving to varied contrast task - 2/10
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '67' % PV-cre
         step = 22; 
         % graduated from 8 on 6/5
@@ -367,7 +370,7 @@ switch id
         % graduated to step 8 6/18
         % graduated to step 3 7/8
     case '200' % PV-cre
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
@@ -379,8 +382,9 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '201' % PV-cre
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % gradauted to step 8 6/14
         % graduated to step 3 7/2
@@ -393,14 +397,16 @@ switch id
         % doing step 3 12/7 to be used for var contrast
         % going to var contrast for week of 12/8
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '202' % PV-cre
-        step = 8;
+        step = 34;
         % graduated to step 2 6/12
         % graduated to step 8 6/21
         % aperture task starting 9/10
         % back to training  start step 8 for week of dec 2
         % varied contrast in the object task 12/15
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '203' % PV-cre
         step = 3;
         % graduated to step 2 6/12
@@ -461,7 +467,7 @@ switch id
         % varied or 3/20
         % varies sf 4/1
     case '210' % PV-cre Future SC lesion
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/8
@@ -470,8 +476,9 @@ switch id
         % doing step 8 today but moving to step 34 tomorrow 12/15
         % movied to varied object with contrast
         % moved to object task - 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '211' % PV-cre + TRN hM3D
-        step = 8;
+        step = 34;
         % graduated to step 2 7/8
 		% graduated to step 8 7/22
         % graduated to step 3 8/12
@@ -479,6 +486,7 @@ switch id
         % back to training  start step 8 for week of dec 2
         % varied contrast in the object task 12/15
         % moved to object task post sc lesion 4/14
+        % cuople of days of varied contrast on object task 4/20
     case '212' % PV-cre + TRN hM3D
         step = 34;
         % graduated to step 2 7/8
@@ -589,11 +597,12 @@ switch id
         % sent back to step 2 because of not rials - 3/3
         % ok trying step 8 again 3/11
     case '229'
-        step = 2;
+        step = 8;
         % started 2/2
         % gradauted to step 2 2/4
         % graduated to step 8 2/10
         % sent back to step 2 - not doing enough trials 3/3
+        % sent to step 8 4/20
     case '230'
         step = 3;
         % started 2/2
