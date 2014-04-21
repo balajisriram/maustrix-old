@@ -116,6 +116,7 @@ switch plotType
 
         totalTrialsPerDay=makeDailyRaster(d.correct,d.response,d.date);  %in terms of ALL trials correction and kills, RETURN trialsPerDay
         goodTrialsPerDay=makeDailyRaster(d.correct,d.response,d.date,goods);
+        dates = floor(min(d.date)):floor(max(d.date));
         legendStrs = {};
         if ismember('didHumanResponse',fields(d)) & ismember('containedForcedRewards',fields(d)) & ismember('didStochasticResponse',fields(d))
             %define types
@@ -160,7 +161,7 @@ switch plotType
             remainder(end+1)=0;
         end
             
-        bar([allTypes; remainder]','stacked'), colormap(bone)
+        bar(dates,[allTypes; remainder]','stacked'), colormap(bone)
         legendStrs{end+1} = 'unaccounted for';
         set(gca,'FontSize',7);
         %title([subject '; ' datestr(min(d.date),6) '-'
@@ -174,8 +175,10 @@ switch plotType
             legend(legendStrs, 'Location','NorthWest');
             typesPlotted{end+1}=plotType;
             set(gcf,'UserData',typesPlotted);
-        end  
-        
+        end
+        set(gca,'xlim',[min(dates) max(dates)])
+        xticks = get(gca,'xtick');
+        set(gca,'xticklabels',datestr(xticks,'mmm-dd'))
     case 'plotRewardTime'
 
         [d.correctInRow runEnds d.numSwitchesThisRun]=calcAmountCorrectInRow(d.correct,d.response);
