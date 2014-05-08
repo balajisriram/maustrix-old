@@ -301,7 +301,8 @@ switch id
     case '233'
         % nothing changes here, but might later
     case '234'
-        out.rewardScalar = 0.1;
+        out.rewardScalar = 0.05;
+        % reduced reward 4/28
     case '235'
         % nothing changes here, but might later
     case '236'

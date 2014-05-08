@@ -318,7 +318,8 @@ switch id
     case '221'
         out.msPenalty = 10000;
     case '222'
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
+        % increased penalty 4/29
     case '223'
         out.msPenalty = 25000;
     case '224'
@@ -339,14 +340,15 @@ switch id
         out.rewardScalar = 0.10;
         % nothing changes here, but might later
     case '230'
-        out.rewardScalar = 0.10;
-        % nothing changes here, but might later
+        out.rewardScalar = 0.05;
+        % reduced reward - make the animal perform better and faster 
+        out.msPenalty = 20000; % increased penalty to improve performance
     case '231'
-        out.rewardScalar = 0.10;
-        out.msPenalty = 5000; %increased penalty 3/11
+        out.rewardScalar = 0.05;
+        out.msPenalty = 10000; %increased penalty 3/11, 4/28
     case '232'
-        out.rewardScalar = 0.10;
-        % nothing changes here, but might later
+        out.rewardScalar = 0.05;
+        out.msPenalty = 10000; %increased penalty 4/28
     case '233'
         out.rewardScalar = 0.10;
         % nothing changes here, but might later
