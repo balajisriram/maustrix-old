@@ -46,6 +46,158 @@ compiledFilesDir = {...
 ctrAll = analyzeMouse({'61','63','65','69','200','201'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 hold on;
 
+plotResponseTimes = true;
+if plotResponseTimes
+    temp = ctrAll.ctrImageData.correction; temp(isnan(temp)) = true;
+    whichOK = ~isnan(ctrAll.ctrImageData.correct)&~(temp);
+    goodContrasts = ctrAll.ctrImageData.contrast(whichOK);
+    goodTrialNum = ctrAll.ctrImageData.trialNum(whichOK);
+    goodCorrects = ctrAll.ctrImageData.correct(whichOK);
+    goodResponseTimes = ctrAll.ctrImageData.responseTime(whichOK);
+    whichOK = goodResponseTimes<5;
+    goodContrasts = goodContrasts(whichOK);
+    goodTrialNum = goodTrialNum(whichOK);
+    goodCorrects = goodCorrects(whichOK);
+    goodResponseTimes = goodResponseTimes(whichOK);
+    
+    figure; 
+    
+    subplot(2,2,1);
+    [nRespTimes, xout] = hist(goodResponseTimes,100); 
+    hist(goodResponseTimes,100,'k'); hold on;
+    plot(nanmean(goodResponseTimes),1000,'kd');
+    plot([(nanmean(goodResponseTimes)-nanstd(goodResponseTimes)) (nanmean(goodResponseTimes)+nanstd(goodResponseTimes))],[1000 1000],'k');
+    set(gca,'xlim',[0 5],'ylim',[0 1200]);
+    
+    subplot(2,2,2);
+    responseMeanByContrast = nan(size(ctrAll.ctrImageData.contrasts));
+    responseSTDByContrasts = responseMeanByContrast;
+    responseSEMByContrasts = responseMeanByContrast;
+    contrasts = ctrAll.ctrImageData.contrasts;
+    for i = 1:length(contrasts)
+        trialsThatContrast = goodContrasts==contrasts(i);
+        responseTimesThatContrast = goodResponseTimes(trialsThatContrast);
+        responseMeanByContrast(i) = nanmean(responseTimesThatContrast);
+        responseSTDByContrasts(i) = nanstd(responseTimesThatContrast);
+        responseSEMByContrasts(i) = responseSTDByContrasts(i)/sqrt(length(responseTimesThatContrast));
+    end
+    plot(contrasts,responseMeanByContrast,'kd');hold on;
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[responseMeanByContrast(i)+2*responseSEMByContrasts(i) responseMeanByContrast(i)-2*responseSEMByContrasts(i)],'k')
+    end
+    set(gca,'xlim',[-5 105],'ylim',[0.5 1.5]);
+    
+    subplot(2,2,3); hold on;
+    deciles = quantile(goodResponseTimes,9);
+    performanceByTimeAndContrast = nan(10,length(contrasts));
+    deciles = [0 deciles]; deciles = [deciles 5];
+    perfByTime = nan(10,1);
+    perfCIByTime = nan(10,2);
+    averageContrastBytime = perfByTime;
+    for i = 1:10
+        whichTrialsThatDecile = (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+        correctsThatDecile = goodCorrects(whichTrialsThatDecile);
+        [perfByTime(i) perfCIByTime(i,:)] = binofit(nansum(correctsThatDecile),length(correctsThatDecile));
+        averageContrastBytime(i) = nanmean(goodContrasts(whichTrialsThatDecile));
+        for j = 1:length(contrasts)
+            whichTrialsThatContrastThatDecile = (goodContrasts == contrasts(j)) & (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+            correctsThatContrastThatDecile = goodCorrects(whichTrialsThatContrastThatDecile);
+            performanceByTimeAndContrast(i,j) = nansum(correctsThatContrastThatDecile)/length(correctsThatContrastThatDecile);
+        end
+    end
+    plot(1:10, perfByTime,'k','linewidth',3)
+    for i = 1:2:length(contrasts)
+        plot(1:10,squeeze(performanceByTimeAndContrast(:,i)),'color',1-(i/length(contrasts)*[1 1 1]));
+    end
+    set(gca,'xlim',[0 11],'ylim',[0.4 1])
+    plot(1:10,squeeze(performanceByTimeAndContrast(:,end)),'color',1-(8/length(contrasts)*[1 1 1]));
+    plot([1 10],[0.5 0.5],'k');
+    
+    subplot(2,2,4); hold on
+    numTrials = cellfun(@length,ctrAll.ctrImageData.responseTimesByCondition);
+    meanRespTimes = cellfun(@nanmean,ctrAll.ctrImageData.responseTimesByCondition);
+    stdRespTimes = cellfun(@nanstd,ctrAll.ctrImageData.responseTimesByCondition);
+    semRespTimes = stdRespTimes./sqrt(numTrials);
+    AllTimesPBS = [];
+    AllTimesCNO = [];
+    for i = 1:size(ctrAll.ctrImageData.responseTimesByCondition,1)
+        AllTimesPBS = [AllTimesPBS ctrAll.ctrImageData.responseTimesByCondition{i,1}];
+        snapnow;
+        AllTimesCNO = [AllTimesCNO ctrAll.ctrImageData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(AllTimesPBS,AllTimesCNO);
+    
+    LowCTimesPBS = [];
+    LowCTimesCNO = [];
+    
+    for i = 1:5
+        LowCTimesPBS = [LowCTimesPBS ctrAll.ctrImageData.responseTimesByCondition{i,1}];
+        LowCTimesCNO = [LowCTimesCNO ctrAll.ctrImageData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(LowCTimesPBS,LowCTimesCNO);
+    
+    HighCTimesPBS = [];
+    HighCTimesCNO = [];
+    for i = 6:8
+        HighCTimesPBS = [HighCTimesPBS ctrAll.ctrImageData.responseTimesByCondition{i,1}];
+        HighCTimesCNO = [HighCTimesCNO ctrAll.ctrImageData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(HighCTimesPBS,HighCTimesCNO);
+    
+        keyboard
+    plot(gca, contrasts, meanRespTimes(:,1), 'bd');
+    plot(gca, contrasts, meanRespTimes(:,2), 'rd');
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,1)-2*semRespTimes(i,1) meanRespTimes(i,1)+2*semRespTimes(i,1)],'b');
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,2)-2*semRespTimes(i,2) meanRespTimes(i,2)+2*semRespTimes(i,2)],'r');
+    end
+        set(gca,'xlim',[-0.1 1.1],'ylim',[1 2]);
+
+        
+    % find quintiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuintiles = quantile(AllRespTimes,4);
+    respQuintiles = [0 respQuintiles 5];
+    numTrialsForQuint = nan(length(ctrAll.ctrImageData.contrasts),2,5);
+    correctForQuint = numTrialsForQuint;
+    
+    for cond = 1:2
+        for cont = 1:length(ctrAll.ctrImageData.contrasts)
+            trialNumsForThatContrastAndCondition = ctrAll.ctrImageData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = ctrAll.ctrImageData.responseTimesByConditionWCO{cont, cond};
+            for quint = 1:length(respQuintiles)-1
+                currentQuintTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuintiles(quint) & respTimeForThatContrastAndCondition<=respQuintiles(quint+1));
+                numTrialsForQuint(cont,cond,quint) = length(currentQuintTrialFilter);
+                whichTrials = ismember(ctrAll.ctrImageData.trialNum,currentQuintTrialFilter);
+                correctForQuint(cont,cond,quint) = nansum(ctrAll.ctrImageData.correct(whichTrials));
+            end
+        end
+    end
+    keyboard
+    % find quartiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuartiles = quantile(AllRespTimes,3);
+    respQuartiles = [0 respQuartiles 5];
+    numTrialsForQuart = nan(length(ctrAll.ctrImageData.contrasts),2,4);
+    correctForQuart = numTrialsForQuart;
+    
+    for cond = 1:2
+        for cont = 1:length(ctrAll.ctrImageData.contrasts)
+            trialNumsForThatContrastAndCondition = ctrAll.ctrImageData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = ctrAll.ctrImageData.responseTimesByConditionWCO{cont, cond};
+            for quart = 1:length(respQuartiles)-1
+                currentQuartTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuartiles(quart) & respTimeForThatContrastAndCondition<=respQuartiles(quart+1));
+                numTrialsForQuart(cont,cond,quart) = length(currentQuartTrialFilter);
+                whichTrials = ismember(ctrAll.ctrImageData.trialNum,currentQuartTrialFilter);
+                correctForQuart(cont,cond,quart) = nansum(ctrAll.ctrImageData.correct(whichTrials));
+            end
+        end
+    end
+    
+    
+end
+keyboard
+
 fitIn.cntr = ctrAll.ctrImageData.contrasts/100;
 fitIn.pHat = ctrAll.ctrImageData.performanceByConditionWCO(:,1,1)';
 fitOut(1) = fitHyperbolicRatio(fitIn);

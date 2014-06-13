@@ -185,13 +185,22 @@ if plotDetails.plotOn
                 case 'performanceByCondition'
                     conditionColor = {'b','r','b','r','k'};
                     for i = 1:size(spatFreqData.performanceByConditionWCO,3)
-                        for j = 1:size(spatFreqData.performanceByConditionWCO,1)
-                            if ~isnan(spatFreqData.performanceByConditionWCO(j,1,i))
-                                plot(spatFreqData.spatFreqs(j),spatFreqData.performanceByConditionWCO(j,1,i),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{i},'MarkerEdgeColor','none');
-                                plot([spatFreqData.spatFreqs(j) spatFreqData.spatFreqs(j)],[spatFreqData.performanceByConditionWCO(j,2,i) spatFreqData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
+                        if isfield(plotDetails,'plotMeansOnly') && plotDetails.plotMeansOnly
+                            means = spatFreqData.performanceByConditionWCO(:,1,i);
+                            which = ~isnan(spatFreqData.performanceByConditionWCO(:,1,i));
+                            plot(spatFreqData.spatFreqs(which),means(which),'color',conditionColor{i})
+                        else
+                            for k = 1:size(spatFreqData.performanceByConditionWCO,3)
+                                for j = 1:size(spatFreqData.performanceByConditionWCO,1)
+                                    if ~isnan(spatFreqData.performanceByConditionWCO(j,1,k))
+                                        plot(spatFreqData.spatFreqs(j),spatFreqData.performanceByConditionWCO(j,1,k),'Marker','d','MarkerSize',10,'MarkerFaceColor',conditionColor{k},'MarkerEdgeColor','none');
+                                        plot([spatFreqData.spatFreqs(j) spatFreqData.spatFreqs(j)],[spatFreqData.performanceByConditionWCO(j,2,k) spatFreqData.performanceByConditionWCO(j,3,k)],'color',conditionColor{k},'linewidth',5);
+                                    end
+                                end
                             end
                         end
                     end
+                    
                     set(gca,'ylim',[0.2 1.1],'xlim',[0 1],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
                     xlabel('spatFreq','FontName','Times New Roman','FontSize',12);
                     ylabel('performance','FontName','Times New Roman','FontSize',12);

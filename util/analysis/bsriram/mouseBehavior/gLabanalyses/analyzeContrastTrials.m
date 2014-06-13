@@ -239,6 +239,10 @@ if plotDetails.plotOn
                                     plot([ctrData.contrasts(j) ctrData.contrasts(j)],[ctrData.performanceByConditionWCO(j,2,i) ctrData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
                                 end
                             end
+                            ctrs = ctrData.contrasts
+                            phats = ctrData.performanceByConditionWCO(:,1,i)
+                            pcibot = ctrData.performanceByConditionWCO(:,2,i)
+                            pcitop = ctrData.performanceByConditionWCO(:,3,i)
                         end
                     end
                     set(gca,'ylim',[0.2 1.1],'xlim',[0 1],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');

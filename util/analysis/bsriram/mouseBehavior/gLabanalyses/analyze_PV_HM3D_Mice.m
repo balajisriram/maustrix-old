@@ -19,6 +19,8 @@ analysisFor.analyzeRevOrientation = false;
 analysisFor.analyzeTempFreq = false;
 analysisFor.analyzeRevTempFreq = false;
 analysisFor.analyzeCtrSensitivity = false;
+analysisFor.analyzeQuatRadContrast = false;
+analysisFor.analyzeImagesContrast = false;
 
 filters = 735402:735414; %'Jun-17-2013':today
 trialNumCutoff = 25;
@@ -35,12 +37,12 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
 compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-%     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
-ctrAll = analyzeMouse({'63','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+ctrAll = analyzeMouse({'63','65','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
-plotResponseTimes = false;
+plotResponseTimes = true;
 if plotResponseTimes
     temp = ctrAll.ctrData.correction; temp(isnan(temp)) = true;
     whichOK = ~isnan(ctrAll.ctrData.correct)&~(temp);
@@ -57,6 +59,7 @@ if plotResponseTimes
     figure; 
     
     subplot(2,2,1);
+    [nRespTimes, xout] = hist(goodResponseTimes,100); 
     hist(goodResponseTimes,100,'k'); hold on;
     plot(nanmean(goodResponseTimes),1000,'kd');
     plot([(nanmean(goodResponseTimes)-nanstd(goodResponseTimes)) (nanmean(goodResponseTimes)+nanstd(goodResponseTimes))],[1000 1000],'k');
@@ -78,28 +81,117 @@ if plotResponseTimes
     for i = 1:length(contrasts)
         plot([contrasts(i) contrasts(i)],[responseMeanByContrast(i)+2*responseSEMByContrasts(i) responseMeanByContrast(i)-2*responseSEMByContrasts(i)],'k')
     end
-    set(gca,'xlim',[-0.1 1.1],'ylim',[1 1.6]);
+    set(gca,'xlim',[-0.1 1.1],'ylim',[1 2]);
     
     subplot(2,2,3); hold on;
     deciles = quantile(goodResponseTimes,9);
     performanceByTimeAndContrast = nan(10,length(contrasts));
     deciles = [0 deciles]; deciles = [deciles 5];
+    perfByTime = nan(10,1);
+    perfCIByTime = nan(10,2);
+    averageContrastBytime = perfByTime;
     for i = 1:10
+        whichTrialsThatDecile = (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+        correctsThatDecile = goodCorrects(whichTrialsThatDecile);
+        [perfByTime(i) perfCIByTime(i,:)] = binofit(nansum(correctsThatDecile),length(correctsThatDecile));
+        averageContrastBytime(i) = nanmean(goodContrasts(whichTrialsThatDecile));
         for j = 1:length(contrasts)
             whichTrialsThatContrastThatDecile = (goodContrasts == contrasts(j)) & (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
             correctsThatContrastThatDecile = goodCorrects(whichTrialsThatContrastThatDecile);
             performanceByTimeAndContrast(i,j) = nansum(correctsThatContrastThatDecile)/length(correctsThatContrastThatDecile);
         end
     end
-    
+    plot(1:10, perfByTime,'k','linewidth',3)
     for i = 1:2:length(contrasts)
-        plot(1:10,squeeze(performanceByTimeAndContrast(:,i)),'color',1-(i/length(contrasts)*[1 1 1]))
+        plot(1:10,squeeze(performanceByTimeAndContrast(:,i)),'color',1-(i/length(contrasts)*[1 1 1]));
     end
     set(gca,'xlim',[0 11],'ylim',[0.3 0.8])
     plot(1:10,squeeze(performanceByTimeAndContrast(:,end)),'color',1-(8/length(contrasts)*[1 1 1]));
     plot([1 10],[0.5 0.5],'k');
-end
+    
+    subplot(2,2,4); hold on
+    numTrials = cellfun(@length,ctrAll.ctrData.responseTimesByCondition);
+    meanRespTimes = cellfun(@nanmean,ctrAll.ctrData.responseTimesByCondition);
+    stdRespTimes = cellfun(@nanstd,ctrAll.ctrData.responseTimesByCondition);
+    semRespTimes = stdRespTimes./sqrt(numTrials);
+    AllTimesPBS = [];
+    AllTimesCNO = [];
+    for i = 1:size(ctrAll.ctrData.responseTimesByCondition,1)
+        AllTimesPBS = [AllTimesPBS ctrAll.ctrData.responseTimesByCondition{i,1}];
+        AllTimesCNO = [AllTimesCNO ctrAll.ctrData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(AllTimesPBS,AllTimesCNO);
+    
+    LowCTimesPBS = [];
+    LowCTimesCNO = [];
+    
+    for i = 1:5
+        LowCTimesPBS = [LowCTimesPBS ctrAll.ctrData.responseTimesByCondition{i,1}];
+        LowCTimesCNO = [LowCTimesCNO ctrAll.ctrData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(LowCTimesPBS,LowCTimesCNO);
+    
+    HighCTimesPBS = [];
+    HighCTimesCNO = [];
+    for i = 6:8
+        HighCTimesPBS = [HighCTimesPBS ctrAll.ctrData.responseTimesByCondition{i,1}];
+        HighCTimesCNO = [HighCTimesCNO ctrAll.ctrData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(HighCTimesPBS,HighCTimesCNO);
+    
+        keyboard
+    plot(gca, contrasts, meanRespTimes(:,1), 'bd');
+    plot(gca, contrasts, meanRespTimes(:,2), 'rd');
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,1)-2*semRespTimes(i,1) meanRespTimes(i,1)+2*semRespTimes(i,1)],'b');
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,2)-2*semRespTimes(i,2) meanRespTimes(i,2)+2*semRespTimes(i,2)],'r');
+    end
+        set(gca,'xlim',[-0.1 1.1],'ylim',[1 2]);
 
+        
+    % find quintiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuintiles = quantile(AllRespTimes,4);
+    respQuintiles = [0 respQuintiles 5];
+    numTrialsForQuint = nan(length(ctrAll.ctrData.contrasts),2,5);
+    correctForQuint = numTrialsForQuint;
+    
+    for cond = 1:2
+        for cont = 1:length(ctrAll.ctrData.contrasts)
+            trialNumsForThatContrastAndCondition = ctrAll.ctrData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = ctrAll.ctrData.responseTimesByConditionWCO{cont, cond};
+            for quint = 1:length(respQuintiles)-1
+                currentQuintTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuintiles(quint) & respTimeForThatContrastAndCondition<=respQuintiles(quint+1));
+                numTrialsForQuint(cont,cond,quint) = length(currentQuintTrialFilter);
+                whichTrials = ismember(ctrAll.ctrData.trialNum,currentQuintTrialFilter);
+                correctForQuint(cont,cond,quint) = nansum(ctrAll.ctrData.correct(whichTrials));
+            end
+        end
+    end
+    keyboard
+    % find quartiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuartiles = quantile(AllRespTimes,3);
+    respQuartiles = [0 respQuartiles 5];
+    numTrialsForQuart = nan(length(ctrAll.ctrData.contrasts),2,4);
+    correctForQuart = numTrialsForQuart;
+    
+    for cond = 1:2
+        for cont = 1:length(ctrAll.ctrData.contrasts)
+            trialNumsForThatContrastAndCondition = ctrAll.ctrData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = ctrAll.ctrData.responseTimesByConditionWCO{cont, cond};
+            for quart = 1:length(respQuartiles)-1
+                currentQuartTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuartiles(quart) & respTimeForThatContrastAndCondition<=respQuartiles(quart+1));
+                numTrialsForQuart(cont,cond,quart) = length(currentQuartTrialFilter);
+                whichTrials = ismember(ctrAll.ctrData.trialNum,currentQuartTrialFilter);
+                correctForQuart(cont,cond,quart) = nansum(ctrAll.ctrData.correct(whichTrials));
+            end
+        end
+    end
+    
+    
+end
+keyboard
 oldFits = false;
 if oldFits
     % lets do some fitting
@@ -152,7 +244,7 @@ if oldFits
     end
 end
 
-numResamples = 10;
+numResamples = 1000;
 c50Difference = nan(1,numResamples);
 qPBS = c50Difference;
 qCNO = qPBS;
@@ -225,19 +317,54 @@ set(gca,'ylim',[0 0.3]);
 
 plotDetails.axHan = subplot(3,2,3);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+c1 = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+fitIn.cntr = c1.ctrData.contrasts;
+fitIn.pHat = c1.ctrData.performanceByConditionWCO(:,1,1)';
+fitInd(1,1) = fitHyperbolicRatio(fitIn);
+plot(fitInd(1,1).fittedModel.c,fitInd(1,1).fittedModel.pModel,'b','lineWidth',3);
+fitIn.cntr = c1.ctrData.contrasts;
+fitIn.pHat = c1.ctrData.performanceByConditionWCO(:,1,2)';
+fitInd(1,2) = fitHyperbolicRatio(fitIn);
+plot(fitInd(1,2).fittedModel.c,fitInd(1,2).fittedModel.pModel,'r','lineWidth',3);
 
 plotDetails.axHan = subplot(3,2,4);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+c2 = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+fitIn.cntr = c2.ctrData.contrasts;
+fitIn.pHat = c2.ctrData.performanceByConditionWCO(:,1,1)';
+fitInd(2,1) = fitHyperbolicRatio(fitIn);
+plot(fitInd(2,1).fittedModel.c,fitInd(2,1).fittedModel.pModel,'b','lineWidth',3);
+fitIn.cntr = c2.ctrData.contrasts;
+fitIn.pHat = c2.ctrData.performanceByConditionWCO(:,1,2)';
+fitInd(2,2) = fitHyperbolicRatio(fitIn);
+plot(fitInd(2,2).fittedModel.c,fitInd(2,2).fittedModel.pModel,'r','lineWidth',3);
+
 
 plotDetails.axHan = subplot(3,2,5);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+c3 = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+fitIn.cntr = c3.ctrData.contrasts;
+fitIn.pHat = c3.ctrData.performanceByConditionWCO(:,1,1)';
+fitInd(3,1) = fitHyperbolicRatio(fitIn);
+plot(fitInd(3,1).fittedModel.c,fitInd(3,1).fittedModel.pModel,'b','lineWidth',3);
+fitIn.cntr = c3.ctrData.contrasts;
+fitIn.pHat = c3.ctrData.performanceByConditionWCO(:,1,2)';
+fitInd(3,2) = fitHyperbolicRatio(fitIn);
+plot(fitInd(3,2).fittedModel.c,fitInd(3,2).fittedModel.pModel,'r','lineWidth',3);
 
 plotDetails.axHan = subplot(3,2,6);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
-analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+c4 = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+fitIn.cntr = c4.ctrData.contrasts;
+fitIn.pHat = c4.ctrData.performanceByConditionWCO(:,1,1)';
+fitInd(4,1) = fitHyperbolicRatio(fitIn);
+plot(fitInd(4,1).fittedModel.c,fitInd(4,1).fittedModel.pModel,'b','lineWidth',3);
+fitIn.cntr = c4.ctrData.contrasts;
+fitIn.pHat = c4.ctrData.performanceByConditionWCO(:,1,2)';
+fitInd(4,2) = fitHyperbolicRatio(fitIn);
+plot(fitInd(4,2).fittedModel.c,fitInd(4,2).fittedModel.pModel,'r','lineWidth',3);
+
+%% PLOT RESPONSE TIMES FOR CONTRAST
 
 %% PLOT ORIENTATION 
 
@@ -270,30 +397,212 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
 compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-%     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
-OrAll = analyzeMouse({'63','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+OrAll = analyzeMouse({'63','65','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
+plotResponseTimes = true;
+if plotResponseTimes
+    temp = OrAll.orData.correction; temp(isnan(temp)) = true;
+    whichOK = ~isnan(OrAll.orData.correct)&~(temp);
+    goodContrasts = OrAll.orData.orientation(whichOK);
+    goodTrialNum = OrAll.orData.trialNum(whichOK);
+    goodCorrects = OrAll.orData.correct(whichOK);
+    goodResponseTimes = OrAll.orData.responseTime(whichOK);
+    whichOK = goodResponseTimes<5;
+    goodContrasts = goodContrasts(whichOK);
+    goodTrialNum = goodTrialNum(whichOK);
+    goodCorrects = goodCorrects(whichOK);
+    goodResponseTimes = goodResponseTimes(whichOK);
+    
+    figure; 
+    
+    subplot(2,2,1);
+    [nRespTimes, xout] = hist(goodResponseTimes,100); 
+    hist(goodResponseTimes,100,'k'); hold on;
+    plot(nanmean(goodResponseTimes),1000,'kd');
+    plot([(nanmean(goodResponseTimes)-nanstd(goodResponseTimes)) (nanmean(goodResponseTimes)+nanstd(goodResponseTimes))],[1000 1000],'k');
+    set(gca,'xlim',[0 5],'ylim',[0 1200]);
+    
+    subplot(2,2,2);
+    responseMeanByContrast = nan(size(OrAll.orData.orientations));
+    responseSTDByContrasts = responseMeanByContrast;
+    responseSEMByContrasts = responseMeanByContrast;
+    contrasts = OrAll.orData.orientations;
+    for i = 1:length(contrasts)
+        trialsThatContrast = goodContrasts==contrasts(i);
+        responseTimesThatContrast = goodResponseTimes(trialsThatContrast);
+        responseMeanByContrast(i) = nanmean(responseTimesThatContrast);
+        responseSTDByContrasts(i) = nanstd(responseTimesThatContrast);
+        responseSEMByContrasts(i) = responseSTDByContrasts(i)/sqrt(length(responseTimesThatContrast));
+    end
+    plot(contrasts,responseMeanByContrast,'kd');hold on;
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[responseMeanByContrast(i)+2*responseSEMByContrasts(i) responseMeanByContrast(i)-2*responseSEMByContrasts(i)],'k')
+    end
+    set(gca,'xlim',[-5 50],'ylim',[1 2]);
+    
+    subplot(2,2,3); hold on;
+    deciles = quantile(goodResponseTimes,9);
+    performanceByTimeAndContrast = nan(10,length(contrasts));
+    deciles = [0 deciles]; deciles = [deciles 5];
+    perfByTime = nan(10,1);
+    perfCIByTime = nan(10,2);
+    averageContrastBytime = perfByTime;
+    for i = 1:10
+        whichTrialsThatDecile = (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+        correctsThatDecile = goodCorrects(whichTrialsThatDecile);
+        [perfByTime(i) perfCIByTime(i,:)] = binofit(nansum(correctsThatDecile),length(correctsThatDecile));
+        averageContrastBytime(i) = nanmean(goodContrasts(whichTrialsThatDecile));
+        for j = 1:length(contrasts)
+            whichTrialsThatContrastThatDecile = (goodContrasts == contrasts(j)) & (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+            correctsThatContrastThatDecile = goodCorrects(whichTrialsThatContrastThatDecile);
+            performanceByTimeAndContrast(i,j) = nansum(correctsThatContrastThatDecile)/length(correctsThatContrastThatDecile);
+        end
+    end
+    plot(1:10, perfByTime,'k','linewidth',3)
+    for i = 1:2:length(contrasts)
+        plot(1:10,squeeze(performanceByTimeAndContrast(:,i)),'color',1-(i/length(contrasts)*[1 1 1]));
+    end
+    set(gca,'xlim',[0 11],'ylim',[0.3 0.8])
+    plot(1:10,squeeze(performanceByTimeAndContrast(:,end)),'color',1-(8/length(contrasts)*[1 1 1]));
+    plot([1 10],[0.5 0.5],'k');
+    
+    subplot(2,2,4); hold on
+    numTrials = cellfun(@length,OrAll.orData.responseTimesByConditionWCO);
+    meanRespTimes = cellfun(@nanmean,OrAll.orData.responseTimesByConditionWCO);
+    stdRespTimes = cellfun(@nanstd,OrAll.orData.responseTimesByConditionWCO);
+    semRespTimes = stdRespTimes./sqrt(numTrials);
+    AllTimesPBS = [];
+    AllTimesCNO = [];
+    for i = 1:size(OrAll.orData.responseTimesByCondition,1)
+        AllTimesPBS = [AllTimesPBS OrAll.orData.responseTimesByCondition{i,1}];
+        AllTimesCNO = [AllTimesCNO OrAll.orData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(AllTimesPBS,AllTimesCNO);
+    
+    LowCTimesPBS = [];
+    LowCTimesCNO = [];
+    
+    for i = 1:5
+        LowCTimesPBS = [LowCTimesPBS OrAll.orData.responseTimesByCondition{i,1}];
+        LowCTimesCNO = [LowCTimesCNO OrAll.orData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(LowCTimesPBS,LowCTimesCNO);
+    
+    HighCTimesPBS = [];
+    HighCTimesCNO = [];
+    for i = 6:8
+        HighCTimesPBS = [HighCTimesPBS OrAll.orData.responseTimesByCondition{i,1}];
+        HighCTimesCNO = [HighCTimesCNO OrAll.orData.responseTimesByCondition{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(HighCTimesPBS,HighCTimesCNO);
+    
+        keyboard
+    plot(gca, contrasts, meanRespTimes(:,1), 'bd');
+    plot(gca, contrasts, meanRespTimes(:,2), 'rd');
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,1)-2*semRespTimes(i,1) meanRespTimes(i,1)+2*semRespTimes(i,1)],'b');
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,2)-2*semRespTimes(i,2) meanRespTimes(i,2)+2*semRespTimes(i,2)],'r');
+    end
+        set(gca,'xlim',[-5 50],'ylim',[1 2]);
 
+        
+    % find quintiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuintiles = quantile(AllRespTimes,4);
+    respQuintiles = [0 respQuintiles 5];
+    numTrialsForQuint = nan(length(ctrAll.ctrData.contrasts),2,5);
+    correctForQuint = numTrialsForQuint;
+    
+    for cond = 1:2
+        for cont = 1:length(OrAll.orData.orientations)
+            trialNumsForThatContrastAndCondition = OrAll.orData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = OrAll.orData.responseTimesByConditionWCO{cont, cond};
+            for quint = 1:length(respQuintiles)-1
+                currentQuintTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuintiles(quint) & respTimeForThatContrastAndCondition<=respQuintiles(quint+1));
+                numTrialsForQuint(cont,cond,quint) = length(currentQuintTrialFilter);
+                whichTrials = ismember(OrAll.orData.trialNum,currentQuintTrialFilter);
+                correctForQuint(cont,cond,quint) = nansum(OrAll.orData.correct(whichTrials));
+            end
+        end
+    end
+    keyboard
+    % find quartiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuartiles = quantile(AllRespTimes,3);
+    respQuartiles = [0 respQuartiles 5];
+    numTrialsForQuart = nan(length(OrAll.orData.orientations),2,4);
+    correctForQuart = numTrialsForQuart;
+    
+    for cond = 1:2
+        for cont = 1:length(OrAll.orData.orientations)
+            trialNumsForThatContrastAndCondition = OrAll.orData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = OrAll.orData.responseTimesByConditionWCO{cont, cond};
+            for quart = 1:length(respQuartiles)-1
+                currentQuartTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuartiles(quart) & respTimeForThatContrastAndCondition<=respQuartiles(quart+1));
+                numTrialsForQuart(cont,cond,quart) = length(currentQuartTrialFilter);
+                whichTrials = ismember(OrAll.orData.trialNum,currentQuartTrialFilter);
+                correctForQuart(cont,cond,quart) = nansum(OrAll.orData.correct(whichTrials));
+            end
+        end
+    end
+    
+    
+end
+keyboard
+
+
+out = {};
 
 plotDetails.axHan = subplot(3,2,3);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,4);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,5);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,6);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
-analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
+% PBS only
+in = []
+in.cntr = OrAll.orData.orientations;
+    in.pHat = OrAll.orData.performanceByConditionWCO(:,1,1)';
+    whichGood = ~isnan(in.pHat);
+    
+    in.cntr = in.cntr(whichGood);
+    in.pHat = in.pHat(whichGood);
+    in.cntr = in.cntr/45;
+
+    
+    fit = fitHyperbolicRatio(in);
+    plot(fit.fittedModel.c*45,fit.fittedModel.pModel,'b','linewidth',3); hold on
+    plot (in.cntr*45,in.pHat,'bd')
+    
+ % CNO only
+ in = [];
+in.cntr = OrAll.orData.orientations;
+    in.pHat = OrAll.orData.performanceByConditionWCO(:,1,2)';
+    whichGood = ~isnan(in.pHat);
+    
+    in.cntr = in.cntr(whichGood);
+    in.pHat = in.pHat(whichGood);
+    in.cntr = in.cntr/45;
+
+    
+    fit = fitHyperbolicRatio(in);
+    plot(fit.fittedModel.c*45,fit.fittedModel.pModel,'r','linewidth',3); hold on
+    plot (in.cntr*45,in.pHat,'rd')
+    
 %% plot Contrast QUAT RAD
 
 analysisFor.analyzeOpt = false;
@@ -309,6 +618,7 @@ analysisFor.analyzeTempFreq = false;
 analysisFor.analyzeRevTempFreq = false;
 analysisFor.analyzeQuatRadContrast = true;
 analysisFor.analyzeImagesContrast = false;
+analysisFor.analyzeCtrSensitivity = false;
 
 filters = 735460:735487;%735541; %'Jun-17-2013':today ,,735542,,735486
 trialNumCutoff = 25;
@@ -410,3 +720,387 @@ plotDetails.axHan = subplot(4,2,8);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('201',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
+%% plot Spat. Freq
+
+analysisFor.analyzeOpt = false;
+analysisFor.analyzeImages = false;
+analysisFor.analyzeRevOpt = false;
+analysisFor.analyzeContrast = false;
+analysisFor.analyzeRevContrast = false;
+analysisFor.analyzeSpatFreq = true;
+analysisFor.analyzeRevSpatFreq = false;
+analysisFor.analyzeOrientation = false;
+analysisFor.analyzeRevOrientation = false;
+analysisFor.analyzeTempFreq = false;
+analysisFor.analyzeRevTempFreq = false;
+analysisFor.analyzeQuatRadContrast = false;
+analysisFor.analyzeImagesContrast = false;
+analysisFor.analyzeCtrSensitivity = false;
+
+filters = 735430:735445;%735541; %'Jun-17-2013':today ,,735542,,735486
+trialNumCutoff = 25;
+
+
+splits.daysPBS = [735430 735432 735434 735437 735439 735441 735444];
+splits.daysCNO = [735431 735433 735438 735440 735445]; % except for 65...
+splits.daysIntact = [];
+splits.daysLesion = [];
+
+
+f = figure('name','HM3D PERFORMANCE BY CONTRAST');
+plotDetails.plotOn = true;
+plotDetails.plotWhere = 'givenAxes';
+plotDetails.requestedPlot = 'performanceByCondition';
+
+
+plotDetails.axHan = subplot(3,2,1);
+compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
+sfAll = analyzeMouse({'61','63','65','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+
+
+plotResponseTimes = true;
+if plotResponseTimes
+    temp = sfAll.spatData.correction; temp(isnan(temp)) = true;
+    whichOK = ~isnan(sfAll.spatData.correct)&~(temp);
+    goodContrasts = sfAll.spatData.spatFreq(whichOK);
+    goodTrialNum = sfAll.spatData.trialNum(whichOK);
+    goodCorrects = sfAll.spatData.correct(whichOK);
+    goodResponseTimes = sfAll.spatData.responseTime(whichOK);
+    whichOK = goodResponseTimes<5;
+    goodContrasts = goodContrasts(whichOK);
+    goodTrialNum = goodTrialNum(whichOK);
+    goodCorrects = goodCorrects(whichOK);
+    goodResponseTimes = goodResponseTimes(whichOK);
+    
+    figure; 
+    
+    subplot(2,2,1);
+    [nRespTimes, xout] = hist(goodResponseTimes,100); 
+    hist(goodResponseTimes,100,'k'); hold on;
+    plot(nanmean(goodResponseTimes),1000,'kd');
+    plot([(nanmean(goodResponseTimes)-nanstd(goodResponseTimes)) (nanmean(goodResponseTimes)+nanstd(goodResponseTimes))],[1000 1000],'k');
+    set(gca,'xlim',[0 5],'ylim',[0 1200]);
+    
+    subplot(2,2,2);
+    responseMeanByContrast = nan(size(sfAll.spatData.spatFreqs));
+    responseSTDByContrasts = responseMeanByContrast;
+    responseSEMByContrasts = responseMeanByContrast;
+    contrasts = sfAll.spatData.spatFreqs;
+    for i = 1:length(contrasts)
+        trialsThatContrast = goodContrasts==contrasts(i);
+        responseTimesThatContrast = goodResponseTimes(trialsThatContrast);
+        responseMeanByContrast(i) = nanmean(responseTimesThatContrast);
+        responseSTDByContrasts(i) = nanstd(responseTimesThatContrast);
+        responseSEMByContrasts(i) = responseSTDByContrasts(i)/sqrt(length(responseTimesThatContrast));
+    end
+    plot(contrasts,responseMeanByContrast,'kd');hold on;
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[responseMeanByContrast(i)+2*responseSEMByContrasts(i) responseMeanByContrast(i)-2*responseSEMByContrasts(i)],'k')
+    end
+    set(gca,'xlim',[0 1],'ylim',[1 2]);
+    
+    subplot(2,2,3); hold on;
+    deciles = quantile(goodResponseTimes,9);
+    performanceByTimeAndContrast = nan(10,length(contrasts));
+    deciles = [0 deciles]; deciles = [deciles 5];
+    perfByTime = nan(10,1);
+    perfCIByTime = nan(10,2);
+    averageContrastBytime = perfByTime;
+    for i = 1:10
+        whichTrialsThatDecile = (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+        correctsThatDecile = goodCorrects(whichTrialsThatDecile);
+        [perfByTime(i) perfCIByTime(i,:)] = binofit(nansum(correctsThatDecile),length(correctsThatDecile));
+        averageContrastBytime(i) = nanmean(goodContrasts(whichTrialsThatDecile));
+        for j = 1:length(contrasts)
+            whichTrialsThatContrastThatDecile = (goodContrasts == contrasts(j)) & (goodResponseTimes>deciles(i)) & ((goodResponseTimes<deciles(i+1)));
+            correctsThatContrastThatDecile = goodCorrects(whichTrialsThatContrastThatDecile);
+            performanceByTimeAndContrast(i,j) = nansum(correctsThatContrastThatDecile)/length(correctsThatContrastThatDecile);
+        end
+    end
+    plot(1:10, perfByTime,'k','linewidth',3)
+    for i = 1:2:length(contrasts)
+        plot(1:10,squeeze(performanceByTimeAndContrast(:,i)),'color',1-(i/length(contrasts)*[1 1 1]));
+    end
+    set(gca,'xlim',[0 11],'ylim',[0.3 0.8])
+    plot(1:10,squeeze(performanceByTimeAndContrast(:,end)),'color',1-(8/length(contrasts)*[1 1 1]));
+    plot([1 10],[0.5 0.5],'k');
+    
+    subplot(2,2,4); hold on
+    numTrials = cellfun(@length,sfAll.spatData.responseTimesByConditionWCO);
+    meanRespTimes = cellfun(@nanmean,sfAll.spatData.responseTimesByConditionWCO);
+    stdRespTimes = cellfun(@nanstd,sfAll.spatData.responseTimesByConditionWCO);
+    semRespTimes = stdRespTimes./sqrt(numTrials);
+    AllTimesPBS = [];
+    AllTimesCNO = [];
+    for i = 1:size(sfAll.spatData.responseTimesByCondition,1)
+        AllTimesPBS = [AllTimesPBS sfAll.spatData.responseTimesByConditionWCO{i,1}];
+        AllTimesCNO = [AllTimesCNO sfAll.spatData.responseTimesByConditionWCO{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(AllTimesPBS,AllTimesCNO);
+    
+    LowCTimesPBS = [];
+    LowCTimesCNO = [];
+    
+    for i = 1:4
+        LowCTimesPBS = [LowCTimesPBS sfAll.spatData.responseTimesByConditionWCO{i,1}];
+        LowCTimesCNO = [LowCTimesCNO sfAll.spatData.responseTimesByConditionWCO{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(LowCTimesPBS,LowCTimesCNO);
+    
+    HighCTimesPBS = [];
+    HighCTimesCNO = [];
+    for i = 5:6
+        HighCTimesPBS = [HighCTimesPBS sfAll.spatData.responseTimesByConditionWCO{i,1}];
+        HighCTimesCNO = [HighCTimesCNO sfAll.spatData.responseTimesByConditionWCO{i,2}];
+    end
+    [h, p, ci, stat] = ttest2(HighCTimesPBS,HighCTimesCNO);
+    
+        keyboard
+    plot(gca, contrasts, meanRespTimes(:,1), 'bd');
+    plot(gca, contrasts, meanRespTimes(:,2), 'rd');
+    for i = 1:length(contrasts)
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,1)-2*semRespTimes(i,1) meanRespTimes(i,1)+2*semRespTimes(i,1)],'b');
+        plot([contrasts(i) contrasts(i)],[meanRespTimes(i,2)-2*semRespTimes(i,2) meanRespTimes(i,2)+2*semRespTimes(i,2)],'r');
+    end
+        set(gca,'xlim',[-5 50],'ylim',[1 2]);
+
+        
+    % find quintiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuintiles = quantile(AllRespTimes,4);
+    respQuintiles = [0 respQuintiles 5];
+    numTrialsForQuint = nan(length(ctrAll.ctrData.contrasts),2,5);
+    correctForQuint = numTrialsForQuint;
+    
+    for cond = 1:2
+        for cont = 1:length(sfAll.spatData.spatFreqs)
+            trialNumsForThatContrastAndCondition = sfAll.spatData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = sfAll.spatData.responseTimesByConditionWCO{cont, cond};
+            for quint = 1:length(respQuintiles)-1
+                currentQuintTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuintiles(quint) & respTimeForThatContrastAndCondition<=respQuintiles(quint+1));
+                numTrialsForQuint(cont,cond,quint) = length(currentQuintTrialFilter);
+                whichTrials = ismember(sfAll.spatData.trialNum,currentQuintTrialFilter);
+                correctForQuint(cont,cond,quint) = nansum(sfAll.spatData.correct(whichTrials));
+            end
+        end
+    end
+    keyboard
+    % find quartiles and then plot performance for those...
+    AllRespTimes = [AllTimesPBS AllTimesCNO];
+    respQuartiles = quantile(AllRespTimes,3);
+    respQuartiles = [0 respQuartiles 5];
+    numTrialsForQuart = nan(length(sfAll.spatData.spatFreqs),2,4);
+    correctForQuart = numTrialsForQuart;
+    
+    for cond = 1:2
+        for cont = 1:length(sfAll.spatData.spatFreqs)
+            trialNumsForThatContrastAndCondition = sfAll.spatData.trialNumsByConditionWCO{cont,cond};
+            respTimeForThatContrastAndCondition = sfAll.spatData.responseTimesByConditionWCO{cont, cond};
+            for quart = 1:length(respQuartiles)-1
+                currentQuartTrialFilter = trialNumsForThatContrastAndCondition(respTimeForThatContrastAndCondition>respQuartiles(quart) & respTimeForThatContrastAndCondition<=respQuartiles(quart+1));
+                numTrialsForQuart(cont,cond,quart) = length(currentQuartTrialFilter);
+                whichTrials = ismember(sfAll.spatData.trialNum,currentQuartTrialFilter);
+                correctForQuart(cont,cond,quart) = nansum(sfAll.spatData.correct(whichTrials));
+            end
+        end
+    end
+    
+    
+end
+keyboard
+
+
+out = {};
+
+plotDetails.axHan = subplot(3,2,3);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(3,2,4);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(3,2,5);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(3,2,6);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+% PBS only
+in = [];
+in.fs = sfAll.spatData.spatFreqs;
+    in.f1 = sfAll.spatData.performanceByConditionWCO(:,1,1);
+    in.f1 = (in.f1-0.5)*2;
+    in.model = '1D-DOG-useSensitivity-analytic';
+    in.initialGuessMode = 'preset-1-useSensitivity-withJitter';
+    in.errorMode = 'sumOfSquares';
+    in.searchAlgorithm = 'fmincon-useSensitivity-subbalanced';
+    in.constraints.rS_LB = 5;
+    in.constraints.rC_UB = 10;
+    
+    [out fval flag] = sfDOGFit(in);
+    out
+    
+    
+    stim.FS = logspace(log10(0.033964721821571),log10(0.989580616499599),100);
+    stim.m = 0.5;
+    stim.c = 1;
+    rfMod.RC = out(1);
+    rfMod.RS = out(2);
+    rfMod.KC = out(3);
+    rfMod.KS = out(4);
+    f = figure; ax = axes; hold on;
+    outMod = rfModel(rfMod,stim,'1D-DOG-useSensitivity-analytic');
+    plot(outMod.FS,0.5+squeeze(outMod.f1)/2,'b','linewidth',2); hold on;
+    plot(in.fs,0.5+in.f1/2,'bd')
+
+    
+    % CNO only
+in = [];
+in.fs = sfAll.spatData.spatFreqs;
+    in.f1 = sfAll.spatData.performanceByConditionWCO(:,1,2);
+    in.f1 = (in.f1-0.5)*2;
+    in.model = '1D-DOG-useSensitivity-analytic';
+    in.initialGuessMode = 'preset-1-useSensitivity-withJitter';
+    in.errorMode = 'sumOfSquares';
+    in.searchAlgorithm = 'fmincon-useSensitivity-subbalanced';
+    in.constraints.rS_LB = 5;
+    in.constraints.rC_UB = 10;
+    
+    [out fval flag] = sfDOGFit(in);
+    out
+    
+    
+    stim.FS = logspace(log10(0.033964721821571),log10(0.989580616499599),100);
+    stim.m = 0.5;
+    stim.c = 1;
+    rfMod.RC = out(1);
+    rfMod.RS = out(2);
+    rfMod.KC = out(3);
+    rfMod.KS = out(4);
+    outMod = rfModel(rfMod,stim,'1D-DOG-useSensitivity-analytic');
+    plot(outMod.FS,0.5+squeeze(outMod.f1)/2,'r','linewidth',2); hold on;
+    plot(in.fs,0.5+in.f1/2,'r.')
+
+    
+%% plot Temp. Freq
+
+analysisFor.analyzeOpt = false;
+analysisFor.analyzeImages = false;
+analysisFor.analyzeRevOpt = false;
+analysisFor.analyzeContrast = false;
+analysisFor.analyzeRevContrast = false;
+analysisFor.analyzeSpatFreq = false;
+analysisFor.analyzeRevSpatFreq = false;
+analysisFor.analyzeOrientation = true;
+analysisFor.analyzeRevOrientation = false;
+analysisFor.analyzeTempFreq = false;
+analysisFor.analyzeRevTempFreq = false;
+analysisFor.analyzeQuatRadContrast = false;
+analysisFor.analyzeImagesContrast = false;
+analysisFor.analyzeCtrSensitivity = false;
+
+filters = 1:today;%735541; %'Jun-17-2013':today ,,735542,,735486
+trialNumCutoff = 25;
+
+
+splits.daysPBS = [735430 735432 735434 735437 735439 735441 735444];
+splits.daysCNO = [735431 735433 735438 735440 735445]; % except for 65...
+splits.daysIntact = [];
+splits.daysLesion = [];
+
+
+f = figure('name','HM3D PERFORMANCE BY TEMP FREQ');
+plotDetails.plotOn = true;
+plotDetails.plotWhere = 'givenAxes';
+plotDetails.requestedPlot = 'performanceByCondition';
+
+
+plotDetails.axHan = subplot(3,2,1);
+compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
+sfAll = analyzeMouse({'61','63','65','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+out = {};
+
+plotDetails.axHan = subplot(3,2,3);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(3,2,4);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(3,2,5);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+plotDetails.axHan = subplot(3,2,6);
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+
+% PBS only
+in = [];
+in.fs = sfAll.spatData.spatFreqs;
+    in.f1 = sfAll.spatData.performanceByConditionWCO(:,1,1);
+    in.f1 = (in.f1-0.5)*2;
+    in.model = '1D-DOG-useSensitivity-analytic';
+    in.initialGuessMode = 'preset-1-useSensitivity-withJitter';
+    in.errorMode = 'sumOfSquares';
+    in.searchAlgorithm = 'fmincon-useSensitivity-subbalanced';
+    in.constraints.rS_LB = 5;
+    in.constraints.rC_UB = 10;
+    
+    [out fval flag] = sfDOGFit(in);
+    out
+    
+    
+    stim.FS = logspace(log10(0.033964721821571),log10(0.989580616499599),100);
+    stim.m = 0.5;
+    stim.c = 1;
+    rfMod.RC = out(1);
+    rfMod.RS = out(2);
+    rfMod.KC = out(3);
+    rfMod.KS = out(4);
+    f = figure; ax = axes; hold on;
+    outMod = rfModel(rfMod,stim,'1D-DOG-useSensitivity-analytic');
+    plot(outMod.FS,0.5+squeeze(outMod.f1)/2,'b','linewidth',2); hold on;
+    plot(in.fs,0.5+in.f1/2,'bd')
+
+    
+    % CNO only
+in = [];
+in.fs = sfAll.spatData.spatFreqs;
+    in.f1 = sfAll.spatData.performanceByConditionWCO(:,1,2);
+    in.f1 = (in.f1-0.5)*2;
+    in.model = '1D-DOG-useSensitivity-analytic';
+    in.initialGuessMode = 'preset-1-useSensitivity-withJitter';
+    in.errorMode = 'sumOfSquares';
+    in.searchAlgorithm = 'fmincon-useSensitivity-subbalanced';
+    in.constraints.rS_LB = 5;
+    in.constraints.rC_UB = 10;
+    
+    [out fval flag] = sfDOGFit(in);
+    out
+    
+    
+    stim.FS = logspace(log10(0.033964721821571),log10(0.989580616499599),100);
+    stim.m = 0.5;
+    stim.c = 1;
+    rfMod.RC = out(1);
+    rfMod.RS = out(2);
+    rfMod.KC = out(3);
+    rfMod.KS = out(4);
+    outMod = rfModel(rfMod,stim,'1D-DOG-useSensitivity-analytic');
+    plot(outMod.FS,0.5+squeeze(outMod.f1)/2,'r','linewidth',2); hold on;
+    plot(in.fs,0.5+in.f1/2,'r.')
+    
+    

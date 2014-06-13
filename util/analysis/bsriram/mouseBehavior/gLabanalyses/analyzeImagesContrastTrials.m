@@ -11,6 +11,7 @@ im = filterBehaviorData(data,'tsName','GotoObject_VarC_nAFC_images');
 imageData.trialNum = im.compiledTrialRecords.trialNumber;
 imageData.correct = im.compiledTrialRecords.correct;
 imageData.correction = im.compiledTrialRecords.correctionTrial;
+imageData.responseTime = [im.compiledTrialRecords.responseTime];
 % lets find the contrast. this is a little cumbersone but we can work
 % through this
 
@@ -44,12 +45,16 @@ imageData.trialNumsByCondition = cell(numContrasts,5);
 imageData.numTrialsByCondition = zeros(numContrasts,5);
 imageData.correctByCondition = zeros(numContrasts,5);
 imageData.performanceByCondition = nan(numContrasts,3,5);
+imageData.responseTimesByCondition = cell(length(imageData.contrasts),5);
+imageData.responseTimesForCorrectByCondition = cell(length(imageData.contrasts),5);
 
 %performance by condition with trial number cutoff
 imageData.trialNumsByConditionWCO = cell(numContrasts,5);
 imageData.numTrialsByConditionWCO = zeros(numContrasts,5);
 imageData.correctByConditionWCO = zeros(numContrasts,5);
 imageData.performanceByConditionWCO = nan(numContrasts,3,5);
+imageData.responseTimesByConditionWCO = cell(length(imageData.contrasts),5);
+imageData.responseTimesForCorrectByConditionWCO = cell(length(imageData.contrasts),5);
 
 for i = 1:length(imageData.dates)
     if ismember(imageData.dates(i),filters.imFilter)
@@ -57,10 +62,13 @@ for i = 1:length(imageData.dates)
         correctThatDate = imageData.correct(dateFilter);
         correctionThatDate = imageData.correction(dateFilter);
         contrastThatDate = imageData.contrast(dateFilter);
+        responseTimeThatDate = imageData.responseTime(dateFilter);
+        
         % filter out the nans
-        whichGood = ~isnan(correctThatDate) & ~correctionThatDate;
+        whichGood = ~isnan(correctThatDate) & ~correctionThatDate & responseTimeThatDate<5;
         correctThatDate = correctThatDate(whichGood);
         contrastThatDate = contrastThatDate(whichGood);
+        responseTimeThatDate = responseTimeThatDate(whichGood);
         
         imageData.trialNumByDate{i} = imageData.trialNum(dateFilter);
         imageData.trialNumByDate{i} = imageData.trialNumByDate{i}(whichGood);
@@ -95,75 +103,115 @@ for i = 1:length(imageData.dates)
             for j = 1:length(imageData.contrasts)
                 whichCurrContrast = contrastThatDate==imageData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
+                
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 imageData.trialNumsByCondition{j,1} = [imageData.trialNumsByCondition{j,1} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                 imageData.numTrialsByCondition(j,1) = imageData.numTrialsByCondition(j,1)+n1;
                 imageData.correctByCondition(j,1) = imageData.correctByCondition(j,1)+x1;
+                imageData.responseTimesByCondition{j,1} = [imageData.responseTimesByCondition{j,1} makerow(currResponseTimes)];
+                imageData.responseTimesForCorrectByCondition{j,1} = [imageData.responseTimesForCorrectByCondition{j,1} makerow(currCorrectResponseTimes)];
+
                 if imageData.dayMetCutOffCriterion(i)
                     imageData.trialNumsByConditionWCO{j,1} = [imageData.trialNumsByCondition{j,1} makerow(imageData.trialNumByDate{i})];
                     imageData.numTrialsByConditionWCO(j,1) = imageData.numTrialsByConditionWCO(j,1)+n1;
                     imageData.correctByConditionWCO(j,1) = imageData.correctByConditionWCO(j,1)+x1;
+                    imageData.responseTimesByConditionWCO{j,1} = [imageData.responseTimesByConditionWCO{j,1} makerow(currResponseTimes)];
+                    imageData.responseTimesForCorrectByConditionWCO{j,1} = [imageData.responseTimesForCorrectByConditionWCO{j,1} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif imageData.conditionNum(i) == 2
             for j = 1:length(imageData.contrasts)
                 whichCurrContrast = contrastThatDate==imageData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
+                
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 imageData.trialNumsByCondition{j,2} = [imageData.trialNumsByCondition{j,2} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                 imageData.numTrialsByCondition(j,2) = imageData.numTrialsByCondition(j,2)+n1;
                 imageData.correctByCondition(j,2) = imageData.correctByCondition(j,2)+x1;
+                imageData.responseTimesByCondition{j,2} = [imageData.responseTimesByCondition{j,2} makerow(currResponseTimes)];
+                imageData.responseTimesForCorrectByCondition{j,2} = [imageData.responseTimesForCorrectByCondition{j,2} makerow(currCorrectResponseTimes)];
+
                 if imageData.dayMetCutOffCriterion(i)
                     imageData.trialNumsByConditionWCO{j,2} = [imageData.trialNumsByCondition{j,2} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                     imageData.numTrialsByConditionWCO(j,2) = imageData.numTrialsByConditionWCO(j,2)+n1;
                     imageData.correctByConditionWCO(j,2) = imageData.correctByConditionWCO(j,2)+x1;
+                    imageData.responseTimesByConditionWCO{j,2} = [imageData.responseTimesByConditionWCO{j,2} makerow(currResponseTimes)];
+                    imageData.responseTimesForCorrectByConditionWCO{j,2} = [imageData.responseTimesForCorrectByConditionWCO{j,2} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif imageData.conditionNum(i) == 3
             for j = 1:length(imageData.contrasts)
                 whichCurrContrast = contrastThatDate==imageData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
+                
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 imageData.trialNumsByCondition{j,3} = [imageData.trialNumsByCondition{j,3} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                 imageData.numTrialsByCondition(j,3) = imageData.numTrialsByCondition(j,3)+n1;
                 imageData.correctByCondition(j,3) = imageData.correctByCondition(j,3)+x1;
+                imageData.responseTimesByCondition{j,3} = [imageData.responseTimesByCondition{j,3} makerow(currResponseTimes)];
+                imageData.responseTimesForCorrectByCondition{j,3} = [imageData.responseTimesForCorrectByCondition{j,3} makerow(currCorrectResponseTimes)];
+
                 if imageData.dayMetCutOffCriterion(i)
                     imageData.trialNumsByConditionWCO{j,3} = [imageData.trialNumsByCondition{j,3} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                     imageData.numTrialsByConditionWCO(j,3) = imageData.numTrialsByConditionWCO(j,3)+n1;
                     imageData.correctByConditionWCO(j,3) = imageData.correctByConditionWCO(j,3)+x1;
+                    imageData.responseTimesByConditionWCO{j,3} = [imageData.responseTimesByConditionWCO{j,3} makerow(currResponseTimes)];
+                    imageData.responseTimesForCorrectByConditionWCO{j,3} = [imageData.responseTimesForCorrectByConditionWCO{j,3} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif imageData.conditionNum(i) == 4
             for j = 1:length(imageData.contrasts)
                 whichCurrContrast = contrastThatDate==imageData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
+                
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 imageData.trialNumsByCondition{j,4} = [imageData.trialNumsByCondition{j,4} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                 imageData.numTrialsByCondition(j,4) = imageData.numTrialsByCondition(j,4)+n1;
                 imageData.correctByCondition(j,4) = imageData.correctByCondition(j,4)+x1;
+                imageData.responseTimesByCondition{j,4} = [imageData.responseTimesByCondition{j,4} makerow(currResponseTimes)];
+                imageData.responseTimesForCorrectByCondition{j,4} = [imageData.responseTimesForCorrectByCondition{j,4} makerow(currCorrectResponseTimes)];
+
                 if imageData.dayMetCutOffCriterion(i)
                     imageData.trialNumsByConditionWCO{j,4} = [imageData.trialNumsByCondition{j,4} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                     imageData.numTrialsByConditionWCO(j,4) = imageData.numTrialsByConditionWCO(j,4)+n1;
                     imageData.correctByConditionWCO(j,4) = imageData.correctByConditionWCO(j,4)+x1;
+                    imageData.responseTimesByConditionWCO{j,4} = [imageData.responseTimesByConditionWCO{j,4} makerow(currResponseTimes)];
+                    imageData.responseTimesForCorrectByConditionWCO{j,4} = [imageData.responseTimesForCorrectByConditionWCO{j,4} makerow(currCorrectResponseTimes)];
                 end
             end
         elseif imageData.conditionNum(i) == 5
             for j = 1:length(imageData.contrasts)
                 whichCurrContrast = contrastThatDate==imageData.contrasts(j);
                 currContrastCorrect = correctThatDate(whichCurrContrast);
+                currResponseTimes = responseTimeThatDate(whichCurrContrast);
+                currCorrectResponseTimes = currResponseTimes(logical(currContrastCorrect));
+                
                 x1 = sum(currContrastCorrect);
                 n1 = length(currContrastCorrect);
                 imageData.trialNumsByCondition{j,5} = [imageData.trialNumsByCondition{j,5} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                 imageData.numTrialsByCondition(j,5) = imageData.numTrialsByCondition(j,5)+n1;
                 imageData.correctByCondition(j,5) = imageData.correctByCondition(j,5)+x1;
+                imageData.responseTimesByCondition{j,5} = [imageData.responseTimesByCondition{j,5} makerow(currResponseTimes)];
+                imageData.responseTimesForCorrectByCondition{j,5} = [imageData.responseTimesForCorrectByCondition{j,5} makerow(currCorrectResponseTimes)];
+
                 if imageData.dayMetCutOffCriterion(i)
                     imageData.trialNumsByConditionWCO{j,5} = [imageData.trialNumsByCondition{j,5} makerow(imageData.trialNumByDate{i}(whichCurrContrast))];
                     imageData.numTrialsByConditionWCO(j,5) = imageData.numTrialsByConditionWCO(j,5)+n1;
                     imageData.correctByConditionWCO(j,5) = imageData.correctByConditionWCO(j,5)+x1;
+                    imageData.responseTimesByConditionWCO{j,5} = [imageData.responseTimesByConditionWCO{j,5} makerow(currResponseTimes)];
+                    imageData.responseTimesForCorrectByConditionWCO{j,5} = [imageData.responseTimesForCorrectByConditionWCO{j,5} makerow(currCorrectResponseTimes)];
                 end
             end
         else
@@ -213,6 +261,10 @@ if plotDetails.plotOn
                                     plot([imageData.contrasts(j)/100 imageData.contrasts(j)/100],[imageData.performanceByConditionWCO(j,2,i) imageData.performanceByConditionWCO(j,3,i)],'color',conditionColor{i},'linewidth',5);
                                 end
                             end
+                            ctrs = imageData.contrasts
+                            phats = imageData.performanceByConditionWCO(:,1,i)
+                            pcibot = imageData.performanceByConditionWCO(:,2,i)
+                            pcitop = imageData.performanceByConditionWCO(:,3,i)
                         end
                     end
                     set(gca,'ylim',[0.2 1.1],'xlim',[0 1],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
