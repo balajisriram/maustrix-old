@@ -240,6 +240,9 @@ if plotFigure1
     analysisFor.analyzeRevOrientation = false;
     analysisFor.analyzeTempFreq = false;
     analysisFor.analyzeRevTempFreq = false;
+    analysisFor. analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
+    analysisFor.analyzeCtrSensitivity = false;
     
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
@@ -297,7 +300,7 @@ if plotFigure1
     filters = 1:datenum('Jan-15-2013');plotDetails.axHan = axHan; out{3} = analyzeMouse('25',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     filters = 1:datenum('Apr-19-2013');plotDetails.axHan = axHan; out{4} = analyzeMouse('26',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     filters = 1:datenum('Apr-19-2013'); plotDetails.axHan = axHan; out{5} = analyzeMouse('48',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
-    filters = 1:datenum('Jan-15-2013');plotDetails.axHan = axHan; out{6} = analyzeMouse('40',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:datenum('Apr-15-2013');plotDetails.axHan = axHan; out{6} = analyzeMouse('40',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
 %     plotDetails.axHan = subplot(3,5,7); out{7} = analyzeMouse('47',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     filters = 1:datenum('May-15-2013');plotDetails.axHan = axHan; out{8} = analyzeMouse('53',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     filters = 1:datenum('May-17-2013');plotDetails.axHan = axHan; out{9} = analyzeMouse('56',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -312,6 +315,26 @@ if plotFigure1
         compiledFilesDir,compiledFilesDir,compiledFilesDir};
     filters = 1:todayDate;plotDetails.axHan = axHan; outTotal = analyzeMouse({'22','25','26','48','40','53','56','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
     
+    %% fits for individual animals
+    i = 14
+    in.cntr = out{i}.ctrData.contrasts;
+    in.pHat = out{i}.ctrData.performanceByConditionWCO(:,1,5)';
+    whichGood = ~isnan(in.pHat);
+    
+    in.cntr = in.cntr(whichGood)
+    in.pHat = in.pHat(whichGood);
+    
+    fit = fitHyperbolicRatio(in);
+    fit
+    
+    %% best fit
+    in.cntr = outTotal.ctrData.contrasts;
+    in.pHat = outTotal.ctrData.performanceByConditionWCO(:,1,5)';
+    fit = fitHyperbolicRatio(in);
+    plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'b','linewidth',3);
+    PBSBestC50 = fit.c50;
+    
+
     %% and now orientation
     
     %% lets replot that on the same graph
@@ -362,8 +385,157 @@ if plotFigure1
         compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir};
     filters = 1:todayDate;plotDetails.axHan = axHan; outTotal = analyzeMouse({'23','25','26','48','40','47','53','56','59','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
   
+    %% best fit
+    in.cntr = outTotal.orData.orientations;
+    in.pHat = outTotal.orData.performanceByConditionWCO(:,1,5)';
+    whichGood = ~isnan(in.pHat);
+    
+    in.cntr = in.cntr(whichGood);
+    in.pHat = in.pHat(whichGood);
+    in.cntr = in.cntr/45;
+    
+    in.cntr = in.cntr([1 3 5 7 10 11 12]);
+    in.pHat = in.pHat([1 3 5 7 10 11 12]);
+    
+    fit = fitHyperbolicRatio(in);
+    plot(fit.fittedModel.c*45,fit.fittedModel.pModel,'b','linewidth',3);
+    PBSBestC50 = fit.c50;
+    
+    %% spatialfrequency
+   %% lets replot that on the same graph
+    fighan = figure
+    plotDetails.plotOn = true;
+    plotDetails.plotWhere = 'givenAxes';
+    plotDetails.requestedPlot = 'performanceByCondition';
+    
+    trialNumCutoff = 25;
+    
+    analysisFor.analyzeImages = false;
+    analysisFor.analyzeOpt = false;
+    analysisFor.analyzeRevOpt = false;
+    analysisFor.analyzeContrast = false;
+    analysisFor.analyzeRevContrast = false;
+    analysisFor.analyzeSpatFreq = true;
+    analysisFor.analyzeRevSpatFreq = false;
+    analysisFor.analyzeOrientation = false;
+    analysisFor.analyzeRevOrientation = false;
+    analysisFor.analyzeTempFreq = false;
+    analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
+    analysisFor.analyzeCtrSensitivity = false;
+    
+    
+    if ismac
+        compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
+    elseif IsWin
+        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
+    end
+    axHan = axes;
+    out = {};
+    plotDetails.plotMeansOnly = true;
+    filters = 1:datenum('Jan-15-2013');plotDetails.axHan = axHan; out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{3} = analyzeMouse('25',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeRevSpatFreq = true;analysisFor.analyzeSpatFreq = false;filters = 1:todayDate;plotDetails.axHan = axHan; out{4} = analyzeMouse('26',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeRevSpatFreq = false;analysisFor.analyzeSpatFreq = true;filters = 1:todayDate; plotDetails.axHan = axHan; out{5} = analyzeMouse('48',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{6} = analyzeMouse('40',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{7} = analyzeMouse('47',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{8} = analyzeMouse('53',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{9} = analyzeMouse('56',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{10} = analyzeMouse('59',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{11} = analyzeMouse('37',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{12} = analyzeMouse('38',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{13} = analyzeMouse('45',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:todayDate;plotDetails.axHan = axHan; out{14} = analyzeMouse('50',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    
+    plotDetails.plotMeansOnly = false;
+    compiledFilesDirs = {compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,...
+        compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir};
+    filters = 1:todayDate;plotDetails.axHan = axHan; outTotal = analyzeMouse({'23','25','26','48','40','47','53','56','59','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
+    %%
+    in.fs = outTotal.spatData.spatFreqs;
+    in.f1 = outTotal.spatData.performanceByConditionWCO(:,1,5);
+    in.f1 = (in.f1-0.5)*2;
+    in.model = '1D-DOG-useSensitivity-analytic';
+    in.initialGuessMode = 'preset-1-useSensitivity-withJitter';
+    in.errorMode = 'sumOfSquares';
+    in.searchAlgorithm = 'fmincon-useSensitivity-subbalanced';
+    in.constraints.rS_LB = 5;
+    in.constraints.rC_UB = 10;
+    
+    [out fval flag] = sfDOGFit(in);
+    out
+    
+    
+    stim.FS = logspace(log10(0.033964721821571),log10(0.989580616499599),100);
+    stim.m = 0.5;
+    stim.c = 1;
+    rfMod.RC = out(1);
+    rfMod.RS = out(2);
+    rfMod.KC = out(3);
+    rfMod.KS = out(4);
+    f = figure; ax = axes; hold on;
+    outMod = rfModel(rfMod,stim,'1D-DOG-useSensitivity-analytic');
+    plot(outMod.FS,0.5+squeeze(outMod.f1)/2,'k','linewidth',2)
+
+
+     %% temporal frequency
+   %% lets replot that on the same graph
+    fighan = figure
+    plotDetails.plotOn = true;
+    plotDetails.plotWhere = 'givenAxes';
+    plotDetails.requestedPlot = 'performanceByCondition';
+    
+    trialNumCutoff = 25;
+    
+    analysisFor.analyzeImages = false;
+    analysisFor.analyzeOpt = false;
+    analysisFor.analyzeRevOpt = false;
+    analysisFor.analyzeContrast = false;
+    analysisFor.analyzeRevContrast = false;
+    analysisFor.analyzeSpatFreq = false;
+    analysisFor.analyzeRevSpatFreq = false;
+    analysisFor.analyzeOrientation = false;
+    analysisFor.analyzeRevOrientation = false;
+    analysisFor.analyzeTempFreq = true;
+    analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
+    analysisFor.analyzeCtrSensitivity = false;
+    
+    
+    if ismac
+        compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
+    elseif IsWin
+        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
+    end
+    axHan = axes;
+    out = {};
+    plotDetails.plotMeansOnly = true;
+    filters = 1:datenum('Jan-15-2013');plotDetails.axHan = axHan; out{1} = analyzeMouse('22',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{2} = analyzeMouse('23',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{3} = analyzeMouse('25',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeRevTempFreq = true;analysisFor.analyzeTempFreq = false;filters = 1:today;plotDetails.axHan = axHan; out{4} = analyzeMouse('26',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    analysisFor.analyzeRevTempFreq = false;analysisFor.analyzeTempFreq = true;filters = 1:today; plotDetails.axHan = axHan; out{5} = analyzeMouse('48',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{6} = analyzeMouse('40',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{7} = analyzeMouse('47',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{8} = analyzeMouse('53',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{9} = analyzeMouse('56',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{10} = analyzeMouse('59',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{11} = analyzeMouse('37',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{12} = analyzeMouse('38',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{13} = analyzeMouse('45',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    filters = 1:today;plotDetails.axHan = axHan; out{14} = analyzeMouse('50',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
+    
+    plotDetails.plotMeansOnly = false;
+    compiledFilesDirs = {compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,...
+        compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir,compiledFilesDir};
+    filters = 1:today;plotDetails.axHan = axHan; outTotal = analyzeMouse({'22','48','40','47','53','56','59','37','38','45','50'},filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDirs);
+ 
 end
 
+plotFigure2 = false;
 if plotFigure2
     %% 26  performance by day
     clc;
@@ -1055,6 +1227,10 @@ if plotFigure5b
     analysisFor.analyzeRevOrientation = false;
     analysisFor.analyzeTempFreq = false;
     analysisFor.analyzeRevTempFreq = false;
+    analysisFor.analyzeQuatRadContrast = false;
+    analysisFor.analyzeImagesContrast = false;
+    analysisFor.analyzeCtrSensitivity = false;
+    
     
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
@@ -1110,7 +1286,7 @@ if plotFigure5b
     b = bar(edges,histnNotSig);set(b,'facecolor','k');
     plot(nanmean(dP),6,'kx')
     
-    figure(fighanForPerfChecking);
+    figure(fighan);
     set(fighan, 'DefaultTextFontSize', 12); % [pt]
     set(fighan, 'DefaultAxesFontSize', 12); % [pt]
     set(fighan, 'DefaultAxesFontName', 'Times New Roman');

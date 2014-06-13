@@ -14,7 +14,7 @@ params = struct;
 
 % bound constraints for each component
 lb = [0 0 0];
-ub = [1 100 1];
+ub = [1 100 0.5];
 Aineq = [-1 0 0;1 0 0;0 0 -1;0 0 1];
 bineq = [0;1;0;1];
 % x = fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)

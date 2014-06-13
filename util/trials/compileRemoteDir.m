@@ -1,6 +1,6 @@
 function compileRemoteDir(RemoteDirBase,boxes,mice,recompile)
-% except = {'230'};
-except = {}
+except = {'228'};
+% except = {}
 if ~exist('boxes','var') || isempty(boxes)
     boxes = {'Box1','Box2','Box3','Box4','Box5','Box6','PV-V1-hM3D','PV-TRN-hM3D','SCLesion','RocheProject'};
 elseif ~iscell(boxes)
