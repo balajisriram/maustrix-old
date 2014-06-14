@@ -16,17 +16,17 @@ svnCheckMode='none';
 
 for i=1:length(subjIDs)
     % create the trial steps
-    [fd_sto, fd] = createFreeDrinksStepsAG_autoHuman(svnRev,svnCheckMode, subjIDs{i});
+    [fd_sto, fd] = createFreeDrinksStepsAG_autoHuman(svnRev,svnCheckMode);
     
-    [ts_obj1] = createObjectTrialSteps_autoHuman(svnRev,svnCheckMode,subjIDs{i});
+    [ts_obj1] = createObjectTrialSteps_autoHuman(svnRev,svnCheckMode);
     
-    [or_optim, or_sfSweep, or_tfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps_autoHuman(svnRev,svnCheckMode,subjIDs{i});
+    [or_optim, or_sfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps_autoHuman(svnRev,svnCheckMode);
 
     %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
     
     % here is the protocol
     descriptiveString='mouseTraining_OD';
-    pMouseTraining_OD = protocol(descriptiveString,{fd_sto,fd,ts_obj1,or_optim,or_sfSweep,or_tfSweep,or_ctrSweep,or_orSweep,...
+    pMouseTraining_HumanTesting = protocol(descriptiveString,{fd_sto,fd,ts_obj1,or_optim,or_sfSweep,or_ctrSweep,or_orSweep,...
         });
 
     
@@ -44,7 +44,7 @@ for i=1:length(subjIDs)
     end
     subjObj = getSubjectFromID(r,subjIDs{i});
     
-    [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
+    [subjObj, r]=setProtocolAndStep(subjObj,pMouseTraining_HumanTesting,...
         thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,...
         r, descriptiveString,'bas');
 
