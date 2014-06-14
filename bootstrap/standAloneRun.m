@@ -263,8 +263,10 @@ catch ex
             gmail('balajisriram@gmail.com','Error in Rig 4',message);
         case '7845C42558DF' %gLab-Behavior5
             gmail('balajisriram@gmail.com','Error in Rig 5',message);
-        case 'A41F729211B1' %gLab-Behavior5
+        case 'A41F729211B1' %gLab-Behavior6
             gmail('balajisriram@gmail.com','Error in Rig 6',message);
+        case 'BC305BD38BFB' %gLab-Behavior6
+            gmail('balajisriram@gmail.com','Error in ephys-stim',message);
         otherwise
             warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
             keyboard;
