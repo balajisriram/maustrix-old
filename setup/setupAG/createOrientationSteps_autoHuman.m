@@ -1,4 +1,4 @@
-function [ts_optim, ts_sfSweep, ts_tfSweep, ts_ctrSweep, ts_orSweep] = createOrientationSteps_auto(svnRev,svnCheckMode)
+function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep] = createOrientationSteps_autoHuman(svnRev,svnCheckMode)
 
 
 % basic details for stim
@@ -94,7 +94,7 @@ sm=makeStandardSoundManager();
 sch=noTimeOff(); % runs until swapper ends session
 
 % criterion
-thresholdPC=performanceCriterion([8],int16([20]));
+thresholdPC=performanceCriterion([0.8],int16([20]));
 numTrialsCrit_varCtr = numTrialsDoneCriterion(64); % 64 trials = 8 conditions * 8 trials/condition
 numTrialsCrit_varOr = numTrialsDoneCriterion(64); % 64 trials = 8 conditions * 8 trials/condition
 numTrialsCrit_varSF = numTrialsDoneCriterion(48); % 48 trials = 6 conditions * 8 trials/condition
