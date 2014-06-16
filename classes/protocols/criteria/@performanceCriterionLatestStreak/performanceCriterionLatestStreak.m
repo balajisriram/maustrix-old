@@ -12,13 +12,13 @@ switch nargin
         % if no input arguments, create a default object
         s.pctCorrect=0;
         s.consecutiveTrials=0;
-        s = class(s,'performanceCriterion',criterion());
+        s = class(s,'performanceCriterionLatestStreak',criterion());
     case 1
         % if single argument of this class type, return it
-        if (isa(varargin{1},'performanceCriterion'))
+        if (isa(varargin{1},'performanceCriterionLatestStreak'))
             s = varargin{1};
         else
-            error('Input argument is not a performanceCriterion object')
+            error('Input argument is not a performanceCriterionLatestStreak object')
         end  
     case 2
         if length(varargin{1})~=length(varargin{2}) || ~isvector(varargin{1}) || ~isvector(varargin{2})
@@ -30,7 +30,7 @@ switch nargin
         else
             error('0<=pctCorrect<=1 and consecutiveTrials must be an integer >= 1')
         end
-        s = class(s,'performanceCriterion',criterion());
+        s = class(s,'performanceCriterionLatestStreak',criterion());
     otherwise
         error('Wrong number of input arguments')
 end
