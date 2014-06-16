@@ -18,7 +18,7 @@ for i=1:length(subjIDs)
     % create the trial steps
     [fd_sto, fd] = createFreeDrinksStepsAG_auto(svnRev,svnCheckMode);
     
-    [ts_obj1] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
+    [ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
     
     [or_optim, or_sfSweep, or_tfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps_auto(svnRev,svnCheckMode);
 
@@ -26,7 +26,8 @@ for i=1:length(subjIDs)
     
     % here is the protocol
     descriptiveString='mouseTraining_OD';
-    pMouseTraining_OD = protocol(descriptiveString,{fd_sto,fd,ts_obj1,or_optim,or_sfSweep,or_tfSweep,or_ctrSweep,or_orSweep,...
+    pMouseTraining_OD = protocol(descriptiveString,{fd_sto,fd,ts_obj1,ts_obj2,...
+        or_optim,or_sfSweep,or_tfSweep,or_ctrSweep,or_orSweep,...
         });
 
     
@@ -44,7 +45,7 @@ for i=1:length(subjIDs)
     end
     subjObj = getSubjectFromID(r,subjIDs{i});
     
-    [subjObj, r]=setProtocolAndStep(subjObj,pMouseTrainingAG07202012,...
+    [subjObj, r]=setProtocolAndStep(subjObj,pMouseTraining_OD,...
         thisIsANewProtocol,thisIsANewTrainingStep,thisIsANewStepNum,stepNum,...
         r, descriptiveString,'bas');
 
@@ -52,14 +53,13 @@ end
 end
 
 function [correctBox, whichBox] = correctBoxForSubject(subjID)
-Box1Subjects = {'205','209','210','223','225','229'}; % 87 found dead 11/27, '224' f.d.
-Box2Subjects = {'216','60','92','66','98','230'}; % 60 gone for inj,'64' sacced
-Box3Subjects = {'213','202','211','214','227','231'}; % 91 sacced 11/27,'212' f.d.
-Box4Subjects = {'226','61','86','65','228','232'}; % '204' sacced, '63' sacced
-Box5Subjects = {'95','200','201','215','206','235'}; % '69' f.d., '233' f.d.
-Box6Subjects = {'218','220','221','222','234','236'}; %'219' f.d., '217' removed due to low trial numbers
-Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
-currSubj = {subjID,subjID,subjID,subjID,subjID,subjID};
+Box1Subjects = {'223','225','218'};
+Box2Subjects = {'216','222'};
+Box3Subjects = {'213','214','227'};
+Box4Subjects = {'226','228','232'};
+Box5Subjects = {'215','220','221'};
+Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
+currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
 [junk, mac] = getMACaddress();
 correctBox = false;
