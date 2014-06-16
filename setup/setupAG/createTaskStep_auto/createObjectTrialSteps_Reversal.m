@@ -13,7 +13,7 @@ sm=makeStandardSoundManager();
 sch=noTimeOff(); % runs until swapper ends session
 
 % graduation criteria for graduation\
-thresholdPC=performanceCriterion(0.8,int16(200)); % average of 80% correct for the past 200 trials
+thresholdPC=performanceCriterionLatestStreak(0.8,int16(200)); % average of 80% correct for the past 200 trials
 
 % take reinforcement manager from setProtocolTest but with params from Pam
 requestRewardSize   =	0; 
