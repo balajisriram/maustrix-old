@@ -36,7 +36,8 @@ if isa(r,'ratrix') && isa(station,'station') && (isempty(rn) || isa(rn,'rnet'))
                 [subject r]=setStepNum(subject,t+1,r,'graduated!','ratrix');
             else
                 if isLooped(p)
-                    [subject r]=setStepNum(subject,1,r,'can''t graduate because no more steps defined!','ratrix'); % for looped protocols, the step is sent back to 1
+                    t
+                    [subject r]=setStepNum(subject,uint16(1),r,'looping back to 1','ratrix'); % for looped protocols, the step is sent back to 1
                 else
                     [subject r]=setStepNum(subject,t,r,'can''t graduate because no more steps defined!','ratrix');
                 end
