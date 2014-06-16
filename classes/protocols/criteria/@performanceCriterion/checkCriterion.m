@@ -53,6 +53,7 @@ if warnStatus
 end
 
 which= trialsThisStep & ~stochastic & ~humanResponse & ~forcedRewards;
+which= trialsThisStep & ~stochastic & ~forcedRewards;
 
 % modified to allow human responses to count towards graduation (performanceCriterion)
 % which= trialsThisStep & ~stochastic & ~forcedRewards;
