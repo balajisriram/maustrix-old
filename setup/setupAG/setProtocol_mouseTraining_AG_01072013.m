@@ -56,6 +56,7 @@ for i=1:length(subjIDs)
     
     [ts_obj1,ts_obj2] = createObjectTrialSteps(svnRev,svnCheckMode,subjIDs{i});
 
+    ts_motion = easyMotionTask(svnRev,svnCheckMode, subjIDs{i});
     
     [or_optim, or_sfSweep, or_tfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
     [or_optimRev, or_sfSweepRev, or_tfSweepRev, or_ctrSweepRev, or_orSweepRev] = createReversalOrientationSteps(svnRev,svnCheckMode,subjIDs{i});
@@ -68,7 +69,7 @@ for i=1:length(subjIDs)
     
     % here is the protocol
     descriptiveString='mouseTraining_AG_01072013';
-    pMouseTrainingAG07202012 = protocol(descriptiveString,{fd_sto,fd,or_optim,or_sfSweep,or_tfSweep,or_ctrSweep,or_orSweep,ts_obj1,...
+    pMouseTrainingAG07202012 = protocol(descriptiveString,{fd_sto,fd,ts_motion, or_optim,or_sfSweep,or_tfSweep,or_ctrSweep,or_orSweep,ts_obj1,...
         or_optimRev,or_sfSweepRev,or_tfSweepRev,or_ctrSweepRev,or_orSweepRev,...
         or_optimHR,or_sfSweepHR,or_tfSweepHR,or_ctrSweepHR,or_orSweepHR,...
         or_optimQR,or_sfSweepQR,or_tfSweepQR,or_ctrSweepQR,or_orSweepQR,...

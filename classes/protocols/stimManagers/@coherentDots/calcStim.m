@@ -1,5 +1,5 @@
-function [stimulus updateSM resolutionIndex preRequestStim preResponseStim discrimStim LUT targetPorts distractorPorts ...
-    details interTrialLuminance text indexPulses imagingTasks] = ...
+function [stimulus,updateSM,resolutionIndex,preRequestStim,preResponseStim,discrimStim,postDiscrimStim,LUT,targetPorts,distractorPorts,...
+    details,interTrialLuminance,text,indexPulses,imagingTasks] = ...
     calcStim(stimulus,trialManager,allowRepeats,resolutions,displaySize,LUTbits,responsePorts,totalPorts,trialRecords)
 % 1/30/09 - trialRecords now includes THIS trial
 trialManagerClass=class(trialManager);
@@ -197,6 +197,10 @@ preRequestStim.punishResponses=false;
 
 preResponseStim=discrimStim;
 preResponseStim.punishResponses=false;
+
+postDiscrimStim = [];
+
+
 
 if (strcmp(trialManagerClass,'nAFC') || strcmp(trialManagerClass,'goNoGo')) && details.correctionTrial
     text='correction trial!';
