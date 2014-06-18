@@ -25,7 +25,7 @@ for i=1:length(subjIDs)
     %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
     
     % here is the protocol
-    descriptiveString='mouseTraining_OD';
+    descriptiveString='mouseTraining_HumanTesting';
     pMouseTraining_HumanTesting = protocol(descriptiveString,{fd_sto,fd,ts_obj1,or_optim,or_durLimited,or_durSweep...
         });
 
