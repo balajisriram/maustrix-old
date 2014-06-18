@@ -12,8 +12,9 @@ if ~isempty(trialRecords)
     switch recordType
         case 'largeData'
             dates = floor(datenum(cell2mat({trialsUsed.date}'))); % the actual dates of each trials
-
-            graduate = graduate && unique(dates)>c.numDays;
+            
+            graduate = graduate && length(unique(dates))>c.numDays;
+       
         otherwise
             error('unknown trialRecords type')
     end
