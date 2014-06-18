@@ -90,4 +90,6 @@ switch mac
         keyboard;
 end
 
+saveDB(rx);
+
 end
