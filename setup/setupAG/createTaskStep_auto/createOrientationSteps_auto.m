@@ -1,4 +1,4 @@
-function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep, ts_durLimited, ts_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode)
+function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep, ts_durLimited, ts_durLimitedCtr, ts_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode)
 
 
 % basic details for stim
@@ -16,6 +16,7 @@ out.phasesOpt={[0 pi/4 pi/2 3*pi/4 pi],[0 pi/4 pi/2 3*pi/4 pi]};
 
 out.contrastsOpt={1,1};
 out.contrastsSweep={[0 0.05 0.1 0.15 0.2 0.3 0.4 1],[0 0.05 0.1 0.15 0.2 0.3 0.4 1]};
+out.contrastsForDurs = {[0.15 1],[0.15,1]};
 
 out.maxDurationOpt={inf,inf};
 out.maxDurationLimited = {1,1};
@@ -94,7 +95,11 @@ afc_durLimited = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orien
     out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
     out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrimDurSweep);
 
-afc_durSweep = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsOpt,out.maxDurationSweep,...
+afc_durWithCtr = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsForDurs,out.maxDurationLimited,...
+    out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
+    out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrimDurSweep);
+
+afc_durSweep = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsForDurs,out.maxDurationSweep,...
     out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
     out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrimDurSweep);
 
@@ -108,6 +113,7 @@ thresholdPC=performanceCriterion([0.8],int16([200]));
 numTrialsCrit_varCtr = numTrialsDoneCriterion(1600); % 1600 trials = 8 conditions * 200 trials/condition
 numTrialsCrit_varOr = numTrialsDoneCriterion(1600); % 1600 trials = 8 conditions * 200 trials/condition
 numTrialsCrit_varSF = numTrialsDoneCriterion(1200); % 1200 trials = 6 conditions * 200 trials/condition
+numTrialsCrit_DurLim = numTrialsDoneCriterion(400); % 400 trials = 2 conditions * 200 trials
 numTrialsCrit_varDur = numTrialsDoneCriterion(1600); % 1600 trials = 8 conditions * 200 trials/condition
 
 % reinf
@@ -132,5 +138,6 @@ ts_sfSweep = trainingStep(tm, afc_sfSweep, numTrialsCrit_varSF, sch, svnRev, svn
 ts_ctrSweep = trainingStep(tm, afc_ctrSweep, numTrialsCrit_varCtr, sch, svnRev, svnCheckMode,'orCTRSweep');
 ts_orSweep = trainingStep(tm, afc_orSweep, numTrialsCrit_varOr, sch, svnRev, svnCheckMode,'orORSweep');
 ts_durLimited = trainingStep(tm, afc_durLimited, thresholdPC, sch, svnRev, svnCheckMode,'orDURLimited');
+ts_durLimitedCtr = trainingStep(tm, afc_durWithCtr, numTrialsCrit_DurLim, sch, svnRev, svnCheckMode,'orDURLimited');
 ts_durSweep = trainingStep(tm, afc_durSweep, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDURSweep');
 end
