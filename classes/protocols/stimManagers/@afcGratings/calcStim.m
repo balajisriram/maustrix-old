@@ -94,11 +94,11 @@ if stimulus.doCombos
             % maxDuration
             tempVar = randperm(length(stimulus.maxDuration{1}));
             if ~ismac
-                stim.maxDuration = stimulus.maxDuration{1}(tempVar(1))*hz;
+                stim.maxDuration = round(stimulus.maxDuration{1}(tempVar(1))*hz);
             elseif ismac && hz==0
                 % macs are weird and return a hz of 0 when they really
                 % shouldnt. assume hz = 60 (hack)
-                stim.maxDuration = stimulus.maxDuration{1}(tempVar(1))*60;
+                stim.maxDuration = round(stimulus.maxDuration{1}(tempVar(1))*60);
             end
             
             % radii
@@ -139,11 +139,11 @@ if stimulus.doCombos
             % maxDuration
             tempVar = randperm(length(stimulus.maxDuration{2}));
             if ~ismac
-                stim.maxDuration = stimulus.maxDuration{2}(tempVar(1))*hz;
+                stim.maxDuration = round(stimulus.maxDuration{2}(tempVar(1))*hz);
             elseif ismac && hz==0
                 % macs are weird and return a hz of 0 when they really
                 % shouldnt. assume hz = 60 (hack)
-                stim.maxDuration = stimulus.maxDuration{2}(tempVar(1))*60;
+                stim.maxDuration = round(stimulus.maxDuration{2}(tempVar(1))*60);
             end
             
             % radii
@@ -175,11 +175,11 @@ else
             stim.contrasts=stimulus.contrasts{1}(which);
             stim.waveform=stimulus.waveform;
             if ~ismac
-                stim.maxDuration=stimulus.maxDuration{1}(which)*hz;
+                stim.maxDuration=round(stimulus.maxDuration{1}(which)*hz);
             elseif ismac && hz==0
                 % macs are weird and return a hz of 0 when they really
                 % shouldnt. assume hz = 60 (hack)
-                stim.maxDuration = stimulus.maxDuration{1}(which)*60;
+                stim.maxDuration = round(stimulus.maxDuration{1}(which)*60);
             end
             stim.radii=stimulus.radii{1}(which);
             stim.annuli=stimulus.annuli{1}(which);
@@ -194,11 +194,11 @@ else
             stim.contrasts=stimulus.contrasts{2}(which);
             stim.waveform=stimulus.waveform;
             if ~ismac
-                stim.maxDuration=stimulus.maxDuration{2}(which)*hz;
+                stim.maxDuration=round(stimulus.maxDuration{2}(which)*hz);
             elseif ismac && hz==0
                 % macs are weird and return a hz of 0 when they really
                 % shouldnt. assume hz = 60 (hack)
-                stim.maxDuration = stimulus.maxDuration{2}(which)*60;
+                stim.maxDuration = round(stimulus.maxDuration{2}(which)*60);
             end
             stim.radii=stimulus.radii{2}(which);
             stim.annuli=stimulus.annuli{2}(which);
