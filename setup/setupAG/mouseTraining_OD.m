@@ -18,7 +18,7 @@ svnCheckMode='none';
 
 [ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
 
-[or_optim, ~, ~, ~, ~, or_durLimited, or_durCtr, or_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode);
+[or_optim, ~, ~, ~, or_durLimited, or_durCtr, or_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode);
 
 %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
 

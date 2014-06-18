@@ -31,7 +31,7 @@ elseif ~islogical(recordInOracle)
 end
 
 if ~exist('backupToServer','var') || isempty(backupToServer)
-    [backupToserver, xtraServerBackupPath] = getExtraBackupServers();    
+    [backupToServer, xtraServerBackupPath] = getExtraBackupServers();    
 elseif islogical(backupToServer);
     xtraServerBackupPath='\\Reinagel-lab.AD.ucsd.edu\RLAB\Rodent-Data\behavior\standAloneRecords';
 elseif isDirRemote(backupToServer)
@@ -276,6 +276,8 @@ end
 end
 
 function [correctBox, whichBox] = ensureCorrectBoxForSubject(subjID)
+allowedTestSubjects = {'demo1','999'};
+
 Box1Subjects = {'223','225','241','246'};
 Box2Subjects = {'216','232','242','247','221'};
 Box3Subjects = {'213','227','243','248'};
@@ -311,6 +313,10 @@ switch mac
         if whichBox==6
             correctBox = true;
         end
+end
+
+if ismember(subjID, allowedTestSubjects)
+    correctBox = true;
 end
 end
 

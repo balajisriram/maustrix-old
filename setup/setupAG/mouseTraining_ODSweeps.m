@@ -8,8 +8,6 @@ function pMouseTraining_ODSweeps = mouseTraining_ODSweeps()
 % details for each subject are internally modifiable. 
 % define subjects
 
-ValidTestSubject={'demo1','999'};
-
 % define ratrix version to use
 svnRev={''};
 svnCheckMode='none';
@@ -24,7 +22,7 @@ svnCheckMode='none';
 
 % here is the protocol
 descriptiveString='mouseTraining_ODSweeps';
-pMouseTraining_OD = protocol(descriptiveString,{fd_sto,fd,ts_obj1,ts_obj2,...
+pMouseTraining_ODSweeps = protocol(descriptiveString,{fd_sto,fd,ts_obj1,ts_obj2,...
     ts_optim,ts_sfSweep,ts_ctrSweep,ts_orSweep...
     });
 end
