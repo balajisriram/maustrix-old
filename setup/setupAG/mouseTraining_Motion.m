@@ -1,9 +1,8 @@
-function pMouseTraining_OD = mouseTraining_OD()
+function pMouseTraining_Motion = mouseTraining_Motion()
 %% This protocol enables the following tasks:
 % 1. stochastic free drinks
 % 2. earned free drinks
 % 3. object recognition 1
-% 4. 45 and -45 degrees orientation task
 
 % details for each subject are internally modifiable. 
 % define subjects
@@ -18,14 +17,11 @@ svnCheckMode='none';
 
 [ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
 
-[or_optim, ~, ~, ~, ~, or_durLimited, or_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode);
-
 %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
 
 % here is the protocol
-descriptiveString='mouseTraining_OD';
-pMouseTraining_OD = protocol(descriptiveString,{fd_sto,fd,ts_obj1,ts_obj2,...
-    or_optim,or_durLimited,or_durSweep...
+descriptiveString='mouseTraining_Motion';
+pMouseTraining_Motion = protocol(descriptiveString,{fd_sto,fd,ts_obj1,ts_obj2,...
     });
 end
 
