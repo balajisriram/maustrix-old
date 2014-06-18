@@ -20,13 +20,13 @@ for i=1:length(subjIDs)
     
     [ts_obj1] = createObjectTrialSteps_autoHuman(svnRev,svnCheckMode);
     
-    [or_optim, or_sfSweep, or_ctrSweep, or_orSweep] = createOrientationSteps_autoHuman(svnRev,svnCheckMode);
+    [or_optim, ~, ~, ~, or_durLimited, or_durSweep] = createOrientationSteps_autoHuman(svnRev,svnCheckMode);
 
     %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
     
     % here is the protocol
     descriptiveString='mouseTraining_OD';
-    pMouseTraining_HumanTesting = protocol(descriptiveString,{fd_sto,fd,ts_obj1,or_optim,or_sfSweep,or_ctrSweep,or_orSweep,...
+    pMouseTraining_HumanTesting = protocol(descriptiveString,{fd_sto,fd,ts_obj1,or_optim,or_durLimited,or_durSweep...
         });
 
     
