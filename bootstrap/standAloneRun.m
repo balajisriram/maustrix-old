@@ -79,6 +79,13 @@ else
     end
 end
 
+%ensure that this subject is allowed to run here
+[correctBox, whichBox] = ensureCorrectBoxForSubject(subjectID);
+if ~correctBox
+    whichBox
+    error('run animal on the correct box please');
+end
+
 needToAddSubject=false;
 needToCreateSubject=false;
 if ~exist('subjectID','var') || isempty(subjectID)
@@ -143,36 +150,8 @@ if exist('setupFile','var') && ~isempty(setupFile)
     %http://blogs.mathworks.com/loren/2005/12/28/evading-eval/
 end
 
-onGoingExperiments = {...
-    'PV-V1-hM3D';...
-    'PV-TRN-hM3D';...
-    'V1Lesion';...
-    'SCLesion';...
-    'RocheProject'
-    };
+[isExperimentSubject, xtraExptBackupPath, experiment] = identifySpecificExperiment(subjectID);
 
-onGoingExperimentSubjects = {...
-    {'61','63','65','67','69','200','201'};...
-    {'60','64','66','202','211','212'};...
-    {'22','23','25','26','37','38','40','45','47','48','50','53','56','59'};...
-    {'60','61','65','66','95','98','200','201','202','205','209','210','211'};...
-    {'213','216','220','221','225','226'}...
-    };
-
-experimentBackupLocation = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Permanent';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-TRN-hM3D\Permanent';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Permanent';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Permanent';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\RocheProject\Permanent'};
-
-x = cellfun(@any,cellfun(@ismember,onGoingExperimentSubjects,repmat({subjectID},size(onGoingExperimentSubjects)),'UniformOutput',false));
-isExperimentSubject = any(x);
-% if sum(double(x))>1
-%     error('need to assign animals to exactly one experiment');
-% end
-if isExperimentSubject
-    xtraExptBackupPath = experimentBackupLocation(x);
-end
 try
     deleteOnSuccess = true; 
     
@@ -296,7 +275,6 @@ switch b
 end
 end
 
-
 function [correctBox, whichBox] = ensureCorrectBoxForSubject(subjID)
 Box1Subjects = {'223','225','218'};
 Box2Subjects = {'216','222'};
@@ -334,5 +312,43 @@ switch mac
             correctBox = true;
         end
 end
+end
+
+function [isExperimentSubject, xtraExptBackupPath, experiments] = identifySpecificExperiment(subjectID);
+isExperimentSubject = false;
+xtraExptBackupPath = '';
+experiments = '';
+
+
+onGoingExperiments = {...
+    'PV-V1-hM3D';...
+    'PV-TRN-hM3D';...
+    'V1Lesion';...
+    'SCLesion';...
+    'RocheProject'
+    };
+
+onGoingExperimentSubjects = {...
+    {'61','63','65','67','69','200','201'};...
+    {'60','64','66','202','211','212'};...
+    {'22','23','25','26','37','38','40','45','47','48','50','53','56','59'};...
+    {'60','61','65','66','95','98','200','201','202','205','209','210','211'};...
+    {'213','216','220','221','225','226'}...
+    };
+
+experimentBackupLocation = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Permanent';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-TRN-hM3D\Permanent';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Permanent';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Permanent';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\RocheProject\Permanent'};
+
+x = cellfun(@any,cellfun(@ismember,onGoingExperimentSubjects,repmat({subjectID},size(onGoingExperimentSubjects)),'UniformOutput',false));
+isExperimentSubject = any(x);
+
+if isExperimentSubject
+    xtraExptBackupPath = experimentBackupLocation(x);
+end
+
+experiments = onGoingExperiments(x);
 end
 
