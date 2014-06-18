@@ -1,4 +1,4 @@
-function standAloneRun(ratrixPath,setupFile,subjectID,recordInOracle,backupToServer,testMode)
+function standAloneRun(subjectID,ratrixPath,setupFile,recordInOracle,backupToServer,testMode)
 %standAloneRun([ratrixPath],[setupFile],[subjectID],[recordInOracle],[backupToServer])
 %
 % ratrixPath (optional, string path to preexisting ratrix 'db.mat' file)
@@ -31,29 +31,7 @@ elseif ~islogical(recordInOracle)
 end
 
 if ~exist('backupToServer','var') || isempty(backupToServer)
-    backupToServer = true;
-    [a, b] = getMACaddress();
-    switch b
-        case 'A41F7278B4DE' %gLab-Behavior1
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Permanent';
-        case 'A41F729213E2' %gLab-Behavior2 'A41F729213E2','001D7DA80EFC'
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Permanent';
-        case 'A41F726EC11C' %gLab-Behavior3
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Permanent';
-        case '7845C4256F4C' %gLab-Behavior4
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Permanent';
-        case '7845C42558DF' %gLab-Behavior5
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Permanent';
-        case 'A41F729211B1' %gLab-Behavior6
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box6\Permanent';
-        case 'BC305BD38BFB' %ephys-stim
-            xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\ephys-stim\Permanent';
-        case '180373337162' %ephys-data
-            backupToServer = false;
-        otherwise
-            warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
-            keyboard;
-    end
+    [backupToserver, xtraServerBackupPath] = getExtraBackupServers();    
 elseif islogical(backupToServer);
     xtraServerBackupPath='\\Reinagel-lab.AD.ucsd.edu\RLAB\Rodent-Data\behavior\standAloneRecords';
 elseif isDirRemote(backupToServer)
@@ -135,6 +113,7 @@ else
         end
     end
 end
+
 if needToCreateSubject
     warning('creating dummy subject')
     sub = subject(subjectID, 'rat', 'long-evans', 'male', '05/10/2005', '01/01/2006', 'unknown', 'wild caught');
@@ -275,9 +254,85 @@ catch ex
     cleanup;
     rethrow(ex)
 end
-
+end
 function cleanup
 sca
 FlushEvents('mouseUp','mouseDown','keyDown','autoKey','update');
 ListenChar(0)
 ShowCursor(0)
+end
+
+function [backupToserver, xtraServerBackupPath] = getExtraBackupServers
+backupToserver = false;
+xtraServerBackupPath = '';
+[a, b] = getMACaddress();
+switch b
+    case 'A41F7278B4DE' %gLab-Behavior1
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Permanent';
+    case 'A41F729213E2' %gLab-Behavior2 'A41F729213E2','001D7DA80EFC'
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box2\Permanent';
+    case 'A41F726EC11C' %gLab-Behavior3
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box3\Permanent';
+    case '7845C4256F4C' %gLab-Behavior4
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Permanent';
+    case '7845C42558DF' %gLab-Behavior5
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Permanent';
+    case 'A41F729211B1' %gLab-Behavior6
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box6\Permanent';
+    case 'BC305BD38BFB' %ephys-stim
+        backupToserver = true;
+        xtraServerBackupPath='\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\ephys-stim\Permanent';
+    case '180373337162' %ephys-data
+        backupToServer = false;
+    otherwise
+        warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
+        keyboard;
+end
+end
+
+
+function [correctBox, whichBox] = ensureCorrectBoxForSubject(subjID)
+Box1Subjects = {'223','225','218'};
+Box2Subjects = {'216','222'};
+Box3Subjects = {'213','214','227'};
+Box4Subjects = {'226','228','232'};
+Box5Subjects = {'215','220','221'};
+Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
+currSubj = {subjID,subjID,subjID,subjID,subjID};
+whichBox = find(cellfun(@ismember,currSubj,Subjects));
+[junk, mac] = getMACaddress();
+correctBox = false;
+switch mac
+    case 'A41F7278B4DE' %gLab-Behavior1
+        if whichBox==1
+            correctBox = true;
+        end
+    case 'A41F729213E2' %gLab-Behavior2
+        if whichBox==2
+            correctBox = true;
+        end
+    case 'A41F726EC11C' %gLab-Behavior3
+        if whichBox==3
+            correctBox = true;
+        end
+    case '7845C4256F4C' %gLab-Behavior4
+        if whichBox==4
+            correctBox = true;
+        end
+    case '7845C42558DF' %gLab-Behavior5
+        if whichBox==5
+            correctBox = true;
+        end
+    case 'A41F729211B1' %gLab-Behavior6
+        if whichBox==6
+            correctBox = true;
+        end
+end
+end
+
