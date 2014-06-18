@@ -40,6 +40,8 @@ switch n
     case 3
         if all(ismember(sweptParameters,{'contrasts','pixPerCycs','driftFrequencies'}))
             out = 'afcGratings_cntrXsfXtfSweep';
+        elseif all(ismember(sweptParameters,{'contrasts','pixPerCycs','phases'}))
+            out = 'afcGratings_cntrXsfStationary';
         else
             sweptParameters
             error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
