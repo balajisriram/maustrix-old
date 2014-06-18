@@ -109,7 +109,7 @@ thresholdPC=performanceCriterion([0.8],int16([20]));
 numTrialsCrit_varCtr = numTrialsDoneCriterion(64); % 64 trials = 8 conditions * 8 trials/condition
 numTrialsCrit_varOr = numTrialsDoneCriterion(64); % 64 trials = 8 conditions * 8 trials/condition
 numTrialsCrit_varSF = numTrialsDoneCriterion(48); % 48 trials = 6 conditions * 8 trials/condition
-
+numTrialsCrit_varDur = numTrialsDoneCriterion(64); % 64 trials = 8 conditions * 8 trials/condition
 % reinf
 rewardScalar = out.rewardScalar;
 requestRewardSize = 10; 
@@ -131,6 +131,6 @@ ts_optim = trainingStep(tm, afc_optim, thresholdPC, sch, svnRev, svnCheckMode,'o
 ts_sfSweep = trainingStep(tm, afc_sfSweep, numTrialsCrit_varSF, sch, svnRev, svnCheckMode,'orSFSweep');
 ts_ctrSweep = trainingStep(tm, afc_ctrSweep, numTrialsCrit_varCtr, sch, svnRev, svnCheckMode,'orCTRSweep');
 ts_orSweep = trainingStep(tm, afc_orSweep, numTrialsCrit_varOr, sch, svnRev, svnCheckMode,'orORSweep');
-ts_durLimited = trainingStep(tm, afc_durLimited, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDURSweep');
+ts_durLimited = trainingStep(tm, afc_durLimited, thresholdPC, sch, svnRev, svnCheckMode,'orDURLimited');
 ts_durSweep = trainingStep(tm, afc_durSweep, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDURSweep');
 end
