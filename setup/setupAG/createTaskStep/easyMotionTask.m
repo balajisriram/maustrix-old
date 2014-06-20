@@ -46,17 +46,17 @@ ts_Motion = trainingStep(tm, afc_MotionOpt, crit, sch, svnRev, svnCheckMode,'Mot
 end
 
 function out = getStepDetails(id)
-out.screen_width = 48;         % for matrix
-out.screen_height = 27;        % for matrix
-out.num_dots = 30;             % Number of dots to display
-out.coherence = .5;             % Percent of dots to move in a specified direction
+out.screen_width = 320;         % for matrix
+out.screen_height = 180;        % for matrix
+out.num_dots = 80;             % Number of dots to display
+out.coherence = .9;             % Percent of dots to move in a specified direction
 out.speed = 1;                  % How fast do our little dots move
-out.contrast = 0.1;               % contrast of the dots
-out.dot_size = 9;              % Width of dots in pixels
+out.contrast = 1;               % contrast of the dots
+out.dot_size = 12;              % Width of dots in pixels
 out.movie_duration = 2;         % in seconds
 out.pctCorrectionTrials=.5;
 out.replayMode='loop';
-out.screen_zoom=[33 33];
+out.screen_zoom=[5 5];
 out.LUT=[];
 out.LUTbits=0;
 
