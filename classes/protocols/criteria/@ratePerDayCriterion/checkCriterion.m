@@ -19,7 +19,9 @@ if ~isempty(trialRecords)
             goodDates = dates(~stochastic | ~humanResponse & ~forcedRewards);
             daysRun = unique(dates);
             for i = length(daysRun):-1:length(daysRun)-c.consecutiveDays+1
-                graduate = graduate && sum(goodDates==daysRun(i))>=c.trialsPerDay;
+                if i>0
+                    graduate = graduate && sum(goodDates==daysRun(i))>=c.trialsPerDay;
+                end
             end
         otherwise
             error('unknown trialRecords type')
