@@ -33,9 +33,9 @@ textType = getShowText(tm);
 showText = ~strcmp(textType,'off'); %whether or not to call draw text to print any text on screen
 
 
-Screen('Preference', 'TextRenderer', 0);  % consider moving to station.startPTB
-Screen('Preference', 'TextAntiAliasing', 0); % consider moving to station.startPTB
-Screen('Preference', 'TextAlphaBlending', 0);
+Screen('Preference', 'TextRenderer', 1);  % consider moving to station.startPTB
+Screen('Preference', 'TextAntiAliasing', 1); % consider moving to station.startPTB
+Screen('Preference', 'TextAlphaBlending', 1);
 
 if ismac
     %http://psychtoolbox.org/wikka.php?wakka=FaqPerformanceTuning1
