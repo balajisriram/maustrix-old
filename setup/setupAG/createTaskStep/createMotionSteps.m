@@ -175,6 +175,19 @@ switch b
         out.maxWidth = 1600;
         out.maxHeight = 900;
     case 'BC305BD38BFB' %ephys-stim
+        out.screen_width = 128;         % for matrix
+        out.screen_height = 72;        % for matrix
+        out.num_dotsOpt = 30;              % Number of dots to display
+        out.num_dots1 = 1844;              % Number of dots to display
+        out.num_dots2 = 461;              % Number of dots to display
+        out.num_dots3 = 115;              % Number of dots to display
+        out.speedOpt = 0.33;                  % How fast do our little dots move
+        out.speedSweep = [0.085 1.32]; %[0.0825,0.0165,0.33,0.66,1.32];                  % How fast do our little dots move
+        out.dot_sizeOpt = 2;              % Width of dots in pixels
+        out.dot_size1 = 1;              % Width of dots in pixels
+        out.dot_size2 = 2;              % Width of dots in pixels
+        out.dot_size3 = 4;              % Width of dots in pixels
+        out.screen_zoom=[15 15];
         out.maxWidth = 1920;
         out.maxHeight = 1080;
     case '180373337162' %ephys-data
