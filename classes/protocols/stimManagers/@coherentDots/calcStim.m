@@ -154,6 +154,10 @@ if ~static
         end
 
     end
+else
+    for i = 1:num_frames
+        dots_movie(:,:,i) = frame;
+    end
 end
 
 out = dots_movie*selectedContrast;
