@@ -222,7 +222,7 @@ GetSecs;
 Screen('Screens');
 
 if window>0
-    standardFontSize=11;
+    standardFontSize=12;
     oldFontSize = Screen('TextSize',window,standardFontSize);
     [normBoundsRect, offsetBoundsRect]= Screen('TextBounds', window, 'TEST');
 end
