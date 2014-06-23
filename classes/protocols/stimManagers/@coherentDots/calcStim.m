@@ -136,7 +136,7 @@ end
 
 % speed
 if iscell(s.speed)
-    switch s.dot_size{2}
+    switch s.speed{2}
         case 'selectWithin'
             selectedSpeed = s.speed{1}(1) + rand(1)*(s.speed{1}(2)-s.speed{1}(1));
         case 'selectFrom'

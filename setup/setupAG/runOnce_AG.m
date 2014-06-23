@@ -105,7 +105,7 @@ switch mac
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
-        sub = subject('238','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','PV-cre','none');
+        sub = subject('238','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
@@ -125,11 +125,11 @@ switch mac
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pODSweeps,true,true,true,3,rx,'mouseTraining_OD','bas');
         
-        sub = subject('239','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','PV-cre','none');
+        sub = subject('239','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
-        sub = subject('240','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','PV-cre','none');
+        sub = subject('240','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
@@ -149,7 +149,7 @@ switch mac
         
         sub = subject('999','virtual','none','none','02/27/2014','unknown','unknown','Jackson Laboratories','none','none');
         rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD,true,true,true,5,rx,'mouseTraining_OD','bas');
+        [sub, rx]=setProtocolAndStep(sub,pMotion,true,true,true,5,rx,'mouseTraining_OD','bas');
     otherwise
         warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
         keyboard;
