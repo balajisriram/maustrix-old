@@ -17,11 +17,14 @@ svnCheckMode='none';
 
 [ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
 
+[ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3] = createMotionSteps_auto(svnRev,svnCheckMode);
+
+
 %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
 
 % here is the protocol
 descriptiveString='mouseTraining_Motion';
 pMouseTraining_Motion = protocol(descriptiveString,{fd_sto,fd,ts_obj1,ts_obj2,...
-    });
+    ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3});
 end
 
