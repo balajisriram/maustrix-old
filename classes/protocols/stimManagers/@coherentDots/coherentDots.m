@@ -5,11 +5,19 @@ function s=coherentDots(varargin)
 %   screen_width - width of sourceRect (determines size of texture to make)
 %   screen_height - height of sourceRect (determines size of texture to make)
 %   num_dots - number of dots to draw
-%   coherence - either a single coherence value, or a 2-element array specifying a range of coherence values from which to draw randomly every trial
-%   speed - either a single speed value, or a 2-element array specifying a range to randomly draw from every trial
-%   contrast - either a single contrast value, or a 2-element array specifying a range to randomly draw from every trial
-%   dot_size - size in pixels of each dot (square)
-%   movie_duration - length of the movie in seconds
+%   coherence - either a single coherence value, or a cell with 2-element array
+%       specifying a range of coherence values from which to draw randomly
+%       every trial {[loVal hiVal], 'selectWithin'}, or a cell {[values], 'selectFrom'}
+%   speed - either a single speed value, or a 2-element array specifying a 
+%       range to randomly draw from every trial {[loVal hiVal], 'selectWithin'}, 
+%       or a cell {[values], 'selectFrom'}
+%   contrast - either a single contrast value, or a 2-element array 
+%       specifying a range to randomly draw from every trial {[loVal hiVal], 'selectWithin'}, 
+%       or a cell {[values], 'selectFrom'}
+%   dot_size - size in pixels of each dot (square) """ similar to
+%       coherence """
+%   movie_duration - length of the movie in seconds """ similar to
+%       coherence """
 %   screen_zoom - scaleFactor argument passed to stimManager constructor
 %   interTrialLuminance - (optional) defaults to 0
 %   
@@ -52,18 +60,21 @@ case {12 13 14}
         varargin{1}
         error('screen_width must be an integer')
     end
+    
     % screen_height
     if (floor(varargin{2}) - varargin{2} < eps)
         s.screen_height = varargin{2};
     else
         error('screen_height must be an integer')
     end
+    
     % num_dots
     if (floor(varargin{3}) - varargin{3} < eps)
         s.num_dots = varargin{3};
     else
         error('num_dots must be an integer')
     end
+    
     % coherence
     if (isfloat(varargin{4}))
         s.coherence = 1;
@@ -82,18 +93,36 @@ case {12 13 14}
         else
             error ('Coherence must be either a 1x2 or 1x1 set of floats')
         end
+    elseif iscell(varargin{4})
+        if strcmp(varargin{4}{2},'selectWithin') && (length(varargin{4}{1})==2) && (all(varargin{4}{1}>=0)) && (all(varargin{4}{1}<=1))
+            s.coherence = varargin{4};
+        elseif strcmp(varargin{4}{2},'selectFrom') && all(isnumeric(varargin{4}{1})) && (all(varargin{4}{1}>=0)) && (all(varargin{4}{1}<=1))
+            s.coherence = varargin{4};
+        else
+            error('if you pass a cell, it should be of the type selectWithin or selectFrom');
+        end
     else
-        error('Coherence level must be a 1x1 or 1x2 array between 0 and 1')
+        error('Coherence level must be a 1x1 or 1x2 array between 0 and 1 or a cell of the appropriate type')
     end
+    
     % speed
     if (isfloat(varargin{5})) && (isscalar(varargin{5}) || length(varargin{5})==2)
         if (length(varargin{5})==2) && ~(varargin{5}(1)<=varargin{5}(2))
             error('range of speed must be [min max]');
         end
         s.speed = varargin{5};
+    elseif iscell(varargin{5})
+        if strcmp(varargin{5}{2},'selectWithin') && (length(varargin{5}{1})==2) && (all(varargin{5}{1}>=0))
+            s.speed = varargin{5};
+        elseif strcmp(varargin{5}{2},'selectFrom') && all(isnumeric(varargin{5}{1})) && (all(varargin{5}{1}>=0))
+            s.speed = varargin{5};
+        else
+            error('if you pass a cell, it should be of the type selectWithin or selectFrom');
+        end
     else
-        error('speed (pixels/frame) must be a double or a 2-element array specifying a range')
+        error('speed (pixels/frame) must be a double or a 2-element array specifying a range or a cell of the appropriate type')
     end
+    
     % contrast
     if (length(varargin{6})==1 || length(varargin{6})==2) && all(isnumeric(varargin{6})) && ...
             all(varargin{6} >=0) && all(varargin{6} <=1)
@@ -101,25 +130,52 @@ case {12 13 14}
             error('range of contrast must be [min max]');
         end
         s.contrast = varargin{6};
+    elseif iscell(varargin{6})
+        if strcmp(varargin{6}{2},'selectWithin') && (length(varargin{6}{1})==2) && (all(varargin{6}{1}>=0)) && (all(varargin{6}{1}<=1))
+            s.contrast = varargin{6};
+        elseif strcmp(varargin{6}{2},'selectFrom') && all(isnumeric(varargin{6}{1})) && (all(varargin{6}{1}>=0)) && (all(varargin{6}{1}<=1))
+            s.contrast = varargin{6};
+        else
+            error('if you pass a cell, it should be of the type selectWithin or selectFrom');
+        end
     else
-        error('contrast must be >=0 and <=1 and be a single number or a 2-element array specifying a range');
+        error('contrast must be >=0 and <=1 and be a single number or a 2-element array specifying a range or a cell of the appropriate type');
     end
+    
     % dot_size
     if length(varargin{7})==1 && (floor(varargin{7}) - varargin{7} < eps)
         s.dot_size = varargin{7};
     elseif length(varargin{7})==2 && all(floor(varargin{7}) - varargin{7} < eps) && varargin{7}(1)<=varargin{7}(2)
         s.dot_size = varargin{7};
+    elseif iscell(varargin{7})
+        if strcmp(varargin{7}{2},'selectWithin') && (length(varargin{7}{1})==2) && (all(varargin{7}{1}>=0))
+            s.dot_size = varargin{7};
+        elseif strcmp(varargin{7}{2},'selectFrom') && all(isnumeric(varargin{7}{1})) && (all(varargin{7}{1}>=0))
+            s.dot_size = varargin{7};
+        else
+            error('if you pass a cell, it should be of the type selectWithin or selectFrom');
+        end
     else
         error('dot_size must be an integer or a 2-element array specifying a valid range')
     end
+    
     % movie_duration
     if (floor(varargin{8}) - varargin{8} < eps)
         s.movie_duration = varargin{8};
     elseif length(varargin{8})==2 && all(floor(varargin{8}) - varargin{8} < eps) && varargin{8}(1)<=varargin{8}(2)
         s.movie_duration = varargin{8};
+    elseif iscell(varargin{8})
+        if strcmp(varargin{8}{2},'selectWithin') && (length(varargin{8}{1})==2) && (all(varargin{8}{1}>=0))
+            s.movie_duration = varargin{8};
+        elseif strcmp(varargin{8}{2},'selectFrom') && all(isnumeric(varargin{8}{1})) && (all(varargin{8}{1}>=0))
+            s.movie_duration = varargin{8};
+        else
+            error('if you pass a cell, it should be of the type selectWithin or selectFrom');
+        end
     else
-        error('movie_duration must be an integer or a 2-element array specifying a valid range')
+        error('movie_duration must be an integer or a 2-element array specifying a valid range or a cell of the appropriate type')
     end
+    
     % screen_zoom
     if (length(varargin{9}) == 2 && isnumeric(varargin{9}))
         screen_zoom = varargin{9};

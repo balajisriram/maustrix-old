@@ -49,10 +49,19 @@ if length(targetPorts)==1
         error('Zah?  This should never happen!')
     end
     static=false;
-    if length(s.movie_duration)==2
-        selectedDuration = s.movie_duration(1) + rand(1)*(s.movie_duration(2)-s.movie_duration(1));
+    if iscell(s.movie_duration)
+        switch s.movie_duration{2}
+            case 'selectWithin'
+                selectedDuration = s.movie_duration{1}(1) + rand(1)*(s.movie_duration{1}(2)-s.movie_duration{1}(1));
+            case 'selectFrom'
+                selectedDuration = s.movie_duration{1}(randi(length((s.movie_duration{1}))));
+        end
     else
-        selectedDuration = s.movie_duration;
+        if length(s.movie_duration)==2
+            selectedDuration = s.movie_duration(1) + rand(1)*(s.movie_duration(2)-s.movie_duration(1));
+        else
+            selectedDuration = s.movie_duration;
+        end
     end
 else
     % if more than one target port, then we can only have a static image!
@@ -78,28 +87,67 @@ dots_movie = uint8(zeros(s.screen_height, s.screen_width, num_frames));
 %   s.contrast -> selectedContrast
 %   s.speed -> selectedSpeed
 % coherence
-if length(s.coherence)==2
-    selectedCoherence = s.coherence(1) + rand(1)*(s.coherence(2)-s.coherence(1));
+if iscell(s.coherence)
+    switch s.coherence{2}
+        case 'selectWithin'
+            selectedCoherence = s.coherence{1}(1) + rand(1)*(s.coherence{1}(2)-s.coherence{1}(1));
+        case 'selectFrom'
+            selectedCoherence = s.coherence{1}(randi(length((s.coherence{1}))));
+    end
 else
-    selectedCoherence = s.coherence;
+    if length(s.coherence)==2
+        selectedCoherence = s.coherence(1) + rand(1)*(s.coherence(2)-s.coherence(1));
+    else
+        selectedCoherence = s.coherence;
+    end
 end
+
 % dot_size
-if length(s.dot_size)==2
-    selectedDotSize = round(s.dot_size(1) + rand(1)*(s.dot_size(2)-s.dot_size(1)));
+if iscell(s.dot_size)
+    switch s.dot_size{2}
+        case 'selectWithin'
+            selectedDotSize = s.dot_size{1}(1) + rand(1)*(s.dot_size{1}(2)-s.dot_size{1}(1));
+        case 'selectFrom'
+            selectedDotSize = s.dot_size{1}(randi(length((s.dot_size{1}))));
+    end
 else
-    selectedDotSize = s.dot_size;
+    if length(s.dot_size)==2
+        selectedDotSize = round(s.dot_size(1) + rand(1)*(s.dot_size(2)-s.dot_size(1)));
+    else
+        selectedDotSize = s.dot_size;
+    end
 end
+
 % contrast
-if length(s.contrast)==2
-    selectedContrast = s.contrast(1) + rand(1)*(s.contrast(2)-s.contrast(1));
+if iscell(s.contrast)
+    switch s.contrast{2}
+        case 'selectWithin'
+            selectedContrast = s.contrast{1}(1) + rand(1)*(s.contrast{1}(2)-s.contrast{1}(1));
+        case 'selectFrom'
+            selectedContrast = s.contrast{1}(randi(length((s.contrast{1}))));
+    end
 else
-    selectedContrast = s.contrast;
+    if length(s.contrast)==2
+        selectedContrast = s.contrast(1) + rand(1)*(s.contrast(2)-s.contrast(1));
+    else
+        selectedContrast = s.contrast;
+    end
 end
+
 % speed
-if length(s.speed)==2
-    selectedSpeed = s.speed(1) + rand(1)*(s.speed(2)-s.speed(1));
+if iscell(s.speed)
+    switch s.dot_size{2}
+        case 'selectWithin'
+            selectedSpeed = s.speed{1}(1) + rand(1)*(s.speed{1}(2)-s.speed{1}(1));
+        case 'selectFrom'
+            selectedSpeed = s.speed{1}(randi(length((s.speed{1}))));
+    end
 else
-    selectedSpeed = s.speed;
+    if length(s.speed)==2
+        selectedSpeed = s.speed(1) + rand(1)*(s.speed(2)-s.speed(1));
+    else
+        selectedSpeed = s.speed;
+    end
 end
 % ===================================================================================
 %shape = zeros(dot_size,2);
