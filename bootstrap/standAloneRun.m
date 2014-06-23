@@ -278,11 +278,11 @@ end
 function [correctBox, whichBox] = ensureCorrectBoxForSubject(subjID)
 allowedTestSubjects = {'demo1','999'};
 
-Box1Subjects = {'223','225','241','246'};
-Box2Subjects = {'216','232','242','247','221'};
-Box3Subjects = {'213','227','243','248'};
-Box4Subjects = {'226','228','244','249'};
-Box5Subjects = {'218','220','245','250'};
+Box1Subjects = {'223','225','226','241','246'};
+Box2Subjects = {'232','216','221','242','247'};
+Box3Subjects = {'227','213','220','243','248'};
+Box4Subjects = {'228','237','238','244','249'};
+Box5Subjects = {'218','239','240','245','250'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects};
 currSubj = {subjID,subjID,subjID,subjID,subjID};
 whichBox = find(cellfun(@ismember,currSubj,Subjects));
