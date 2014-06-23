@@ -101,11 +101,11 @@ switch mac
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pODSweeps,true,true,true,3,rx,'mouseTraining_OD','bas');
         
-        sub = subject('237','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
+        sub = subject('237','mouse','c57bl/6j','male','3/17/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
-        sub = subject('238','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
+        sub = subject('238','mouse','c57bl/6j','male','3/17/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
@@ -125,11 +125,11 @@ switch mac
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pODSweeps,true,true,true,3,rx,'mouseTraining_OD','bas');
         
-        sub = subject('239','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
+        sub = subject('239','mouse','c57bl/6j','female','2/13/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
-        sub = subject('240','mouse','c57bl/6j','female','12/26/2012','unknown','unknown','Jackson Laboratories','VIP-cre','none');
+        sub = subject('240','mouse','c57bl/6j','female','2/13/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pCtrSens,true,true,true,1,rx,'mouseTraining_OD','bas');
         
