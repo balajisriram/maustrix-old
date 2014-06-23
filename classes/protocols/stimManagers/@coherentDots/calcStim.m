@@ -172,7 +172,16 @@ if ~static
 
     for i=1:num_frames
         frame = zeros(s.screen_height,s.screen_width);
-        frame(sub2ind(size(frame),floor(alldotsxy(:,2)),floor(alldotsxy(:,1)))) = 1;
+        try
+            frame(sub2ind(size(frame),ceil(alldotsxy(:,2)),ceil(alldotsxy(:,1)))) = 1;
+        catch
+            min(floor(alldotsxy(:,2)))
+            min(floor(alldotsxy(:,1)))
+            max(floor(alldotsxy(:,2)))
+            max(floor(alldotsxy(:,1)))
+            sca;
+            keyboard
+        end
         frame = conv2(frame,shape,'same');
         frame(frame > 0) = 255;
         dots_movie(:,:,i) = uint8(frame);
@@ -192,15 +201,34 @@ if ~static
             alldotsxy(move_randomly,:) = [rand(num_out,1)*(s.screen_width-1)+1 ...
                 rand(num_out,1)*(s.screen_height-1)+1];
         end
-
-        overboard = alldotsxy(:,1) > s.screen_width | alldotsxy(:,2) > s.screen_height | ...
-            floor(alldotsxy(:,1)) <= 0 | floor(alldotsxy(:,2)) <= 0;
+        
+        % all that are beyond the right
+        overboard = alldotsxy(:,1) > s.screen_width;
         num_out = sum(overboard);
         if (num_out)
-            alldotsxy(overboard,:) = [rand(num_out,1)*(s.screen_width-1)+1 ...
-                rand(num_out,1)*(s.screen_height-1)+1];
+            alldotsxy(overboard,1) = alldotsxy(overboard,1)- s.screen_width + 1;
         end
-
+        
+        % all that are before the left
+        overboard = alldotsxy(:,1) < 0;
+        num_out = sum(overboard);
+        if (num_out)
+            alldotsxy(overboard,1) = s.screen_width + alldotsxy(overboard,1) ;
+        end
+        
+        % all that are below the bottom
+        overboard = alldotsxy(:,2) > s.screen_height;
+        num_out = sum(overboard);
+        if (num_out)
+            alldotsxy(overboard,2) = alldotsxy(overboard,2)- s.screen_height + 1;
+        end
+        
+        % all that are above the top
+        overboard = floor(alldotsxy(:,2)) <= 0;
+        num_out = sum(overboard);
+        if (num_out)
+            alldotsxy(overboard,2) = s.screen_height + alldotsxy(overboard,2);
+        end
     end
 else
     for i = 1:num_frames
