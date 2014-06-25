@@ -177,7 +177,7 @@ switch b
     case 'BC305BD38BFB' %ephys-stim
         out.screen_width = 128;         % for matrix
         out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 30;              % Number of dots to display
+        out.num_dotsOpt = 461;              % Number of dots to display
         out.num_dots1 = 1844;              % Number of dots to display
         out.num_dots2 = 461;              % Number of dots to display
         out.num_dots3 = 115;              % Number of dots to display
