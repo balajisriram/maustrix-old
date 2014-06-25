@@ -40,8 +40,11 @@ if ~isempty(result) && ~ischar(result)
 		result = 'multiple ports';
     end
     trialDetails.correct=correct;
-elseif ischar(result) && strcmp(result,'timedout')
+elseif ischar(result) && ismember(result,{'timedout','multiple ports'})
     correct=0;
+    trialDetails.correct=correct;
+elseif ischar(result) && ismember(result,{'nominal'})
+    correct=1;
     trialDetails.correct=correct;
 end
 
