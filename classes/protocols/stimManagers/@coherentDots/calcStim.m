@@ -17,9 +17,15 @@ imagingTasks=[];
 % ramp=[0:fraction:1];
 % LUT= [ramp;ramp;ramp]';
 [LUT stimulus updateSM]=getLUT(stimulus,LUTbits);
-
-[resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[100 60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
-
+[junk, mac] = getMACaddress();
+switch mac
+    case {'A41F7278B4DE','A41F729213E2','A41F726EC11C' } %gLab-Behavior rigs 1,2,3
+        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+    case {'7845C4256F4C', '7845C42558DF','A41F729211B1'} %gLab-Behavior rigs 4,5,6
+        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+    otherwise 
+        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+end
 if isnan(resolutionIndex)
     resolutionIndex=1;
 end
