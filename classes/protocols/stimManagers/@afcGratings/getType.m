@@ -32,7 +32,13 @@ switch n
         elseif all(ismember(sweptParameters,{'contrasts','pixPerCycs'}))
             out = 'afcGratings_cntrXsfSweep';
         elseif all(ismember(sweptParameters,{'phases','maxDuration'}))
-            out = 'afcGratings_durationSweep';
+            out = 'afcGratings_durationSweep_Stat';
+        elseif all(ismember(sweptParameters,{'phases','contrasts'}))
+            out = 'afcGratings_contrastSweep_Stat';
+        elseif all(ismember(sweptParameters,{'phases','pixPerCycs'}))
+            out = 'afcGratings_sfSweep_Stat';
+        elseif all(ismember(sweptParameters,{'phases','orientations'}))
+            out = 'afcGratings_orSweep_Stat';
         else
             sweptParameters
             error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
