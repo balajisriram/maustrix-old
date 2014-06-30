@@ -14,12 +14,16 @@ params = struct;
 
 % bound constraints for each component
 lb = [0 0 0];
-ub = [1 100 0.5];
+ub = [1 100 1];
 Aineq = [-1 0 0;1 0 0;0 0 -1;0 0 1];
 bineq = [0;1;0;1];
 % x = fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)
 % model = fmincon (@(x) HyperbolicError(x,c,pHat,params),x_0,Aineq,bineq,[],[],[],[],[],opt);
+try
 [model, resnorm, residual, exitflag] = lsqnonlin(@(x) LSQFitFn(x,c,pHat,params),x_0,lb,ub,opt);
+catch
+    keyboard
+end
 out.pMax = model(1);
 out.n = model(2);
 out.c50 = model(3);

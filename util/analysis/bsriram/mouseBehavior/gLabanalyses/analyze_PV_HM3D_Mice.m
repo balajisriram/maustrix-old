@@ -36,11 +36,11 @@ plotDetails.plotWhere = 'givenAxes';
 plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
-ctrAll = analyzeMouse({'63','65','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+%     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
+ctrAll = analyzeMouse({'63','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotResponseTimes = true;
 if plotResponseTimes
@@ -139,7 +139,7 @@ if plotResponseTimes
     end
     [h, p, ci, stat] = ttest2(HighCTimesPBS,HighCTimesCNO);
     
-        keyboard
+        
     plot(gca, contrasts, meanRespTimes(:,1), 'bd');
     plot(gca, contrasts, meanRespTimes(:,2), 'rd');
     for i = 1:length(contrasts)
@@ -168,7 +168,7 @@ if plotResponseTimes
             end
         end
     end
-    keyboard
+    
     % find quartiles and then plot performance for those...
     AllRespTimes = [AllTimesPBS AllTimesCNO];
     respQuartiles = quantile(AllRespTimes,3);
@@ -191,7 +191,7 @@ if plotResponseTimes
     
     
 end
-keyboard
+
 oldFits = false;
 if oldFits
     % lets do some fitting
@@ -244,8 +244,14 @@ if oldFits
     end
 end
 
-numResamples = 1000;
+jackKnifeEstimate = true;
+if jackKnifeEstimate
+end
+
+numResamples = 10000;
 c50Difference = nan(1,numResamples);
+c50PBS = c50Difference;
+c50CNO = c50Difference;
 qPBS = c50Difference;
 qCNO = qPBS;
 
@@ -273,6 +279,20 @@ for i = 1:numResamples
     end
     inPBS.pHat = currentPBS./numTrialsByConditionPBS';
     inCNO.pHat = currentCNO./numTrialsByConditionCNO';
+%     
+%     tempPBS = inPBS;
+%     which = tempPBS.cntr==0.1;
+%     if any(which)
+%         tempPBS.cntr(which) = [];
+%         tempPBS.pHat(which) = [];
+%     end
+%     
+%     tempCNO = inCNO;
+%     which = tempCNO.cntr==0.1;
+%     if any(which)
+%         tempCNO.cntr(which) = [];
+%         tempCNO.pHat(which) = [];
+%     end
     
     fitPBS = fitHyperbolicRatio(inPBS);
     qPBS(i) = fitPBS.quality;
@@ -283,8 +303,11 @@ for i = 1:numResamples
     %     plot(inPBS.cntr,inPBS.pHat,'b');
 %     plot(inCNO.cntr,inCNO.pHat,'r');
 %     plot(inCNO.cntr,inPBS.pHat-inCNO.pHat+0.5,'k');
+    c50PBS(i) = fitPBS.c50;
+    c50CNO(i) = fitCNO.c50;
     c50Difference(i) = fitPBS.c50-fitCNO.c50;
 end
+keyboard
 % best PBS
 in.cntr = ctrAll.ctrData.contrasts;
 in.pHat = ctrAll.ctrData.performanceByConditionWCO(:,1,1)';
@@ -298,7 +321,7 @@ in.pHat = ctrAll.ctrData.performanceByConditionWCO(:,1,2)';
 fit = fitHyperbolicRatio(in);
 plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'r','linewidth',3);
 CNOBestC50 = fit.c50;
-
+keyboard
 % keyboard
 plotDetails.axHan = subplot(3,2,2);
 edges = 0:0.025:1;
@@ -396,14 +419,14 @@ plotDetails.plotWhere = 'givenAxes';
 plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
+compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
 OrAll = analyzeMouse({'63','65','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
-plotResponseTimes = true;
+plotResponseTimes = false;
 if plotResponseTimes
     temp = OrAll.orData.correction; temp(isnan(temp)) = true;
     whichOK = ~isnan(OrAll.orData.correct)&~(temp);
@@ -552,57 +575,117 @@ if plotResponseTimes
     
     
 end
-keyboard
 
 
 out = {};
 
-plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
-
-plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
-
-plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
-out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
-
-plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
-out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+% plotDetails.axHan = subplot(3,2,3);
+% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+% 
+% plotDetails.axHan = subplot(3,2,4);
+% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+% 
+% plotDetails.axHan = subplot(3,2,5);
+% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
+% 
+% plotDetails.axHan = subplot(3,2,6);
+% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+% out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 % PBS only
 in = []
 in.cntr = OrAll.orData.orientations;
-    in.pHat = OrAll.orData.performanceByConditionWCO(:,1,1)';
-    whichGood = ~isnan(in.pHat);
-    
-    in.cntr = in.cntr(whichGood);
-    in.pHat = in.pHat(whichGood);
-    in.cntr = in.cntr/45;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,1)';
+whichGood = ~isnan(in.pHat);
 
-    
-    fit = fitHyperbolicRatio(in);
-    plot(fit.fittedModel.c*45,fit.fittedModel.pModel,'b','linewidth',3); hold on
-    plot (in.cntr*45,in.pHat,'bd')
-    
- % CNO only
- in = [];
+in.cntr = in.cntr(whichGood);
+in.pHat = in.pHat(whichGood);
+in.cntr = in.cntr/45;
+
+
+fitPBS = fitHyperbolicRatio(in);
+fitPBS.c50*45
+plot(fitPBS.fittedModel.c*45,fitPBS.fittedModel.pModel,'b','linewidth',3); hold on
+plot (in.cntr*45,in.pHat,'bd')
+
+% CNO only
+in = [];
 in.cntr = OrAll.orData.orientations;
-    in.pHat = OrAll.orData.performanceByConditionWCO(:,1,2)';
-    whichGood = ~isnan(in.pHat);
-    
-    in.cntr = in.cntr(whichGood);
-    in.pHat = in.pHat(whichGood);
-    in.cntr = in.cntr/45;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,2)';
+whichGood = ~isnan(in.pHat);
 
-    
-    fit = fitHyperbolicRatio(in);
-    plot(fit.fittedModel.c*45,fit.fittedModel.pModel,'r','linewidth',3); hold on
-    plot (in.cntr*45,in.pHat,'rd')
-    
+in.cntr = in.cntr(whichGood);
+in.pHat = in.pHat(whichGood);
+in.cntr = in.cntr/45;
+
+
+fitCNO = fitHyperbolicRatio(in);
+fitCNO.c50*45
+(fitCNO.c50*45 - fitPBS.c50*45)/45
+plot(fitCNO.fittedModel.c*45,fitCNO.fittedModel.pModel,'r','linewidth',3); hold on
+plot (in.cntr*45,in.pHat,'rd')
+
+
+numResamples = 10000;
+c50Difference = nan(1,numResamples);
+c50PBS = c50Difference;
+c50CNO = c50Difference;
+qPBS = c50Difference;
+qCNO = qPBS;
+
+inPBS.cntr = OrAll.orData.orientations/45;
+inCNO.cntr = OrAll.orData.orientations/45;
+% lets do the shuffle
+numTrialsByConditionPBS = OrAll.orData.numTrialsByConditionWCO(:,1);
+numTrialsByConditionCNO = OrAll.orData.numTrialsByConditionWCO(:,2);
+
+correctByConditionPBS = OrAll.orData.correctByConditionWCO(:,1);
+correctByConditionCNO = OrAll.orData.correctByConditionWCO(:,2);
+
+oneZerosForResample = cell(length(inPBS.cntr),1);
+for j = 1:length(inPBS.cntr)
+    oneZerosForResample{j} = zeros(1,numTrialsByConditionPBS(j)+numTrialsByConditionCNO(j));
+    oneZerosForResample{j}(1:correctByConditionPBS(j)+correctByConditionCNO(j)) = 1;
+end
+currentShuffle = oneZerosForResample;
+for i = 1:numResamples
+    currentPBS = nan(1,length(numTrialsByConditionPBS));
+    currentCNO = nan(1,length(numTrialsByConditionCNO));
+    for j = 1:length(inPBS.cntr)
+        currentShuffle{j} = oneZerosForResample{j}(randperm(length(oneZerosForResample{j})));
+        currentPBS(j) = sum(currentShuffle{j}(1:numTrialsByConditionPBS(j)));
+        currentCNO(j) = sum(currentShuffle{j}(numTrialsByConditionPBS(j)+1:end));
+    end
+    inPBS.pHat = currentPBS./numTrialsByConditionPBS';
+    inCNO.pHat = currentCNO./numTrialsByConditionCNO';
+
+    fitPBS = fitHyperbolicRatio(inPBS);
+    qPBS(i) = fitPBS.quality;
+    fitCNO = fitHyperbolicRatio(inCNO);
+    qCNO(i) = fitCNO.quality;
+
+    c50PBS(i) = fitPBS.c50;
+    c50CNO(i) = fitCNO.c50;
+    c50Difference(i) = fitPBS.c50-fitCNO.c50;
+end
+
+% best PBS
+in.cntr = OrAll.orData.orientations;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,1)';
+fit = fitHyperbolicRatio(in);
+plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'b','linewidth',3);
+PBSBestC50 = fit.c50;
+
+% best CNO
+in.cntr = OrAll.orData.orientations;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,2)';
+fit = fitHyperbolicRatio(in);
+plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'r','linewidth',3);
+CNOBestC50 = fit.c50;
+
 %% plot Contrast QUAT RAD
 
 analysisFor.analyzeOpt = false;
@@ -737,9 +820,28 @@ analysisFor.analyzeQuatRadContrast = false;
 analysisFor.analyzeImagesContrast = false;
 analysisFor.analyzeCtrSensitivity = false;
 
-filters = 735430:735445;%735541; %'Jun-17-2013':today ,,735542,,735486
+sfFilters = 735430:735445;%735541; %'Jun-17-2013':today ,,735542,,735486
 trialNumCutoff = 25;
-
+filters = []
+    filters.fdFilter = sfFilters;
+    filters.imFilter = sfFilters;
+    filters.optFilter = sfFilters;
+    filters.optRevFilter = sfFilters;
+    filters.ctrFilter = sfFilters;
+    filters.ctrRevFilter = sfFilters;
+    filters.sfFilter = sfFilters;
+    filters.sfRevFilter = sfFilters;
+    filters.orFilter = sfFilters;
+    filters.orRevFilters = sfFilters;
+    filters.tfFilter = sfFilters;
+    filters.tfRevFilter = sfFilters;
+    filters.ctrQuatRadFilter = sfFilters;
+    filters.ctrImages = sfFilters;
+    filters.ctrSensitivity = sfFilters;
+    
+    filters.MinResponseTime = 0;
+    filters.MaxResponseTime = 1.5666;
+    
 
 splits.daysPBS = [735430 735432 735434 735437 735439 735441 735444];
 splits.daysCNO = [735431 735433 735438 735440 735445]; % except for 65...
@@ -754,15 +856,15 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
+compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
 sfAll = analyzeMouse({'61','63','65','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
 
-plotResponseTimes = true;
+plotResponseTimes = false;
 if plotResponseTimes
     temp = sfAll.spatData.correction; temp(isnan(temp)) = true;
     whichOK = ~isnan(sfAll.spatData.correct)&~(temp);
@@ -911,25 +1013,25 @@ if plotResponseTimes
     
     
 end
-keyboard
+
 
 
 out = {};
 
 plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 % PBS only

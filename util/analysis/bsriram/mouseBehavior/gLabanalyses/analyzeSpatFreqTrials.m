@@ -52,6 +52,12 @@ for i = 1:length(spatFreqData.dates)
         % filter out the nans
         correctionThatDate(isnan(correctionThatDate)) = false;
         whichGood = ~isnan(correctThatDate) & ~correctionThatDate & responseTimeThatDate<5;
+        if isfield(filters,'MinResponseTime')
+            whichGood = whichGood & responseTimeThatDate>filters.MinResponseTime;
+        end
+        if isfield(filters,'MaxResponseTime')
+            whichGood = whichGood & responseTimeThatDate<filters.MaxResponseTime;
+        end
         correctThatDate = correctThatDate(whichGood);
         spatFreqThatDate = spatFreqThatDate(whichGood);
         responseTimeThatDate = responseTimeThatDate(whichGood);

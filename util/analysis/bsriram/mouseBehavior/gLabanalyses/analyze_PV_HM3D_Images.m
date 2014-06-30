@@ -46,7 +46,7 @@ compiledFilesDir = {...
 ctrAll = analyzeMouse({'61','63','65','69','200','201'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 hold on;
 
-plotResponseTimes = true;
+plotResponseTimes = false;
 if plotResponseTimes
     temp = ctrAll.ctrImageData.correction; temp(isnan(temp)) = true;
     whichOK = ~isnan(ctrAll.ctrImageData.correct)&~(temp);
@@ -290,3 +290,95 @@ for i = 1:6
     c50PBS(i) = fitInd(i,1).c50;
     c50CNO(i) = fitInd(i,2).c50;
 end
+
+
+
+in = []
+in.cntr = OrAll.orData.orientations;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,1)';
+whichGood = ~isnan(in.pHat);
+
+in.cntr = in.cntr(whichGood);
+in.pHat = in.pHat(whichGood);
+in.cntr = in.cntr/45;
+
+
+fitPBS = fitHyperbolicRatio(in);
+fitPBS.c50*45
+plot(fitPBS.fittedModel.c*45,fitPBS.fittedModel.pModel,'b','linewidth',3); hold on
+plot (in.cntr*45,in.pHat,'bd')
+
+% CNO only
+in = [];
+in.cntr = OrAll.orData.orientations;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,2)';
+whichGood = ~isnan(in.pHat);
+
+in.cntr = in.cntr(whichGood);
+in.pHat = in.pHat(whichGood);
+in.cntr = in.cntr/45;
+
+
+fitCNO = fitHyperbolicRatio(in);
+fitCNO.c50*45
+(fitCNO.c50*45 - fitPBS.c50*45)/45
+plot(fitCNO.fittedModel.c*45,fitCNO.fittedModel.pModel,'r','linewidth',3); hold on
+plot (in.cntr*45,in.pHat,'rd')
+
+
+numResamples = 10000;
+c50Difference = nan(1,numResamples);
+c50PBS = c50Difference;
+c50CNO = c50Difference;
+qPBS = c50Difference;
+qCNO = qPBS;
+
+inPBS.cntr = OrAll.orData.orientations/45;
+inCNO.cntr = OrAll.orData.orientations/45;
+% lets do the shuffle
+numTrialsByConditionPBS = OrAll.orData.numTrialsByConditionWCO(:,1);
+numTrialsByConditionCNO = OrAll.orData.numTrialsByConditionWCO(:,2);
+
+correctByConditionPBS = OrAll.orData.correctByConditionWCO(:,1);
+correctByConditionCNO = OrAll.orData.correctByConditionWCO(:,2);
+
+oneZerosForResample = cell(length(inPBS.cntr),1);
+for j = 1:length(inPBS.cntr)
+    oneZerosForResample{j} = zeros(1,numTrialsByConditionPBS(j)+numTrialsByConditionCNO(j));
+    oneZerosForResample{j}(1:correctByConditionPBS(j)+correctByConditionCNO(j)) = 1;
+end
+currentShuffle = oneZerosForResample;
+for i = 1:numResamples
+    currentPBS = nan(1,length(numTrialsByConditionPBS));
+    currentCNO = nan(1,length(numTrialsByConditionCNO));
+    for j = 1:length(inPBS.cntr)
+        currentShuffle{j} = oneZerosForResample{j}(randperm(length(oneZerosForResample{j})));
+        currentPBS(j) = sum(currentShuffle{j}(1:numTrialsByConditionPBS(j)));
+        currentCNO(j) = sum(currentShuffle{j}(numTrialsByConditionPBS(j)+1:end));
+    end
+    inPBS.pHat = currentPBS./numTrialsByConditionPBS';
+    inCNO.pHat = currentCNO./numTrialsByConditionCNO';
+
+    fitPBS = fitHyperbolicRatio(inPBS);
+    qPBS(i) = fitPBS.quality;
+    fitCNO = fitHyperbolicRatio(inCNO);
+    qCNO(i) = fitCNO.quality;
+
+    c50PBS(i) = fitPBS.c50;
+    c50CNO(i) = fitCNO.c50;
+    c50Difference(i) = fitPBS.c50-fitCNO.c50;
+end
+keyboard
+% best PBS
+in.cntr = OrAll.orData.orientations;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,1)';
+fit = fitHyperbolicRatio(in);
+plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'b','linewidth',3);
+PBSBestC50 = fit.c50;
+
+% best CNO
+in.cntr = OrAll.orData.orientations;
+in.pHat = OrAll.orData.performanceByConditionWCO(:,1,2)';
+fit = fitHyperbolicRatio(in);
+plot(gca,fit.fittedModel.c,fit.fittedModel.pModel,'r','linewidth',3);
+CNOBestC50 = fit.c50;
