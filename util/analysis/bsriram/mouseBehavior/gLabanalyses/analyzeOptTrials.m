@@ -11,6 +11,7 @@ opt = filterBehaviorData(data,'tsName','orOptimal_nAFC');
 optData.trialNum = [opt.compiledTrialRecords.trialNumber ];
 optData.correct = [opt.compiledTrialRecords.correct ];
 optData.correction = [opt.compiledTrialRecords.correctionTrial ];
+optData.responseTime = [opt.compiledTrialRecords.responseTime];
 optData.correction(isnan(optData.correction)) = true;
 optData.time = [opt.compiledTrialRecords.date ] ;
 optData.date = floor(optData.time);
@@ -29,21 +30,27 @@ optData.trialNumsByCondition = {[],[],[],[],[]};
 optData.numTrialsByCondition = {0,0,0,0,0};
 optData.correctByCondition = {0,0,0,0,0};
 optData.performanceByCondition = nan(3,5);
+optData.responseTimesByCondition = {[],[],[],[],[]};
 
 %performance by condition with trial number cutoff
 optData.trialNumsByConditionWCO = {[],[],[],[],[]};
 optData.numTrialsByConditionWCO = {0,0,0,0,0};
 optData.correctByConditionWCO = {0,0,0,0,0};
 optData.performanceByConditionWCO = nan(3,5);
+optData.responseTimesByConditionWCO = {[],[],[],[],[]};
 
 for i = 1:length(optData.dates)
     if ismember(optData.dates(i),filters.optFilter)
         dateFilter = optData.date==optData.dates(i);
         correctThatDate = optData.correct(dateFilter);
         correctionThatDate = optData.correction(dateFilter);
+        responseTimeThatDate = optData.responseTime(dateFilter);
+
         % filter out the nans
-        whichGood = ~isnan(correctThatDate) & ~correctionThatDate;
+        whichGood = ~isnan(correctThatDate) & ~correctionThatDate & responseTimeThatDate<5;
         correctThatDate = correctThatDate(whichGood);
+        responseTimeThatDate = responseTimeThatDate(whichGood);
+        
         optData.trialNumByDate{i} = optData.trialNum(dateFilter);
         optData.trialNumByDate{i} = optData.trialNumByDate{i}(whichGood);
         optData.numTrialsByDate(i) = length(optData.trialNumByDate{i});
@@ -76,46 +83,56 @@ for i = 1:length(optData.dates)
             optData.trialNumsByCondition{1} = [optData.trialNumsByCondition{1} makerow(optData.trialNumByDate{i})];
             optData.numTrialsByCondition{1} = optData.numTrialsByCondition{1}+n;
             optData.correctByCondition{1} = optData.correctByCondition{1}+x;
+            optData.responseTimesByCondition{1} = [optData.responseTimesByCondition{1} makerow(responseTimeThatDate)];
             if optData.dayMetCutOffCriterion(i)
                 optData.trialNumsByConditionWCO{1} = [optData.trialNumsByCondition{1} makerow(optData.trialNumByDate{i})];
                 optData.numTrialsByConditionWCO{1} = optData.numTrialsByCondition{1}+n;
                 optData.correctByConditionWCO{1} = optData.correctByCondition{1}+x;
+                optData.responseTimesByConditionWCO{1} = [optData.responseTimesByConditionWCO{1} makerow(responseTimeThatDate)];
             end
         elseif optData.conditionNum(i) == 2
             optData.trialNumsByCondition{2} = [optData.trialNumsByCondition{2} makerow(optData.trialNumByDate{i})];
             optData.numTrialsByCondition{2} = optData.numTrialsByCondition{2}+n;
             optData.correctByCondition{2} = optData.correctByCondition{2}+x;
+            optData.responseTimesByCondition{2} = [optData.responseTimesByCondition{2} makerow(responseTimeThatDate)];
             if optData.dayMetCutOffCriterion(i)
                 optData.trialNumsByConditionWCO{2} = [optData.trialNumsByConditionWCO{2} makerow(optData.trialNumByDate{i})];
                 optData.numTrialsByConditionWCO{2} = optData.numTrialsByConditionWCO{2}+n;
                 optData.correctByConditionWCO{2} = optData.correctByConditionWCO{2}+x;
+                optData.responseTimesByConditionWCO{2} = [optData.responseTimesByConditionWCO{2} makerow(responseTimeThatDate)];
             end
         elseif optData.conditionNum(i) == 3
             optData.trialNumsByCondition{3} = [optData.trialNumsByCondition{3} makerow(optData.trialNumByDate{i})];
             optData.numTrialsByCondition{3} = optData.numTrialsByCondition{3}+n;
             optData.correctByCondition{3} = optData.correctByCondition{3}+x;
+            optData.responseTimesByCondition{3} = [optData.responseTimesByCondition{3} makerow(responseTimeThatDate)];
             if optData.dayMetCutOffCriterion(i)
                 optData.trialNumsByConditionWCO{3} = [optData.trialNumsByConditionWCO{3} makerow(optData.trialNumByDate{i})];
                 optData.numTrialsByConditionWCO{3} = optData.numTrialsByConditionWCO{3}+n;
                 optData.correctByConditionWCO{3} = optData.correctByConditionWCO{3}+x;
+                optData.responseTimesByConditionWCO{3} = [optData.responseTimesByConditionWCO{3} makerow(responseTimeThatDate)];
             end
         elseif optData.conditionNum(i) == 4
             optData.trialNumsByCondition{4} = [optData.trialNumsByCondition{4} makerow(optData.trialNumByDate{i})];
             optData.numTrialsByCondition{4} = optData.numTrialsByCondition{4}+n;
             optData.correctByCondition{4} = optData.correctByCondition{4}+x;
+            optData.responseTimesByCondition{4} = [optData.responseTimesByCondition{4} makerow(responseTimeThatDate)];
             if optData.dayMetCutOffCriterion(i)
                 optData.trialNumsByConditionWCO{4} = [optData.trialNumsByConditionWCO{4} makerow(optData.trialNumByDate{i})];
                 optData.numTrialsByConditionWCO{4} = optData.numTrialsByConditionWCO{4}+n;
                 optData.correctByConditionWCO{4} = optData.correctByConditionWCO{4}+x;
+                optData.responseTimesByConditionWCO{4} = [optData.responseTimesByConditionWCO{4} makerow(responseTimeThatDate)];
             end
         elseif optData.conditionNum(i) == 5
             optData.trialNumsByCondition{5} = [optData.trialNumsByCondition{5} makerow(optData.trialNumByDate{i})];
             optData.numTrialsByCondition{5} = optData.numTrialsByCondition{5}+n;
             optData.correctByCondition{5} = optData.correctByCondition{5}+x;
+            optData.responseTimesByCondition{5} = [optData.responseTimesByCondition{5} makerow(responseTimeThatDate)];
             if optData.dayMetCutOffCriterion(i)
                 optData.trialNumsByConditionWCO{5} = [optData.trialNumsByConditionWCO{5} makerow(optData.trialNumByDate{i})];
                 optData.numTrialsByConditionWCO{5} = optData.numTrialsByConditionWCO{5}+n;
                 optData.correctByConditionWCO{5} = optData.correctByConditionWCO{5}+x;
+                optData.responseTimesByConditionWCO{5} = [optData.responseTimesByConditionWCO{5} makerow(responseTimeThatDate)];
             end
         else
             error('unknown condition');
