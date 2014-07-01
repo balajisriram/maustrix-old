@@ -75,6 +75,33 @@ switch TMclass
         end
         distractorPorts=[];
         
+    case 'freeDrinksCenterOnly'
+        targetPorts = [2]; % assumes the center port is port 2....confirm that this is true
+        distractorPorts=[];
+    case 'freeDrinksSidesOnly'
+        targetPorts = [1,3]; % assumes the center port is port 2....confirm that this is true
+        distractorPorts=[];
+    case 'freeDrinksAlternate'
+        if ~isempty(lastTrialRec)
+            try
+                pNum = find(strcmp('reinforcement',{lastTrialRec.phaseRecords.phaseLabel}));
+                rDetails=lastTrialRec.phaseRecords(pNum-1).responseDetails;
+                lastResponse=find(rDetails.tries{end});
+            catch err
+                lastResponse=[];
+            end
+            %             sca
+            %             keyboard
+            %             pNum
+            %             rDetails
+        else
+            lastResponse=[];
+        end
+        
+        if length(lastResponse)>1
+            lastResponse=lastResponse(1);
+        end
+        
     case 'autopilot'
         targetPorts=[];
         distractorPorts=[];
