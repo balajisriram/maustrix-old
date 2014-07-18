@@ -1,7 +1,7 @@
-function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords)
+function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords, compiledRecords)
 
 %determine what type trialRecord are
-recordType='largeData'; %circularBuffer
+recordType='compiledData'; %circularBuffer
 
 thisStep=[trialRecords.trainingStepNum]==trialRecords(end).trainingStepNum;
 trialsUsed=trialRecords(thisStep);
@@ -14,7 +14,13 @@ if ~isempty(trialRecords)
             dates = floor(datenum(cell2mat({trialsUsed.date}'))); % the actual dates of each trials
             
             graduate = graduate && length(unique(dates))>c.numDays;
-       
+            
+        case 'compiledData'
+            dates = unique(floor(datenum(cell2mat({trialsUsed.date}')))); % the actual dates of each trials
+            
+            whichCompiled = compiledRecords.compiledTrialRecords.step == thisStep;
+            datesCompiled = unique(floor(compiledRecords.compiledTrialRecords.date(whichCompiled)));
+            graduate = graduate && (length(union(dates,datesCompiled))>c.numDays);
         otherwise
             error('unknown trialRecords type')
     end

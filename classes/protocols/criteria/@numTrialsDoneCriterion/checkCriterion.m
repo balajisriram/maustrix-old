@@ -1,13 +1,16 @@
-function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords)
+function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords, compiledRecords)
 % this criterion will graduate if we have done a certain number of trials in this trainingStep
 
 
 thisStep=[trialRecords.trainingStepNum]==trialRecords(end).trainingStepNum;
 trialsUsed=trialRecords(thisStep);
-
+whichCompiledTrials = compiledRecords.compiledTrialRecords.step == thisStep;
+compiledTrialNums = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
+trialsUsedTrialNums = [trialsUsed.trialNumber];
 details=[];
 graduate=0;
-if length(trialsUsed) >= c.numTrialsNeeded
+
+if length(union(trialsUsedTrialNums,compiledTrialNums)) >= c.numTrialsNeeded
     graduate = 1;
 end
 

@@ -1,7 +1,7 @@
-function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords)
+function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords, compiledRecords)
 
 %determine what type trialRecord are
-recordType='largeData'; %circularBuffer
+recordType='compiledData'; %circularBuffer
 
 thisStep=[trialRecords.trainingStepNum]==trialRecords(end).trainingStepNum;
 trialsUsed=trialRecords(thisStep);
@@ -17,6 +17,36 @@ if ~isempty(trialRecords)
             forcedRewards = [trialsUsed.containedForcedRewards]==1;
             
             goodDates = dates(~stochastic | ~humanResponse & ~forcedRewards);
+            daysRun = unique(dates);
+            for i = length(daysRun):-1:length(daysRun)-c.consecutiveDays+1
+                if i>0
+                    graduate = graduate && sum(goodDates==daysRun(i))>=c.trialsPerDay;
+                end
+            end
+        case 'compiledData'
+            datesTR = floor(datenum(cell2mat({trialsUsed.date}'))); % the actual dates of each trials
+            trialNumTR = [trialsUsed.trialNumber];
+            stochasticTR = [trialsUsed.didStochasticResponse];
+            humanResponseTR = [trialsUsed.didHumanResponse];
+            forcedRewardsTR = [trialsUsed.containedForcedRewards]==1;
+            
+            
+            whichCompiledTrials = compiledRecords.compiledTrialRecords.step == thisStep;
+            trialNumCR = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
+            datesCR = floor(compiledRecords.compiledTrialRecords.date(whichCompiledTrials)); % the actual dates of each trials
+            stochasticCR = compiledRecords.compiledTrialRecords.didStochasticResponse(whichCompiledTrials);
+            humanResponseCR = compiledRecords.compiledTrialRecords.containedManualPokes(whichCompiledTrials);
+            forcedRewardsCR = compiledRecords.compiledTrialRecords.containedForcedRewards(whichCompiledTrials);
+            
+            % remove trialsAlready in TR
+            whichAlreadyAvailableinTR = ismember(trialNumCR,intersect(trialNumCR,trialNumTR));
+            
+            dates = [datesCR(~whichAlreadyAvailableinTR) datesTR];
+            stochastic = [stochasticCR(~whichAlreadyAvailableinTR) stochasticTR];
+            humanResponse = [humanResponseCR(~whichAlreadyAvailableinTR) humanResponseTR];
+            forcedRewards = [forcedRewardsCR(~whichAlreadyAvailableinTR) forcedRewardsTR];
+            
+            goodDates = dates(~stochastic & ~humanResponse & ~forcedRewards);
             daysRun = unique(dates);
             for i = length(daysRun):-1:length(daysRun)-c.consecutiveDays+1
                 if i>0
@@ -39,7 +69,7 @@ if graduate
     pause(.2);
     beep;
     pause(1);
-    [junk stepNum]=getProtocolAndStep(subject);
+    [junk, stepNum]=getProtocolAndStep(subject);
     for i=1:stepNum+1
         beep;
         pause(.4);
