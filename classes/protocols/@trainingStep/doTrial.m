@@ -1,4 +1,4 @@
-function [graduate keepWorking secsRemainingTilStateFlip subject r trialRecords station manualTs] ...
+function [graduate, keepWorking, secsRemainingTilStateFlip, subject, r, trialRecords, station, manualTs] ...
     =doTrial(ts,station,subject,r,rn,trialRecords,sessionNumber)
 graduate=0;
 
@@ -27,14 +27,11 @@ try
             else
                 sca
                 ts.stimManager
-                'hey'
-                ts
                 class(ts.stimManager)
                 class(ts.trialManager)
                 class(ts.criterion)
                 class(ts.scheduler)
                 class(ts)
-                'boo'
                 class(ts.stimManager)
                 error('Its gotta be a stim manager')
             end
@@ -44,43 +41,11 @@ try
         end
 
         %class(ts.scheduler)
-        [keepDoingTrials secsRemainingTilStateFlip  updateScheduler newScheduler] = checkSchedule(ts.scheduler,subject,ts,trialRecords,sessionNumber);
-
-        %UPDATE SESSION RECORDS
-        %         if keepWorking
-        %             if ts.previousSchedulerState==1
-        %                 %still in a session
-        %                 sessionNum=size(ts.sessionRecords,1);
-        %             elseif ts.previousSchedulerState==0
-        %                 %just started a session
-        %                 sessionNum=size(ts.sessionRecords,1)+1;
-        %                 ts.sessionRecords(sessionNum,1)=now; %sessionStartTime
-        %                 ts.sessionRecords(sessionNum,2)=0;   %initialize SessionStopTime to 0
-        %                 ts.sessionRecords(sessionNum,3)=0;   %initialize TrialNum to 0
-        %                 %ts.trialNum=0;  % this is not being used actively
-        %             else
-        %                 error('previousSchedulerState must be 0 or 1')
-        %             end
-        %         elseif ~keepWorking
-        %             if ts.previousSchedulerState==1
-        %                 %session ended
-        %                 sessionNum=size(ts.sessionRecords,1);
-        %                 ts.sessionRecords(sessionNum,2)=now; %sessionStops
-        %                 ts.sessionRecords(sessionNum,3)=ts.trialNum;  % trialsCompleted this session
-        %             elseif ts.previousSchedulerState==0
-        %                 %still in an off state
-        %                 disp(sprintf('A trial attempt was rejected at %d!',now))
-        %             else
-        %                 error('previousSchedulerState must be 0 or 1')
-        %             end
-        %         end
-
-        %SAVE PREVIOUS STATE
-        %         ts.previousSchedulerState=keepWorking;
+        [keepDoingTrials, secsRemainingTilStateFlip, updateScheduler, newScheduler] = checkSchedule(ts.scheduler,subject,ts,trialRecords,sessionNumber);
 
         if keepDoingTrials
 
-            [newTM updateTM newSM updateSM stopEarly trialRecords station]=...
+            [newTM, updateTM, newSM, updateSM, stopEarly, trialRecords, station]=...
                 doTrial(ts.trialManager,station,ts.stimManager,subject,r,rn,trialRecords,sessionNumber);
             keepWorking=~stopEarly;
 
@@ -91,7 +56,8 @@ try
                 end
             end
             
-            graduate = checkCriterion(ts.criterion,subject,ts, trialRecords);
+            compiledRecords = getCompiledRecordsForSubject(r,subject);
+            graduate = checkCriterion(ts.criterion,subject,ts, trialRecords, compiledRecords);
 
 			%END SESSION BY GRADUATION
             if false && graduate % && isempty(getStandAlonePath(r)) %this was phil's quick-fix mentality hack to create an ugly special case for standalone
