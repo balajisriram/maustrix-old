@@ -1,4 +1,4 @@
-function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords)
+function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords, compiledRecords)
 
 %determine what type trialRecord are
 recordType='largeData'; %circularBuffer

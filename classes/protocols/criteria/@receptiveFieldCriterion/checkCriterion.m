@@ -1,4 +1,4 @@
-function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords)
+function [graduate, details] = checkCriterion(c,subject,trainingStep,trialRecords, compiledRecords)
 % this criterion will graduate if we have found a receptive field given the analysis and stimRecord
 % maybe add confident pixels and bounded region support to RFestimators...
 % then just use one of those in here

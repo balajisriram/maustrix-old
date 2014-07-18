@@ -1,4 +1,4 @@
-function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords)
+function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords, compiledRecords)
 
 fieldNames = fields(trialRecords);
 

@@ -1,2 +1,2 @@
-function graduate = checkCriterion(criterion,subject,trainingStep,trialRecords)
+function graduate = checkCriterion(criterion,subject,trainingStep,trialRecords, compiledRecords)
     graduate=0;
