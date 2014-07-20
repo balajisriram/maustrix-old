@@ -1,5 +1,11 @@
 function compileRemoteDir(RemoteDirBase,boxes,mice,recompile)
-except = {}
+except = {'225','216','213','237','239'}
+% 225 - 42603 - 42696 - box 1
+% 216 - 51397 - 51707 - box 2
+% 213 - 46099 - 46321 - box 3
+% 237 - 1419 - 1543 - box 4
+% 239 - 1168 - 1429 - box 5
+
 if ~exist('boxes','var') || isempty(boxes)
     boxes = {'Box1','Box2','Box3','Box4','Box5','PV-V1-hM3D','PV-TRN-hM3D','SCLesion','RocheProject'};
 elseif ~iscell(boxes)
