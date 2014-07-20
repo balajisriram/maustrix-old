@@ -9,7 +9,7 @@ subjSearchStr = sprintf('%s.*.mat',sID);
 d = dir(fullfile(subjCompiledStorePath,subjSearchStr));
 if length(d)>1
     error('multiiple compiled records. clean up before use');
-elseif isempty(d)==0
+elseif isempty(d)
     compiledRecords = [];
 else
     compiledRecords = load(fullfile(subjCompiledStorePath,d.name));

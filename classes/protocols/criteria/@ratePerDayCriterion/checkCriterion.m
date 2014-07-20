@@ -31,7 +31,7 @@ if ~isempty(trialRecords)
             forcedRewardsTR = [trialsUsed.containedForcedRewards]==1;
             
             
-            whichCompiledTrials = compiledRecords.compiledTrialRecords.step == thisStep;
+            whichCompiledTrials = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
             trialNumCR = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
             datesCR = floor(compiledRecords.compiledTrialRecords.date(whichCompiledTrials)); % the actual dates of each trials
             stochasticCR = compiledRecords.compiledTrialRecords.didStochasticResponse(whichCompiledTrials);

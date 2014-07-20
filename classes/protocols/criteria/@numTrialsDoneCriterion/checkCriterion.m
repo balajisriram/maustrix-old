@@ -4,7 +4,7 @@ function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords
 
 thisStep=[trialRecords.trainingStepNum]==trialRecords(end).trainingStepNum;
 trialsUsed=trialRecords(thisStep);
-whichCompiledTrials = compiledRecords.compiledTrialRecords.step == thisStep;
+whichCompiledTrials = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
 compiledTrialNums = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
 trialsUsedTrialNums = [trialsUsed.trialNumber];
 details=[];

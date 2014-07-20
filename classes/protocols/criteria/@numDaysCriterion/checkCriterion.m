@@ -17,8 +17,8 @@ if ~isempty(trialRecords)
             
         case 'compiledData'
             dates = unique(floor(datenum(cell2mat({trialsUsed.date}')))); % the actual dates of each trials
-            
-            whichCompiled = compiledRecords.compiledTrialRecords.step == thisStep;
+
+            whichCompiled = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
             datesCompiled = unique(floor(compiledRecords.compiledTrialRecords.date(whichCompiled)));
             graduate = graduate && (length(union(dates,datesCompiled))>c.numDays);
         otherwise
