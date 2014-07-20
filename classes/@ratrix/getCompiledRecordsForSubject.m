@@ -3,7 +3,8 @@ function [compiledRecords]=getCompiledRecordsForSubject(r,subject)
 sID = getID(subject);
 disp(sprintf('loading compiled records for %s (from ratrix)',sID))
 
-subjCompiledStorePath = fullfile(getStandAlonePath(r),'CompiledTrialRecords');
+[dataPath junk] = fileparts(getStandAlonePath(r));
+subjCompiledStorePath = fullfile(dataPath,'CompiledTrialRecords');
 subjSearchStr = sprintf('%s.*.mat',sID);
 d = dir(fullfile(subjCompiledStorePath,subjSearchStr));
 if length(d)>1
