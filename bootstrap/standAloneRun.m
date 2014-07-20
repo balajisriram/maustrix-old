@@ -212,19 +212,19 @@ catch ex
     message = {sprintf('Failed for subject::%s at time::%d:%d on %d-%d-%d',subjectID,c(4),c(5),c(2),c(3),c(1)),getReport(ex,'extended','hyperlinks','off')};
     switch b
         case 'A41F7278B4DE' %gLab-Behavior1
-            gmail('bishopdan7@gmail.com','Error in Rig 1',message);
+            gmail('sbalaji1984@gmail.com','Error in Rig 1',message);
         case 'A41F729213E2' %gLab-Behavior2
-            gmail('bishopdan7@gmail.com','Error in Rig 2',message);
+            gmail('sbalaji1984@gmail.com','Error in Rig 2',message);
         case 'A41F726EC11C' %gLab-Behavior3
-            gmail('bishopdan7@gmail.com','Error in Rig 3',message);
+            gmail('sbalaji1984@gmail.com','Error in Rig 3',message);
         case '7845C4256F4C' %gLab-Behavior4
-            gmail('bishopdan7@gmail.com','Error in Rig 4',message);
+            gmail('sbalaji1984@gmail.com','Error in Rig 4',message);
         case '7845C42558DF' %gLab-Behavior5
-            gmail('bishopdan7@gmail.com','Error in Rig 5',message);
+            gmail('sbalaji1984@gmail.com','Error in Rig 5',message);
         case 'A41F729211B1' %gLab-Behavior6
-            gmail('bishopdan7@gmail.com','Error in Rig 6',message);
+            gmail('sbalaji1984@gmail.com','Error in Rig 6',message);
         case 'BC305BD38BFB' %gLab-Behavior6
-            gmail('bishopdan7@gmail.com','Error in ephys-stim',message);
+            gmail('sbalaji1984@gmail.com','Error in ephys-stim',message);
         otherwise
             warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
             keyboard;
