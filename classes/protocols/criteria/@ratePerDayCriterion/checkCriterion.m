@@ -40,8 +40,12 @@ if ~isempty(trialRecords)
             
             % remove trialsAlready in TR
             whichAlreadyAvailableinTR = ismember(trialNumCR,intersect(trialNumCR,trialNumTR));
-            
-            dates = [datesCR(~whichAlreadyAvailableinTR) datesTR];
+            try
+            dates = [datesCR(~whichAlreadyAvailableinTR) makerow(datesTR)];
+            catch
+                sca;
+                keyboard
+            end
             stochastic = [stochasticCR(~whichAlreadyAvailableinTR) stochasticTR];
             humanResponse = [humanResponseCR(~whichAlreadyAvailableinTR) humanResponseTR];
             forcedRewards = [forcedRewardsCR(~whichAlreadyAvailableinTR) forcedRewardsTR];
