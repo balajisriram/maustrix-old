@@ -73,13 +73,13 @@ end
 
 trialsThisStep=allStepNums==allStepNums(end);
 
-which= trialsThisStep & ~stochastic & ~humanResponse & ~forcedRewards;
-which= trialsThisStep & ~stochastic & ~forcedRewards;
+which= trialsThisStep & ~allStochastic & ~allHumanResponse & ~allForcedRewards;
+which= trialsThisStep & ~allStochastic & ~allForcedRewards;
 
 % modified to allow human responses to count towards graduation (performanceCriterion)
 % which= trialsThisStep & ~stochastic & ~forcedRewards;
 
-[graduate whichCriteria correct]=aboveThresholdPerformance(c.consecutiveTrials,c.pctCorrect,trialRecords(which));
+[graduate whichCriteria correct]=aboveThresholdPerformance(c.consecutiveTrials,c.pctCorrect,[],allCorrects(which));
 
 %play graduation tone
 if graduate
