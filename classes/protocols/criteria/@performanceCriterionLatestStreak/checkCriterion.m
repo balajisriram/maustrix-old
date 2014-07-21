@@ -2,14 +2,26 @@ function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords
 
 fieldNames = fields(trialRecords);
 
-trialsThisStep=[trialRecords.trainingStepNum]==trialRecords(end).trainingStepNum;
-trialsThisStep(1:find([1 diff(trialsThisStep)]==1,1,'last')-1) = 0;
-
 forcedRewards = 0;
 stochastic = 0;
 humanResponse = 0;
 
 warnStatus = false;
+
+trialsInTR = [trialRecords.trialNumber];
+trialsFromCR = compiledRecords.compiledTrialRecords.trialNumber;
+trialsFromCRToBeIncluded = ~ismember(trialsFromCR,trialsInTR);
+
+allStepNums = [compiledRecords.compiledTrialRecords.step(trialsFromCRToBeIncluded) trialRecords.trainingStepNum];
+
+td = [trialRecords.trialDetails];
+for tnum = 1:length(td)
+    if isempty(td(tnum).correct)
+        td(tnum).correct = nan;
+    end
+end
+allCorrects = [compiledRecords.compiledTrialRecords.correct(trialsFromCRToBeIncluded) td.correct];
+
 
 if ismember({'containedForcedRewards'},fieldNames)
     ind = find(cellfun(@isempty,{trialRecords.containedForcedRewards}));
@@ -23,6 +35,8 @@ if ismember({'containedForcedRewards'},fieldNames)
 else 
     warnStatus = true;
 end
+allForcedRewards = [compiledRecords.compiledTrialRecords.containedForcedRewards(trialsFromCRToBeIncluded) forcedRewards];
+
 if ismember({'didStochasticResponse'},fieldNames)
     ind = find(cellfun(@isempty,{trialRecords.didStochasticResponse}));
     if ~isempty(ind)
@@ -35,6 +49,9 @@ if ismember({'didStochasticResponse'},fieldNames)
 else 
     warnStatus = true;
 end
+allStochastic = [compiledRecords.compiledTrialRecords.didStochasticResponse(trialsFromCRToBeIncluded) stochastic];
+
+
 if ismember({'didHumanResponse'},fieldNames)
     ind = find(cellfun(@isempty,{trialRecords.didHumanResponse}));
     if ~isempty(ind)
@@ -47,19 +64,23 @@ if ismember({'didHumanResponse'},fieldNames)
 else 
     warnStatus = true;
 end
+allHumanResponse = [compiledRecords.compiledTrialRecords.didHumanResponse(trialsFromCRToBeIncluded) humanResponse];
 
 if warnStatus
     warning(['checkCriterion found trialRecords of the older format. some necessary fields are missing. ensure presence of ' ...
     '''containedForcedRewards'',''didStochasticResponse'' and ''didHumanResponse'' in trialRecords to remove this warning']);
 end
 
-which= trialsThisStep & ~stochastic & ~humanResponse & ~forcedRewards;
-which= trialsThisStep & ~stochastic & ~forcedRewards;
+trialsThisStep=allStepNums==allStepNums(end);
+trialsThisStep(1:find([1 diff(trialsThisStep)]==1,1,'last')-1) = 0;
+
+which= trialsThisStep & ~allStochastic & ~allHumanResponse & ~allForcedRewards;
+which= trialsThisStep & ~allStochastic & ~allForcedRewards;
 
 % modified to allow human responses to count towards graduation (performanceCriterion)
 % which= trialsThisStep & ~stochastic & ~forcedRewards;
 
-[graduate whichCriteria correct]=aboveThresholdPerformance(c.consecutiveTrials,c.pctCorrect,trialRecords(which));
+[graduate whichCriteria correct]=aboveThresholdPerformance(c.consecutiveTrials,c.pctCorrect,[],allCorrects(which));
 
 %play graduation tone
 if graduate

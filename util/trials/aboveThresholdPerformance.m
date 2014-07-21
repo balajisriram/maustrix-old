@@ -1,6 +1,8 @@
-function [aboveThresh whichCriteria correct]=aboveThresholdPerformance(confidenceParameter,pctCorrect,trialRecords)
+function [aboveThresh whichCriteria correct]=aboveThresholdPerformance(confidenceParameter,pctCorrect,trialRecords,inputDetails)
 
-
+if ~exist('inputDetails','var')||isempty(inputDetails)
+    inputDetails = [];
+end
 
 
 if isinteger(confidenceParameter) & all(confidenceParameter>0)
@@ -19,13 +21,17 @@ end
 
 
 %determine what type trialRecord are
-recordType='largeData'; %circularBuffer
+if isempty(trialRecords) && ~isempty(inputDetails)
+    recordType = 'inputDetails';
+else
+    recordType='largeData'; %circularBuffer
+end
 
 aboveThresh=0;
 whichCriteria=[];
 correct=[];
 
-if ~isempty(trialRecords)
+if ~isempty(trialRecords) || ~isempty(inputDetails)
     %get the correct vector
     switch recordType
         case 'largeData'
@@ -41,6 +47,8 @@ if ~isempty(trialRecords)
             %'WARNING': make sure to limit this to this session
         case 'circularBuffer'
             %correct=trialRecords.correct; %not used yet
+        case 'inputDetails'
+            correct = inputDetails;
         otherwise
             error('unknown trialRecords type')
     end
@@ -51,7 +59,7 @@ if ~isempty(trialRecords)
         enoughTrials=size(correct,2)>consecutiveTrials(i)
         if enoughTrials
             recentCorrect=correct(end-consecutiveTrials(i):end);
-            thisCriteria = mean(recentCorrect)>pctCorrect(i);
+            thisCriteria = nanmean(recentCorrect)>pctCorrect(i);
             aboveThresh = thisCriteria || aboveThresh;
             if thisCriteria
                 whichCriteria(i) = 1;
