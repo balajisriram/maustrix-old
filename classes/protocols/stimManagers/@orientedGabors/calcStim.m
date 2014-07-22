@@ -34,7 +34,7 @@ else
 end
 [targetPorts distractorPorts details]=assignPorts(details,lastRec,responsePorts,trialManagerClass,allowRepeats);
 switch trialManagerClass
-    case 'freeDrinks'
+    case {'freeDrinks','freeDrinksCenterOnly','freeDrinksSidesOnly','freeDrinksAlternate'}
         type='loop';
     case 'nAFC'
         type={'trigger',true};
@@ -99,7 +99,7 @@ discrimStim.stimType=type;
 discrimStim.scaleFactor=scaleFactor;
 discrimStim.startFrame=0;
 switch trialManagerClass
-    case 'freeDrinks'
+    case {'freeDrinks','freeDrinksCenterOnly','freeDrinksSidesOnly','freeDrinksAlternate'}
         fdLikelihood = getFreeDrinkLikelihood(trialManager);
 %         if fdLikelihood>0 && ~isempty(responsePorts)
 %             autoTrigger = {fdLikelihood,responsePorts};

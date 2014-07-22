@@ -34,7 +34,7 @@ if strcmp(trialManagerClass, 'nAFC') || ...
     
 % freeDrinks setup
 % this will have to be fixed for passiveViewing (either as a flag on freeDrinks or as a new trialManager)
-elseif strcmp(trialManagerClass, 'freeDrinks')
+elseif strcmp(trialManagerClass, 'freeDrinks') || strcmp(trialManagerClass, 'freeDrinksCenterOnly') || strcmp(trialManagerClass, 'freeDrinksSidesOnly') || strcmp(trialManagerClass, 'freeDrinksAlternate')
     if phase==1 && stepsInPhase <=0
         playSoundSounds{end+1} = {'trialStartSound', 50};
     elseif ismember(phaseType,{'discrim','pre-response'}) && ~isempty(targetOptions) && any(ports(setdiff(1:length(ports), targetOptions))) % normal freeDrinks
