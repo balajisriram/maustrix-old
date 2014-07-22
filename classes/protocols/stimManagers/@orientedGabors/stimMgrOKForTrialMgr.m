@@ -1,7 +1,7 @@
 function out=stimMgrOKForTrialMgr(sm,tm)
 if isa(tm,'trialManager')
     switch class(tm)
-        case 'freeDrinks'
+        case {'freeDrinks','freeDrinksCenterOnly','freeDrinksSidesOnly','freeDrinksAlternate'}
             out=1;
         case 'nAFC'
             out=1;

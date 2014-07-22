@@ -49,7 +49,7 @@ addedPreResponsePhase=0;
 addedPostDiscrimPhase=0;
 addedDiscrimPhase = 0;
 switch class(trialManager)
-    case {'nAFC','oddManOut','goNoGo','freeDrinks'}
+    case {'nAFC','oddManOut','goNoGo','freeDrinks','freeDrinksCenterOnly','freeDrinksSidesOnly','freeDrinksAlternate'}
         % we need to figure out when the reinforcement phase is (in case we want to punish responses, we need to know which phase to transition to)
         if ~isempty(preResponseStim) && responseWindow(1)~=0
             addedPreResponsePhase=addedPreResponsePhase+1;
