@@ -9,10 +9,14 @@ humanResponse = 0;
 warnStatus = false;
 
 trialsInTR = [trialRecords.trialNumber];
-trialsFromCR = compiledRecords.compiledTrialRecords.trialNumber;
-trialsFromCRToBeIncluded = ~ismember(trialsFromCR,trialsInTR);
-
-allStepNums = [compiledRecords.compiledTrialRecords.step(trialsFromCRToBeIncluded) trialRecords.trainingStepNum];
+if ~isempty(compiledRecords)
+    trialsFromCR = compiledRecords.compiledTrialRecords.trialNumber;
+    trialsFromCRToBeIncluded = ~ismember(trialsFromCR,trialsInTR);
+    allStepNums = [compiledRecords.compiledTrialRecords.step(trialsFromCRToBeIncluded) trialRecords.trainingStepNum];
+else
+    trialsFromCRToBeIncluded = [];
+    allStepNums = [trialRecords.trainingStepNum];
+end
 
 td = [trialRecords.trialDetails];
 for tnum = 1:length(td)
@@ -20,8 +24,12 @@ for tnum = 1:length(td)
         td(tnum).correct = nan;
     end
 end
-allCorrects = [compiledRecords.compiledTrialRecords.correct(trialsFromCRToBeIncluded) td.correct];
 
+if ~isempty(compiledRecords)
+    allCorrects = [compiledRecords.compiledTrialRecords.correct(trialsFromCRToBeIncluded) td.correct];
+else
+    allCorrects = [td.correct];
+end
 
 if ismember({'containedForcedRewards'},fieldNames)
     ind = find(cellfun(@isempty,{trialRecords.containedForcedRewards}));
@@ -35,7 +43,12 @@ if ismember({'containedForcedRewards'},fieldNames)
 else 
     warnStatus = true;
 end
-allForcedRewards = [compiledRecords.compiledTrialRecords.containedForcedRewards(trialsFromCRToBeIncluded) forcedRewards];
+
+if ~isempty(compiledRecords)
+    allForcedRewards = [compiledRecords.compiledTrialRecords.containedForcedRewards(trialsFromCRToBeIncluded) forcedRewards];
+else
+    allForcedRewards = [forcedRewards];
+end
 
 if ismember({'didStochasticResponse'},fieldNames)
     ind = find(cellfun(@isempty,{trialRecords.didStochasticResponse}));
@@ -49,8 +62,12 @@ if ismember({'didStochasticResponse'},fieldNames)
 else 
     warnStatus = true;
 end
-allStochastic = [compiledRecords.compiledTrialRecords.didStochasticResponse(trialsFromCRToBeIncluded) stochastic];
 
+if ~isempty(compiledRecords)
+    allStochastic = [compiledRecords.compiledTrialRecords.didStochasticResponse(trialsFromCRToBeIncluded) stochastic];
+else
+    allStochastic = [stochastic];
+end
 
 if ismember({'didHumanResponse'},fieldNames)
     ind = find(cellfun(@isempty,{trialRecords.didHumanResponse}));
@@ -64,7 +81,12 @@ if ismember({'didHumanResponse'},fieldNames)
 else 
     warnStatus = true;
 end
-allHumanResponse = [compiledRecords.compiledTrialRecords.didHumanResponse(trialsFromCRToBeIncluded) humanResponse];
+
+if ~isempty(compiledRecords)
+    allHumanResponse = [compiledRecords.compiledTrialRecords.didHumanResponse(trialsFromCRToBeIncluded) humanResponse];
+else
+    allHumanResponse = [humanResponse];
+end
 
 if warnStatus
     warning(['checkCriterion found trialRecords of the older format. some necessary fields are missing. ensure presence of ' ...

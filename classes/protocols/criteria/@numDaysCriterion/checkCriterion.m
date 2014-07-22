@@ -17,9 +17,12 @@ if ~isempty(trialRecords)
             
         case 'compiledData'
             dates = unique(floor(datenum(cell2mat({trialsUsed.date}')))); % the actual dates of each trials
-
-            whichCompiled = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
-            datesCompiled = unique(floor(compiledRecords.compiledTrialRecords.date(whichCompiled)));
+            if ~isempty(compiledRecords)
+                whichCompiled = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
+                datesCompiled = unique(floor(compiledRecords.compiledTrialRecords.date(whichCompiled)));
+            else
+                datesCompiled = [];
+            end
             graduate = graduate && (length(union(dates,datesCompiled))>c.numDays);
         otherwise
             error('unknown trialRecords type')

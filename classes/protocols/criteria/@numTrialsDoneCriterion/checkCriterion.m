@@ -4,8 +4,12 @@ function [graduate details] = checkCriterion(c,subject,trainingStep,trialRecords
 
 thisStep=[trialRecords.trainingStepNum]==trialRecords(end).trainingStepNum;
 trialsUsed=trialRecords(thisStep);
-whichCompiledTrials = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
-compiledTrialNums = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
+if ~isempty(compiledRecords)
+    whichCompiledTrials = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
+    compiledTrialNums = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
+else
+    compiledTrialNums = [];
+end
 trialsUsedTrialNums = [trialsUsed.trialNumber];
 details=[];
 graduate=0;
