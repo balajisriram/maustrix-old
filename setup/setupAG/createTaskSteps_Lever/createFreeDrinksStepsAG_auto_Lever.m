@@ -90,7 +90,7 @@ interTrialLuminance  = .5;
 
 freeStim = orientedGabors(pixPerCycs,targetOrientations,distractorOrientations,mean,radius,contrasts,thresh,yPosPct,maxWidth,maxHeight,scaleFactor,interTrialLuminance);
 runForNDays=numDaysCriterion(2); %Run for a minimum of 2 days (for each fd)
-goodTrialRateForNDays = ratePerDayCriterion(125,3); % perform minimum of 125 trials for three consecutive days to graduate...
+goodTrialRateForNDays = ratePerDayCriterion(125,1); % perform minimum of 125 trials for one consecutive days to graduate...
 
 stochdrinkLever = trainingStep(fd_sto, freeStim, runForNDays , noTimeOff(), svnRev, svnCheckMode);   %stochastic free drinks
 freedrinkLever_Center = trainingStep(fd_Center, freeStim, goodTrialRateForNDays , noTimeOff(), svnRev, svnCheckMode);  % fd center lick
