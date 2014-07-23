@@ -30,26 +30,31 @@ if ~isempty(trialRecords)
             humanResponseTR = [trialsUsed.didHumanResponse];
             forcedRewardsTR = [trialsUsed.containedForcedRewards]==1;
             
-            
-            whichCompiledTrials = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
-            trialNumCR = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
-            datesCR = floor(compiledRecords.compiledTrialRecords.date(whichCompiledTrials)); % the actual dates of each trials
-            stochasticCR = compiledRecords.compiledTrialRecords.didStochasticResponse(whichCompiledTrials);
-            humanResponseCR = compiledRecords.compiledTrialRecords.containedManualPokes(whichCompiledTrials);
-            forcedRewardsCR = compiledRecords.compiledTrialRecords.containedForcedRewards(whichCompiledTrials);
-            
-            % remove trialsAlready in TR
-            whichAlreadyAvailableinTR = ismember(trialNumCR,intersect(trialNumCR,trialNumTR));
-            try
-            dates = [datesCR(~whichAlreadyAvailableinTR) makerow(datesTR)];
-            catch
-                sca;
-                keyboard
+            if ~isempty(compiledRecords)
+                whichCompiledTrials = compiledRecords.compiledTrialRecords.step == trialRecords(end).trainingStepNum;
+                trialNumCR = compiledRecords.compiledTrialRecords.trialNumber(whichCompiledTrials);
+                datesCR = floor(compiledRecords.compiledTrialRecords.date(whichCompiledTrials)); % the actual dates of each trials
+                stochasticCR = compiledRecords.compiledTrialRecords.didStochasticResponse(whichCompiledTrials);
+                humanResponseCR = compiledRecords.compiledTrialRecords.containedManualPokes(whichCompiledTrials);
+                forcedRewardsCR = compiledRecords.compiledTrialRecords.containedForcedRewards(whichCompiledTrials);
+                
+                % remove trialsAlready in TR
+                whichAlreadyAvailableinTR = ismember(trialNumCR,intersect(trialNumCR,trialNumTR));
+                try
+                    dates = [datesCR(~whichAlreadyAvailableinTR) makerow(datesTR)];
+                catch
+                    sca;
+                    keyboard
+                end
+                stochastic = [stochasticCR(~whichAlreadyAvailableinTR) stochasticTR];
+                humanResponse = [humanResponseCR(~whichAlreadyAvailableinTR) humanResponseTR];
+                forcedRewards = [forcedRewardsCR(~whichAlreadyAvailableinTR) forcedRewardsTR];
+            else
+                dates = [makerow(datesTR)];
+                stochastic = [stochasticTR];
+                humanResponse = [humanResponseTR];
+                forcedRewards = [forcedRewardsTR];
             end
-            stochastic = [stochasticCR(~whichAlreadyAvailableinTR) stochasticTR];
-            humanResponse = [humanResponseCR(~whichAlreadyAvailableinTR) humanResponseTR];
-            forcedRewards = [forcedRewardsCR(~whichAlreadyAvailableinTR) forcedRewardsTR];
-            
             goodDates = dates(~stochastic & ~humanResponse & ~forcedRewards);
             daysRun = unique(dates);
             for i = length(daysRun):-1:length(daysRun)-c.consecutiveDays+1

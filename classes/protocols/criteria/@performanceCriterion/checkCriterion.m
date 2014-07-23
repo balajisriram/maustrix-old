@@ -17,10 +17,12 @@ else
     trialsFromCRToBeIncluded = [];
     allStepNums = [trialRecords.trainingStepNum];
 end
-
-td = [trialRecords.trialDetails];
-for tnum = 1:length(td)
-    if isempty(td(tnum).correct)
+td(length(trialRecords)).correct = nan;
+for tnum = 1:length(trialRecords)
+    if isfield(trialRecords(tnum),'trialDetails') && ~isempty(trialRecords(tnum).trialDetails) ...
+            && ~isempty(trialRecords(tnum).trialDetails.correct)
+        td(tnum).correct = trialRecords(tnum).trialDetails.correct;
+    else
         td(tnum).correct = nan;
     end
 end
@@ -102,7 +104,12 @@ which= trialsThisStep & ~allStochastic & ~allForcedRewards;
 % modified to allow human responses to count towards graduation (performanceCriterion)
 % which= trialsThisStep & ~stochastic & ~forcedRewards;
 
+try
 [graduate whichCriteria correct]=aboveThresholdPerformance(c.consecutiveTrials,c.pctCorrect,[],allCorrects(which));
+catch
+    sca;
+    keyboard
+end
 
 %play graduation tone
 if graduate

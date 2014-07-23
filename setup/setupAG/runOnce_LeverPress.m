@@ -27,11 +27,11 @@ switch mac
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pMotion,true,true,true,5,rx,'mouseTraining_OD','bas');
         
-        sub = subject('L001','mouse','c57bl/6j','male','02/05/2014','unknown','a 02/05/2014','Jackson Laboratories','PV-cre','none');
+        sub = subject('L001','mouse','c57bl/6j','female','03/21/2014','unknown','a 03/21/2014','Jackson Laboratories','PV-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pMotion,true,true,true,1,rx,'mouseTraining_OD','bas');
         
-        sub = subject('L002','mouse','c57bl/6j','male','02/05/2014','unknown','a 02/05/2014','Jackson Laboratories','PV-cre','none');
+        sub = subject('L002','mouse','c57bl/6j','female','03/21/2014','unknown','a 03/21/2014','Jackson Laboratories','PV-cre','none');
         rx = addSubject(rx, sub, 'bas');
         [sub, rx]=setProtocolAndStep(sub,pMotion,true,true,true,1,rx,'mouseTraining_OD','bas');
     otherwise

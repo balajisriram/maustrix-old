@@ -18,9 +18,12 @@ else
     allStepNums = [trialRecords.trainingStepNum];
 end
 
-td = [trialRecords.trialDetails];
-for tnum = 1:length(td)
-    if isempty(td(tnum).correct)
+td(length(trialRecords)).correct = nan;
+for tnum = 1:length(trialRecords)
+    if isfield(trialRecords(tnum),'trialDetails') && ~isempty(trialRecords(tnum).trialDetails) ...
+            && ~isempty(trialRecords(tnum).trialDetails.correct)
+        td(tnum).correct = trialRecords(tnum).trialDetails.correct;
+    else
         td(tnum).correct = nan;
     end
 end
