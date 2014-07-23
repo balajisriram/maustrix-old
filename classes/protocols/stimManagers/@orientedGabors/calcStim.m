@@ -8,15 +8,15 @@ indexPulses=[];
 imagingTasks=[];
 LUTbits
 displaySize
-[LUT stimulus updateSM]=getLUT(stimulus,LUTbits);
+[LUT, stimulus, updateSM]=getLUT(stimulus,LUTbits);
 [junk, mac] = getMACaddress();
 switch mac
     case {'A41F7278B4DE','A41F729213E2','A41F726EC11C','A41F729211B1' } %gLab-Behavior rigs 1,2,3
-        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+        [resolutionIndex, height, width, hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
     case {'7845C4256F4C', '7845C42558DF'} %gLab-Behavior rigs 4,5
-        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+        [resolutionIndex, height, width, hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
     otherwise 
-        [resolutionIndex height width hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
+        [resolutionIndex, height, width, hz]=chooseLargestResForHzsDepthRatio(resolutions,[60],32,getMaxWidth(stimulus),getMaxHeight(stimulus));
 end
 
 if isnan(resolutionIndex)
@@ -32,7 +32,16 @@ if ~isempty(trialRecords) && length(trialRecords)>=2
 else
     lastRec=[];
 end
-[targetPorts distractorPorts details]=assignPorts(details,lastRec,responsePorts,trialManagerClass,allowRepeats);
+switch trialManagerClass
+    case 'freeDrinksAlternate'
+        twoRecsAgo = [];
+        if ~isempty(trialRecords) && length(trialRecords)>=3
+            twoRecsAgo = trialRecords(end-2);
+        end
+        [targetPorts, distractorPorts, details]=assignPorts(details,{lastRec, twoRecsAgo},responsePorts,trialManagerClass,allowRepeats);
+    otherwise
+        [targetPorts, distractorPorts, details]=assignPorts(details,lastRec,responsePorts,trialManagerClass,allowRepeats);
+end
 switch trialManagerClass
     case {'freeDrinks','freeDrinksCenterOnly','freeDrinksSidesOnly','freeDrinksAlternate'}
         type='loop';
