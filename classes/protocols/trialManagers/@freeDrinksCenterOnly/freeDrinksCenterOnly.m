@@ -15,7 +15,7 @@ switch nargin
     otherwise
         % if no input arguments, create a default object after calling
         % freedrinks
-        a = freeDrinks(varargin);
+        a = freeDrinks(varargin{:});
         t.derivedFrom = 'freeDrinks';
         t = class(t,'freeDrinksCenterOnly',a);
 end
