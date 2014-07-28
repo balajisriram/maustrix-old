@@ -89,7 +89,7 @@ scaleFactor = [1 1];
 interTrialLuminance  = .5;
 
 freeStim = orientedGabors(pixPerCycs,targetOrientations,distractorOrientations,mean,radius,contrasts,thresh,yPosPct,maxWidth,maxHeight,scaleFactor,interTrialLuminance);
-runForNDays=numDaysCriterion(2); %Run for a minimum of 2 days (for each fd)
+runForNDays=numDaysCriterion(5); %Run for a minimum of 5 days (for each fd)
 goodTrialRateForNDays = ratePerDayCriterion(125,1); % perform minimum of 125 trials for one consecutive days to graduate...
 
 stochdrinkLever = trainingStep(fd_sto, freeStim, runForNDays , noTimeOff(), svnRev, svnCheckMode);   %stochastic free drinks
