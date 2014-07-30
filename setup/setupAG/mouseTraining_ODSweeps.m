@@ -1,4 +1,4 @@
-function pMouseTraining_ODSweeps = mouseTraining_ODSweeps()
+function pMouseTraining_ODSweeps = mouseTraining_ODSweeps(subID)
 %% This protocol enables the following tasks:
 % 1. stochastic free drinks
 % 2. earned free drinks
@@ -12,11 +12,11 @@ function pMouseTraining_ODSweeps = mouseTraining_ODSweeps()
 svnRev={''};
 svnCheckMode='none';
 
-[fd_sto, fd] = createFreeDrinksStepsAG_auto(svnRev,svnCheckMode);
+[fd_sto, fd] = createFreeDrinksStepsAG_auto(svnRev,svnCheckMode,subID);
 
-[ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
+[ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode,subID);
 
-[ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep] = createOrientationSteps_auto(svnRev,svnCheckMode);
+[ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep] = createOrientationSteps_auto(svnRev,svnCheckMode,subID);
 
 %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
 

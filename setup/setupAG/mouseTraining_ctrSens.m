@@ -1,4 +1,4 @@
-function pMouseTraining_ctrSens = mouseTraining_ctrSens()
+function pMouseTraining_ctrSens = mouseTraining_ctrSens(subID)
 %% This protocol enables the following tasks:
 % 1. stochastic free drinks
 % 2. earned free drinks
@@ -13,7 +13,7 @@ ValidTestSubject={'demo1','999'};
 % define ratrix version to use
 svnRev={''};
 svnCheckMode='none';
-or_ctrXsfSweep = createSpecialOrientationSteps_auto(svnRev,svnCheckMode);
+or_ctrXsfSweep = createSpecialOrientationSteps_auto(svnRev,svnCheckMode,subID);
 
 %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
 

@@ -1,4 +1,4 @@
-function pMouseTraining_Motion = mouseTraining_Motion()
+function pMouseTraining_Motion = mouseTraining_Motion(subID)
 %% This protocol enables the following tasks:
 % 1. stochastic free drinks
 % 2. earned free drinks
@@ -13,11 +13,11 @@ ValidTestSubject={'demo1','999'};
 svnRev={''};
 svnCheckMode='none';
 
-[fd_sto, fd] = createFreeDrinksStepsAG_auto(svnRev,svnCheckMode);
+[fd_sto, fd] = createFreeDrinksStepsAG_auto(svnRev,svnCheckMode,subID);
 
-[ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
+[ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode,subID);
 
-[ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3] = createMotionSteps_auto(svnRev,svnCheckMode);
+[ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3] = createMotionSteps_auto(svnRev,svnCheckMode,subID);
 
 
 %%%%%%%%%%% FINALLY make a protocol and put rats on it %%%%%%%%%%%%%%%%%
