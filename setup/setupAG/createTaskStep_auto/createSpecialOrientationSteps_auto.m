@@ -1,4 +1,4 @@
-function [ts_ctrSens] = createSpecialOrientationSteps_auto(svnRev,svnCheckMode)
+function [ts_ctrSens] = createSpecialOrientationSteps_auto(svnRev,svnCheckMode,subID)
 
 
 % basic details for stim
@@ -72,6 +72,8 @@ out.rewardSize = 50;
 out.msPenalty = 5000;
 out.doPostDiscrim = false;
 out.doPostDiscrimDurSweep = true;
+
+out = getStimAndRewardParams(out,subID);
 
 
 afc_ctrXsfSweep = afcGratings(out.pixPerCycsSweep,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsSweep,out.maxDurationOpt,...

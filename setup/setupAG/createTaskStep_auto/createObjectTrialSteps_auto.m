@@ -1,8 +1,11 @@
-function [ts_obj_with_req, ts_obj, ts_obj2]=createObjectTrialSteps_auto(svnRev,svnCheckMode)
+function [ts_obj_with_req, ts_obj, ts_obj2]=createObjectTrialSteps_auto(svnRev,svnCheckMode,subID)
 
 out.rewardScalar = 1;
 out.msPenalty = 5000;
 out.rewardSize = 20;
+
+
+out = getStimAndRewardParams(out,subID);
 
 %utilities function: standard stuff for all nAFC training steps
 
@@ -18,13 +21,13 @@ thresholdPC=performanceCriterion(0.8,int16(200)); % average of 80% correct for t
 
 % take reinforcement manager from setProtocolTest but with params from Pam
 requestRewardSize   =	20; 
-rewardSize          =   20; % try this, may need to increase water rwd
+rewardSize          =   out.rewardSize; % try this, may need to increase water rwd
 doAllRequests       =	'first'; % always do this
 fractionSoundOn     =	1; % this applies to beeps
 fractionPenaltySoundOn = 0.10;  % fraction of the timeout that annoying error sound is on
 msAirpuff           =   0;
-rewardScalar = 1;
-msPenalty = 5000;
+rewardScalar = out.rewardScalar;
+msPenalty = out.msPenalty;
 percentCorrectionTrials=0.3;
 
 constantRewardsWithRequest=constantReinforcement(rewardSize,requestRewardSize,doAllRequests,...
@@ -32,7 +35,7 @@ constantRewardsWithRequest=constantReinforcement(rewardSize,requestRewardSize,do
 
 
 requestRewardSize   =	0; 
-rewardSize          =   30; % try this, may need to increase water rwd
+rewardSize          =   out.rewardSize*1.5; % try this, may need to increase water rwd
 constantRewards=constantReinforcement(rewardSize,requestRewardSize,doAllRequests,...
     msPenalty,fractionSoundOn,fractionPenaltySoundOn,rewardScalar,msAirpuff);  %% rewardScalar, msPenalty are arguments to the function
 

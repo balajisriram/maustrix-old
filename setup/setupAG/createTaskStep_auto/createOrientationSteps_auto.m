@@ -1,4 +1,4 @@
-function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep, ts_durLimited, ts_durLimitedCtr, ts_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode)
+function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep, ts_durLimited, ts_durLimitedCtr, ts_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode,subID)
 
 
 % basic details for stim
@@ -75,6 +75,10 @@ out.doPostDiscrim = false;
 out.doPostDiscrimDurSweep = true;
 
 
+out = getStimAndRewardParams(out,subID);
+
+
+
 afc_optim = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsOpt,out.maxDurationOpt,...
     out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
     out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrim);
@@ -118,7 +122,7 @@ numTrialsCrit_varDur = numTrialsDoneCriterion(1600); % 1600 trials = 8 condition
 
 % reinf
 rewardScalar = out.rewardScalar;
-requestRewardSize = 10; 
+requestRewardSize = 0; 
 rewardSize = out.rewardSize;
 doAllRequests =	'first'; 
 fractionSoundOn = 1; % this applies to beeps

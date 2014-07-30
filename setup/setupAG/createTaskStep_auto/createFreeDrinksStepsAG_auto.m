@@ -1,15 +1,17 @@
-function [stochdrink, freedrink]=createFreeDrinksStepsAG_auto(svnRev,svnCheckMode)
+function [stochdrink, freedrink]=createFreeDrinksStepsAG_auto(svnRev,svnCheckMode,subID)
 
-out.rewardSizeULorMS = 20;
-out.scalar = 1;
+out.rewardSize = 20;
+out.rewardScalar = 1;
 out.msPenalty = 1000;
 out.requestRewardSizeULorMS = 0;
 out.pStochastic = 0.001;
 out.PPC = 64;
 
+out = getStimAndRewardParams(out,subID);
+
 % key variables for reinforcement and trial managers
-rewardSizeULorMS = out.rewardSizeULorMS;
-scalar = out.scalar;
+rewardSizeULorMS = out.rewardSize;
+scalar = out.rewardScalar;
 fractionOpenTimeSoundIsOn = 1;
 doAllRequests = 'first';
 
