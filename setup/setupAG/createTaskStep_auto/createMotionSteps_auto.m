@@ -1,6 +1,9 @@
-function [ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3] = createMotionSteps_auto(svnRev,svnCheckMode)
+function [ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3] = createMotionSteps_auto(svnRev,svnCheckMode, subID)
 
 out = getStepDetails();
+
+out = getStimAndRewardParams(out,subID);
+
 afc_optim = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
     out.coherenceOpt,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
     out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
