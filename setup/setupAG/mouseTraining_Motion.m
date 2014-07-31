@@ -7,8 +7,6 @@ function pMouseTraining_Motion = mouseTraining_Motion(subID)
 % details for each subject are internally modifiable. 
 % define subjects
 
-ValidTestSubject={'demo1','999'};
-
 % define ratrix version to use
 svnRev={''};
 svnCheckMode='none';
