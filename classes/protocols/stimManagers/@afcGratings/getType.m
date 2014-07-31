@@ -39,6 +39,8 @@ switch n
             out = 'afcGratings_sfSweep_Stat';
         elseif all(ismember(sweptParameters,{'phases','orientations'}))
             out = 'afcGratings_orSweep_Stat';
+        elseif all(ismember(sweptParameters,{'maxDuration','phases'}))
+            out = 'afcGratings_durSweep_Stat';
         else
             sweptParameters
             error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
@@ -48,6 +50,8 @@ switch n
             out = 'afcGratings_cntrXsfXtfSweep';
         elseif all(ismember(sweptParameters,{'contrasts','pixPerCycs','phases'}))
             out = 'afcGratings_cntrXsfStationary';
+        elseif all(ismember(sweptParameters,{'maxDuration','phases','contrasts'}))
+            out = 'afcGratings_cntrXdurSweep_Stat';
         else
             sweptParameters
             error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
