@@ -13,7 +13,7 @@ ValidTestSubject={'demo1','999'};
 svnRev={''};
 svnCheckMode='none';
 
-[fd_sto, fd_Center, fd_Sides, fd_Alt] = createFreeDrinksStepsAG_auto_Lever(svnRev,svnCheckMode);
+[fd_sto0, fd_sto, ~, fd_Sides, fd_Alt] = createFreeDrinksStepsAG_auto_Lever(svnRev,svnCheckMode);
 
 [ts_obj1, ts_obj2] = createObjectTrialSteps_auto(svnRev,svnCheckMode);
 
@@ -24,6 +24,6 @@ svnCheckMode='none';
 
 % here is the protocol
 descriptiveString='mouseTraining_Motion_Lever';
-pMouseTraining_Motion_Lever = protocol(descriptiveString,{fd_sto,fd_Center,fd_Sides,fd_Alt,ts_obj1, ts_obj2, ts_Moptim});
+pMouseTraining_Motion_Lever = protocol(descriptiveString,{fd_sto0,fd_sto,fd_Sides,fd_Alt,ts_obj1, ts_obj2, ts_Moptim});
 end
 

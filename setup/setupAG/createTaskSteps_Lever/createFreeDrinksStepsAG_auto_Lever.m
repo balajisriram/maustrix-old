@@ -1,4 +1,4 @@
-function [stochdrinkLever, freedrinkLever_Center, freedrinkLever_Sides, freedrinkLever_Alt]=createFreeDrinksStepsAG_auto_Lever(svnRev,svnCheckMode)
+function [stochdrinkLever, stochdrinkLever_Sides, freedrinkLever_Center, freedrinkLever_Sides, freedrinkLever_Alt]=createFreeDrinksStepsAG_auto_Lever(svnRev,svnCheckMode)
 
 out.rewardSizeULorMS = 20;
 out.scalar = 1;
@@ -33,7 +33,10 @@ constantRewards=constantReinforcement(rewardSizeULorMS,requestRewardSizeULorMS,d
 %trialManager
 allowRepeats=true;
 pStochastic=out.pStochastic;
-fd_sto = freeDrinksCenterOnly(sm,pStochastic,allowRepeats,constantRewards); % Stochastic reward (fixed rate)
+fd_sto = freeDrinksSidesOnly(sm,pStochastic,allowRepeats,constantRewards); % Stochastic reward (fixed rate)
+
+allowRepeats = false;
+fd_sto2 = freeDrinks(sm,pStochastic,allowRepeats,constantRewards);
 
 pStochastic=0;
 fd_Center = freeDrinksCenterOnly(sm,pStochastic,allowRepeats,constantRewards); % lick center for reward
@@ -89,10 +92,12 @@ scaleFactor = [1 1];
 interTrialLuminance  = .5;
 
 freeStim = orientedGabors(pixPerCycs,targetOrientations,distractorOrientations,mean,radius,contrasts,thresh,yPosPct,maxWidth,maxHeight,scaleFactor,interTrialLuminance);
-runForNDays=numDaysCriterion(5); %Run for a minimum of 5 days (for each fd)
+runFor3Days=numDaysCriterion(3); %Run for a minimum of 3 days (for each fd)
+runFor2Days=numDaysCriterion(2); %Run for a minimum of 2 days (for each fd)
 goodTrialRateForNDays = ratePerDayCriterion(125,1); % perform minimum of 125 trials for one consecutive days to graduate...
 
-stochdrinkLever = trainingStep(fd_sto, freeStim, runForNDays , noTimeOff(), svnRev, svnCheckMode);   %stochastic free drinks
+stochdrinkLever = trainingStep(fd_sto2, freeStim, runFor2Days , noTimeOff(), svnRev, svnCheckMode);   %stochastic free drinks
+stochdrinkLever_Sides = trainingStep(fd_sto, freeStim, runFor3Days , noTimeOff(), svnRev, svnCheckMode);   %stochastic free drinks
 freedrinkLever_Center = trainingStep(fd_Center, freeStim, goodTrialRateForNDays , noTimeOff(), svnRev, svnCheckMode);  % fd center lick
 freedrinkLever_Sides = trainingStep(fd_Sides, freeStim, goodTrialRateForNDays , noTimeOff(), svnRev, svnCheckMode); % fd L & R lever press
 freedrinkLever_Alt = trainingStep(fd_Alt, freeStim, goodTrialRateForNDays , noTimeOff(), svnRev, svnCheckMode); % fd L,R lever press & center lick (alternating)
