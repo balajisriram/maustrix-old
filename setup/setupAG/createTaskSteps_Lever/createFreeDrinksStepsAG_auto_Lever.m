@@ -1,4 +1,4 @@
-function [stochdrinkLever, stochdrinkLever_Sides, freedrinkLever_Center, freedrinkLever_Sides, freedrinkLever_Alt]=createFreeDrinksStepsAG_auto_Lever(svnRev,svnCheckMode)
+function [stochdrinkLever, stochdrinkLever_Sides, freedrinkLever_Center, freedrinkLever_Sides, freedrinkLever_Alt]=createFreeDrinksStepsAG_auto_Lever(svnRev,svnCheckMode,subID)
 
 out.rewardSizeULorMS = 20;
 out.scalar = 1;
@@ -6,6 +6,8 @@ out.msPenalty = 1000;
 out.requestRewardSizeULorMS = 0;
 out.pStochastic = 0.001;
 out.PPC = 64;
+
+out = getStimAndRewardParams(out,subID);
 
 % key variables for reinforcement and trial managers
 rewardSizeULorMS = out.rewardSizeULorMS;
