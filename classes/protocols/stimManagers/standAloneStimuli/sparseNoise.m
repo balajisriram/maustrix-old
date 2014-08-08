@@ -18,7 +18,13 @@ allRes = Screen('Resolutions',0);
 widths = [allRes.width];
 heights = [allRes.height];
 colDepths = [allRes.pixelSize];
-which = (widths==max(widths))&(heights==max(heights))&(colDepths==max(colDepths));
+
+widthToCheck = max(widths); 
+potentialHeights = heights(widths == max(widths));
+heightToCheck = max(potentialHeights);
+potentialDepth = colDepths(widths==widthToCheck & heights==heightToCheck);
+depthToCheck = max(potentialDepth);
+which = (widths==widthToCheck)&(heights==heightToCheck)&(colDepths==depthToCheck);
 chosenRes = allRes(which);
 width = chosenRes.width;
 height = chosenRes.height;
