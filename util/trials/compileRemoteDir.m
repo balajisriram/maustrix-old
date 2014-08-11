@@ -1,5 +1,5 @@
 function compileRemoteDir(RemoteDirBase,boxes,mice,recompile)
-except = {'213','216','225','226','221','220','238','240','213'}
+except = {'246'}
 % 225 - 42603 - 42696 - box 1
 % 216 - 51394 - 51707 - box 2
 % 213 - 46098 - 46321 - box 3
