@@ -159,13 +159,13 @@ switch mac
         subjectID = '237';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pReversal('237'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        [~, rx]=setProtocolAndStep(sub,pReversal('237'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
         subjectID = '238';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pReversal('238'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        [~, rx]=setProtocolAndStep(sub,pReversal('238'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
         subjectID = '244';
@@ -200,13 +200,13 @@ switch mac
         subjectID = '239';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pReversal('239'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        [~, rx]=setProtocolAndStep(sub,pReversal('239'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
         subjectID = '240';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pReversal('240'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        [~, rx]=setProtocolAndStep(sub,pReversal('240'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
         subjectID = '245';
