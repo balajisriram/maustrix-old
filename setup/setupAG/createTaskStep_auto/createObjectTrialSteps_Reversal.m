@@ -16,7 +16,7 @@ sch=noTimeOff(); % runs until swapper ends session
 thresholdPC=performanceCriterionLatestStreak(0.8,int16(200)); % average of 80% correct for the past 200 trials
 
 % take reinforcement manager from setProtocolTest but with params from Pam
-requestRewardSize   =	0; 
+requestRewardSize   =	10; 
 rewardSize          =   out.rewardSize; % try this, may need to increase water rwd
 doAllRequests       =	'first'; % always do this
 fractionSoundOn     =	1; % this applies to beeps
