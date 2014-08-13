@@ -54,11 +54,11 @@ msPenalty = out.msPenalty;
 percentCorrectionTrials = 0.5;
 
 constantRewards=constantReinforcement(rewardSize,requestRewardSize,doAllRequests,msPenalty,fractionSoundOn,fractionPenaltySoundOn,rewardScalar,msAirpuff);
-
+constantRewardsWithReqRewards = constantReinforcement(rewardSize,10,doAllRequests,msPenalty,fractionSoundOn,fractionPenaltySoundOn,rewardScalar,msAirpuff);
 tm= nAFC(sm, percentCorrectionTrials, constantRewards);
-
+tmWithReqRew = nAFC(sm, percentCorrectionTrials, constantRewardsWithReqRewards);
 % training step using other objects as passed in
-ts_Moptim = trainingStep(tm, afc_optim, thresholdPC, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
+ts_Moptim = trainingStep(tmWithReqRew, afc_optim, thresholdPC, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
 ts_MvelSweep = trainingStep(tm, afc_velSweep, numTrialsCrit_velSweep, sch, svnRev, svnCheckMode,'velSweepM'); %CHANGE
 ts_McohSweep = trainingStep(tm, afc_cohSweep, numTrialsCrit_cohSweep, sch, svnRev, svnCheckMode,'cohSweepM');% CHANGE
 ts_Mdot1 = trainingStep(tm, afc_sizeSweep1, numTrialsCrit_sizeSweep, sch, svnRev, svnCheckMode,'size1M'); %CHANGE
@@ -87,7 +87,7 @@ switch b
         out.num_dots3 = 115;              % Number of dots to display
         out.speedOpt = 0.33;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
+        out.dot_sizeOpt = 3;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
         out.dot_size2 = 2;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels
@@ -103,7 +103,7 @@ switch b
         out.num_dots3 = 115;              % Number of dots to display
         out.speedOpt = 0.33;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
+        out.dot_sizeOpt = 3;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
         out.dot_size2 = 2;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels
@@ -119,7 +119,7 @@ switch b
         out.num_dots3 = 115;              % Number of dots to display
         out.speedOpt = 0.33;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
+        out.dot_sizeOpt = 3;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
         out.dot_size2 = 2;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels
@@ -137,7 +137,7 @@ switch b
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
         out.dot_sizeOpt = 2;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
-        out.dot_size2 = 2;              % Width of dots in pixels
+        out.dot_size2 = 3;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels
         out.screen_zoom=[15 15];
         out.maxWidth = 1920;
@@ -151,7 +151,7 @@ switch b
         out.num_dots3 = 115;              % Number of dots to display
         out.speedOpt = 0.33;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
+        out.dot_sizeOpt = 3;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
         out.dot_size2 = 2;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels
