@@ -278,9 +278,9 @@ end
 function [correctBox, whichBox] = ensureCorrectBoxForSubject(subjID)
 allowedTestSubjects = {'demo1','999'};
 
-Box1Subjects = {'223','225','226','241','246'};
-Box2Subjects = {'232','216','221','242','247'};
-Box3Subjects = {'227','213','220','243','248'};
+Box1Subjects = {'223','251','252','241','246'};
+Box2Subjects = {'232','253','254','242','247'};
+Box3Subjects = {'227','255','256','243','248'};
 Box4Subjects = {'228','237','238','244','249'};
 Box5Subjects = {'218','239','240','245','250'};
 Box6Subjects = {'L001','L002'};
