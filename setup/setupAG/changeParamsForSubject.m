@@ -33,21 +33,21 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pOD('223'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         % changed protocol to variedDur and to step 5 on 7/29
 %
-        sub = subject('251','mouse','c57bl/6j','female','05/15/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('251'),true,true,true,1,rx,'mouseTraining_OD','bas');
-
-        sub = subject('252','mouse','c57bl/6j','female','05/15/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM-cr','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('252'),true,true,true,1,rx,'mouseTraining_OD','bas');
-
+%         sub = subject('251','mouse','c57bl/6j','female','05/15/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pOD('251'),true,true,true,1,rx,'mouseTraining_OD','bas');
+% 
+%         sub = subject('252','mouse','c57bl/6j','female','05/15/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM-cr','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pOD('252'),true,true,true,1,rx,'mouseTraining_OD','bas');
+% 
 %         
-%         subjectID = '241';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pMotion('241'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
-%         % enabled req reward while training
+        subjectID = '241';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion('241'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % enabled req reward while training
 %         
 %         
 %         subjectID = '246';
@@ -70,22 +70,22 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pODSweeps('232'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 %         
-        sub = subject('253','mouse','c57bl/6j','male','05/08/2014','unknown','unknown','Jackson Laboratories','SOM-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('253'),true,true,true,1,rx,'mouseTraining_OD','bas');
-
-        sub = subject('254','mouse','c57bl/6j','male','05/08/2014','unknown','unknown','Jackson Laboratories','SOM-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('254'),true,true,true,1,rx,'mouseTraining_OD','bas');
+%         sub = subject('253','mouse','c57bl/6j','male','05/08/2014','unknown','unknown','Jackson Laboratories','SOM-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pOD('253'),true,true,true,1,rx,'mouseTraining_OD','bas');
+% 
+%         sub = subject('254','mouse','c57bl/6j','male','05/08/2014','unknown','unknown','Jackson Laboratories','SOM-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pOD('254'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
 %         
 %         
-%         subjectID = '242';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pMotion('242'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 4 on 7/29
-%         % enabled req reward while training
+        subjectID = '242';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion('242'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 4 on 7/29
+        % enabled req reward while training
 %         
 %         
 %         subjectID = '247';
@@ -108,21 +108,21 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pODSweeps('227'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 %         
-        sub = subject('255','mouse','c57bl/6j','male','04/10/2014','unknown','unknown','Jackson Laboratories','PV-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,1,rx,'mouseTraining_OD','bas');
-
-        sub = subject('256','mouse','c57bl/6j','male','04/10/2014','unknown','unknown','Jackson Laboratories','PV-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,1,rx,'mouseTraining_OD','bas');
+%         sub = subject('255','mouse','c57bl/6j','male','04/10/2014','unknown','unknown','Jackson Laboratories','PV-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,1,rx,'mouseTraining_OD','bas');
+% 
+%         sub = subject('256','mouse','c57bl/6j','male','04/10/2014','unknown','unknown','Jackson Laboratories','PV-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
-%         subjectID = '243';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pMotion('243'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
-%         % enabled req reward while training
+        subjectID = '243';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion('243'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % enabled req reward while training
 %         
 %         
 %         subjectID = '248';
@@ -158,12 +158,12 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pReversal('238'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
-%         subjectID = '244';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pMotion('244'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
-%         % enabled req reward while training
+        subjectID = '244';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion('244'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % enabled req reward while training
 %         
 %         
 %         subjectID = '249';
@@ -199,12 +199,12 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pReversal('240'),true,true,true,1,rx,'mouseTraining_OD','bas');
 %         
 %         
-%         subjectID = '245';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pMotion('245'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 2 on 7/29
-%         % enabled req reward while training
+        subjectID = '245';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion('245'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 2 on 7/29
+        % enabled req reward while training
 %         
 %         
 %         subjectID = '250';
