@@ -17,9 +17,9 @@ end
 subStrs{end+1} = 'all';
 fs=[];
 
-typeStrs={'animal status','performance','trials per day','trial rate','bias','or optimal','or sfSweep','or tfSweep','or ctrSweep','or orSweep'}; %'weight' waiting for resolution of http://132.239.158.177/trac/rlab_hardware/ticket/79
+typeStrs={'all','performance','trials per day','trial rate','bias','or optimal','or sfSweep','or tfSweep','or ctrSweep','or orSweep'}; %'weight' waiting for resolution of http://132.239.158.177/trac/rlab_hardware/ticket/79
 filterTypeIndex=1;
-subStrIndex=1;
+subStrIndex=length(subStrs); % denotes 'all'
 
 oneRowHeight=25;
 margin=10;
@@ -51,7 +51,8 @@ plotB=uicontrol(f,'Style','pushbutton','String','plot','Units','pixels','Positio
             figure(fs(i))
             close(fs(i));
         end
-        fs=analysisPlotter(calcSelection,apath,true);
+        sel = calcSelection;
+        fs=analysisPlotter(sel,apath,true);
     end
 
     function sel=calcSelection
