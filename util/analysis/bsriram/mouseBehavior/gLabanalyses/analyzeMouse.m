@@ -26,6 +26,7 @@ if ~exist('filters','var') || isempty(filters)
     filters.ctrQuatRadFilter = 1:today;
     filters.ctrImages = 1:today;
     filters.ctrSensitivity = 1:today;
+    filters.varDur = 1:today;
 elseif isnumeric(filters)
     temp = filters;
     filters.fdFilter = temp;
@@ -43,6 +44,7 @@ elseif isnumeric(filters)
     filters.ctrQuatRadFilter = temp;
     filters.ctrImages = temp;
     filters.ctrSensitivity = temp;
+    filters.varDur = temp;
     clear temp
 end
 
@@ -61,6 +63,7 @@ if ~exist('analysisFor','var')||isempty(analysisFor)
     analyzeQuatRadContrast = true;
     analyzeImagesContrast = true;
     analyzeCtrSensitivity = true;
+    analyzeVariedDurations = true;
 else
     analyzeImages = analysisFor.analyzeImages;
     analyzeOpt = analysisFor.analyzeOpt;
@@ -76,6 +79,7 @@ else
     analyzeQuatRadContrast = analysisFor.analyzeQuatRadContrast;
     analyzeImagesContrast = analysisFor.analyzeImagesContrast;
     analyzeCtrSensitivity = analysisFor.analyzeCtrSensitivity;
+    analyzeVariedDurations = analysisFor.analyzeVariedDurations;
 end
 
 if ~exist('splits','var')||isempty(splits)
@@ -167,6 +171,11 @@ end
 %% CONTRAST SENSITIVITY
 if analyzeCtrSensitivity
     out.ctrSensitivityData = analyzeCtrSensitivityTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
+end
+
+%% VARIED DURATIONS
+if analyzeVariedDurations
+    out.varDurData = analyzeVariedDurationTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
 end
 end
 

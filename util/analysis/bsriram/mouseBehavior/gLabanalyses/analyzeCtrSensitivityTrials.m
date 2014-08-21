@@ -241,7 +241,7 @@ if plotDetails.plotOn
             end
             
             
-        case {'givenFigure','makeFigure'}
+        case {'makeFigure'}
             figName = sprintf('%s::OPTIMAL',mouseID);
             if strcmp(plotDetails.plotWhere,'makeFigure')
                 f = figure('name',figName);
@@ -302,20 +302,28 @@ if plotDetails.plotOn
                 means = squeeze(ctrSensitivityData.performanceByConditionWCO(:,:,1,i));
                 if ~any(isnan(means(:)))
                     for k = 1:length(ctrSensitivityData.pixPerCycs)
-                        dpc = ctrSensitivityData.pixPerCycs(k)*0.054;
+                        dpc = ctrSensitivityData.pixPerCycs(k)*0.054
                         ctrpHat = makerow(means(:,k));
                         in.cntr = ctrSensitivityData.contrasts;
                         in.pHat = ctrpHat;
                         fit = fitHyperbolicRatio(in);
+                        fit
+                        if fit.exitflag == 2
+                            fit.c50 = 1;
+                        end
                         axes(ax4)
                         plot(fit.fittedModel.c,fit.fittedModel.pModel,'linewidth',k/2,'color','k');
                         axes(ax5)
-%                         keyboard
+                        %                         keyboard
                         plot(1/dpc,1/fit.c50,'k*')
+                        ctrSensitivityData.fits(k)= fit;
+                        ctrSensitivityData.sfForSens(k) = 1/dpc;
+                        ctrSensitivityData.sensForSens(k) = 1/fit.c50;
+                        
                     end
                 end
             end
-%             keyboard
+            %             keyboard
             %set(gca,'ylim',[0.2 1.1],'xlim',[0 1],'xtick',[0 0.25 0.5 0.75 1],'ytick',[0.2 0.5 1],'FontName','Times New Roman','FontSize',12);plot([0 1],[0.5 0.5],'k-');plot([0 1],[0.7 0.7],'k--');
             axes(ax4)
             xlabel('ctr','FontName','Times New Roman','FontSize',12);
@@ -325,5 +333,45 @@ if plotDetails.plotOn
             set(ax5,'ylim',[1 20])
             xlabel('sf(cpd)','FontName','Times New Roman','FontSize',12);
             ylabel('ctr.sens','FontName','Times New Roman','FontSize',12);
+            
+        case {'givenFigure'}
+            figName = sprintf('%s::OPTIMAL',mouseID);
+            if strcmp(plotDetails.plotWhere,'makeFigure')
+                f = figure('name',figName);
+            else
+                figure(plotDetails.figHan)
+            end
+            switch plotDetails.requestedPlot
+                case 'contrastTuning'
+                    numSFs = length(ctrSensitivityData.pixPerCycs);
+                    [nx ny] = getGoodArrangement(numSFs);
+                    for i = 1:size(ctrSensitivityData.performanceByConditionWCO,4)
+                        means = squeeze(ctrSensitivityData.performanceByConditionWCO(:,:,1,i));
+                        if ~any(isnan(means(:)))
+                            for k = 1:numSFs
+                                subplot(nx,ny,k); hold on;
+                                dpc = ctrSensitivityData.pixPerCycs(k)*0.054
+                                ctrpHat = makerow(means(:,k));
+                                in.cntr = ctrSensitivityData.contrasts;
+                                in.pHat = ctrpHat;
+%                                 if k ==4
+%                                     keyboard
+%                                 end
+%                                 [fitParam,stat] = sigm_fit(in.cntr,in.pHat,[],[]);
+                                fit = fitHyperbolicRatio(in);
+                                
+                                plot(in.cntr,in.pHat,'kd');
+                                plot(fit.fittedModel.c,fit.fittedModel.pModel,'k');
+                                title(sprintf('%2.2f dpc,c50=%2.2f',dpc,fit.c50));
+                                xlabel('ctr','FontName','Times New Roman','FontSize',12);
+                                ylabel('perf','FontName','Times New Roman','FontSize',12);
+                                set(gca,'xlim',[-0.05 1.05],'ylim',[0.4 1])
+                            end
+                        end
+                    end
+                otherwise
+                    error('unknown requested plot')
+            end
+            
     end
 end
