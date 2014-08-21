@@ -27,20 +27,21 @@ pMotion = @mouseTraining_Motion;
 pReversal = @mouseTraining_ObjectReversal;
 switch mac
     case 'A41F7278B4DE' %gLab-Behavior1
-%         subjectID = '223';
+        subjectID = '223';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pOD('223'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed protocol to variedDur and to step 5 on 7/29
+%
+%         subjectID = '251';
 %         sub=getSubjectFromID(rx,subjectID);
 %         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('223'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed protocol to variedDur and to step 5 on 7/29
+%         [~, rx]=setProtocolAndStep(sub,pOD('251'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %
-%         sub = subject('251','mouse','c57bl/6j','female','05/15/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM-cre','none');
-%         rx = addSubject(rx, sub, 'bas');
-%         [sub, rx]=setProtocolAndStep(sub,pOD('251'),true,true,true,1,rx,'mouseTraining_OD','bas');
-% 
-%         sub = subject('252','mouse','c57bl/6j','female','05/15/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM-cr','none');
-%         rx = addSubject(rx, sub, 'bas');
-%         [sub, rx]=setProtocolAndStep(sub,pOD('252'),true,true,true,1,rx,'mouseTraining_OD','bas');
-% 
+%         subjectID = '252';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('252'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
         subjectID = '241';
         sub=getSubjectFromID(rx,subjectID);
@@ -48,13 +49,15 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pMotion('241'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 3 on 7/29
         % enabled req reward while training
+        % changed the coherence and dot size on 8/20
 %         
 %         
-%         subjectID = '246';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
+        subjectID = '246';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % reduced the maxDuration for stim 20/8
 %         
 %         
 %         subjectID = '999';
@@ -68,15 +71,16 @@ switch mac
 %         sub=getSubjectFromID(rx,subjectID);
 %         [~, step] = getProtocolAndStep(sub);
 %         [~, rx]=setProtocolAndStep(sub,pODSweeps('232'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         
-%         
-%         sub = subject('253','mouse','c57bl/6j','male','05/08/2014','unknown','unknown','Jackson Laboratories','SOM-cre','none');
-%         rx = addSubject(rx, sub, 'bas');
-%         [sub, rx]=setProtocolAndStep(sub,pOD('253'),true,true,true,1,rx,'mouseTraining_OD','bas');
-% 
-%         sub = subject('254','mouse','c57bl/6j','male','05/08/2014','unknown','unknown','Jackson Laboratories','SOM-cre','none');
-%         rx = addSubject(rx, sub, 'bas');
-%         [sub, rx]=setProtocolAndStep(sub,pOD('254'),true,true,true,1,rx,'mouseTraining_OD','bas');
+%                
+%         subjectID = '253';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('253'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%
+%         subjectID = '254';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('254'),true,true,true,step,rx,'mouseTraining_OD','bas');
 
 %         
 %         
@@ -86,13 +90,15 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pMotion('242'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 4 on 7/29
         % enabled req reward while training
+        % changed the coherence and dot size on 8/20
 %         
 %         
-%         subjectID = '247';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('247'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 4 on 7/29
+        subjectID = '247';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pOD('247'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 4 on 7/29
+        % reduced the maxDuration for stim 20/8
 %         
 %         
 %         subjectID = '999';
@@ -108,13 +114,15 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pODSweeps('227'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 %         
-%         sub = subject('255','mouse','c57bl/6j','male','04/10/2014','unknown','unknown','Jackson Laboratories','PV-cre','none');
-%         rx = addSubject(rx, sub, 'bas');
-%         [sub, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,1,rx,'mouseTraining_OD','bas');
-% 
-%         sub = subject('256','mouse','c57bl/6j','male','04/10/2014','unknown','unknown','Jackson Laboratories','PV-cre','none');
-%         rx = addSubject(rx, sub, 'bas');
-%         [sub, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,1,rx,'mouseTraining_OD','bas');
+%         subjectID = '255';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%
+%         subjectID = '256';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 %         
         subjectID = '243';
@@ -123,13 +131,15 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pMotion('243'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 3 on 7/29
         % enabled req reward while training
+        % changed the coherence and dot size on 8/20 
 %         
 %         
-%         subjectID = '248';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('248'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
+        subjectID = '248';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pOD('248'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % reduced the maxDuration for stim 20/8
 %         
 %         
 %         subjectID = '999';
@@ -164,13 +174,15 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pMotion('244'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 3 on 7/29
         % enabled req reward while training
+        % changed the coherence and dot size on 8/20
 %         
 %         
-%         subjectID = '249';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('249'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
+        subjectID = '249';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pOD('249'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % reduced the maxDuration for stim 20/8
 %         
 %         
 %         subjectID = '999';
@@ -187,17 +199,17 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pODSweeps('218'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 %         
-%         subjectID = '239';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pReversal('239'),true,true,true,1,rx,'mouseTraining_OD','bas');
-%         
-%         
-%         subjectID = '240';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pReversal('240'),true,true,true,1,rx,'mouseTraining_OD','bas');
-%         
+        subjectID = '239';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pReversal('239'),true,true,true,1,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.02 8/20
+        
+        subjectID = '240';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pReversal('240'),true,true,true,1,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.02 8/20
 %         
         subjectID = '245';
         sub=getSubjectFromID(rx,subjectID);
@@ -205,13 +217,15 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pMotion('245'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 2 on 7/29
         % enabled req reward while training
+        % changed the coherence and dot size on 8/20
 %         
 %         
-%         subjectID = '250';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('250'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % changed from step 1 to 3 on 7/29
+        subjectID = '250';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pOD('250'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % reduced the maxDuration for stim 20/8
 %         
 %         
 %         subjectID = '999';
