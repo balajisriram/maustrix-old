@@ -150,16 +150,17 @@ if plotDetails.plotOn
                                 means = varDurData.performanceByConditionWCO(:,k,1,i);
                                 which = ~isnan(varDurData.performanceByConditionWCO(:,k,1,i));
                                 
-                                
-                                h = plot(log10(varDurData.maxDurations(which)),means(which),'color',conditionColor{i});
-%                                 try
-%                                     brightVal = log(varDurData.contrasts(k)/0.5);
-%                                     brightVal = min(brightVal,0.99);
-%                                     brightVal = max(brightVal,-0.99);
-%                                     brighten(h,brightVal)
-%                                 catch
-%                                     brighten(h,-0.99); % for when contrast is 0
-%                                 end
+                                if ~isempty(varDurData.maxDurations(which))
+                                    h = plot(log10(varDurData.maxDurations(which)),means(which),'color',conditionColor{i});
+                                    try
+                                        brightVal = log10(varDurData.contrasts(k)/0.5);
+                                        brightVal = min(brightVal,0.99);
+                                        brightVal = max(brightVal,-0.99);
+                                        brighten(gca,brightVal)
+                                    catch
+                                        brighten(h,-0.99); % for when contrast is 0
+                                    end
+                                end
                             else
                                 for j = 1:size(varDurData.performanceByConditionWCO,1)
                                     if ~isnan(varDurData.performanceByConditionWCO(j,k,1,i))

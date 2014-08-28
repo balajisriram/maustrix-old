@@ -35,7 +35,7 @@ f = figure('name','PERFORMANCE BY VARIED DURATION');
 plotDetails.plotOn = true;
 plotDetails.plotWhere = 'givenAxes';
 plotDetails.requestedPlot = 'performanceByCondition';
-plotDetails.plotMeansOnly = false;
+plotDetails.plotMeansOnly = true;
 
 plotDetails.axHan = subplot(1,1,1);
 compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
