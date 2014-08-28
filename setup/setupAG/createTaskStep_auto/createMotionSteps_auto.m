@@ -54,11 +54,11 @@ msPenalty = out.msPenalty;
 percentCorrectionTrials = 0.5;
 
 constantRewards=constantReinforcement(rewardSize,requestRewardSize,doAllRequests,msPenalty,fractionSoundOn,fractionPenaltySoundOn,rewardScalar,msAirpuff);
-
+constantRewardsWithReqRewards = constantReinforcement(rewardSize,10,doAllRequests,msPenalty,fractionSoundOn,fractionPenaltySoundOn,rewardScalar,msAirpuff);
 tm= nAFC(sm, percentCorrectionTrials, constantRewards);
-
+tmWithReqRew = nAFC(sm, percentCorrectionTrials, constantRewardsWithReqRewards);
 % training step using other objects as passed in
-ts_Moptim = trainingStep(tm, afc_optim, thresholdPC, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
+ts_Moptim = trainingStep(tmWithReqRew, afc_optim, thresholdPC, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
 ts_MvelSweep = trainingStep(tm, afc_velSweep, numTrialsCrit_velSweep, sch, svnRev, svnCheckMode,'velSweepM'); %CHANGE
 ts_McohSweep = trainingStep(tm, afc_cohSweep, numTrialsCrit_cohSweep, sch, svnRev, svnCheckMode,'cohSweepM');% CHANGE
 ts_Mdot1 = trainingStep(tm, afc_sizeSweep1, numTrialsCrit_sizeSweep, sch, svnRev, svnCheckMode,'size1M'); %CHANGE
@@ -67,7 +67,7 @@ ts_Mdot3 = trainingStep(tm, afc_sizeSweep3, numTrialsCrit_sizeSweep, sch, svnRev
 end
 
 function out = getStepDetails()
-out.coherenceOpt = .9;             % Percent of dots to move in a specified direction
+out.coherenceOpt = .99;             % Percent of dots to move in a specified direction
 out.coherenceSweep = {[.15,.2,.25,.3,.35,.4,.65,.9], 'selectFrom'};             % Percent of dots to move in a specified direction
 out.contrast = 1;               % contrast of the dots
 out.movie_duration = 2;         % in seconds
@@ -78,80 +78,16 @@ out.LUTbits=0;
 
 [a, b] = getMACaddress();
 switch b
-    case 'A41F7278B4DE' %gLab-Behavior1
+    case {'A41F7278B4DE','A41F729213E2','A41F726EC11C','7845C4256F4C','7845C42558DF'}%gLab-Behavior1
         out.screen_width = 128;         % for matrix
         out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 461;              % Number of dots to display
+        out.num_dotsOpt = 115;              % Number of dots to display
         out.num_dots1 = 1844;              % Number of dots to display
         out.num_dots2 = 461;              % Number of dots to display
         out.num_dots3 = 115;              % Number of dots to display
         out.speedOpt = 0.33;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
-        out.dot_size1 = 1;              % Width of dots in pixels
-        out.dot_size2 = 2;              % Width of dots in pixels
-        out.dot_size3 = 4;              % Width of dots in pixels
-        out.screen_zoom=[15 15];
-        out.maxWidth = 1920;
-        out.maxHeight = 1080;
-    case 'A41F729213E2' %gLab-Behavior2
-        out.screen_width = 128;         % for matrix
-        out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 461;              % Number of dots to display
-        out.num_dots1 = 1844;              % Number of dots to display
-        out.num_dots2 = 461;              % Number of dots to display
-        out.num_dots3 = 115;              % Number of dots to display
-        out.speedOpt = 0.33;                  % How fast do our little dots move
-        out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
-        out.dot_size1 = 1;              % Width of dots in pixels
-        out.dot_size2 = 2;              % Width of dots in pixels
-        out.dot_size3 = 4;              % Width of dots in pixels
-        out.screen_zoom=[15 15];
-        out.maxWidth = 1920;
-        out.maxHeight = 1080;
-    case 'A41F726EC11C' %gLab-Behavior3
-        out.screen_width = 128;         % for matrix
-        out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 461;              % Number of dots to display
-        out.num_dots1 = 1844;              % Number of dots to display
-        out.num_dots2 = 461;              % Number of dots to display
-        out.num_dots3 = 115;              % Number of dots to display
-        out.speedOpt = 0.33;                  % How fast do our little dots move
-        out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
-        out.dot_size1 = 1;              % Width of dots in pixels
-        out.dot_size2 = 2;              % Width of dots in pixels
-        out.dot_size3 = 4;              % Width of dots in pixels
-        out.screen_zoom=[15 15];
-        out.maxWidth = 1920;
-        out.maxHeight = 1080;
-    case '7845C4256F4C' %gLab-Behavior4
-        out.screen_width = 128;         % for matrix
-        out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 461;              % Number of dots to display
-        out.num_dots1 = 1844;              % Number of dots to display
-        out.num_dots2 = 461;              % Number of dots to display
-        out.num_dots3 = 115;              % Number of dots to display
-        out.speedOpt = 0.33;                  % How fast do our little dots move
-        out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
-        out.dot_size1 = 1;              % Width of dots in pixels
-        out.dot_size2 = 2;              % Width of dots in pixels
-        out.dot_size3 = 4;              % Width of dots in pixels
-        out.screen_zoom=[15 15];
-        out.maxWidth = 1920;
-        out.maxHeight = 1080;
-    case '7845C42558DF' %gLab-Behavior5
-        out.screen_width = 128;         % for matrix
-        out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 461;              % Number of dots to display
-        out.num_dots1 = 1844;              % Number of dots to display
-        out.num_dots2 = 461;              % Number of dots to display
-        out.num_dots3 = 115;              % Number of dots to display
-        out.speedOpt = 0.33;                  % How fast do our little dots move
-        out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 2;              % Width of dots in pixels
+        out.dot_sizeOpt = 4;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
         out.dot_size2 = 2;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels

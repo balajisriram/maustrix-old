@@ -14,12 +14,12 @@ if length(subStrs)<=0
     d.name
     error('no compiled records found in that directory')
 end
-
+subStrs{end+1} = 'all';
 fs=[];
 
-typeStrs={'animal status','performance','trials per day','trial rate','bias','or optimal','or sfSweep','or tfSweep','or ctrSweep','or orSweep'}; %'weight' waiting for resolution of http://132.239.158.177/trac/rlab_hardware/ticket/79
+typeStrs={'all','performance','trials per day','trial rate','bias','or optimal','or sfSweep','or tfSweep','or ctrSweep','or orSweep'}; %'weight' waiting for resolution of http://132.239.158.177/trac/rlab_hardware/ticket/79
 filterTypeIndex=1;
-subStrIndex=1;
+subStrIndex=length(subStrs); % denotes 'all'
 
 oneRowHeight=25;
 margin=10;
@@ -51,17 +51,28 @@ plotB=uicontrol(f,'Style','pushbutton','String','plot','Units','pixels','Positio
             figure(fs(i))
             close(fs(i));
         end
-        fs=analysisPlotter(calcSelection,apath,true);
+        sel = calcSelection;
+        fs=analysisPlotter(sel,apath,true);
     end
 
     function sel=calcSelection
         sel.type=typeStrs{filterTypeIndex};
         subID=subStrs{subStrIndex};
+        if strcmp(subID,'all')
+            [x,y] = getGoodArrangement(subStrIndex-1);
+            sel.subjects = cell(1,x,y);
+            sel.titles = cell(1,x,y);
+            for k = 1:subStrIndex-1
+                sel.subjects{k}=subStrs{k};
+                sel.titles{k} = ['subject'  subStrs{k}];
+            end
+        else
+            sel.subjects{1,1,1}=subID;
+            sel.titles={['subject ' subID]};
+        end
         sel.filter='all';
         sel.filterVal = [];
         sel.filterParam = [];
-        sel.titles={['subject ' subID]};
-        sel.subjects{1,1,1}=subID;
     end
 
 set(f,'Visible','on')

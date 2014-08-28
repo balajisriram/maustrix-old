@@ -9,7 +9,7 @@ pMax_0 = 1; n_0 = 1; c50_0 = 0.1;
 
 x_0 = [pMax_0 n_0 c50_0];
 
-opt = optimset([],'TolX',1e-9,'Display','notify','MaxFunEvals',10e6,'MaxIter',100000,'TolFun',1e-15); % increase 'MaxFunEvals'
+opt = optimset([],'TolX',1e-12,'Display','final-detailed','MaxFunEvals',10e6,'MaxIter',400,'TolFun',1e-15,'TypicalX',[0.5,2,0.1]); % increase 'MaxFunEvals'
 params = struct;
 
 % bound constraints for each component

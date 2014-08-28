@@ -35,14 +35,16 @@ if strcmp(selection.type,'all')
             compiledFileDir=origCompiledFileDir;
             
             fs(end+1) = figure('Name', char(subIDs(i)),'NumberTitle','off');
+            subPs = [];
             for j = 1:numRows
                 for k = 1:numCols
-                    subplot(numRows,numCols,(j-1)*numCols+k);
+                    subPs(end+1) = subplot(numRows,numCols,(j-1)*numCols+k);
                     hold on
                     doAnalysisPlot(records, subIDs{i}, char(toBePlotted((j-1)*numCols+k)), selection.filter, selection.filterVal, selection.filterParam,includeKeyboard);
                     title(sprintf('%s - %s: %s',char(toBePlotted((j-1)*numCols+k)), char(subIDs(i)), datestr(now,0)));
                 end
             end
+            linkaxes([subPs(1),subPs(3)], 'x'); % assumes that the toBePlotteds are the same....
         end
     end
     

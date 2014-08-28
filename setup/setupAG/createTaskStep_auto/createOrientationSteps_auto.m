@@ -20,7 +20,7 @@ out.contrastsForDurs = {[0.15 1],[0.15,1]};
 
 out.maxDurationOpt={inf,inf};
 out.maxDurationLimited = {1,1};
-out.maxDurationSweep={logspace(log10(0.125),log10(2),8),logspace(log10(0.125),log10(2),8)};
+out.maxDurationSweep={logspace(log10(0.020),log10(0.5),8),logspace(log10(0.02),log10(0.5),8)};
 out.radiiOpt={0.5,0.5};
 out.annuli={0,0};
 out.location={[.5 .5],[0.5 0.5]};      % center of mask
@@ -143,5 +143,5 @@ ts_ctrSweep = trainingStep(tm, afc_ctrSweep, numTrialsCrit_varCtr, sch, svnRev, 
 ts_orSweep = trainingStep(tm, afc_orSweep, numTrialsCrit_varOr, sch, svnRev, svnCheckMode,'orORSweep');
 ts_durLimited = trainingStep(tm, afc_durLimited, thresholdPC, sch, svnRev, svnCheckMode,'orDURLimited');
 ts_durLimitedCtr = trainingStep(tm, afc_durWithCtr, numTrialsCrit_DurLim, sch, svnRev, svnCheckMode,'orDURLimited');
-ts_durSweep = trainingStep(tm, afc_durSweep, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDURSweep');
+ts_durSweep = trainingStep(tm, afc_durSweep, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDUR_LowDur_Sweep');
 end
