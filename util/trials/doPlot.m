@@ -160,7 +160,11 @@ switch plotType
             allTypes=[allTypes,zeros(size(allTypes,1),1)];
             remainder(end+1)=0;
         end
-            
+        plot([min(dates) max(dates)],[200 200],'k--');    
+        plot([min(dates) max(dates)],[400 400],'k--');
+        plot([min(dates) max(dates)],[600 600],'k--');
+        plot([min(dates) max(dates)],[800 800],'k--');
+        
         bar(dates,[allTypes; remainder]','stacked'), colormap(bone)
         legendStrs{end+1} = 'unaccounted for';
         set(gca,'FontSize',7);
