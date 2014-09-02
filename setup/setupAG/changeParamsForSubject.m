@@ -213,14 +213,14 @@ switch mac
 %         % changed from step 1 to 3 on 7/29
 %         % reduced the maxDuration for stim 20/8
 %         
-        sub = subject('257','mouse','c57bl/6j','female','04/11/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pODSweeps('257'),true,true,true,1,rx,'mouseTraining_OD','bas');
-
-        sub = subject('258','mouse','c57bl/6j','female','04/11/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
-        rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pODSweeps('257'),true,true,true,1,rx,'mouseTraining_OD','bas');
-
+%         sub = subject('257','mouse','c57bl/6j','female','04/11/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pODSweeps('257'),true,true,true,1,rx,'mouseTraining_OD','bas');
+% 
+%         sub = subject('258','mouse','c57bl/6j','female','04/11/2014','unknown','unknown','Jackson Laboratories','VIP-cre','none');
+%         rx = addSubject(rx, sub, 'bas');
+%         [sub, rx]=setProtocolAndStep(sub,pODSweeps('257'),true,true,true,1,rx,'mouseTraining_OD','bas');
+% 
 %         
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
