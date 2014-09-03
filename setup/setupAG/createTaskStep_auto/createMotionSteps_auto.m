@@ -78,16 +78,17 @@ out.LUTbits=0;
 
 [a, b] = getMACaddress();
 switch b
-    case {'A41F7278B4DE','A41F729213E2','A41F726EC11C','7845C4256F4C','7845C42558DF'}%gLab-Behavior1
+    case {'A41F7278B4DE','A41F729213E2','A41F726EC11C','7845C4256F4C','7845C42558DF'}%gLab-Behavior1-5
+        out.pctCorrectionTrials=.05;
         out.screen_width = 128;         % for matrix
         out.screen_height = 72;        % for matrix
-        out.num_dotsOpt = 115;              % Number of dots to display
+        out.num_dotsOpt = 25;              % Number of dots to display
         out.num_dots1 = 1844;              % Number of dots to display
         out.num_dots2 = 461;              % Number of dots to display
         out.num_dots3 = 115;              % Number of dots to display
         out.speedOpt = 0.33;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 4;              % Width of dots in pixels
+        out.dot_sizeOpt = 8;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels
         out.dot_size2 = 2;              % Width of dots in pixels
         out.dot_size3 = 4;              % Width of dots in pixels
