@@ -86,7 +86,7 @@ switch b
         out.num_dots1 = 1844;              % Number of dots to display
         out.num_dots2 = 461;              % Number of dots to display
         out.num_dots3 = 115;              % Number of dots to display
-        out.speedOpt = 0.33;                  % How fast do our little dots move
+        out.speedOpt = 1;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
         out.dot_sizeOpt = 8;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels

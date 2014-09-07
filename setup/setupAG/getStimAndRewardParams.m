@@ -44,14 +44,19 @@ switch subID
         % reduced reward to 0.25 8/3
     case '243'
         out.rewardScalar = 0.25;
+        out.msPenalty = 15000;
         % reduced reward to 0.25 8/3
+        % increased penalty to 15000 9/6
     case '244'
         out.rewardScalar = 0.25;
+        out.msPenalty = 15000;
         % reduced reward to 0.25 8/3
+        % increased penalty to 15000 9/6
     case '245'
-        out.rewardScalar = 0.1;
+        out.rewardScalar = 0.05;
         % reduced reward to 0.25 8/3
         % reduced reward to 0.1 8/10
+        % reduced reward scalar to 0.02 9/6
     case '247'
         out.msPenalty = 15000;
         % increased pealty to 15000 on 8/10
