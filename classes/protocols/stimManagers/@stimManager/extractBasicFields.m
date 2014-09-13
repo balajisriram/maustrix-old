@@ -299,7 +299,22 @@ if length(pInd)==1
         response=tries{end};
         out=decideResponse(response);
     catch
-        out=-1;
+        % it is possible that the actual response is in the post-discrim
+        % phase check here before failing to continue with choosing the
+        % response.
+        
+        pIndAlt=find(strcmp({phaseRecords.phaseLabel},'post-discrim'));
+        if length(pIndAlt) == 1
+            try
+                triesAlt = phaseRecords(pIndAlt).responseDetails.tries;
+                responseAlt=triesAlt{end};
+                out=decideResponse(responseAlt);
+            catch
+                out = -1;
+            end
+        else
+            out = -1;
+        end
     end
 else
     out=-1;
