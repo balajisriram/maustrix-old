@@ -36,7 +36,7 @@ sm=makeStandardSoundManager();
 sch=noTimeOff(); % runs until swapper ends session
 
 % criterion
-thresholdPC=performanceCriterion(0.8,int16(200));
+thresholdPC=performanceCriterionLatestStreak(0.8,int16(200));
 numTrialsCrit_cohSweep = numTrialsDoneCriterion(1600); % 1600 trials = 8 conditions * 200 trials/condition
 numTrialsCrit_velSweep = numTrialsDoneCriterion(1000); % 1000 trials = 5 conditions * 200 trials/condition
 numTrialsCrit_sizeSweep = numTrialsDoneCriterion(200); % 200 trials = 1 conditions * 200 trials/condition

@@ -17,7 +17,7 @@ sch=noTimeOff(); % runs until swapper ends session
 
 % graduation criteria for graduation\
 thresholdForResponseWithRequestReward = ratePerDayCriterion(250,2); % make sure animals do 250 per day for a couple of days
-thresholdPC=performanceCriterion(0.8,int16(200)); % average of 80% correct for the past 200 trials
+thresholdPC=performanceCriterionLatestStreak(0.8,int16(200)); % average of 80% correct for the past 200 trials
 
 % take reinforcement manager from setProtocolTest but with params from Pam
 requestRewardSize   =	20; 
