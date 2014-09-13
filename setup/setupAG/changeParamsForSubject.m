@@ -38,11 +38,13 @@ switch mac
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pReversal('251'),true,true,true,step,rx,'mouseTraining_OD','bas');
-
+        % reduced reward to 0.25 9/13
+        
         subjectID = '252';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pReversal('252'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.25 9/13
         
         subjectID = '241';
         sub=getSubjectFromID(rx,subjectID);
@@ -52,7 +54,7 @@ switch mac
         % enabled req reward while training
         % changed the coherence and dot size on 8/20
         % change % corr trials, and dot size/number 9/3
-        
+        % reduced reward to 0.25 9/13
         
         subjectID = '246';
         sub=getSubjectFromID(rx,subjectID);
@@ -95,7 +97,7 @@ switch mac
         % enabled req reward while training
         % changed the coherence and dot size on 8/20
         % change % corr trials, and dot size/number 9/3
-        
+        % reduced reward to 0.1 9/13
         
         subjectID = '247';
         sub=getSubjectFromID(rx,subjectID);
@@ -103,7 +105,7 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pOD('247'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 4 on 7/29
         % reduced the maxDuration for stim 20/8
-        
+        % reduced reward to 0.25 9/13
         
         subjectID = '999';
         sub=getSubjectFromID(rx,subjectID);
@@ -116,17 +118,19 @@ switch mac
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pODSweeps('227'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        
+        % increased penalty to 15000 on 9/13
         
         subjectID = '255';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pReversal('255'),true,true,true,step,rx,'mouseTraining_OD','bas');
-
+        % reduced reward to 0.25 9/13
+        
         subjectID = '256';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pReversal('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.25 9/13
         
         subjectID = '243';
         sub=getSubjectFromID(rx,subjectID);
@@ -136,7 +140,7 @@ switch mac
         % enabled req reward while training
         % changed the coherence and dot size on 8/20 
         % change % corr trials, and dot size/number 9/3
-        
+        % reduced reward to 0.1 9/13
         
         subjectID = '248';
         sub=getSubjectFromID(rx,subjectID);
@@ -144,7 +148,8 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pOD('248'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 3 on 7/29
         % reduced the maxDuration for stim 20/8
-        
+        % reduced reward to 0.25 9/13
+        % increased pealty to 15000 on 9/13
         
         subjectID = '999';
         sub=getSubjectFromID(rx,subjectID);
@@ -165,7 +170,7 @@ switch mac
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pReversal('237'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        
+        % reduced reward to 0.25 9/13
         
         subjectID = '238';
         sub=getSubjectFromID(rx,subjectID);
@@ -180,7 +185,7 @@ switch mac
         % enabled req reward while training
         % changed the coherence and dot size on 8/20
         % change % corr trials, and dot size/number 9/3
-        
+        % reduced reward to 0.1 9/13
         
         subjectID = '249';
         sub=getSubjectFromID(rx,subjectID);
@@ -222,17 +227,19 @@ switch mac
         % changed from step 1 to 3 on 7/29
         % reduced the maxDuration for stim 20/8
         % forced graduation to step 4 9/13
+        % reduced reward to 0.1 9/13
         
         subjectID = '257';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pODSweeps('257'),true,true,true,step,rx,'mouseTraining_OD','bas');
-
+        % reduced reward to 0.25 9/13
+        
         subjectID = '258';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
         [~, rx]=setProtocolAndStep(sub,pODSweeps('258'),true,true,true,step,rx,'mouseTraining_OD','bas');
-
+        % reduced reward to 0.25 9/13
         
         subjectID = '999';
         sub=getSubjectFromID(rx,subjectID);
