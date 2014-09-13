@@ -1,6 +1,6 @@
 function out = getStimAndRewardParams(out,subID)
 
-switch subID
+switch lower(subID)
     case '218'
         out.rewardScalar = 0.1;
         % reduced reward to 0.25 8/3
@@ -66,6 +66,12 @@ switch subID
     case '250'
         out.rewardScalar = 0.25;
         % reduced reward to 0.25 8/10
+    case 'L001'
+        out.rewardScalar = 0.25;
+        % reduced reward 9/4;
+    case 'L002'
+        out.rewardScalar = 0.25;
+        % reduced reward 9/4
     otherwise
         % use the default setup
 end
