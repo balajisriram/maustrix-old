@@ -25,6 +25,7 @@ pOD = @mouseTraining_OD;
 pODSweeps = @mouseTraining_ODSweeps;
 pMotion = @mouseTraining_Motion;
 pReversal = @mouseTraining_ObjectReversal;
+pMotion_Lever = @mouseTraining_Motion_Lever;
 switch mac
     case 'A41F7278B4DE' %gLab-Behavior1
 %         subjectID = '223';
@@ -234,6 +235,18 @@ switch mac
         
         
     case 'A41F729211B1' %gLab-Behavior6
+        
+        subjectID = 'l001';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion_Lever('L001'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        
+        subjectID = 'l002';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        [~, rx]=setProtocolAndStep(sub,pMotion_Lever('L002'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
         
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
