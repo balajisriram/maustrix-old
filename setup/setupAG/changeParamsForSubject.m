@@ -67,7 +67,7 @@ switch mac
 %         
         sub = subject('263','mouse','c57bl/6j','female','4/11/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM','none');
         rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('263'),true,true,true,5,rx,'mouseTraining_OD','bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('263'),true,true,true,1,rx,'mouseTraining_OD','bas');
         
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -113,7 +113,7 @@ switch mac
 %         
         sub = subject('259','mouse','c57bl/6j','male','4/11/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM','none');
         rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('259'),true,true,true,5,rx,'mouseTraining_OD','bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('259'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -161,7 +161,7 @@ switch mac
 %         
         sub = subject('260','mouse','c57bl/6j','male','3/14/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM','none');
         rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('260'),true,true,true,5,rx,'mouseTraining_OD','bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('260'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -208,7 +208,7 @@ switch mac
 %         
         sub = subject('261','mouse','c57bl/6j','female','3/14/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM','none');
         rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('261'),true,true,true,5,rx,'mouseTraining_OD','bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('261'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
 %         
 %         subjectID = '999';
@@ -259,7 +259,7 @@ switch mac
 %         
         sub = subject('262','mouse','c57bl/6j','female','3/14/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM','none');
         rx = addSubject(rx, sub, 'bas');
-        [sub, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,5,rx,'mouseTraining_OD','bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
