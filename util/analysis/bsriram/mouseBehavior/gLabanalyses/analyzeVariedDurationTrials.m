@@ -5,7 +5,7 @@ if islogical(plotDetails)
     plotDetails.plotWhere = 'makeFigure';
 end
 
-vardur = filterBehaviorData(data,'tsName','orDURSweep');
+vardur = filterBehaviorData(data,'tsName','orDUR_LowDur_Sweep');
 varDurData.trialNum = [vardur.compiledTrialRecords.trialNumber];
 varDurData.correct = [vardur.compiledTrialRecords.correct];
 varDurData.correction = [vardur.compiledTrialRecords.correctionTrial];
