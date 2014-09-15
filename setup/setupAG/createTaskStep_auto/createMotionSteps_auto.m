@@ -98,13 +98,13 @@ switch b
     case 'A41F729211B1' %gLab-Behavior6
         out.screen_width = 320;         % for matrix
         out.screen_height = 180;        % for matrix
-        out.num_dotsOpt = 320;              % Number of dots to display
+        out.num_dotsOpt = 25;              % Number of dots to display
         out.num_dots1 = 1280;              % Number of dots to display
         out.num_dots2 = 320;              % Number of dots to display
         out.num_dots3 = 80;              % Number of dots to display
-        out.speedOpt = 1;                  % How fast do our little dots move
+        out.speedOpt = 3;                  % How fast do our little dots move
         out.speedSweep = {[0.25,0.5,1,2,4], 'selectFrom'};                  % How fast do our little dots move
-        out.dot_sizeOpt = 6;              % Width of dots in pixels
+        out.dot_sizeOpt = 18;              % Width of dots in pixels
         out.dot_size1 = 3;              % Width of dots in pixels
         out.dot_size2 = 6;              % Width of dots in pixels
         out.dot_size3 = 12;              % Width of dots in pixels
