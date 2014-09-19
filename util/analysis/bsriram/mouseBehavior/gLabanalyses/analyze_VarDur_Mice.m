@@ -23,7 +23,7 @@ analysisFor.analyzeQuatRadContrast = false;
 analysisFor.analyzeImagesContrast = false;
 analysisFor.analyzeVariedDurations = true;
 
-filters = 1:today; %'Jun-17-2013':today
+filters = 1:today-7; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];

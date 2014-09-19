@@ -459,11 +459,12 @@ switch plotType
         axis([0,seccondsPerSession,-10,20]);
         yTics=[0,5,10,15];
         hrTics=1:ceil(seccondsPerSession/(60*60));
+        plot(gca,[3600 3600],get(gca,'ylim'),'k--');
         set(gca,'YTickLabel',yTics)
         set(gca,'XTickLabel',hrTics)
         set(gca,'YTick',yTics)
-        set(gca,'XTick',hrTics)
-
+        set(gca,'XTick',hrTics*60*60)
+        
 
     case 'plotITI'
         
