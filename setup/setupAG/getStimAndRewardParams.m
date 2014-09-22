@@ -82,11 +82,13 @@ switch lower(subID)
         % reduced reward to 0.25 8/10
         % reduced reward to 0.1 9/13
     case '251'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
+        % reduced reward to 0.1 9/22
     case '252'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
+        % reduced reward to 0.1 9/22
     case '253'
         % no change
     case '254'

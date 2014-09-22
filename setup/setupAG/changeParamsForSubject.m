@@ -34,17 +34,22 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pOD('223'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         % changed protocol to variedDur and to step 5 on 7/29
 % 
-%         subjectID = '251';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pReversal('251'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % reduced reward to 0.25 9/13
-%         
-%         subjectID = '252';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pReversal('252'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % reduced reward to 0.25 9/13
+        subjectID = '251';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        step = 5; % orientation discrimination step 
+        [~, rx]=setProtocolAndStep(sub,pOD('251'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.25 9/13
+        % sent to OD task and reduced reward to 0.1 9/22
+        % 
+        
+        subjectID = '252';
+        sub=getSubjectFromID(rx,subjectID);
+        [~, step] = getProtocolAndStep(sub);
+        step = 5; % orientation discrimination step 
+        [~, rx]=setProtocolAndStep(sub,pOD('252'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.25 9/13
+        % sent to OD task and reduced reward to 0.1 9/22
 %         
 %         subjectID = '241';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -269,21 +274,29 @@ switch mac
         
     case 'A41F729211B1' %gLab-Behavior6
         
-        subjectID = 'l001';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pMotion_Lever('L001'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % changed from step 1 to 3 on 7/29
-        % increased dot size , increased velocity, reduced dot number and
-        % increased coherence 9/15
-        subjectID = 'l002';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pMotion_Lever('L002'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % changed from step 1 to 3 on 7/29
-        % increased dot size , increased velocity, reduced dot number and
-        % increased coherence 9/15
+%         subjectID = 'l001';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pMotion_Lever('L001'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % changed from step 1 to 3 on 7/29
+%         % increased dot size , increased velocity, reduced dot number and
+%         % increased coherence 9/15
+%         subjectID = 'l002';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pMotion_Lever('L002'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % changed from step 1 to 3 on 7/29
+%         % increased dot size , increased velocity, reduced dot number and
+%         % increased coherence 9/15
         
+        sub = subject('l003','mouse','c57bl/6j','female','02/27/2014','unknown','a 02/27/2014','Jackson Laboratories','PV-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,3,rx,'mouseTraining_OD','bas');
+        
+        sub = subject('l004','mouse','c57bl/6j','female','02/27/2014','unknown','a 02/27/2014','Jackson Laboratories','PV-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,3,rx,'mouseTraining_OD','bas');
+
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);
 %         [~, step] = getProtocolAndStep(sub);
