@@ -1,4 +1,4 @@
-function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep, ts_durLimited, ts_durLimitedCtr, ts_durSweep] = createOrientationSteps_auto(svnRev,svnCheckMode,subID)
+function [ts_optim, ts_sfSweep, ts_ctrSweep, ts_orSweep, ts_durLimited, ts_durLimitedCtr, ts_durSweepEasy, ts_durSweepHard] = createOrientationSteps_auto(svnRev,svnCheckMode,subID)
 
 
 % basic details for stim
@@ -21,6 +21,7 @@ out.contrastsForDurs = {[0.15 1],[0.15,1]};
 out.maxDurationOpt={inf,inf};
 out.maxDurationLimited = {1,1};
 out.maxDurationSweep={logspace(log10(0.020),log10(0.5),8),logspace(log10(0.02),log10(0.5),8)};
+out.maxDurationSweepEasy={logspace(log10(0.125),log10(2),8),logspace(log10(0.125),log10(2),8)};
 out.radiiOpt={0.5,0.5};
 out.annuli={0,0};
 out.location={[.5 .5],[0.5 0.5]};      % center of mask
@@ -103,7 +104,11 @@ afc_durWithCtr = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orien
     out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
     out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrimDurSweep);
 
-afc_durSweep = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsForDurs,out.maxDurationSweep,...
+afc_durSweepEasy = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsForDurs,out.maxDurationSweepEasy,...
+    out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
+    out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrimDurSweep);
+
+afc_durSweepHard = afcGratings(out.pixPerCycsOpt,out.driftfrequenciesOpt,out.orientationsOpt,out.phasesOpt,out.contrastsForDurs,out.maxDurationSweep,...
     out.radiiOpt,out.radiusType,out.annuli,out.location,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
     out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrimDurSweep);
 
@@ -142,6 +147,7 @@ ts_sfSweep = trainingStep(tm, afc_sfSweep, numTrialsCrit_varSF, sch, svnRev, svn
 ts_ctrSweep = trainingStep(tm, afc_ctrSweep, numTrialsCrit_varCtr, sch, svnRev, svnCheckMode,'orCTRSweep');
 ts_orSweep = trainingStep(tm, afc_orSweep, numTrialsCrit_varOr, sch, svnRev, svnCheckMode,'orORSweep');
 ts_durLimited = trainingStep(tm, afc_durLimited, thresholdPC, sch, svnRev, svnCheckMode,'orDURLimited');
-ts_durLimitedCtr = trainingStep(tm, afc_durWithCtr, numTrialsCrit_DurLim, sch, svnRev, svnCheckMode,'orDURLimited');
-ts_durSweep = trainingStep(tm, afc_durSweep, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDUR_LowDur_Sweep');
+ts_durLimitedCtr = trainingStep(tm, afc_durWithCtr, repeatIndefinitely(), sch, svnRev, svnCheckMode,'orDURLimited');
+ts_durSweepEasy = trainingStep(tm, afc_durSweepEasy, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDURSweep');
+ts_durSweepHard = trainingStep(tm, afc_durSweepHard, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDUR_LowDur_Sweep');
 end
