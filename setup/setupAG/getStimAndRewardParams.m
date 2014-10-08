@@ -66,49 +66,73 @@ switch lower(subID)
         % reduced reward scalar to 0.02 9/6
     case '247'
         out.rewardScalar = 0.25;
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
         % increased pealty to 15000 on 8/10
         % reduced reward to 0.25 9/13
+        % increased penalty to 20s
     case '248'
         out.rewardScalar = 0.25;
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
         % reduced reward to 0.25 9/13
         % increased pealty to 15000 on 9/13
+        % increased penalty to 20s 10/7
     case '249'
         out.rewardScalar = 0.25;
         % reduced reward to 0.25 8/10
     case '250'
         out.rewardScalar = 0.1;
+        out.msPenalty = 15000;
         % reduced reward to 0.25 8/10
         % reduced reward to 0.1 9/13
+        % increased penalty to 15s 10/7
     case '251'
         out.rewardScalar = 0.1;
+        out.msPenalty = 15000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 9/22
+        % increaed timeout to 15000 10/7
     case '252'
         out.rewardScalar = 0.1;
+        out.msPenalty = 15000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 9/22
+        % increased timeout to 15 s 10/7
     case '253'
         % no change
     case '254'
-        % no change
+        out.rewardScalar = 0.25;
+        % reduced reward to 0.25 10/7
     case '255'
         out.rewardScalar = 0.25;
         % reduced reward to 0.25 9/13
     case '256'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
+        % reduced reward to 0.1 10/7
     case '257'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
+        % reduced reward to 0.1 10/7
     case '258'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
-    case 'L001'
+        % reduced reward to 0.1 10/7
+    case '259'
+        out.rewardScalar = 0.1;
+        % reduced reward to 0.1 10/7
+    case '261'
+        out.rewardScalar = 0.1;
+        % reduced reward to 0.1 10/7
+    case '262'
+        out.rewardScalar = 0.1;
+        % reduced reward to 0.1 10/7
+    case '263'
+        out.rewardScalar = 0.1;
+        % reduced reward to 0.1 10/7
+    case 'l001'
         out.rewardScalar = 0.25;
         % reduced reward 9/4;
-    case 'L002'
+    case 'l002'
         out.rewardScalar = 0.25;
         % reduced reward 9/4
     otherwise
