@@ -58,7 +58,7 @@ constantRewardsWithReqRewards = constantReinforcement(rewardSize,10,doAllRequest
 tm= nAFC(sm, percentCorrectionTrials, constantRewards);
 tmWithReqRew = nAFC(sm, percentCorrectionTrials, constantRewardsWithReqRewards);
 % training step using other objects as passed in
-ts_Moptim = trainingStep(tmWithReqRew, afc_optim, thresholdPC, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
+ts_Moptim = trainingStep(tmWithReqRew, afc_optim, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
 ts_MvelSweep = trainingStep(tm, afc_velSweep, numTrialsCrit_velSweep, sch, svnRev, svnCheckMode,'velSweepM'); %CHANGE
 ts_McohSweep = trainingStep(tm, afc_cohSweep, numTrialsCrit_cohSweep, sch, svnRev, svnCheckMode,'cohSweepM');% CHANGE
 ts_Mdot1 = trainingStep(tm, afc_sizeSweep1, numTrialsCrit_sizeSweep, sch, svnRev, svnCheckMode,'size1M'); %CHANGE
@@ -67,7 +67,7 @@ ts_Mdot3 = trainingStep(tm, afc_sizeSweep3, numTrialsCrit_sizeSweep, sch, svnRev
 end
 
 function out = getStepDetails()
-out.coherenceOpt = .99;             % Percent of dots to move in a specified direction
+out.coherenceOpt = {[.99,.80],'selectFrom'};             % Percent of dots to move in a specified direction
 out.coherenceSweep = {[.15,.2,.25,.3,.35,.4,.65,.9], 'selectFrom'};             % Percent of dots to move in a specified direction
 out.contrast = 1;               % contrast of the dots
 out.movie_duration = 2;         % in seconds
@@ -86,7 +86,7 @@ switch b
         out.num_dots1 = 1844;              % Number of dots to display
         out.num_dots2 = 461;              % Number of dots to display
         out.num_dots3 = 115;              % Number of dots to display
-        out.speedOpt = 1;                  % How fast do our little dots move
+        out.speedOpt = 4;                  % How fast do our little dots move
         out.speedSweep = {[0.0825,0.0165,0.33,0.66,1.32], 'selectFrom'};                  % How fast do our little dots move
         out.dot_sizeOpt = 8;              % Width of dots in pixels
         out.dot_size1 = 1;              % Width of dots in pixels

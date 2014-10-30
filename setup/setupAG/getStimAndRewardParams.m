@@ -63,7 +63,7 @@ switch lower(subID)
         % increased penalty to 15000 9/6
         % reduced reward to 0.1 9/13
     case '245'
-        out.rewardScalar = 0.05;
+        out.rewardScalar = 0.1;
         % reduced reward to 0.25 8/3
         % reduced reward to 0.1 8/10
         % reduced reward scalar to 0.02 9/6
