@@ -27,6 +27,7 @@ if ~exist('filters','var') || isempty(filters)
     filters.ctrImages = 1:today;
     filters.ctrSensitivity = 1:today;
     filters.varDur = 1:today;
+    filters.cohFilter = 1:today;
 elseif isnumeric(filters)
     temp = filters;
     filters.fdFilter = temp;
@@ -45,6 +46,7 @@ elseif isnumeric(filters)
     filters.ctrImages = temp;
     filters.ctrSensitivity = temp;
     filters.varDur = temp;
+    filters.cohFilter = temp;
     clear temp
 end
 
@@ -65,21 +67,17 @@ if ~exist('analysisFor','var')||isempty(analysisFor)
     analyzeCtrSensitivity = true;
     analyzeVariedDurations = true;
 else
-    analyzeImages = analysisFor.analyzeImages;
-    analyzeOpt = analysisFor.analyzeOpt;
-    analyzeRevOpt = analysisFor.analyzeRevOpt;
-    analyzeContrast = analysisFor.analyzeContrast;
-    analyzeRevContrast = analysisFor.analyzeRevContrast;
-    analyzeSpatFreq = analysisFor.analyzeSpatFreq;
-    analyzeRevSpatFreq = analysisFor.analyzeRevSpatFreq;
-    analyzeOrientation = analysisFor.analyzeOrientation;
-    analyzeRevOrientation = analysisFor.analyzeRevOrientation;
-    analyzeTempFreq = analysisFor.analyzeTempFreq;
-    analyzeRevTempFreq = analysisFor.analyzeRevTempFreq;
-    analyzeQuatRadContrast = analysisFor.analyzeQuatRadContrast;
-    analyzeImagesContrast = analysisFor.analyzeImagesContrast;
-    analyzeCtrSensitivity = analysisFor.analyzeCtrSensitivity;
-    analyzeVariedDurations = analysisFor.analyzeVariedDurations;
+    toCheck = {'analyzeImages','analyzeOpt','analyzeRevOpt','analyzeContrast','analyzeRevContrast','analyzeSpatFreq',...
+        'analyzeRevSpatFreq','analyzeOrientation','analyzeRevOrientation','analyzeTempFreq','analyzeRevTempFreq',...
+        'analyzeRevTempFreq','analyzeQuatRadContrast','analyzeImagesContrast','analyzeCtrSensitivity','analyzeVariedDurations',...
+        'analyzeCoherence'};
+    for currToCheck = toCheck
+        if isfield(analysisFor,currToCheck{1})
+            eval(sprintf('%s=analysisFor.%s;',currToCheck{1},currToCheck{1}));
+        else
+            eval(sprintf('%s=false;',currToCheck{1},currToCheck{1}));
+        end
+    end
 end
 
 if ~exist('splits','var')||isempty(splits)
@@ -175,7 +173,18 @@ end
 
 %% VARIED DURATIONS
 if analyzeVariedDurations
+    if isfield(analysisFor,'tsName') && ~isempty(analysisFor.tsName)
+        filters.tsName = analysisFor.tsName;
+    end
     out.varDurData = analyzeVariedDurationTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
+end
+
+%% VARIED COHERENCE
+if analyzeCoherence
+    if isfield(analysisFor,'tsName') && ~isempty(analysisFor.tsName)
+        filters.tsName = analysisFor.tsName;
+    end
+    out.cohData = analyzeCoherenceTrials(mouseID,data,filters,plotDetails,trialNumCutoff,daysPBS,daysCNO,daysIntact,daysLesion);
 end
 end
 
