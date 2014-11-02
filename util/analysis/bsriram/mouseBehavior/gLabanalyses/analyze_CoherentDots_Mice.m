@@ -6,10 +6,10 @@ Subjects = {'241','242','243','244','245'};
 %% 241
 analysisFor.analyzeCoherence = true;
 
-analysisFor.tsName = 'cohSweepM';
+analysisFor.tsName = 'OptM';
 
 
-filters = 1:today; %'Jun-17-2013':today
+filters =today-2:today; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];
@@ -31,10 +31,10 @@ c1 = analyzeMouse('241',filters,plotDetails,trialNumCutoff,analysisFor,splits,co
 %% 242
 analysisFor.analyzeCoherence = true;
 
-analysisFor.tsName = 'cohSweepM';
+analysisFor.tsName = 'OptM';
 
 
-filters = 1:today; %'Jun-17-2013':today
+filters = today-2:today; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];
@@ -56,10 +56,10 @@ c1 = analyzeMouse('242',filters,plotDetails,trialNumCutoff,analysisFor,splits,co
 %% 244
 analysisFor.analyzeCoherence = true;
 
-analysisFor.tsName = 'cohSweepM';
+analysisFor.tsName = 'OptM';
 
 
-filters = 1:today; %'Jun-17-2013':today
+filters = today-2:today; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];
