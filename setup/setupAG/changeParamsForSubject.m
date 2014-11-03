@@ -107,11 +107,11 @@ switch mac
         subjectID = '254';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        step = 5;
+        step = 4;
         [~, rx]=setProtocolAndStep(sub,pOD('254'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed to pOD and reduced reward to 0.25 10/7
         % reduced reward to 0.1 10/17
-        % manually sent to step 4
+        % manually sent to step 4 11/2
 % 
 %         subjectID = '242';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -154,12 +154,12 @@ switch mac
         subjectID = '227';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        step = 5; % sent back to step 5
+        step = 7; % sent back to step 5
         [~, rx]=setProtocolAndStep(sub,pOD('227'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % increased penalty to 15000 on 9/13
         % shifted to pOD at dur limited 10/7
         % manual step change to 8 10/17
-        % manual step change to step 5
+        % manual step change to step 7 11/2
 %         
         subjectID = '255';
         sub=getSubjectFromID(rx,subjectID);
@@ -167,7 +167,7 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % reduced reward to 0.25 9/13
         % changed to pOD at the object task and reduced reward to 0.1 10/7
-        % increased penalty to 15 s
+        % increased penalty to 15 s 11/2
 %        
         subjectID = '256';
         sub=getSubjectFromID(rx,subjectID);
@@ -175,6 +175,7 @@ switch mac
         [~, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % reduced reward to 0.25 9/13
         % changed to the OD protocol at the object task 10/7
+        % probably increased penalty 11/2
 %         
 %         subjectID = '243';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -240,13 +241,13 @@ switch mac
         subjectID = '249';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        step = 5;
+        step = 7;
         [~, rx]=setProtocolAndStep(sub,pOD('249'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 3 on 7/29
         % reduced the maxDuration for stim 20/8
         % sent back to step 5 - poor performance 10/7
         % manual shift to step 8 10/17
-        % change to the basic task to get performance back up
+        % change to step 7 11/2
 %      
 % 
         subjectID = '261';
