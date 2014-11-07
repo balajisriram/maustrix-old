@@ -34,7 +34,7 @@ analysisFor.analyzeCoherence = true;
 analysisFor.tsName = 'OptM';
 
 
-filters = today-2:today; %'Jun-17-2013':today
+filters =today-4:today; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];
@@ -59,7 +59,7 @@ analysisFor.analyzeCoherence = true;
 analysisFor.tsName = 'OptM';
 
 
-filters = today-2:today; %'Jun-17-2013':today
+filters =today-2:today; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];
