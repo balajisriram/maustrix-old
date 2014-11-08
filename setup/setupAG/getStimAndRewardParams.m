@@ -79,23 +79,25 @@ switch lower(subID)
         % increased penalty to 20s
         % reduced reward to 0.15 10/17
     case '248'
-        out.rewardScalar = 0.1;
+        out.rewardScalar = 0.25;
         out.msPenalty = 20000;
         % reduced reward to 0.25 9/13
         % increased pealty to 15000 on 9/13
         % increased penalty to 20s 10/7
         % reduced reward to 0.1 10/10
+        % increased reward to 0.25 11/6
     case '249'
         out.rewardScalar = 0.25;
         % reduced reward to 0.25 8/10
     case '250'
-        out.rewardScalar = 0.05;
+        out.rewardScalar = 0.25;
         out.msPenalty = 25000;
         % reduced reward to 0.25 8/10
         % reduced reward to 0.1 9/13
         % increased penalty to 15s 10/7
         % reduced reward to 0.05 10/17
         % increased penalty to 25 s 11/2
+        % increased reward to 0.25 11/6
     case '251'
         out.rewardScalar = 0.1;
         out.msPenalty = 15000;
@@ -112,7 +114,9 @@ switch lower(subID)
         % increased reward to 0.1 11/2
     case '253'
         out.msPenalty = 15000;
+        out.rewardScalar = 0.15;
         % increased penalty to 15s 11/2
+        % reduced reward to 0.15 11/6
     case '254'
         out.rewardScalar = 0.1;
         % reduced reward to 0.25 10/7
@@ -130,11 +134,12 @@ switch lower(subID)
         % reduced reward to 0.1 10/7
         % increased penalty to 15 s 11/2
     case '257'
-        out.rewardScalar = 0.1;
+        out.rewardScalar = 0.05;
         out.msPenalty = 15000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 10/7
         % increased timeout to 15000 10/10
+        % reduced reward to 0.05 11/6
     case '258'
         out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
@@ -145,10 +150,11 @@ switch lower(subID)
         % reduced reward to 0.1 10/7
         % increased penlty to 10000 10/17
     case '261'
-        out.rewardScalar = 0.05;
+        out.rewardScalar = 0.15;
         out.msPenalty = 15000;
         % reduced reward to 0.1 10/7
         % increased penalty to 15s 10/17
+        % increased reward to 0.15 11/7
     case '262'
         out.rewardScalar = 0.1;
         % reduced reward to 0.1 10/7
