@@ -88,6 +88,27 @@ switch mac
 %         [~, step] = getProtocolAndStep(sub);
 %         [~, rx]=setProtocolAndStep(sub,pOD('999'),true,true,true,step,rx,'mouseTraining_OD','bas');
 
+        sub = subject('250','mouse','c57bl/6j','male','02/05/2014','unknown','a 02/05/2014','Jackson Laboratories','PV-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        step = 5;
+        [sub, rx]=setProtocolAndStep(sub,pOD('250'),true,true,true,3,rx,'mouseTraining_OD','bas');
+        
+%         subjectID = '250';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('250'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % changed from step 1 to 3 on 7/29
+        % reduced the maxDuration for stim 20/8
+        % forced graduation to step 4 9/13
+        % reduced reward to 0.1 9/13
+        % increased penalty to 15 s 10/7
+        % reduced reward to 0.05 10/17
+        % increased penalty to 25s 11/2
+        % increased reward to 0.25
+        % moved to rig 1 from 5 11/11
+        
+        
+
     case 'A41F729213E2' %gLab-Behavior2
         
 %         subjectID = '232';
@@ -207,26 +228,19 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pOD('999'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 % 
+        sub = subject('262','mouse','c57bl/6j','male','08/05/2014','unknown','unknown','Jackson Laboratories','PVChR2XSOM','none');
+        rx = addSubject(rx, sub, 'bas');
+        step = 4;
+        [~, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        
+%         subjectID = '262';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % reduced reward to 0.1 10/7
+%         % moved to rig 3 from rig 5
+
     case '7845C4256F4C' %gLab-Behavior4
-                
-%         subjectID = '228';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('228'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % degraduated to step 3 9/13
-%         % sent to var Dur protocol- shift to step 4(same in both) 10/7
-%         % reducing reward(to 0.15) and increased penalty (to 15s) 10/17
-%         
-%         subjectID = '237';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pReversal('237'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % reduced reward to 0.25 9/13
-%         
-%         subjectID = '238';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pReversal('238'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 %         subjectID = '244';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -260,23 +274,54 @@ switch mac
         % increased penalty to 15s 10/17
         % reduced reward to 0.05 11/2
         % increased reward to 0.15 11/6
-%         
-%         subjectID = '999';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('999'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % inceased timeout to 20s 11/7
+        %
+        %         subjectID = '999';
+        %         sub=getSubjectFromID(rx,subjectID);
+        %         [~, step] = getProtocolAndStep(sub);
+        %         [~, rx]=setProtocolAndStep(sub,pOD('999'),true,true,true,step,rx,'mouseTraining_OD','bas');
         
-        
-    case '7845C42558DF' %gLab-Behavior5
-                
-        subjectID = '218';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
+        sub = subject('218','mouse','c57bl/6j','male','04/05/2013','unknown','unknown','Jackson Laboratories','PV-cre','none');
+        rx = addSubject(rx, sub, 'bas');
         step = 7;
         [~, rx]=setProtocolAndStep(sub,pOD('218'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        
+%         subjectID = '218';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         step = 7;
+%         [~, rx]=setProtocolAndStep(sub,pOD('218'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % forced graduation to step 4 9/13
         % sent to pOD at step 6 (dur limited) 10/7
         % back to step 7 11/7
+        % moved 218 to rig 4
+        
+        sub = subject('257','mouse','c57bl/6j','male','02/05/2014','unknown','a 02/05/2014','Jackson Laboratories','PV-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        step = 5;
+        [sub, rx]=setProtocolAndStep(sub,pMotion('257'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('257'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         reduced reward to 0.25 9/13
+%         reduced reward to 0.1 10/7
+%         increased timeout to 15000 10/10
+%         reduced reward to 0.05 11/6
+%         moved to rig 4 
+                
+        sub = subject('258','mouse','c57bl/6j','male','02/05/2014','unknown','a 02/05/2014','Jackson Laboratories','PV-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        step = 5;
+        [sub, rx]=setProtocolAndStep(sub,pOD('258'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOD('258'),true,true,true,step,rx,'mouseTraining_OD','bas');
+        % reduced reward to 0.25 9/13
+        % reduced reward to 0.1 10/7
+        
+    case '7845C42558DF' %gLab-Behavior5
+                
+        
 %         
 %         subjectID = '245';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -289,40 +334,9 @@ switch mac
 %         % back to same step bu thte step is different also increased
 %         %      reward for subject 10/29
 %                
-        subjectID = '250';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pOD('250'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % changed from step 1 to 3 on 7/29
-        % reduced the maxDuration for stim 20/8
-        % forced graduation to step 4 9/13
-        % reduced reward to 0.1 9/13
-        % increased penalty to 15 s 10/7
-        % reduced reward to 0.05 10/17
-        % increased penalty to 25s 11/2
-        % increased reward to 0.25
+
 %         
-        subjectID = '257';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pOD('257'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % reduced reward to 0.25 9/13
-        % reduced reward to 0.1 10/7
-        % increased timeout to 15000 10/10
-        % reduced reward to 0.05 11/6
-%         
-%         subjectID = '258';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('258'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % reduced reward to 0.25 9/13
-%         % reduced reward to 0.1 10/7
-% 
-%         subjectID = '262';
-%         sub=getSubjectFromID(rx,subjectID);
-%         [~, step] = getProtocolAndStep(sub);
-%         [~, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,step,rx,'mouseTraining_OD','bas');
-%         % reduced reward to 0.1 10/7
+
 % 
 %         subjectID = '999';
 %         sub=getSubjectFromID(rx,subjectID);

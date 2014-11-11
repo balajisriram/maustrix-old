@@ -151,10 +151,11 @@ switch lower(subID)
         % increased penlty to 10000 10/17
     case '261'
         out.rewardScalar = 0.15;
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
         % reduced reward to 0.1 10/7
         % increased penalty to 15s 10/17
         % increased reward to 0.15 11/7
+        % increased timeput to 20 s 11/7
     case '262'
         out.rewardScalar = 0.1;
         % reduced reward to 0.1 10/7
