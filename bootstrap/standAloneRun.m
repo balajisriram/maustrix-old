@@ -278,10 +278,10 @@ end
 function [correctBox, whichBox] = ensureCorrectBoxForSubject(subjID)
 allowedTestSubjects = {'demo1','999'};
 
-Box1Subjects = {'223','251','252','241','246','263'};
-Box2Subjects = {'232','253','254','242','247','259'};
-Box3Subjects = {'227','255','256','243','248','260'};
-Box4Subjects = {'228','237','238','244','249','261'};
+Box1Subjects = {'223','241','246','252','250','263'};
+Box2Subjects = {'232','242','247','253','254','259'};
+Box3Subjects = {'227','243','248','255','256','262'};
+Box4Subjects = {'218','244','249','257','258','261'};
 Box5Subjects = {'218','257','258','245','250','262'};
 Box6Subjects = {'L001','L002'};
 Subjects = {Box1Subjects,Box2Subjects,Box3Subjects,Box4Subjects,Box5Subjects,Box6Subjects};
