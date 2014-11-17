@@ -73,19 +73,21 @@ switch lower(subID)
         % reduced reward and increased penalty 10/17
     case '247'
         out.rewardScalar = 0.15;
-        out.msPenalty = 20000;
+        out.msPenalty = 5000;
         % increased pealty to 15000 on 8/10
         % reduced reward to 0.25 9/13
         % increased penalty to 20s
         % reduced reward to 0.15 10/17
+        % reduced penalty to 5s 11/16
     case '248'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.15;
         out.msPenalty = 20000;
         % reduced reward to 0.25 9/13
         % increased pealty to 15000 on 9/13
         % increased penalty to 20s 10/7
         % reduced reward to 0.1 10/10
         % increased reward to 0.25 11/6
+        % reduced reward to 0.15 11/16
     case '249'
         out.rewardScalar = 0.25;
         % reduced reward to 0.25 8/10
@@ -106,40 +108,45 @@ switch lower(subID)
         % increaed timeout to 15000 10/7
     case '252'
         out.rewardScalar = 0.1;
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 9/22
         % increased timeout to 15 s 10/7
         % reduced rewards to 0.05;
         % increased reward to 0.1 11/2
+        % increased 20s 11/16
     case '253'
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
         out.rewardScalar = 0.15;
         % increased penalty to 15s 11/2
         % reduced reward to 0.15 11/6
+        % increased penalty to 20s 11/16
     case '254'
         out.rewardScalar = 0.1;
         % reduced reward to 0.25 10/7
         % reduced reward to 0.1 10/17
     case '255'
-        out.rewardScalar = 0.1;
+        out.rewardScalar = 0.25;
         out.msPenalty = 15000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 actually on 10/17
         % increased penalty to 15 s  11/2
+        % increased reward to 11/16
     case '256'
         out.rewardScalar = 0.1;
-        out.msPenalty = 15000;
+        out.msPenalty = 20000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 10/7
         % increased penalty to 15 s 11/2
+        % increased penalty to 20s 11/16
     case '257'
-        out.rewardScalar = 0.05;
+        out.rewardScalar = 0.25;
         out.msPenalty = 15000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 10/7
         % increased timeout to 15000 10/10
         % reduced reward to 0.05 11/6
+        % increased reward to 0.25 11/16
     case '258'
         out.rewardScalar = 0.1;
         % reduced reward to 0.25 9/13
@@ -150,20 +157,24 @@ switch lower(subID)
         % reduced reward to 0.1 10/7
         % increased penlty to 10000 10/17
     case '261'
-        out.rewardScalar = 0.15;
+        out.rewardScalar = 0.10;
         out.msPenalty = 20000;
         % reduced reward to 0.1 10/7
         % increased penalty to 15s 10/17
         % increased reward to 0.15 11/7
         % increased timeput to 20 s 11/7
+        % reduced reward to 0.1 11/16
     case '262'
-        out.rewardScalar = 0.1;
-        % reduced reward to 0.1 10/7
-    case '263'
         out.rewardScalar = 0.1;
         out.msPenalty = 15000;
         % reduced reward to 0.1 10/7
+        % increased penalty to 15s 11/16
+    case '263'
+        out.rewardScalar = 0.2;
+        out.msPenalty = 5000;
+        % reduced reward to 0.1 10/7
         % increased penalty to 15s 10/17
+        % increased reward to 0.2 and reduce penalty to 5s 11/16
     case 'l001'
         out.rewardScalar = 0.25;
         % reduced reward 9/4;
