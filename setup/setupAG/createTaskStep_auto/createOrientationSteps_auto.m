@@ -148,6 +148,6 @@ ts_ctrSweep = trainingStep(tm, afc_ctrSweep, numTrialsCrit_varCtr, sch, svnRev, 
 ts_orSweep = trainingStep(tm, afc_orSweep, numTrialsCrit_varOr, sch, svnRev, svnCheckMode,'orORSweep');
 ts_durLimited = trainingStep(tm, afc_durLimited, thresholdPC, sch, svnRev, svnCheckMode,'orDURLimited');
 ts_durLimitedCtr = trainingStep(tm, afc_durWithCtr, repeatIndefinitely(), sch, svnRev, svnCheckMode,'orDURLimited');
-ts_durSweepEasy = trainingStep(tm, afc_durSweepEasy, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDURSweep');
-ts_durSweepHard = trainingStep(tm, afc_durSweepHard, numTrialsCrit_varDur, sch, svnRev, svnCheckMode,'orDUR_LowDur_Sweep');
+ts_durSweepEasy = trainingStep(tm, afc_durSweepEasy, repeatIndefinitely(), sch, svnRev, svnCheckMode,'orDURSweep');
+ts_durSweepHard = trainingStep(tm, afc_durSweepHard, repeatIndefinitely(), sch, svnRev, svnCheckMode,'orDUR_LowDur_Sweep');
 end
