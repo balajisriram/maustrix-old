@@ -62,7 +62,7 @@ analysisFor.analyzeVariedDurations = true;
 analysisFor.tsName = 'orDURSweep';
 
 
-filters = 1:today; %'Jun-17-2013':today
+filters = 1:today-7; %'Jun-17-2013':today
 trialNumCutoff = 25;
 
 splits.daysPBS = [];
