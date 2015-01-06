@@ -201,7 +201,7 @@ switch plotType
 
     case 'percentCorrect'
 
-        smoothingWidth=50;
+        smoothingWidth=200;
         threshold=0.85;
         axMin=0.3;
         axMax=1;

@@ -176,6 +176,14 @@ if addSteps
     end
 end
 
+%add on day transitions
+if dayTransitionsOn
+    [trialsPerDay]=makeDailyRaster(d.correct,d.response,d.date);  %in terms of ALL trials correction and kills, RETURN trialsPerDay
+    trialsCompletedBy=cumsum(trialsPerDay);
+    for i=1:length(trialsPerDay)
+        plot([trialsCompletedBy(i),trialsCompletedBy(i)], [stepYTop,axMax],'color',[.9,.9,.9])
+    end
+end
 
 if plotCorrectionTrialsToo
     %plot correction trial correct
@@ -212,14 +220,7 @@ if haveBlocks
     %performanceOutput=[]; % blocks never needed... could calculate it in principle
 end
 
-%add on day transitions
-if dayTransitionsOn
-    [trialsPerDay]=makeDailyRaster(d.correct,d.response,d.date);  %in terms of ALL trials correction and kills, RETURN trialsPerDay
-    trialsCompletedBy=cumsum(trialsPerDay);
-    for i=1:length(trialsPerDay)
-        plot([trialsCompletedBy(i),trialsCompletedBy(i)], [stepYTop,axMax],'color',[.9,.9,.9])
-    end
-end
+
 
 % add on thresholdd
 plot([0,totalTrials], [threshold,threshold],'color',[.8,.8,.8])
