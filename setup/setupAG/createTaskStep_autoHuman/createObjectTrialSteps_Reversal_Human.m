@@ -39,7 +39,7 @@ tm= nAFC(sm, percentCorrectionTrials, constantRewards); %percentCorrectionTrials
 imageRotation=[-20 20]; imageSize=[.75 1];
 
 try 
-    imdir = '\\ghosh-16-159-221.ucsd.edu\ghosh\imFiles\PRimageset';
+    imdir = '\\ghosh-nas.ucsd.edu\ghosh\imFiles\PRimageset';
 catch ex
     sca;
     keyboard;

@@ -28,10 +28,10 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box1\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled'};
 ctrAll = analyzeMouse({'60','62','64','66'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 % PBS
@@ -103,19 +103,19 @@ set(gca,'ylim',[0 0.3]);
 keyboard
 
 plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box1\Compiled';
 analyzeMouse('60',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 analyzeMouse('62',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 analyzeMouse('64',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 analyzeMouse('66',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
@@ -127,17 +127,17 @@ analyzeMouse('66',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiled
 % plotDetails.requestedPlot = 'trialsByDay';
 % 
 % plotDetails.axHan = subplot(2,2,1);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box1\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box1\Compiled';
 % analyzeMouse('60',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 % 
 % plotDetails.axHan = subplot(2,2,2);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 % analyzeMouse('62',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 % 
 % plotDetails.axHan = subplot(2,2,3);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 % analyzeMouse('64',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 % 
 % plotDetails.axHan = subplot(2,2,4);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 % analyzeMouse('66',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);

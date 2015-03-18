@@ -37,7 +37,7 @@ if plotFigure2
     analysisFor.analyzeImagesContrast = false;
     analysisFor.analyzeCtrSensitivity = true;
     
-    compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\RocheProject\Compiled';
+    compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\RocheProject\Compiled';
         
     out = analyzeMouse('213',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     out = analyzeMouse('216',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);

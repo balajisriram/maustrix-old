@@ -23,7 +23,7 @@ elseif ~isogical(recompile)
 end
 
 if ~exist('RemoteDirBase','var') || isempty(RemoteDirBase)
-    RemoteDirBase = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\';
+    RemoteDirBase = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\';
 end
 completedMice = {};
 for i = 1:length(boxes)

@@ -36,7 +36,7 @@
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Pam-review\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Pam-review\Compiled';
     end
     
     out = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -75,7 +75,7 @@
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Pam-review\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Pam-review\Compiled';
     end
     
     % 22,23,25,26,48,40,47,53,56,59,37,38,45,50
@@ -180,7 +180,7 @@
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Pam-review\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Pam-review\Compiled';
     end
     
     filters = 1:today;
@@ -277,7 +277,7 @@
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
     end
     
     filters = 1:todayDate;
@@ -320,7 +320,7 @@
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
     end
     axHan = axes;
     out = {};
@@ -370,7 +370,7 @@
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\V1Lesion\Compiled';
     end
     axHan = axes;
     out = {};

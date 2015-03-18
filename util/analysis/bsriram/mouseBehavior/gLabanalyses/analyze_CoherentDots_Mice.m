@@ -24,7 +24,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = false;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Motion\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Motion\Compiled';
 
 c1 = analyzeMouse('241',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -49,7 +49,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = false;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Motion\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Motion\Compiled';
 
 c1 = analyzeMouse('242',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -74,7 +74,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = false;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Motion\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Motion\Compiled';
 
 c1 = analyzeMouse('244',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -99,7 +99,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = false;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Motion\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Motion\Compiled';
 
 c1 = analyzeMouse('243',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -125,7 +125,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = false;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Motion\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Motion\Compiled';
 
 c1 = analyzeMouse('245',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 

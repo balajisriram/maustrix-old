@@ -41,7 +41,7 @@ if plotFigure1
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
     end
     
     out = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -93,7 +93,7 @@ if plotFigure2
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
     end
     outBefore = {};
     numDaysBefore = 10;
@@ -229,7 +229,7 @@ if plotFigure3
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
     end
     
     out = analyzeMouse(mouseID,filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -279,7 +279,7 @@ if plotFigure4
     if ismac
         compiledFilesDir = '/Volumes/BAS-DATA1/BehaviorBkup/Box3/Compiled';
     elseif IsWin
-        compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
+        compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\SCLesion\Compiled';
     end
     outBefore = {};
     numDaysBefore = 10;

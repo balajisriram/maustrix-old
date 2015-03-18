@@ -36,10 +36,10 @@ plotDetails.plotWhere = 'givenAxes';
 plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-%     '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+%     '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
 ctrAll = analyzeMouse({'63','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotResponseTimes = true;
@@ -339,7 +339,7 @@ set(gca,'ylim',[0 0.3]);
 
 
 plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 c1 = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 fitIn.cntr = c1.ctrData.contrasts;
 fitIn.pHat = c1.ctrData.performanceByConditionWCO(:,1,1)';
@@ -351,7 +351,7 @@ fitInd(1,2) = fitHyperbolicRatio(fitIn);
 plot(fitInd(1,2).fittedModel.c,fitInd(1,2).fittedModel.pModel,'r','lineWidth',3);
 
 plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 c2 = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 fitIn.cntr = c2.ctrData.contrasts;
 fitIn.pHat = c2.ctrData.performanceByConditionWCO(:,1,1)';
@@ -364,7 +364,7 @@ plot(fitInd(2,2).fittedModel.c,fitInd(2,2).fittedModel.pModel,'r','lineWidth',3)
 
 
 plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 c3 = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 fitIn.cntr = c3.ctrData.contrasts;
 fitIn.pHat = c3.ctrData.performanceByConditionWCO(:,1,1)';
@@ -376,7 +376,7 @@ fitInd(3,2) = fitHyperbolicRatio(fitIn);
 plot(fitInd(3,2).fittedModel.c,fitInd(3,2).fittedModel.pModel,'r','lineWidth',3);
 
 plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box5\Compiled';
 c4 = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 fitIn.cntr = c4.ctrData.contrasts;
 fitIn.pHat = c4.ctrData.performanceByConditionWCO(:,1,1)';
@@ -419,10 +419,10 @@ plotDetails.plotWhere = 'givenAxes';
 plotDetails.requestedPlot = 'performanceByCondition';
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
 OrAll = analyzeMouse({'63','65','67','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
@@ -580,19 +580,19 @@ end
 out = {};
 
 % plotDetails.axHan = subplot(3,2,3);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 % out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 % 
 % plotDetails.axHan = subplot(3,2,4);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 % out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 % 
 % plotDetails.axHan = subplot(3,2,5);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 % out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 % 
 % plotDetails.axHan = subplot(3,2,6);
-% compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+% compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box5\Compiled';
 % out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 % PBS only
@@ -718,26 +718,26 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
 ctrAll = analyzeMouse({'63','65','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
 plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box5\Compiled';
 analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 %% Final run of contrast
@@ -770,37 +770,37 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 
 plotDetails.axHan = subplot(4,2,1:2);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
 ctrAll = analyzeMouse({'61','63','65','69','200','201'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
 plotDetails.axHan = subplot(4,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('61',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(4,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(4,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(4,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(4,2,7);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('200',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(4,2,8);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 analyzeMouse('201',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 %% plot Spat. Freq
@@ -856,10 +856,10 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled'};
 sfAll = analyzeMouse({'61','63','65','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 
@@ -1019,19 +1019,19 @@ end
 out = {};
 
 plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\PV-V1-hM3D\Compiled';
 out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 % PBS only
@@ -1125,28 +1125,28 @@ plotDetails.requestedPlot = 'performanceByCondition';
 
 
 plotDetails.axHan = subplot(3,2,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
-    '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';...
+    '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box5\Compiled'};
 sfAll = analyzeMouse({'61','63','65','69'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 out = {};
 
 plotDetails.axHan = subplot(3,2,3);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 out{1} = analyzeMouse('63',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,4);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 out{2} = analyzeMouse('65',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,5);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box4\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box4\Compiled';
 out{3} = analyzeMouse('67',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 plotDetails.axHan = subplot(3,2,6);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\Box5\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\Box5\Compiled';
 out{4} = analyzeMouse('69',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
 % PBS only

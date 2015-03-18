@@ -36,7 +36,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = true;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = {'\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled','\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled','\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled'};
+compiledFilesDir = {'\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled','\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled','\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled'};
 
 c1 = analyzeMouse({'223','218','227'},filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -77,7 +77,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = true;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
 
 c1Easy = analyzeMouse('223',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -115,7 +115,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = true;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
 
 c1 = analyzeMouse('218',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 %% 249
@@ -152,7 +152,7 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = false;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
 
 c1 = analyzeMouse('249',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);
 
@@ -191,6 +191,6 @@ plotDetails.requestedPlot = 'performanceByCondition';
 plotDetails.plotMeansOnly = true;
 
 plotDetails.axHan = subplot(1,1,1);
-compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
+compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\VarDur\Compiled';
 
 c1 = analyzeMouse('227',filters,plotDetails,trialNumCutoff,analysisFor,splits,compiledFilesDir);

@@ -37,7 +37,7 @@ if plotBefore
     analysisFor.analyzeImagesContrast = false;
     analysisFor.analyzeCtrSensitivity = true;
     
-    compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\RocheProject\Compiled';
+    compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\RocheProject\Compiled';
         
     outBefore{1} = analyzeMouse('213',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     outBefore{2} = analyzeMouse('216',filters,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
@@ -109,7 +109,7 @@ if plotAfter
     analysisFor.analyzeImagesContrast = false;
     analysisFor.analyzeCtrSensitivity = true;
     
-    compiledFilesDir = '\\ghosh-16-159-221.ucsd.edu\ghosh\Behavior\RocheProject\Compiled';
+    compiledFilesDir = '\\ghosh-nas.ucsd.edu\ghosh\Behavior\RocheProject\Compiled';
         
     outAfter{1} = analyzeMouse('213',filtersAfter,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
     outAfter{2} = analyzeMouse('216',filtersAfter,plotDetails,trialNumCutoff,analysisFor,[],compiledFilesDir);
