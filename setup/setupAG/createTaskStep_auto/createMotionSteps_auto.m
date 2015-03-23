@@ -59,11 +59,11 @@ tm= nAFC(sm, percentCorrectionTrials, constantRewards);
 tmWithReqRew = nAFC(sm, percentCorrectionTrials, constantRewardsWithReqRewards);
 % training step using other objects as passed in
 ts_Moptim = trainingStep(tmWithReqRew, afc_optim, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
-ts_MvelSweep = trainingStep(tm, afc_velSweep, numTrialsCrit_velSweep, sch, svnRev, svnCheckMode,'velSweepM'); %CHANGE
-ts_McohSweep = trainingStep(tm, afc_cohSweep, numTrialsCrit_cohSweep, sch, svnRev, svnCheckMode,'cohSweepM');% CHANGE
-ts_Mdot1 = trainingStep(tm, afc_sizeSweep1, numTrialsCrit_sizeSweep, sch, svnRev, svnCheckMode,'size1M'); %CHANGE
-ts_Mdot2 = trainingStep(tm, afc_sizeSweep2, numTrialsCrit_sizeSweep, sch, svnRev, svnCheckMode,'size2M'); %CHANGE
-ts_Mdot3 = trainingStep(tm, afc_sizeSweep3, numTrialsCrit_sizeSweep, sch, svnRev, svnCheckMode,'size3M'); %CHANGE
+ts_MvelSweep = trainingStep(tm, afc_velSweep, repeatIndefinitely, sch, svnRev, svnCheckMode,'velSweepM'); %CHANGE
+ts_McohSweep = trainingStep(tm, afc_cohSweep, repeatIndefinitely, sch, svnRev, svnCheckMode,'cohSweepM');% CHANGE
+ts_Mdot1 = trainingStep(tm, afc_sizeSweep1, repeatIndefinitely, sch, svnRev, svnCheckMode,'size1M'); %CHANGE
+ts_Mdot2 = trainingStep(tm, afc_sizeSweep2, repeatIndefinitely, sch, svnRev, svnCheckMode,'size2M'); %CHANGE
+ts_Mdot3 = trainingStep(tm, afc_sizeSweep3, repeatIndefinitely, sch, svnRev, svnCheckMode,'size3M'); %CHANGE
 end
 
 function out = getStepDetails()
