@@ -269,6 +269,8 @@ switch b
         xtraServerBackupPath='\\ghosh-nas.ucsd.edu\ghosh\Behavior\ephys-stim\Permanent';
     case '180373337162' %ephys-data
         backupToServer = false;
+    case 'A41F72921700' %bas-analysis
+        backupToServer = false;
     otherwise
         warning('not sure which computer you are using. add that mac to this step. delete db and then continue. also deal with the other createStep functions.');
         keyboard;
