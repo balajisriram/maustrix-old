@@ -63,6 +63,12 @@ switch n
             sweptParameters
             error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
         end
+        if all(ismember(sweptParameters,{'contrasts','pixPerCycs','phases','orientations'}))
+            out = 'afcGratings_cntrXsfXphXorSweep';
+        else
+            sweptParameters
+            error('if you want to get this working, you are gonna have to create a name for it. look at the previous line for a format');
+        end
     otherwise
         error('unsupported type. if you want this make a name for it');
 end
