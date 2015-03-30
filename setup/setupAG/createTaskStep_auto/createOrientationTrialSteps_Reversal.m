@@ -80,7 +80,31 @@ afc_or2 = afcGratings(out.pixPerCycs,out.driftfrequencies,out.orientations,out.p
     out.radii,out.radiusType,out.annuli,out.location2,out.waveform,out.normalizationMethod,out.mean,out.thresh,out.maxWidth,out.maxHeight,...
     out.scaleFactor,out.interTrialLuminance,out.doCombos,out.doPostDiscrim);
 
+% reinf
+rewardScalar = out.rewardScalar;
+requestRewardSize = 0; 
+rewardSize = out.rewardSize;
+doAllRequests =	'first'; 
+fractionSoundOn = 1; % this applies to beeps
+fractionPenaltySoundOn = 0.10;  % fraction of the timeout that annoying error sound is on
+msAirpuff = 0;
+msPenalty = out.msPenalty;
 
-ts1 = trainingStep(tm, imagestim1, thresholdPC, sch,svnRev,svnCheckMode,'GotoObject_FullC');
-ts2 = trainingStep(tm, imagestim2, thresholdPC, sch,svnRev,svnCheckMode,'GoAwayFromObject_FullC');
+percentCorrectionTrials = 0.2;
+
+% sound Manager
+sm=makeStandardSoundManager();
+% scheduler
+sch=noTimeOff(); % runs until swapper ends session
+constantRewards=constantReinforcement(rewardSize,requestRewardSize,doAllRequests,...
+    msPenalty,fractionSoundOn,fractionPenaltySoundOn,rewardScalar,msAirpuff);  %% rewardScalar, msPenalty are arguments to the function
+tm= nAFC(sm, percentCorrectionTrials, constantRewards); %percentCorrectionTrials is an argument to the function
+
+
+% criterion
+thresholdPC=performanceCriterionLatestStreak([0.75],int16([200]));
+
+
+ts1 = trainingStep(tm, afc_or1, thresholdPC, sch,svnRev,svnCheckMode,'GotoObject_FullC');
+ts2 = trainingStep(tm, afc_or2, thresholdPC, sch,svnRev,svnCheckMode,'GoAwayFromObject_FullC');
 end
