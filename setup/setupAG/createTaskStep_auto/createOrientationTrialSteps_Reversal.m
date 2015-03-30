@@ -1,7 +1,7 @@
 function [ts1, ts2]=createOrientationTrialSteps_Reversal(svnRev,svnCheckMode,subID)
 
 % basic details for stim
-out.pixPerCycs={[16,32,64,128,256],[16,32,64,128,256]};
+out.pixPerCycs={[64,128,256],[64,128,256]};
 
 out.driftfrequencies={[0],[0]};
 
@@ -14,10 +14,10 @@ out.contrasts = {[0.15 1],[0.15,1]};
 
 out.maxDuration = {0.25,0.25};
 
-out.radii={0.1,0.1};
+out.radii={0.25,0.25};
 out.annuli={0,0};
-out.location1={[.2 .5],[.8 .5]};      % center of mask
-out.location2={[.8 .5],[.2 .5]};      % center of mask
+out.location1={[.25 .5],[.75 .5]};      % center of mask
+out.location2={[.75 .5],[.25 .5]};      % center of mask
 out.waveform= 'sine';
 out.radiusType='hardEdge';
 out.normalizationMethod='normalizeDiagonal';
@@ -65,9 +65,7 @@ out.doCombos = true;
 out.rewardScalar = 0.2;
 out.rewardSize = 50;
 out.msPenalty = 5000;
-out.doPostDiscrim = false;
-out.doPostDiscrimDurSweep = true;
-
+out.doPostDiscrim = true;
 
 out = getStimAndRewardParams(out,subID);
 
