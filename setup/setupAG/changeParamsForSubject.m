@@ -126,7 +126,7 @@ switch mac
 %         % decreased reward to 0.25 and penalty to 10s 3/22
 %
         subjectID = '248';
-        sub = subject('248','mouse','c57bl/6j','male','2/27/2014','unknown','2/27/2014','Jackson Laboratories','PV-cre','none');
+        sub = subject('248','mouse','c57bl/6j','male','2/27/2014','unknown','a 2/27/2014','Jackson Laboratories','PV-cre','none');
         rx = addSubject(rx, sub, 'bas');
         step = 7;
 %         sub=getSubjectFromID(rx,subjectID);
