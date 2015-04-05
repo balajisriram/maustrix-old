@@ -12,7 +12,7 @@ out.phases={[0 pi/4 pi/2 3*pi/4 pi],[0 pi/4 pi/2 3*pi/4 pi]};
 
 out.contrasts = {[0.15 1],[0.15,1]};
 
-out.maxDuration = {0.25,0.25};
+out.maxDuration = {0.5,0.5};
 
 out.radii={0.25,0.25};
 out.annuli={0,0};
