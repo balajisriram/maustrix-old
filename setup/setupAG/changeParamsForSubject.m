@@ -418,29 +418,29 @@ switch mac
 %         % reduced reward to 0.1 10/7
 %         % increased penalty to 15s 12/20
 %
-        subjectID = '264';
-%         sub=getSubjectFromID(rx,subjectID);
-        sub = subject('264','mouse','c57bl/6j','male','10/31/2014','unknown','a 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
-        rx = addSubject(rx, sub, 'bas');
-%         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pInit('264'),true,true,true,1,rx,'mouseTraining_Init','bas');
-        % added mouse 3/31/15
-        
-        subjectID = '265';
-%         sub=getSubjectFromID(rx,subjectID);
-        sub = subject('265','mouse','c57bl/6j','male','10/31/2014','unknown','b 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
-        rx = addSubject(rx, sub, 'bas');
-%         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pInit('265'),true,true,true,1,rx,'mouseTraining_Init','bas');
-        % added mouse 3/31/15
-        
-        subjectID = '269';
-%         sub=getSubjectFromID(rx,subjectID);
-        sub = subject('269','mouse','c57bl/6j','female','10/31/2014','unknown','b 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
-        rx = addSubject(rx, sub, 'bas');
-%         [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pInit('269'),true,true,true,1,rx,'mouseTraining_Init','bas');
-        % added mouse 3/31/15
+%         subjectID = '264';
+% %         sub=getSubjectFromID(rx,subjectID);
+%         sub = subject('264','mouse','c57bl/6j','male','10/31/2014','unknown','a 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
+%         rx = addSubject(rx, sub, 'bas');
+% %         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pInit('264'),true,true,true,1,rx,'mouseTraining_Init','bas');
+%         % added mouse 3/31/15
+%         
+%         subjectID = '265';
+% %         sub=getSubjectFromID(rx,subjectID);
+%         sub = subject('265','mouse','c57bl/6j','male','10/31/2014','unknown','b 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
+%         rx = addSubject(rx, sub, 'bas');
+% %         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pInit('265'),true,true,true,1,rx,'mouseTraining_Init','bas');
+%         % added mouse 3/31/15
+%         
+%         subjectID = '269';
+% %         sub=getSubjectFromID(rx,subjectID);
+%         sub = subject('269','mouse','c57bl/6j','female','10/31/2014','unknown','b 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
+%         rx = addSubject(rx, sub, 'bas');
+% %         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pInit('269'),true,true,true,1,rx,'mouseTraining_Init','bas');
+%         % added mouse 3/31/15
 
         
     case '7845C42558DF' %gLab-Behavior5
