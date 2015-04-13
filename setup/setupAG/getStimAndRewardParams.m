@@ -163,14 +163,15 @@ switch lower(subID)
         % increased reward to 0.5 2/2
         % decreased reward to 0.25 and penalty to 10s 3/22
     case '256'
-        out.rewardScalar = 0.5;
-        out.msPenalty = 20000;
+        out.rewardScalar = 0.2;
+        out.msPenalty = 5000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 10/7
         % increased penalty to 15 s 11/2
         % increased penalty to 20s 11/16
         % inc reward and reduced timeout for increased motivation 12/20
         % increased reward to 0.5 and penalty to 20s 3/22
+        % reduced reward and reduced penalty (more trials?) 4/13
     case '257'
         out.rewardScalar = 0.25;
         out.msPenalty = 20000;

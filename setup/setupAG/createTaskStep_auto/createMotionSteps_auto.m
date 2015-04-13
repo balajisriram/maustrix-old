@@ -1,4 +1,4 @@
-function [ts_Moptim, ts_MvelSweep, ts_McohSweep, ts_Mdot1, ts_Mdot2, ts_Mdot3] = createMotionSteps_auto(svnRev,svnCheckMode, subID)
+function [ts_Moptim, ts_Moptim1, ts_Moptim2, ts_Moptim3, ts_Moptim4, ts_MCohSweep] = createMotionSteps_auto(svnRev,svnCheckMode, subID)
 
 out = getStepDetails();
 
@@ -8,26 +8,24 @@ afc_optim = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...
     out.coherenceOpt,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
     out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
 
-afc_velSweep = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
-    out.coherenceOpt,out.speedSweep,out.contrast,out.dot_sizeOpt,...  
+afc_optim1 = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
+    out.coherenceOpt1,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
     out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
 
+afc_optim2 = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
+    out.coherenceOpt2,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
+    out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
+
+afc_optim3 = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
+    out.coherenceOpt3,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
+    out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
+
+afc_optim4 = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
+    out.coherenceOpt4,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
+    out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
 
 afc_cohSweep = coherentDots(out.screen_width,out.screen_height,out.num_dotsOpt,...  
     out.coherenceSweep,out.speedOpt,out.contrast,out.dot_sizeOpt,...  
-    out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
-
-
-afc_sizeSweep1 = coherentDots(out.screen_width,out.screen_height,out.num_dots1,...  
-    out.coherenceOpt,out.speedOpt,out.contrast,out.dot_size1,...  
-    out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
-
-afc_sizeSweep2 = coherentDots(out.screen_width,out.screen_height,out.num_dots2,...  
-    out.coherenceOpt,out.speedOpt,out.contrast,out.dot_size2,...  
-    out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
-
-afc_sizeSweep3 = coherentDots(out.screen_width,out.screen_height,out.num_dots3,...  
-    out.coherenceOpt,out.speedOpt,out.contrast,out.dot_size3,...  
     out.movie_duration,out.screen_zoom,out.maxWidth,out.maxHeight,out.percentCorrectionTrials);
 
 % sound Manager
@@ -35,11 +33,11 @@ sm=makeStandardSoundManager();
 % scheduler
 sch=noTimeOff(); % runs until swapper ends session
 
-% criterion
-thresholdPC=performanceCriterionLatestStreak(0.8,int16(200));
-numTrialsCrit_cohSweep = numTrialsDoneCriterion(1600); % 1600 trials = 8 conditions * 200 trials/condition
-numTrialsCrit_velSweep = numTrialsDoneCriterion(1000); % 1000 trials = 5 conditions * 200 trials/condition
-numTrialsCrit_sizeSweep = numTrialsDoneCriterion(200); % 200 trials = 1 conditions * 200 trials/condition
+% % criterion
+% thresholdPC=performanceCriterionLatestStreak(0.8,int16(200));
+% numTrialsCrit_cohSweep = numTrialsDoneCriterion(1600); % 1600 trials = 8 conditions * 200 trials/condition
+% numTrialsCrit_velSweep = numTrialsDoneCriterion(1000); % 1000 trials = 5 conditions * 200 trials/condition
+% numTrialsCrit_sizeSweep = numTrialsDoneCriterion(200); % 200 trials = 1 conditions * 200 trials/condition
 
 % reinf
 rewardScalar = out.rewardScalar;
@@ -59,15 +57,19 @@ tm= nAFC(sm, percentCorrectionTrials, constantRewards);
 tmWithReqRew = nAFC(sm, percentCorrectionTrials, constantRewardsWithReqRewards);
 % training step using other objects as passed in
 ts_Moptim = trainingStep(tmWithReqRew, afc_optim, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM'); %CHANGE
-ts_MvelSweep = trainingStep(tm, afc_velSweep, repeatIndefinitely, sch, svnRev, svnCheckMode,'velSweepM'); %CHANGE
-ts_McohSweep = trainingStep(tm, afc_cohSweep, repeatIndefinitely, sch, svnRev, svnCheckMode,'cohSweepM');% CHANGE
-ts_Mdot1 = trainingStep(tm, afc_sizeSweep1, repeatIndefinitely, sch, svnRev, svnCheckMode,'size1M'); %CHANGE
-ts_Mdot2 = trainingStep(tm, afc_sizeSweep2, repeatIndefinitely, sch, svnRev, svnCheckMode,'size2M'); %CHANGE
-ts_Mdot3 = trainingStep(tm, afc_sizeSweep3, repeatIndefinitely, sch, svnRev, svnCheckMode,'size3M'); %CHANGE
+ts_Moptim1 = trainingStep(tm, afc_optim1, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM1'); %CHANGE
+ts_Moptim2 = trainingStep(tm, afc_optim2, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM2');% CHANGE
+ts_Moptim3 = trainingStep(tm, afc_optim3, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM3'); %CHANGE
+ts_Moptim4 = trainingStep(tm, afc_optim4, repeatIndefinitely, sch, svnRev, svnCheckMode,'OptM4'); %CHANGE
+ts_MCohSweep = trainingStep(tm, afc_cohSweep, repeatIndefinitely, sch, svnRev, svnCheckMode,'cohSweep'); %CHANGE
 end
 
 function out = getStepDetails()
 out.coherenceOpt = {[.99,.80],'selectFrom'};             % Percent of dots to move in a specified direction
+out.coherenceOpt1 = {[.99,.80,.60],'selectFrom'};             % Percent of dots to move in a specified direction
+out.coherenceOpt2 = {[.99,.80,.60,.40],'selectFrom'};             % Percent of dots to move in a specified direction
+out.coherenceOpt3 = {[.99,.80,.60,.40,.20],'selectFrom'};             % Percent of dots to move in a specified direction
+out.coherenceOpt4 = {[.99,.80,.60,.40,.20,0],'selectFrom'};             % Percent of dots to move in a specified direction
 out.coherenceSweep = {[.15,.2,.25,.3,.35,.4,.65,.9], 'selectFrom'};             % Percent of dots to move in a specified direction
 out.contrast = 1;               % contrast of the dots
 out.movie_duration = 2;         % in seconds
