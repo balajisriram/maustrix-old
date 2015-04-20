@@ -62,7 +62,7 @@ switch mac
         subjectID = '241';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        step = 6; % back to learning the task 10-29
+        step = 5; % back to learning the task 10-29
         [~, rx]=setProtocolAndStep(sub,pMotion('241'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 3 on 7/29
         % enabled req reward while training
@@ -76,6 +76,7 @@ switch mac
         % moved animal to varied coherence on 3/22
         % back to learning 3/29
         % moved to more varied coherence
+        % animals are shit!! 4/20
 %         
 %         subjectID = '246';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -192,7 +193,7 @@ switch mac
         subjectID = '245';
         sub=getSubjectFromID(rx,subjectID);
         [~, step] = getProtocolAndStep(sub);
-        step = 6;
+        step = 5;
         [~, rx]=setProtocolAndStep(sub,pMotion('245'),true,true,true,step,rx,'mouseTraining_OD','bas');
         % changed from step 1 to 2 on 7/29
         % enabled req reward while training
@@ -205,6 +206,7 @@ switch mac
         % increased reward (0.5) and increased timeout(25000) 2/2
         % reduced reward to 0.25 3/22
         % moved to optM2
+        %  animals are shit
 % 
 % 
 %         subjectID = '242';
@@ -284,19 +286,19 @@ switch mac
 %         % increased reward to 0.5 2/2
 %         % decreased reward to 0.25 and decreased penalty to 10s 3/22
 %        
-        subjectID = '256';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        [~, rx]=setProtocolAndStep(sub,pOrReversal('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % reduced reward to 0.25 9/13
-        % changed to the OD protocol at the object task 10/7
-        % probably increased penalty 11/2
-        % increased penalty to 20s 11/16
-        % inc reward and reduced timeout for increased motivation 12/20
-        % moved to orientation task 2/2
-        % increased reward to 0.5 and penalty to 20s 3/22
-        % moved animal to reversal with longer duration of stimulus 4/6
-        % reduced reward to 0.2 and penalty to 5 s 4/13
+%         subjectID = '256';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         [~, rx]=setProtocolAndStep(sub,pOrReversal('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % reduced reward to 0.25 9/13
+%         % changed to the OD protocol at the object task 10/7
+%         % probably increased penalty 11/2
+%         % increased penalty to 20s 11/16
+%         % inc reward and reduced timeout for increased motivation 12/20
+%         % moved to orientation task 2/2
+%         % increased reward to 0.5 and penalty to 20s 3/22
+%         % moved animal to reversal with longer duration of stimulus 4/6
+%         % reduced reward to 0.2 and penalty to 5 s 4/13
 %         
 %         subjectID = '243';
 %         sub=getSubjectFromID(rx,subjectID);
