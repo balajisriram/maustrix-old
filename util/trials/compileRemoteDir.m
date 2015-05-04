@@ -5,7 +5,7 @@ except = {};
 % 213 - 46098 - 46321 - box 3
 
 if ~exist('boxes','var') || isempty(boxes)
-    boxes = {'Box1','Box2','Box3','Box4','Box5','Box6','VarDur','Motion','Reversal2'};
+    boxes = {'Box1','Box2','Box3','Box4','Box5','Box6','VarDur2','Motion','Reversal2'};
 elseif ~iscell(boxes)
     error('either dont give boxes or give it as a sequence of cellstrs');
 end

@@ -147,13 +147,14 @@ switch lower(subID)
         % reduced reward to 0.25 2/2
     case '254'
         out.rewardScalar = 0.25;
-        out.msPenalty = 25000;
+        out.msPenalty = 5000;
         % reduced reward to 0.25 10/7
         % reduced reward to 0.1 10/17
         % increased penalty to 15s 12/20
         % increased reward and increased timeout 2/2
+        % reduced penalty hoping that tyhe animal learns the task 5/4
     case '255'
-        out.rewardScalar = 0.25;
+        out.rewardScalar = 0.05;
         out.msPenalty = 10000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 actually on 10/17
@@ -162,6 +163,7 @@ switch lower(subID)
         % reduced reward to 0.1 12/20
         % increased reward to 0.5 2/2
         % decreased reward to 0.25 and penalty to 10s 3/22
+        % decreased reward substantially 5/4
     case '256'
         out.rewardScalar = 0.2;
         out.msPenalty = 5000;
@@ -191,13 +193,14 @@ switch lower(subID)
         % increased penalty to 15s 12/20
         % increased reward and increased timeout 2/2
     case '259'
-        out.rewardScalar = 0.25;
-        out.msPenalty = 10000; 
+        out.rewardScalar = 0.15;
+        out.msPenalty = 5000; 
         % reduced reward to 0.1 10/7
         % increased penlty to 10000 10/17
         % increased reward to 0.2 and penalty to 15s 12/20
         % increased penalty to 25s 2/2
         % reduced reward to 0.25 and msPenalty to 10s
+        %  reduced reward and timepout 5/4
     case '261'
         out.rewardScalar = 0.25;
         out.msPenalty = 10000;
@@ -207,7 +210,8 @@ switch lower(subID)
         % increased timeput to 20 s 11/7
         % reduced reward to 0.1 11/16
         % trying to increase motivation inc. rew to 0.5 12/20
-        % reduced reward and reduced timeout 2/2
+        % reduced reward and reduced timeout 2/2 (never got activated)
+        % activated previous step 5/4
     case '262'
         out.rewardScalar = 0.25;
         out.msPenalty = 10000;
@@ -225,6 +229,14 @@ switch lower(subID)
         % increased reward(0.25) and increased penalty(15s) 1/5
         % increased reward and increased timeout 2/2
         % decreased reward to 0.25 and penalty to 10s 3/22
+    case '268'
+        out.rewardScalar = 0.25;
+        out.msPenalty = 10000;
+        % reduced reward and increased penalty to aid learning 5/4
+    case '269'
+        out.rewardScalar = 0.25;
+        out.msPenalty = 10000;
+        % reduced reward and increased penalty to aid learning 5/4
     case 'l001'
         out.rewardScalar = 0.25;
         % reduced reward 9/4;
