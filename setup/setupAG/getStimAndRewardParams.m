@@ -154,8 +154,8 @@ switch lower(subID)
         % increased reward and increased timeout 2/2
         % reduced penalty hoping that tyhe animal learns the task 5/4
     case '255'
-        out.rewardScalar = 0.05;
-        out.msPenalty = 10000;
+        out.rewardScalar = 0.25;
+        out.msPenalty = 15000;
         % reduced reward to 0.25 9/13
         % reduced reward to 0.1 actually on 10/17
         % increased penalty to 15 s  11/2
@@ -164,6 +164,7 @@ switch lower(subID)
         % increased reward to 0.5 2/2
         % decreased reward to 0.25 and penalty to 10s 3/22
         % decreased reward substantially 5/4
+        % increased timeout to 15000 5/7
     case '256'
         out.rewardScalar = 0.2;
         out.msPenalty = 5000;

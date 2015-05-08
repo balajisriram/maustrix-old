@@ -194,7 +194,7 @@ switch mac
         % manually sent to step 4 11/2
         % increased timeout to 15s 12/20
         % increased reward and increased timeout 2/2
-        % sent back to step 5
+        % sent back to step 5 5/7
 %
 %         subjectID = '245';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -293,22 +293,23 @@ switch mac
         % reduced reward to 0.1 12/20
         % increased reward to 0.5 2/2
         % decreased reward to 0.25 and decreased penalty to 10s 3/22
+        % increased reward and increased timeout to 15s 5/7
 %        
-        subjectID = '256';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        step = 5;
-        [~, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % reduced reward to 0.25 9/13
-        % changed to the OD protocol at the object task 10/7
-        % probably increased penalty 11/2
-        % increased penalty to 20s 11/16
-        % inc reward and reduced timeout for increased motivation 12/20
-        % moved to orientation task 2/2
-        % increased reward to 0.5 and penalty to 20s 3/22
-        % moved animal to reversal with longer duration of stimulus 4/6
-        % reduced reward to 0.2 and penalty to 5 s 4/13
-        % moved back to orientation 5/6
+%         subjectID = '256';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         step = 5;
+%         [~, rx]=setProtocolAndStep(sub,pOD('256'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % reduced reward to 0.25 9/13
+%         % changed to the OD protocol at the object task 10/7
+%         % probably increased penalty 11/2
+%         % increased penalty to 20s 11/16
+%         % inc reward and reduced timeout for increased motivation 12/20
+%         % moved to orientation task 2/2
+%         % increased reward to 0.5 and penalty to 20s 3/22
+%         % moved animal to reversal with longer duration of stimulus 4/6
+%         % reduced reward to 0.2 and penalty to 5 s 4/13
+%         % moved back to orientation 5/6
 %         
 %         subjectID = '243';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -332,26 +333,26 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pOD('999'),true,true,true,step,rx,'mouseTraining_OD','bas');
 %         
 % 
-        subjectID = '262';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        step = 5;
-        [~, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % reduced reward to 0.1 10/7
-        % moved to rig 3 from rig 5
-        % increased timeout to 15s 11/16
-        % increased reward to 0.5 12/20
-        % reduced reward (0.25) and reduced timeout(10000) 2/2
-        % moved animal to reversal with longer duration of stimulus 4/5
-        % moved to orientation task 5/4
+%         subjectID = '262';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         step = 5;
+%         [~, rx]=setProtocolAndStep(sub,pOD('262'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % reduced reward to 0.1 10/7
+%         % moved to rig 3 from rig 5
+%         % increased timeout to 15s 11/16
+%         % increased reward to 0.5 12/20
+%         % reduced reward (0.25) and reduced timeout(10000) 2/2
+%         % moved animal to reversal with longer duration of stimulus 4/5
+%         % moved to orientation task 5/4
 % 
         subjectID = '268';
         sub=getSubjectFromID(rx,subjectID);
 %         sub = subject('268','mouse','c57bl/6j','female','10/31/2014','unknown','a 10/31/2014','Jackson Laboratories','ChatChR2XVIP','none');
 %         rx = addSubject(rx, sub, 'bas');
         [~, step] = getProtocolAndStep(sub);
-        step = 1;
-        [~, rx]=setProtocolAndStep(sub,pInit('268'),true,true,true,step,rx,'mouseTraining_Init','bas');
+        step = 3;
+        [~, rx]=setProtocolAndStep(sub,pOD('268'),true,true,true,step,rx,'mouseTraining_Init','bas');
         % added mouse 3/31/15
         % reduced reward and increased timeout 5/4
 
