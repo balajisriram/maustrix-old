@@ -157,7 +157,18 @@ switch mac
 %         [~, step] = getProtocolAndStep(sub);
 %         step = 5;
 %         [~, rx]=setProtocolAndStep(sub,pOD('266'),true,true,true,step,rx,'mouseTraining_Init','bas');
-%         % added mouse 3/31/15
+
+        sub = subject('270','mouse','c57bl/6j','male','10/01/2014','unknown','a 10/01/2014','Jackson Laboratories','Som-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,1,rx,'mouseTraining_OD','bas');
+
+        sub = subject('271','mouse','c57bl/6j','male','10/01/2014','unknown','b 10/01/2014','Jackson Laboratories','Som-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,1,rx,'mouseTraining_OD','bas');
+        
+        sub = subject('272','mouse','c57bl/6j','male','10/26/2014','unknown','a 10/01/2014','Jackson Laboratories','Pv-Chr2XSom-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
     case 'A41F729213E2' %gLab-Behavior2
         
@@ -268,6 +279,10 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pOD('267'),true,true,true,step,rx,'mouseTraining_Init','bas');
 %         % added mouse 3/31/15
 
+        sub = subject('273','mouse','c57bl/6j','male','10/26/2014','unknown','b 10/01/2014','Jackson Laboratories','Pv-Chr2XSom-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,1,rx,'mouseTraining_OD','bas');
+
     case 'A41F726EC11C' %gLab-Behavior3
         
 %         subjectID = '227';
@@ -282,20 +297,20 @@ switch mac
 %         % moved to varied duration easy durations 11/16
 %         % moved to fast varied duration 12/20
 %         
-        subjectID = '255';
-        sub=getSubjectFromID(rx,subjectID);
-        [~, step] = getProtocolAndStep(sub);
-        step = 4;
-        [~, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,step,rx,'mouseTraining_OD','bas');
-        % reduced reward to 0.25 9/13
-        % changed to pOD at the object task and reduced reward to 0.1 10/7
-        % increased penalty to 15 s 11/2
-        % increased reward to 0.25 11/16
-        % reduced reward to 0.1 12/20
-        % increased reward to 0.5 2/2
-        % decreased reward to 0.25 and decreased penalty to 10s 3/22
-        % increased reward and increased timeout to 15s 5/7
-        % moved animal to step 4 - the guy sucks 5/12
+%         subjectID = '255';
+%         sub=getSubjectFromID(rx,subjectID);
+%         [~, step] = getProtocolAndStep(sub);
+%         step = 4;
+%         [~, rx]=setProtocolAndStep(sub,pOD('255'),true,true,true,step,rx,'mouseTraining_OD','bas');
+%         % reduced reward to 0.25 9/13
+%         % changed to pOD at the object task and reduced reward to 0.1 10/7
+%         % increased penalty to 15 s 11/2
+%         % increased reward to 0.25 11/16
+%         % reduced reward to 0.1 12/20
+%         % increased reward to 0.5 2/2
+%         % decreased reward to 0.25 and decreased penalty to 10s 3/22
+%         % increased reward and increased timeout to 15s 5/7
+%         % moved animal to step 4 - the guy sucks 5/12
 %        
 %         subjectID = '256';
 %         sub=getSubjectFromID(rx,subjectID);
@@ -357,7 +372,10 @@ switch mac
 %         [~, rx]=setProtocolAndStep(sub,pOD('268'),true,true,true,step,rx,'mouseTraining_Init','bas');
 %         % added mouse 3/31/15
 %         % reduced reward and increased timeout 5/4
-
+        
+        sub = subject('274','mouse','c57bl/6j','male','11/14/2014','unknown','a 11/14/2014','Jackson Laboratories','Pv-Chr2XSom-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,1,rx,'mouseTraining_OD','bas');
 
     case '7845C4256F4C' %gLab-Behavior4
 %         
@@ -465,6 +483,9 @@ switch mac
 %         % added mouse 3/31/15
 %         % reduced reward and increased timeout 5/4
 
+        sub = subject('275','mouse','c57bl/6j','male','11/14/2014','unknown','b 11/14/2014','Jackson Laboratories','Pv-Chr2XSom-cre','none');
+        rx = addSubject(rx, sub, 'bas');
+        [sub, rx]=setProtocolAndStep(sub,pOD('246'),true,true,true,1,rx,'mouseTraining_OD','bas');
         
     case '7845C42558DF' %gLab-Behavior5
                 
