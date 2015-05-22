@@ -161,13 +161,4 @@ else
     stationSpec.portSpec.LEDPins = int8([]);
 end
 
-switch mac 
-    case {'7845C42558DF','A41F729211B1'}
-        stationSpec.portSpec.LEDPins = int8([5 7]);
-        stationSpec.portSpec.arduinoOn = true;
-    otherwise
-        stationSpec.portSpec.LEDPins = int8([]);
-        stationSpec.portSpec.arduinoOn = false;
-end
-
 st=station(stationSpec);

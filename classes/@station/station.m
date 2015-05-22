@@ -47,9 +47,6 @@ function s=station(varargin)
 	s.indexPins=[];
 	s.eyePuffPins=[];
     s.LEDPins = [];
-    
-    s.arduinoON = false;
-    s.arduinoCONN = [];
 
 	s.localPump=[];
 	s.localPumpInited=false;
@@ -111,11 +108,6 @@ function s=station(varargin)
                     if ~isempty(s.localPump)&&~isempty(s.LEDPins)
                         error('station:degeneratePinAssignment','LEDs and pumpObject use the same pins. They cannot currently be used together');
                     end
-                    
-                    if isfield(in.portSpec,'arduinoON')
-                        s.arduinoON = in.portSpec.arduinoON;
-                    end
-                    
 					usingPport=true;
 					needToInit=true;
 
